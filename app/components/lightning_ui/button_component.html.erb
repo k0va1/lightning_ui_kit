@@ -1,0 +1,12 @@
+<% if @url %>
+  <%= link_to @url, class: classes, data: data_attributes do %>
+    <%= content %>
+  <% end %>
+<% else %>
+  <%= content_tag :button,
+    class: classes,
+    data: data_attributes,
+    type: @type do %>
+    <%= content %>
+  <% end %>
+<% end %>

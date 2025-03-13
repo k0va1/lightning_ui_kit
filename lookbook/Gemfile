@@ -1,0 +1,23 @@
+source "https://rubygems.org"
+
+ruby "3.3.5"
+
+gem "rails", "~> 8.0"
+gem "puma", "~> 6.0"
+gem "sqlite3"
+gem "importmap-rails"
+gem "turbo-rails"
+gem "stimulus-rails"
+gem "lookbook", "~> 2.3"
+gem "propshaft"
+
+gem "lightning_ui", path: "../"
+
+group :development, :test do
+  gem "foreman"
+end
+
+group :development do
+  gem "listen"
+  gem "web-console", ">= 4.1.0"
+end

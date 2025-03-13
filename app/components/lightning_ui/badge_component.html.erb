@@ -1,0 +1,9 @@
+<%= tag.span class: classes do %>
+  <% if @progress %>
+    <%= tag.span class: progress_classes do %>
+    <% end %>
+  <% end %>
+  <span class="align-middle">
+    <%= content %>
+  </span>
+<% end %>

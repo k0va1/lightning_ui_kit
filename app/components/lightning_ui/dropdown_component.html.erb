@@ -1,0 +1,35 @@
+<div data-controller="dropdown" class="relative">
+  <button type="button" data-action="dropdown#toggle click@window->dropdown#hide" class="flex items-center justify-between cursor-pointer w-full text-sm/6 font-medium text-zinc-700 hover:text-zinc-950">
+    <% if trigger? %>
+      <%= trigger %>
+    <% else %>
+      <%= @trigger_text %>
+    <% end %>
+
+    <% case @anchor.to_s %>
+    <% when "bottom_right" %>
+      <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+      </svg>
+    <% when "top_right" %>
+      <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 5 4-4 4 4"/>
+      </svg>
+    <% end %>
+  </button>
+
+  <div
+    data-dropdown-target="menu"
+    class="<%=menu_classes %>"
+    data-transition-enter-from="opacity-0 scale-95"
+    data-transition-enter-to="opacity-100 scale-100"
+    data-transition-leave-from="opacity-100 scale-100"
+    data-transition-leave-to="opacity-0 scale-95"
+    >
+    <% items.each do |item| %>
+      <div class="px-4 py-2 text-sm/5 font-medium text-zinc-950 hover:bg-zinc-950/5">
+        <%= item %>
+      </div>
+    <% end %>
+  </div>
+</div>

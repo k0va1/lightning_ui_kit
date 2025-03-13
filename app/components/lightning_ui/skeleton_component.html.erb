@@ -1,0 +1,10 @@
+<div role="status" class="animate-pulse">
+  <% if @with_title %>
+    <h3 class="h-3 bg-gray-300 rounded-full w-48 mb-4"></h3>
+  <% end %>
+  <div class="space-y-2.5">
+    <% @lines.times do %>
+      <p class="h-2 bg-gray-300 rounded-full"></p>
+    <% end %>
+  </div>
+</div>

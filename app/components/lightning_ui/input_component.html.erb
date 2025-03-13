@@ -1,0 +1,99 @@
+<%= tag.div(
+  class: classes,
+  data:
+) do %>
+    <% if @label %>
+      <%= tag.label(
+        @label,
+        class: "text-base/6 text-zinc-950 select-none data-disabled:opacity-50 sm:text-sm/6",
+        data: label_data
+      ) %>
+  <% end %>
+  <% if @description %>
+    <%= tag.p(
+      @description,
+      class: "text-base/6 text-zinc-500 data-disabled:opacity-50 sm:text-sm/6",
+      data: description_data
+    ) %>
+  <% end %>
+  <% if @form %>
+    <span data-slot="control" class="relative block w-full before:absolute before:inset-px before:rounded-[calc(var(--radius-lg)-1px)] before:bg-white before:shadow-sm dark:before:hidden after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-transparent after:ring-inset sm:focus-within:after:ring-2 sm:focus-within:after:ring-blue-500 has-data-disabled:opacity-50 has-data-disabled:before:bg-zinc-950/5 has-data-disabled:before:shadow-none has-data-invalid:before:shadow-red-500/10">
+      <% case @type %>
+      <% when :text %>
+        <%= @form.text_field(
+          @name,
+          data: input_data,
+          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 data-hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:data-hover:border-red-500 dark:data-invalid:data-hover:border-red-500 data-disabled:border-zinc-950/20",
+          disabled: @disabled,
+          autofocus: @autofocus,
+          placeholder: @placeholder
+        ) %>
+      <% when :email %>
+        <%= @form.email_field(
+          @name,
+          data: input_data,
+          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 data-hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:data-hover:border-red-500 dark:data-invalid:data-hover:border-red-500 data-disabled:border-zinc-950/20",
+          disabled: @disabled,
+          autofocus: @autofocus
+        ) %>
+      <% when :password %>
+        <%= @form.password_field(
+          @name,
+          data: input_data,
+          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 data-hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:data-hover:border-red-500 dark:data-invalid:data-hover:border-red-500 data-disabled:border-zinc-950/20",
+          disabled: @disabled,
+          autofocus: @autofocus
+        ) %>
+      <% when :number %>
+        <%= @form.number_field(
+          @name,
+          data: input_data,
+          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 data-hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:data-hover:border-red-500 dark:data-invalid:data-hover:border-red-500 data-disabled:border-zinc-950/20",
+          disabled: @disabled,
+          autofocus: @autofocus
+        ) %>
+      <% end %>
+    </span>
+  <% else %>
+    <span data-slot="control" class="relative block w-full before:absolute before:inset-px before:rounded-[calc(var(--radius-lg)-1px)] before:bg-white before:shadow-sm dark:before:hidden after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-transparent after:ring-inset sm:focus-within:after:ring-2 sm:focus-within:after:ring-blue-500 has-data-disabled:opacity-50 has-data-disabled:before:bg-zinc-950/5 has-data-disabled:before:shadow-none has-data-invalid:before:shadow-red-500/10">
+      <% case @type %>
+      <% when :text %>
+        <%= text_field_tag(
+          @name,
+          @value,
+          data: input_data,
+          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 data-hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:data-hover:border-red-500 dark:data-invalid:data-hover:border-red-500 data-disabled:border-zinc-950/20",
+          disabled: @disabled,
+          autofocus: @autofocus
+        ) %>
+      <% when :email %>
+        <%= email_field_tag(
+          @name,
+          @value,
+          data: input_data,
+          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 data-hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:data-hover:border-red-500 dark:data-invalid:data-hover:border-red-500 data-disabled:border-zinc-950/20",
+          disabled: @disabled,
+          autofocus: @autofocus
+        ) %>
+      <% when :password %>
+        <%= password_field_tag(
+          @name,
+          @value,
+          data: input_data,
+          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 data-hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:data-hover:border-red-500 dark:data-invalid:data-hover:border-red-500 data-disabled:border-zinc-950/20",
+          disabled: @disabled,
+          autofocus: @autofocus
+        ) %>
+      <% when :number %>
+        <%= number_field_tag(
+          @name,
+          @value,
+          data: input_data,
+          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 data-hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:data-hover:border-red-500 dark:data-invalid:data-hover:border-red-500 data-disabled:border-zinc-950/20",
+          disabled: @disabled,
+          autofocus: @autofocus
+        ) %>
+      <% end %>
+    </span>
+  <% end %>
+<% end %>

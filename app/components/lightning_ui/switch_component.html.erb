@@ -1,0 +1,38 @@
+<div
+  data-slot="field"
+  class="grid grid-cols-[1fr_auto] items-center gap-x-8 gap-y-1 sm:grid-cols-[1fr_auto] *:data-[slot=control]:col-start-2 *:data-[slot=control]:self-center *:data-[slot=label]:col-start-1 *:data-[slot=label]:row-start-1 *:data-[slot=label]:justify-self-start *:data-[slot=description]:col-start-1 *:data-[slot=description]:row-start-2 has-data-[slot=description]:**:data-[slot=label]:font-medium"
+  data-controller="switch"
+  >
+  <% if @label %>
+    <label data-slot="label" class="text-base/6 text-zinc-950 select-none data-disabled:opacity-50 sm:text-sm/6">
+      <%= @label %>
+    </label>
+  <% end %>
+  <% if @description %>
+    <p data-slot="description" class="text-base/6 text-zinc-500 data-disabled:opacity-50 sm:text-sm/6">
+      <%= @description %>
+    </p>
+  <% end %>
+  <%= tag.button(
+    class: "group relative isolate inline-flex h-6 w-10 cursor-default rounded-full p-[3px] sm:h-5 sm:w-8 transition duration-0 ease-in-out data-changing:duration-200 forced-colors:outline forced-colors:[--switch-bg:Highlight] ] bg-zinc-200 ring-1 ring-black/5 ring-inset   data-checked:bg-(--switch-bg) data-checked:ring-(--switch-bg-ring) ) ) focus:outline-hidden data-focus:outline-2 data-focus:outline-offset-2 data-focus:outline-blue-500 data-hover:ring-black/15 data-hover:data-checked:ring-(--switch-bg-ring)  ) data-disabled:bg-zinc-200 data-disabled:opacity-50 data-disabled:data-checked:bg-zinc-200 data-disabled:data-checked:ring-black/5  [--switch-bg-ring:var(--color-zinc-950)]/90 [--switch-bg:var(--color-zinc-900)] ]  [--switch-ring:var(--color-zinc-950)]/90 [--switch-shadow:var(--color-black)]/10 [--switch:white]",
+    aria: { checked: @enabled },
+    role: "switch",
+    type: "button",
+    tabindex: 0,
+    data:
+  ) do %>
+    <span
+      aria-hidden="true"
+      class="pointer-events-none relative inline-block size-[1.125rem] rounded-full sm:size-3.5 translate-x-0 transition duration-200 ease-in-out border border-transparent bg-white ring-1 shadow-sm ring-black/5 group-data-checked:bg-(--switch) group-data-checked:shadow-(--switch-shadow) group-data-checked:ring-(--switch-ring) group-data-checked:translate-x-4 sm:group-data-checked:translate-x-3 group-data-checked:group-data-disabled:bg-white group-data-checked:group-data-disabled:shadow-sm group-data-checked:group-data-disabled:ring-black/5">
+    </span>
+    <% if @form %>
+      <%= @form.hidden_field(@name, value: @enabled, data: { switch_target: "field" }) %>
+    <% else %>
+      <%= hidden_field(
+        name: @name,
+        value: @enabled,
+        data: { switch_target: "field" }
+      ) %>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,21 @@
+<%= tag.div(class: "items-center gap-x-2 sm:flex") do %>
+  <% if @with_arrows %>
+    <%= link_to(url(@current_page - 1), class: link_classes, data: data(disabled: @current_page == 1)) do %>
+      <%= heroicon("chevron-left", options: { class: "w-5 h-5" }) %>
+    <% end %>
+  <% end %>
+
+  <% pages_with_gaps.each do |page| %>
+    <% if page == :gap %>
+      <span aria-hidden="true" class="w-[2.25rem] text-center text-sm/6 font-semibold text-zinc-950 select-none">…</span>
+    <% else %>
+      <%= link_to(page, url(page), class: link_classes, data: data(active: @current_page == page)) %>
+    <% end %>
+  <% end %>
+
+  <% if @with_arrows %>
+    <%= link_to(url(@current_page + 1), class: link_classes, data: data(disabled: @current_page == @total_pages)) do %>
+      <%= heroicon("chevron-right", options: {class: "w-5 h-5" }) %>
+    <% end %>
+  <% end %>
+<% end %>

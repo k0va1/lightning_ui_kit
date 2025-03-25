@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class LightningUiKit::SwitchComponent < LightningUiKit::BaseComponent
-  def initialize(name:, form: nil, label: nil, description: nil, enabled: false, disabled: false, **options)
+  def initialize(name:, form: nil, label: nil, error: nil, description: nil, enabled: false, disabled: false, **options)
     @name = name
     @form = form
     @label = label
+    @error = error
     @description = description
     @enabled = enabled
     @disabled = disabled
@@ -25,6 +26,14 @@ class LightningUiKit::SwitchComponent < LightningUiKit::BaseComponent
       end
       if @enabled
         data[:checked] = "true"
+      end
+    end
+  end
+
+  def error_data
+    {slot: "error"}.merge(@options[:error_data] || {}).tap do |data|
+      if @disabled
+        data[:disabled] = "true"
       end
     end
   end

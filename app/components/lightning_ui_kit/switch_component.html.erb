@@ -14,7 +14,7 @@
     </p>
   <% end %>
   <%= tag.button(
-    class: "group relative isolate inline-flex h-6 w-10 cursor-default rounded-full p-[3px] sm:h-5 sm:w-8 transition duration-0 ease-in-out data-changing:duration-200 forced-colors:outline forced-colors:[--switch-bg:Highlight] ] bg-zinc-200 ring-1 ring-black/5 ring-inset   data-checked:bg-(--switch-bg) data-checked:ring-(--switch-bg-ring) ) ) focus:outline-hidden data-focus:outline-2 data-focus:outline-offset-2 data-focus:outline-blue-500 data-hover:ring-black/15 data-hover:data-checked:ring-(--switch-bg-ring)  ) data-disabled:bg-zinc-200 data-disabled:opacity-50 data-disabled:data-checked:bg-zinc-200 data-disabled:data-checked:ring-black/5  [--switch-bg-ring:var(--color-zinc-950)]/90 [--switch-bg:var(--color-zinc-900)] ]  [--switch-ring:var(--color-zinc-950)]/90 [--switch-shadow:var(--color-black)]/10 [--switch:white]",
+    class: "group relative isolate inline-flex h-6 w-10 cursor-default rounded-full p-[3px] sm:h-5 sm:w-8 transition duration-0 ease-in-out data-changing:duration-200 forced-colors:outline forced-colors:[--switch-bg:Highlight] ] bg-zinc-200 ring-1 ring-black/5 ring-inset   data-checked:bg-(--switch-bg) data-checked:ring-(--switch-bg-ring) ) ) focus:outline-hidden data-focus:outline-2 data-focus:outline-offset-2 data-focus:outline-blue-500 hover:ring-black/15 hover:data-checked:ring-(--switch-bg-ring)  ) data-disabled:bg-zinc-200 data-disabled:opacity-50 data-disabled:data-checked:bg-zinc-200 data-disabled:data-checked:ring-black/5  [--switch-bg-ring:var(--color-zinc-950)]/90 [--switch-bg:var(--color-zinc-900)] ]  [--switch-ring:var(--color-zinc-950)]/90 [--switch-shadow:var(--color-black)]/10 [--switch:white]",
     aria: { checked: @enabled },
     role: "switch",
     type: "button",
@@ -34,5 +34,12 @@
         data: { lui_switch_target: "field" }
       ) %>
     <% end %>
+  <% end %>
+  <% if has_errors? %>
+    <%= tag.p(
+      error_messages,
+      class: "text-base/6 text-red-600 data-disabled:opacity-50 sm:text-sm/6",
+      data: error_data
+    ) %>
   <% end %>
 </div>

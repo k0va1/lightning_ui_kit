@@ -2,12 +2,12 @@
   class: classes,
   data:
 ) do %>
-    <% if @label %>
-      <%= tag.label(
-        @label,
-        class: "text-base/6 text-zinc-950 select-none data-disabled:opacity-50 sm:text-sm/6",
-        data: label_data
-      ) %>
+  <% if @label %>
+    <%= tag.label(
+      @label,
+      class: "text-base/6 text-zinc-950 select-none data-disabled:opacity-50 sm:text-sm/6",
+      data: label_data
+    ) %>
   <% end %>
   <% if @description %>
     <%= tag.p(
@@ -23,7 +23,7 @@
         <%= @form.text_field(
           @name,
           data: input_data,
-          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 data-hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:data-hover:border-red-500 dark:data-invalid:data-hover:border-red-500 data-disabled:border-zinc-950/20",
+          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:hover:border-red-500 dark:data-invalid:hover:border-red-500 data-disabled:border-zinc-950/20",
           disabled: @disabled,
           autofocus: @autofocus,
           placeholder: @placeholder
@@ -32,7 +32,7 @@
         <%= @form.email_field(
           @name,
           data: input_data,
-          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 data-hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:data-hover:border-red-500 dark:data-invalid:data-hover:border-red-500 data-disabled:border-zinc-950/20",
+          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:hover:border-red-500 dark:data-invalid:hover:border-red-500 data-disabled:border-zinc-950/20",
           disabled: @disabled,
           autofocus: @autofocus
         ) %>
@@ -40,7 +40,7 @@
         <%= @form.password_field(
           @name,
           data: input_data,
-          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 data-hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:data-hover:border-red-500 dark:data-invalid:data-hover:border-red-500 data-disabled:border-zinc-950/20",
+          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:hover:border-red-500 dark:data-invalid:hover:border-red-500 data-disabled:border-zinc-950/20",
           disabled: @disabled,
           autofocus: @autofocus
         ) %>
@@ -48,7 +48,7 @@
         <%= @form.number_field(
           @name,
           data: input_data,
-          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 data-hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:data-hover:border-red-500 dark:data-invalid:data-hover:border-red-500 data-disabled:border-zinc-950/20",
+          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:hover:border-red-500 dark:data-invalid:hover:border-red-500 data-disabled:border-zinc-950/20",
           disabled: @disabled,
           autofocus: @autofocus
         ) %>
@@ -62,7 +62,7 @@
           @name,
           @value,
           data: input_data,
-          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 data-hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:data-hover:border-red-500 dark:data-invalid:data-hover:border-red-500 data-disabled:border-zinc-950/20",
+          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:hover:border-red-500 dark:data-invalid:hover:border-red-500 data-disabled:border-zinc-950/20",
           disabled: @disabled,
           autofocus: @autofocus
         ) %>
@@ -71,7 +71,7 @@
           @name,
           @value,
           data: input_data,
-          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 data-hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:data-hover:border-red-500 dark:data-invalid:data-hover:border-red-500 data-disabled:border-zinc-950/20",
+          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:hover:border-red-500 dark:data-invalid:hover:border-red-500 data-disabled:border-zinc-950/20",
           disabled: @disabled,
           autofocus: @autofocus
         ) %>
@@ -80,7 +80,7 @@
           @name,
           @value,
           data: input_data,
-          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 data-hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:data-hover:border-red-500 dark:data-invalid:data-hover:border-red-500 data-disabled:border-zinc-950/20",
+          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:hover:border-red-500 dark:data-invalid:hover:border-red-500 data-disabled:border-zinc-950/20",
           disabled: @disabled,
           autofocus: @autofocus
         ) %>
@@ -89,11 +89,18 @@
           @name,
           @value,
           data: input_data,
-          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 data-hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:data-hover:border-red-500 dark:data-invalid:data-hover:border-red-500 data-disabled:border-zinc-950/20",
+          class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:hover:border-red-500 dark:data-invalid:hover:border-red-500 data-disabled:border-zinc-950/20",
           disabled: @disabled,
           autofocus: @autofocus
         ) %>
       <% end %>
     </span>
+  <% end %>
+  <% if has_errors? %>
+    <%= tag.p(
+      error_messages,
+      class: "text-base/6 text-red-600 data-disabled:opacity-50 sm:text-sm/6",
+      data: error_data
+    ) %>
   <% end %>
 <% end %>

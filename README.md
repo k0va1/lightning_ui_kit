@@ -1,14 +1,12 @@
 # LightningUi
-Short description and motivation.
+UI components for fast prototyping in Rails applications.
 
 ## Usage
-How to use my plugin.
 
-## Installation
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "lightning_ui"
+gem "lightning_ui_kit"
 ```
 
 And then execute:
@@ -16,13 +14,20 @@ And then execute:
 $ bundle
 ```
 
-Or install it yourself as:
-```bash
-$ gem install lightning_ui
+Add the following lines to your `application.html.erb` file:
+```erb
+<%= stylesheet_link_tag "lightning_ui" %>
+<%= javascript_include_tag "lightning_ui" %>
+```
+
+Then you can use components in your views like this:
+
+```erb
+<%= render LightningUi::ButtonComponent.new(text: "Click me!") %>
 ```
 
 ## Contributing
-Contribution directions go here.
+Bug reports and pull requests are welcome
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

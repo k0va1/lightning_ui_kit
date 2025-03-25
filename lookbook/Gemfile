@@ -10,7 +10,7 @@ gem "stimulus-rails"
 gem "lookbook", "~> 2.3"
 gem "propshaft"
 
-gem "lightning_ui", path: "../"
+gem "lightning_ui_kit", path: "../"
 
 group :development, :test do
   gem "foreman"

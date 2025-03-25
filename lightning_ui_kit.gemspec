@@ -1,7 +1,7 @@
 require_relative "lib/lightning_ui/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "lightning_ui"
+  spec.name = "lightning_ui_kit"
   spec.version = LightningUi::VERSION
   spec.authors = ["Alex Koval"]
   spec.email = ["al3xander.koval@gmail.com"]

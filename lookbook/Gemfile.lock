@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    lightning_ui (0.1.0)
+    lightning_ui_kit (0.1.0)
       heroicons
       rails (>= 8.0.0)
       tailwind_merge
@@ -229,7 +229,7 @@ GEM
       io-console (~> 0.5)
     rouge (4.5.1)
     securerandom (0.4.0)
-    sin_lru_redux (2.5.1)
+    sin_lru_redux (2.5.2)
     sqlite3 (2.4.1-aarch64-linux-gnu)
     sqlite3 (2.4.1-aarch64-linux-musl)
     sqlite3 (2.4.1-arm-linux-gnu)
@@ -287,7 +287,7 @@ PLATFORMS
 
 DEPENDENCIES
   foreman
-  lightning_ui!
+  lightning_ui_kit!
   listen
   lookbook (~> 2.3)
   propshaft

@@ -4,6 +4,8 @@
 /pkg/
 /tmp/
 
+*.gem
+
 /lookbook/app/assets/builds/*
 !/lookbook/app/assets/builds/.keep
 

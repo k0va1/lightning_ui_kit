@@ -18,9 +18,9 @@
     "stimulus-use": "^0.52.3"
   },
   "scripts": {
-    "dev:build:css": "tailwindcss -i ./app/assets/stylesheets/lightning_ui/application.css -o ./app/assets/builds/lightning_ui.css -c ./tailwind.config.js --watch",
+    "dev:build:css": "tailwindcss -i ./app/assets/stylesheets/lightning_ui_kit/application.css -o ./app/assets/builds/lightning_ui_kit.css -c ./tailwind.config.js --watch",
     "dev:build:js": "node esbuild.config.js",
     "prod:build:js": "NODE_ENV=production node esbuild.config.js",
-    "prod:build:css": "tailwindcss -i ./app/assets/stylesheets/lightning_ui/application.css -o ./app/assets/vendor/lightning_ui.css -c ./tailwind.config.js"
+    "prod:build:css": "tailwindcss -i ./app/assets/stylesheets/lightning_ui_kit/application.css -o ./app/assets/vendor/lightning_ui_kit.css -c ./tailwind.config.js"
   }
 }

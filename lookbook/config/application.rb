@@ -5,7 +5,7 @@ require "rails/all"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-require "lightning_ui/engine"
+require "lightning_ui_kit/engine"
 
 module Lookbook
   class Application < Rails::Application
@@ -18,8 +18,8 @@ module Lookbook
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
-    config.view_component.preview_paths << File.expand_path("../spec/components/lightning_ui/previews", Rails.root)
-    config.view_component.view_component_path = File.expand_path("../app/components/lightning_ui", Rails.root)
+    config.view_component.preview_paths << File.expand_path("../spec/components/lightning_ui_kit/previews", Rails.root)
+    config.view_component.view_component_path = File.expand_path("../app/components/lightning_ui_kit", Rails.root)
     config.lookbook.project_logo = File.read(File.expand_path("app/assets/images/logo.svg", Rails.root))
     config.lookbook.ui_theme = "zinc"
     config.lookbook.ui_theme_overrides = {

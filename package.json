@@ -8,17 +8,19 @@
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/typography": "^0.5.15",
     "autoprefixer": "^10.4.20",
+    "esbuild": "^0.14.0",
     "eslint": "^9.17.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "path": "^0.12.7",
     "prettier": "^3.4.2",
     "tailwindcss": "^4.0.13",
-    "esbuild": "^0.14.0"
+    "stimulus-use": "^0.52.3"
   },
   "scripts": {
     "dev:build:css": "tailwindcss -i ./app/assets/stylesheets/lightning_ui/application.css -o ./app/assets/builds/lightning_ui.css -c ./tailwind.config.js --watch",
-    "prod:build:js": "esbuild app/javascript/**/*.js --bundle --sourcemap --minify --outdir=./app/assets/vendor",
+    "dev:build:js": "node esbuild.config.js",
+    "prod:build:js": "NODE_ENV=production node esbuild.config.js",
     "prod:build:css": "tailwindcss -i ./app/assets/stylesheets/lightning_ui/application.css -o ./app/assets/vendor/lightning_ui.css -c ./tailwind.config.js"
   }
 }

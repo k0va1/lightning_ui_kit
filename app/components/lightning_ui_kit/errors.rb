@@ -15,7 +15,7 @@ module LightningUiKit
           @error_messages = infer_errors_from_association
         end
       end
-      @error_messages = @error_messages.to_a.join(". ")
+      @error_messages = @error_messages&.to_a&.join(". ")
     end
 
     def infer_errors_from_association

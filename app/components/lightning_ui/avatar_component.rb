@@ -7,7 +7,9 @@ class LightningUi::AvatarComponent < LightningUi::BaseComponent
     lg: "size-10"
   }
 
-  def initialize(url:, size: :md, initials: nil, square: false, alt: nil, **options)
+  def initialize(url: nil, size: :md, initials: nil, square: false, alt: nil, **options)
+    raise ArgumentError, "url or initials must be provided" if url.nil? && initials.nil?
+
     @url = url
     @size = size
     @initials = initials

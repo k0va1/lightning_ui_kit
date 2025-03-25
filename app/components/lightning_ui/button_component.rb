@@ -55,7 +55,7 @@ class LightningUi::ButtonComponent < LightningUi::BaseComponent
       sm:*:data-[slot=icon]:my-1 sm:*:data-[slot=icon]:size-4 border-transparent bg-(--btn-border) before:absolute before:inset-0\
       before:-z-10 before:rounded-[calc(var(--radius-lg)-1px)] before:bg-(--btn-bg) before:shadow-sm after:absolute after:inset-0
       after:-z-10 after:rounded-[calc(var(--radius-lg)-1px)] after:shadow-[shadow:inset_0_1px_--theme(--color-white/15%)]\
-      active:after:bg-(--btn-hover-overlay) hover:after:bg-(--btn-hover-overlay) disabled:before:shadow-none disabled:after:shadow-none\
+      active:after:bg-(--btn-hover-overlay) hover:after:bg-(--btn-hover-overlay) disabled:opacity-50 disabled:before:shadow-none disabled:after:shadow-none\
       text-white\
       [--btn-bg:var(--color-zinc-900)]\
       [--btn-border:var(--color-zinc-950)]/90

@@ -1,4 +1,4 @@
-<%= tag.div(class: classes, data: { type: @type, controller: "banner" }) do %>
+<%= tag.div(class: classes, data: { type: @type, controller: "lui-banner" }) do %>
   <div data-slot="header" class="flex items-center px-4 py-3">
     <%= heroicon(icon, variant: :outline, options: { class: "shrink-0 w-5 h-5 me-2" }) %>
     <span class="sr-only"><%= @type.to_s.humanize %></span>

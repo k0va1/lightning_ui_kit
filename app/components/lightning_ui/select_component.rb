@@ -13,13 +13,13 @@ class LightningUi::SelectComponent < LightningUi::BaseComponent
   end
 
   def data
-    {
-      slot: "control",
-      action: "click->switch#toggle"
-    }.tap do |data|
-      if @disabled
-        data[:disabled] = "true"
-      end
-    end
+    default_data = {
+      slot: "field",
+      action: "click->switch#toggle",
+      controller: "select",
+      disabled: @disabled
+    }
+
+    default_data.merge(@options[:data] || {})
   end
 end

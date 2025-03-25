@@ -18,7 +18,7 @@ class LightningUi::SwitchComponent < LightningUi::BaseComponent
   def default_data
     {
       slot: "control",
-      action: "click->switch#toggle"
+      action: "click->lui-switch#toggle"
     }.tap do |data|
       if @disabled
         data[:disabled] = "true"

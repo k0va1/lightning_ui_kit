@@ -1,5 +1,5 @@
-<div data-controller="dropdown" class="relative">
-  <button type="button" data-action="dropdown#toggle click@window->dropdown#hide" class="flex items-center justify-between cursor-pointer w-full text-sm/6 font-medium text-zinc-700 hover:text-zinc-950">
+<div data-controller="lui-dropdown" class="relative">
+  <button type="button" data-action="lui-dropdown#toggle click@window->lui-dropdown#hide" class="flex items-center justify-between cursor-pointer w-full text-sm/6 font-medium text-zinc-700 hover:text-zinc-950">
     <% if trigger? %>
       <%= trigger %>
     <% else %>
@@ -19,7 +19,7 @@
   </button>
 
   <div
-    data-dropdown-target="menu"
+    data-lui-dropdown-target="menu"
     class="<%=menu_classes %>"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"

@@ -13,7 +13,7 @@ class LightningUi::BadgeComponent < LightningUi::BaseComponent
     when :warning
       "bg-yellow-200 text-zinc-500"
     when :error
-      "bg-red-200 text-white"
+      "bg-red-600 text-white"
     else
       "bg-zinc-400/20 text-zinc-500"
     end

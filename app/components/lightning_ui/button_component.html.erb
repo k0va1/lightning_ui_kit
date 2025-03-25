@@ -6,6 +6,7 @@
   <%= content_tag :button,
     class: classes,
     data: data_attributes,
+    disabled: @disabled,
     type: @type do %>
     <%= content %>
   <% end %>

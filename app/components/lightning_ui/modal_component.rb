@@ -14,8 +14,8 @@ class LightningUi::ModalComponent < LightningUi::BaseComponent
 
   def data
     {
-      controller: "modal",
-      modal_target: "dialog"
+      controller: "lui-modal",
+      lui_modal_target: "dialog"
     }.merge(@options[:data] || {})
   end
 end

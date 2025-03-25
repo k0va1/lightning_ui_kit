@@ -10,4 +10,3 @@ class LightningUi::Table::ColumnComponent < LightningUi::BaseComponent
     @block.call(row)
   end
 end
-

@@ -6,7 +6,7 @@ UI components for fast prototyping in Rails applications.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "lightning_ui_kit_kit"
+gem "lightning_ui_kit"
 ```
 
 And then execute:

@@ -4,6 +4,7 @@ ruby "3.3.5"
 
 gem "rails", "~> 8.0"
 gem "puma", "~> 6.0"
+gem "sqlite3"
 gem "turbo-rails"
 gem "stimulus-rails"
 gem "lookbook", "~> 2.3"

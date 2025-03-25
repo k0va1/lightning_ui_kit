@@ -1,6 +1,6 @@
 require "view_component/test_helpers"
 require "view_component/system_test_helpers"
-require File.expand_path('../../lookbook/config/environment', __FILE__)
+require File.expand_path("../../lookbook/config/environment", __FILE__)
 # require "capybara/rspec"
 
 RSpec.configure do |config|

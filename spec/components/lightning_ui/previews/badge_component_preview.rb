@@ -80,19 +80,19 @@ class BadgeComponentPreview < Lookbook::Preview
     end
   end
 
-  def warning_complete
+  def error_complete
     render LightningUi::BadgeComponent.new(status: :error, progress: :complete) do
       "Complete"
     end
   end
 
-  def warning_partially_complete
+  def error_partially_complete
     render LightningUi::BadgeComponent.new(status: :error, progress: :partialy_complete) do
       "Partially Complete"
     end
   end
 
-  def warning_incomplete
+  def error_incomplete
     render LightningUi::BadgeComponent.new(status: :error, progress: :incomplete) do
       "Incomplete"
     end

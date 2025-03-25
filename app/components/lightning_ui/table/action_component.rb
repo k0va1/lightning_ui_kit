@@ -7,4 +7,3 @@ class LightningUi::Table::ActionComponent < LightningUi::BaseComponent
     @block.call(row)
   end
 end
-

@@ -3,8 +3,8 @@ class TableComponentPreview < ViewComponent::Preview
 
   def default
     data = [
-      { "username" => "John Doe", "group_type" => "Public", "total_members" => 10 },
-      { "username" => "Jane Doe", "group_type" => "Private", "total_members" => 20 }
+      {"username" => "John Doe", "group_type" => "Public", "total_members" => 10},
+      {"username" => "Jane Doe", "group_type" => "Private", "total_members" => 20}
     ]
 
     render LightningUi::TableComponent.new(data:) do |table|

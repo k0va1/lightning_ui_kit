@@ -25,7 +25,7 @@ class LightningUi::TextareaComponent < LightningUi::BaseComponent
   end
 
   def label_data
-    { slot: "label" }.merge(@options[:label_data] || {}).tap do |data|
+    {slot: "label"}.merge(@options[:label_data] || {}).tap do |data|
       if @disabled
         data[:disabled] = "true"
       end
@@ -33,7 +33,7 @@ class LightningUi::TextareaComponent < LightningUi::BaseComponent
   end
 
   def description_data
-    { slot: "description" }.merge(@options[:description_data] || {}).tap do |data|
+    {slot: "description"}.merge(@options[:description_data] || {}).tap do |data|
       if @disabled
         data[:disabled] = "true"
       end

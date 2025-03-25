@@ -5,7 +5,7 @@ class SwitchComponentPreview < Lookbook::Preview
       value: "true",
       enabled: false,
       label: "Enable notifications",
-      description: "Enable notifications for this user",
+      description: "Enable notifications for this user"
     )
   end
 end

@@ -1,5 +1,4 @@
 require "view_component"
-require "stimulus-rails"
 
 module LightningUiKit
   class Engine < ::Rails::Engine

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class LightningUiKit::SwitchComponent < LightningUiKit::BaseComponent
+  include LightningUiKit::Errors
+
   def initialize(name:, form: nil, label: nil, error: nil, description: nil, enabled: false, disabled: false, **options)
     @name = name
     @form = form

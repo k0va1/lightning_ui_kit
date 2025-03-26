@@ -12,7 +12,7 @@ class LightningUiKit::BannerComponent < LightningUiKit::BaseComponent
   def classes
     type_classes = case @type
     when :error
-      "*:data-[slot=header]:bg-red-600/90 *:data-[slot=header]:text-white"
+      "*:data-[slot=header]:bg-red-600/80 *:data-[slot=header]:text-white"
     else
       "*:data-[slot=header]:bg-gray-50"
     end

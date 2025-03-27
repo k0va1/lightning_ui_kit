@@ -19,5 +19,5 @@ class TextComponentPreview < ViewComponent::Preview
   def xl
     render LightningUiKit::TextComponent.new(size: :xl).with_content("Hello, world!")
   end
-  # @groupend
+  # @endgroup
 end

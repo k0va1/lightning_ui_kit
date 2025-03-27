@@ -20,8 +20,10 @@ module LightningUiKit
 
     def infer_errors_from_association
       association = if @name.to_s.end_with?("_ids")
+        return unless @form.object.respond_to?(:reflect_on_association)
         @form.object.class.reflect_on_association(@name.to_s.chomp("_ids").pluralize.to_sym)
       else
+        return unless @form.object.respond_to?(:reflect_on_all_associations)
         @form.object.class.reflect_on_all_associations.find do |a|
           a.macro == :belongs_to && a.foreign_key.to_s == @name.to_s
         end

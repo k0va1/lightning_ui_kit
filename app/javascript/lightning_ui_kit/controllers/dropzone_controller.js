@@ -21,8 +21,11 @@ class Upload {
         const hiddenField = document.createElement('input')
         hiddenField.setAttribute("type", "hidden");
         hiddenField.setAttribute("value", blob.signed_id);
-        hiddenField.name = this.controller.inputTarget.name
-        this.controller.filesTarget.querySelector(`#upload_${this.directUpload.id}`).appendChild(hiddenField)
+        hiddenField.name = this.controller.inputTarget.name;
+        this.controller.filesTarget
+          .querySelector(`#upload_${this.directUpload.id}`)
+          .appendChild(hiddenField);
+        this.controller.inputTarget.value = "";
       }
     });
   }

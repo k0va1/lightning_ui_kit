@@ -45,10 +45,10 @@
     <div class="mb-3 flex items-center justify-center">
       <%= heroicon("cloud-arrow-up", variant: :outline, options: {class: "w-10 h-10 text-indigo-500"}) %>
     </div>
+    <p class="text-center text-gray-900 text-base font-medium leading-snug"><%= t("dropzone.default_message") %></p>
     <% if @placeholder %>
-      <h2 class="text-center text-gray-400 text-xs font-normal leading-4 mb-1"><%= @placeholder %></h2>
+      <p class="text-center text-gray-400 text-base sm:text-sm/6 font-normal leading-4 mt-1.5"><%= @placeholder %></p>
     <% end %>
-    <h4 class="text-center text-gray-900 text-sm font-medium leading-snug"><%= t("dropzone.default_message") %></h4>
     <% if @form %>
       <%= @form.file_field(
         @name,

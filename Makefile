@@ -25,6 +25,7 @@ release: check_clean
 	touch app/assets/vendor/.keep
 	NODE_ENV=production npm run prod:build:js
 	NODE_ENV=production npm run prod:build:css
+	git add .
 	git commit -am "Build new release assets"
 	gem bump -t
 	gem release -p -g

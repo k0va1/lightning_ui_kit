@@ -14,10 +14,13 @@ lint-fix:
 test:
 	 bundle exec rspec $(filter-out $@,$(MAKECMDGOALS))
 
-release:
-	$(if $(call equals,0,$(shell git diff-index --quiet HEAD; echo $$?)),, \
-        $(error There are uncomitted changes. Aborting$?) \
-    )
+check_clean:
+	@if [ -n "$$(git status --porcelain)" ]; then \
+		echo "❌ Uncommitted changes found. Please commit or stash them first."; \
+		exit 1; \
+	fi
+
+release: check_clean
 	sh -c 'rm -rf app/assets/vendor/*'
 	touch app/assets/vendor/.keep
 	NODE_ENV=production npm run prod:build:js

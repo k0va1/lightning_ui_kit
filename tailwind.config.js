@@ -2,7 +2,6 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   mode: "jit",
-  prefix: "lui:",
   content: [
     "./public/*.html",
     "./app/helpers/**/*.rb",

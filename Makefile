@@ -2,6 +2,7 @@
 
 install:
 	bundle install
+	npm install
 	cd lookbook && bundle install
 
 docs:

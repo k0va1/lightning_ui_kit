@@ -26,13 +26,12 @@ check_clean:
 	fi
 
 release: check_clean
-	sh -c 'rm -rf app/assets/vendor/*'
-	touch app/assets/vendor/.keep
+	sh -c 'rm -rf app/assets/vendor/lightning_ui_kit.*'
 	NODE_ENV=production npm run prod:build:js
 	NODE_ENV=production npm run prod:build:css
 	git add .
 	git commit -am "Build new release assets"
-	gem bump -t
+	gem bump -t -v $(filter-out $@,$(MAKECMDGOALS))
 	gem release -p -g
 
 %:

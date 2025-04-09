@@ -18,10 +18,11 @@ class LightningUiKit::PaginationComponent < LightningUiKit::BaseComponent
   end
 
   def link_classes
-    "min-w-[2.25rem] flex items-center justify-center rounded-lg border text-base/6 font-semibold px-[calc(--spacing(3.5)-1px)]\
-      py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] sm:text-sm/6 \
-      focus:outline-hidden focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-500\
-      data-disabled:opacity-50 data-disabled:pointer-events-none border-transparent text-zinc-950 data-active:bg-zinc-950/5 hover:bg-zinc-950/5"
+    "lui:min-w-[2.25rem] lui:flex lui:items-center lui:justify-center lui:rounded-lg lui:border lui:text-base/6 lui:font-semibold lui:px-[calc(--spacing(3.5)-1px)] \
+     lui:py-[calc(--spacing(2.5)-1px)] lui:sm:px-[calc(--spacing(3)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:sm:text-sm/6 \
+     lui:focus:outline-hidden lui:focus:outline lui:focus:outline-2 lui:focus:outline-offset-2 lui:focus:outline-blue-500 \
+     lui:data-[disabled]:opacity-50 lui:data-[disabled]:pointer-events-none lui:border-transparent lui:text-zinc-950 \
+     lui:data-[active]:bg-zinc-950/5 lui:hover:bg-zinc-950/5"
   end
 
   def pages_with_gaps

@@ -8,6 +8,11 @@ docs:
 	cd lookbook
 	bin/dev
 
+start:
+	cd lookbook
+	rm -rf app/assets/vendor/lightning_ui_kit.*
+	bin/dev
+
 lint-fix:
 	bundle exec standardrb --fix
 

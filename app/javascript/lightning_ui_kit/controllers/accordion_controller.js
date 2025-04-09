@@ -30,27 +30,27 @@ export default class extends Controller {
 
   openItem(item) {
     const content = item.querySelector("[data-lui-accordion-target=content]");
-    content.classList.remove("grid-rows-[0fr]");
-    content.classList.add("grid-rows-[1fr]");
-    content.classList.remove("opacity-0");
-    content.classList.add("opacity-100");
+    content.classList.remove("lui:grid-rows-[0fr]");
+    content.classList.add("lui:grid-rows-[1fr]");
+    content.classList.remove("lui:opacity-0");
+    content.classList.add("lui:opacity-100");
     const arrow = item.querySelector("[data-lui-accordion-target=arrow]");
-    arrow.classList.add("rotate-180");
+    arrow.classList.add("lui:rotate-180");
   }
 
   closeItem(item) {
     const content = item.querySelector("[data-lui-accordion-target=content]");
-    content.classList.remove("grid-rows-[1fr]");
-    content.classList.add("grid-rows-[0fr]");
-    content.classList.remove("opacity-100");
-    content.classList.add("opacity-0");
+    content.classList.remove("lui:grid-rows-[1fr]");
+    content.classList.add("lui:grid-rows-[0fr]");
+    content.classList.remove("lui:opacity-100");
+    content.classList.add("lui:opacity-0");
     const arrow = item.querySelector("[data-lui-accordion-target=arrow]");
-    arrow.classList.remove("rotate-180");
+    arrow.classList.remove("lui:rotate-180");
   }
 
   isOpen(item) {
     const content = item.querySelector("[data-lui-accordion-target=content]");
-    return content.classList.contains("grid-rows-[1fr]");
+    return content.classList.contains("lui:grid-rows-[1fr]");
   }
 }
 

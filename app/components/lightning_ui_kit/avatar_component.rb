@@ -2,9 +2,9 @@
 
 class LightningUiKit::AvatarComponent < LightningUiKit::BaseComponent
   SIZE_CLASSES = {
-    sm: "size-6",
-    md: "size-8",
-    lg: "size-10"
+    sm: "lui:size-6",
+    md: "lui:size-8",
+    lg: "lui:size-10"
   }
 
   def initialize(url: nil, size: :md, initials: nil, square: false, alt: nil, **options)

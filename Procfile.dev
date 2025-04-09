@@ -1,1 +1,3 @@
-web: bin/rails s -p 4000
+web: cd lookbook && bin/rails s -p 4000
+css: npm run dev:build:css
+js: npm run dev:build:js

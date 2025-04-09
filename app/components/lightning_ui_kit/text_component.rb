@@ -7,6 +7,6 @@ class LightningUiKit::TextComponent < LightningUiKit::BaseComponent
   end
 
   def classes
-    merge_classes(["text-zinc-600 text-#{@size}", @options[:class]].compact.join(" "))
+    merge_classes(["lui:text-zinc-600 lui:text-#{@size}", @options[:class]].compact.join(" "))
   end
 end

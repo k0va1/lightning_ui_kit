@@ -1,26 +1,47 @@
-<div data-controller="lui-checkbox" data-slot="field" class="grid grid-cols-[1.125rem_1fr] items-center gap-x-4 gap-y-1 sm:grid-cols-[1rem_1fr] *:data-[slot=control]:col-start-1 *:data-[slot=control]:row-start-1 *:data-[slot=control]:justify-self-center *:data-[slot=label]:col-start-2 *:data-[slot=label]:row-start-1 *:data-[slot=label]:justify-self-start *:data-[slot=description]:col-start-2 *:data-[slot=description]:row-start-2 has-data-[slot=description]:**:data-[slot=label]:font-medium" data-headlessui-state="">
+<div
+  data-controller="lui-checkbox"
+  data-slot="field"
+  class="lui:grid lui:grid-cols-[1.125rem_1fr] lui:items-center lui:gap-x-4 lui:gap-y-1 lui:sm:grid-cols-[1rem_1fr] lui:*:data-[slot=control]:col-start-1 lui:*:data-[slot=control]:row-start-1 lui:*:data-[slot=control]:justify-self-center lui:*:data-[slot=label]:col-start-2 lui:*:data-[slot=label]:row-start-1 lui:*:data-[slot=label]:justify-self-start lui:*:data-[slot=description]:col-start-2 lui:*:data-[slot=description]:row-start-2 lui:has-data-[slot=description]:* lui:*:data-[slot=label]:font-medium"
+  >
   <span
     data-lui-checkbox-target="control"
     data-slot="control"
-    class="group inline-flex focus:outline-hidden" id="headlessui-control-:r2m:" role="checkbox" aria-checked="false" tabindex="0" data-headlessui-state="" aria-labelledby="headlessui-label-:r2o:" aria-describedby="headlessui-description-:r2p:"
+    class="lui:group lui:inline-flex lui:focus:outline-hidden" role="checkbox" aria-checked="false" tabindex="0"
     data-action="click->lui-checkbox#toggle"
     >
-    <span class="relative isolate flex size-[1.125rem] items-center justify-center rounded-[0.3125rem] sm:size-4 before:absolute before:inset-0 before:-z-10 before:rounded-[calc(0.3125rem-1px)] before:bg-white before:shadow-sm group-data-checked:before:bg-(--checkbox-checked-bg) border border-zinc-950/15 group-data-checked:border-transparent group-hover:group-data-checked:border-transparent group-hover:border-zinc-950/30 group-data-checked:bg-(--checkbox-checked-border) after:absolute after:inset-0 after:rounded-[calc(0.3125rem-1px)] after:shadow-[inset_0_1px_--theme(--color-white/15%)] group-data-focus:outline group-data-focus:outline-2 group-data-focus:outline-offset-2 group-data-focus:outline-blue-500 group-data-disabled:opacity-50 group-data-disabled:border-zinc-950/25 group-data-disabled:bg-zinc-950/5 group-data-disabled:[--checkbox-check:var(--color-zinc-950)]/50 group-data-disabled:before:bg-transparent forced-colors:[--checkbox-check:HighlightText] forced-colors:[--checkbox-checked-bg:Highlight] forced-colors:group-data-disabled:[--checkbox-check:Highlight] [--checkbox-check:var(--color-white)] [--checkbox-checked-bg:var(--color-zinc-900)] [--checkbox-checked-border:var(--color-zinc-950)]/90">
-      <svg class="size-4 stroke-(--checkbox-check) opacity-0 group-data-checked:opacity-100 sm:h-3.5 sm:w-3.5" viewBox="0 0 14 14" fill="none">
-        <path class="opacity-100 group-data-indeterminate:opacity-0" d="M3 8L6 11L11 3.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-        <path class="opacity-0 group-data-indeterminate:opacity-100" d="M3 7H11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    <span class="lui:relative lui:isolate lui:flex lui:size-[1.125rem] lui:items-center lui:justify-center
+      lui:rounded-[0.3125rem] lui:sm:size-4 lui:before:absolute lui:before:inset-0 lui:before:-z-10
+      lui:before:rounded-[calc(0.3125rem-1px)] lui:before:bg-white lui:before:shadow-sm
+      lui:group-data-checked:before:bg-(--checkbox-checked-bg) lui:border lui:border-zinc-950/15
+      lui:group-data-checked:border-transparent lui:group-hover:group-data-checked:border-transparent
+      lui:group-hover:border-zinc-950/30 lui:group-data-checked:bg-(--checkbox-checked-border)
+      lui:after:absolute lui:after:inset-0 lui:after:rounded-[calc(0.3125rem-1px)] lui:after:shadow-[inset_0_1px_--theme(--color-white/15%)]
+      lui:group-data-focus:outline lui:group-data-focus:outline-2 lui:group-data-focus:outline-offset-2
+      lui:group-data-focus:outline-blue-500 lui:group-data-disabled:opacity-50 lui:group-data-disabled:border-zinc-950/25
+      lui:group-data-disabled:bg-zinc-950/5 lui:group-data-disabled:[--checkbox-check:var(--lui-color-zinc-950)]/50
+      lui:group-data-disabled:before:bg-transparent lui:forced-colors:[--checkbox-check:HighlightText] lui:forced-colors:[--checkbox-checked-bg:Highlight]
+      lui:forced-colors:group-data-disabled:[--checkbox-check:Highlight]
+      lui:[--checkbox-check:var(--lui-color-white)]
+      lui:[--checkbox-checked-bg:var(--lui-color-zinc-900)]
+      lui:[--checkbox-checked-border:var(--color-zinc-950)]/90"
+      >
+      <svg class="lui:size-4 lui:stroke-(--checkbox-check) lui:opacity-0 lui:group-data-checked:opacity-100 lui:sm:h-3.5 lui:sm:w-3.5" viewBox="0 0 14 14" fill="none">
+        <path class="lui:opacity-100 lui:group-data-indeterminate:opacity-0" d="M3 8L6 11L11 3.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path class="lui:opacity-0 lui:group-data-indeterminate:opacity-100" d="M3 7H11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
       </svg>
     </span>
   </span>
   <% if @label %>
-    <label data-slot="label" class="text-base/6 text-zinc-950 select-none data-disabled:opacity-50 sm:text-sm/6" id="headlessui-label-:r2o:" for="headlessui-control-:r2m:" data-headlessui-state=""
+    <label
+      data-slot="label"
+      class="lui:text-base/6 lui:text-zinc-950 lui:select-none lui:data-disabled:opacity-50 lui:sm:text-sm/6"
       data-action="click->lui-checkbox#toggle"
       >
       <%= @label %>
     </label>
   <% end %>
   <% if @description %>
-    <p data-slot="description" class="text-base/6 text-zinc-500 data-disabled:opacity-50 sm:text-sm/6" id="headlessui-description-:r2p:" data-headlessui-state="">
+    <p data-slot="description" class="lui:text-base/6 lui:text-zinc-500 lui:data-disabled:opacity-50 lui:sm:text-sm/6">
     <%= @description %>
     </p>
   <% end %>

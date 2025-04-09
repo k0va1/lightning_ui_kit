@@ -11,12 +11,12 @@ class LightningUiKit::DropdownComponent < LightningUiKit::BaseComponent
   end
 
   def menu_classes
-    classes = %w[hidden transition transform p-1 origin-top-left absolute left-0 w-56 rounded-md shadow-lg bg-white ring-1 ring-zinc-950/10 focus:outline-none]
+    classes = %w[lui:hidden lui:transition lui:transform lui:p-1 lui:origin-top-left lui:absolute lui:left-0 lui:w-56 lui:rounded-md lui:shadow-lg lui:bg-white lui:ring-1 lui:ring-zinc-950/10 lui:focus:outline-none]
     case @position.to_s
     when "top"
-      classes << "mb-2 top-auto bottom-full"
+      classes << "lui:mb-2 lui:top-auto lui:bottom-full"
     when "bottom"
-      classes << "mt-2"
+      classes << "lui:mt-2"
     end
     classes.join(" ")
   end

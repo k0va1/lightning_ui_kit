@@ -3,23 +3,23 @@
     <%= label_tag(
       @name,
       @label.is_a?(String) ? @label : nil,
-      class: "text-base/6 text-zinc-950 select-none data-disabled:opacity-50 sm:text-sm/6",
+      class: "lui:text-base/6 lui:text-zinc-950 lui:select-none lui:data-disabled:opacity-50 lui:sm:text-sm/6",
       data: label_data
     ) %>
   <% end %>
   <% if @description %>
     <%= tag.p(
       @description,
-      class: "text-base/6 text-zinc-500 data-disabled:opacity-50 sm:text-sm/6",
+      class: "lui:text-base/6 lui:text-zinc-500 lui:data-disabled:opacity-50 lui:sm:text-sm/6",
       data: description_data
     ) %>
   <% end %>
-  <span data-slot="control" class="relative block w-full before:absolute before:inset-px before:rounded-[calc(var(--radius-lg)-1px)] before:bg-white before:shadow-sm after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-transparent after:ring-inset sm:focus-within:after:ring-2 sm:focus-within:after:ring-blue-500 has-data-disabled:opacity-50 has-data-disabled:before:bg-zinc-950/5 has-data-disabled:before:shadow-none has-data-invalid:before:shadow-red-500/10">
+  <span data-slot="control" class="lui:relative lui:block lui:w-full lui:before:absolute lui:before:inset-px lui:before:rounded-[calc(var(--radius-lg)-1px)] lui:before:bg-white lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-transparent lui:after:ring-inset lui:sm:focus-within:after:ring-2 lui:sm:focus-within:after:ring-blue-500 lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-zinc-950/5 lui:has-data-disabled:before:shadow-none lui:has-data-invalid:before:shadow-red-500/10">
     <% if @form %>
       <%= @form.file_field(
         @name,
         data: input_data,
-        class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 hover:border-zinc-950/20 data-disabled:hover:none data-disabled:cursor-not-allowed bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:hover:border-red-500 data-disabled:border-zinc-950/20",
+        class: "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] lui:sm:px-[calc(--spacing(3)-1px)] lui:lui:py-[calc(--spacing(1.5)-1px)] lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:hover:border-zinc-950/20 lui:data-disabled:hover:none lui:data-disabled:cursor-not-allowed lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:hover:border-red-500 lui:data-disabled:border-zinc-950/20",
         disabled: @disabled,
         autofocus: @autofocus,
         multiple: @multiple,
@@ -31,7 +31,7 @@
         @name,
         value: @value,
         data: input_data,
-        class: "relative block w-full appearance-none rounded-lg text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:hover:border-red-500 data-disabled:hover:none data-disabled:cursor-not-allowed data-disabled:border-zinc-950/20 data-disabled:file:cursor-not-allowed data-disabled:file:cursor-not-allowed file:cursor-pointer cursor-pointer file:border-0 file:px-[calc(--spacing(3.5)-1px)] file:py-[calc(--spacing(2.5)-1px)] file:sm:px-[calc(--spacing(3)-1px)] file:sm:py-[calc(--spacing(1.5)-1px)] file:mr-4 file:bg-zinc-100",
+        class: "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:hover:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:hover:border-red-500 lui:data-disabled:hover:none lui:data-disabled:cursor-not-allowed lui:data-disabled:border-zinc-950/20 lui:data-disabled:file:cursor-not-allowed lui:data-disabled:file:cursor-not-allowed lui:file:cursor-pointer lui:cursor-pointer lui:file:border-0 lui:file:px-[calc(--spacing(3.5)-1px)] lui:file:py-[calc(--spacing(2.5)-1px)] lui:file:sm:px-[calc(--spacing(3)-1px)] lui:file:sm:py-[calc(--spacing(1.5)-1px)] lui:file:mr-4 lui:file:bg-zinc-100",
         disabled: @disabled,
         autofocus: @autofocus,
         multiple: @multiple,
@@ -43,7 +43,7 @@
   <% if has_errors? %>
     <%= tag.p(
       error_messages,
-      class: "text-base/6 text-red-600 data-disabled:opacity-50 sm:text-sm/6",
+      class: "lui:text-base/6 lui:text-red-600 lui:data-disabled:opacity-50 lui:sm:text-sm/6",
       data: error_data
     ) %>
   <% end %>

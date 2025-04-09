@@ -7,6 +7,7 @@ export default class Dropdown extends Controller {
   connect() {
     useTransition(this, {
       element: this.menuTarget,
+      hiddenClass: "lui:hidden"
     });
   }
 
@@ -15,7 +16,7 @@ export default class Dropdown extends Controller {
   }
 
   hide(event) {
-    if (!this.element.contains(event.target) && !this.menuTarget.classList.contains("hidden")) {
+    if (!this.element.contains(event.target) && !this.menuTarget.classList.contains("lui:hidden")) {
       this.leave();
     }
   }

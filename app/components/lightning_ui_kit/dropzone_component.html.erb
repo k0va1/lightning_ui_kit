@@ -1,27 +1,27 @@
 <%= tag.div(class: classes, data:) do %>
   <template data-lui-dropzone-target="template">
-    <div class="w-full grid gap-1 my-4" id="#NEW_FILE" data-lui-dropzone-target="file">
-      <div class="flex items-center justify-between gap-2">
-        <div class="flex items-center gap-2">
-          <%= heroicon("document", variant: :outline, options: {class: "w-10 h-10 text-indigo-500"}) %>
-          <div class="grid gap-1">
-            <h4 class="text-gray-900 text-sm font-normal leading-snug" data-lui-dropzone-target="filename"></h4>
-            <h5 class="text-gray-400 text-xs font-normal leading-[18px]" data-lui-dropzone-target="status"></h5>
+    <div class="lui:w-full lui:grid lui:gap-1 lui:my-4" id="#NEW_FILE" data-lui-dropzone-target="file">
+      <div class="lui:flex lui:items-center lui:justify-between lui:gap-2">
+        <div class="lui:flex lui:items-center lui:gap-2">
+          <%= heroicon("document", variant: :outline, options: {class: "lui:w-10 lui:h-10 lui:text-indigo-500"}) %>
+          <div class="lui:grid lui:gap-1">
+            <h4 class="lui:text-gray-900 lui:text-sm lui:font-normal lui:leading-snug" data-lui-dropzone-target="filename"></h4>
+            <h5 class="lui:text-gray-400 lui:text-xs lui:font-normal lui:leading-[18px]" data-lui-dropzone-target="status"></h5>
           </div>
         </div>
         <%= heroicon(
           "x-circle",
           variant: :outline,
           options: {
-            class: "w-6 h-6 text-zinc-300 hover:text-indigo-500 hover:cursor-pointer",
+            class: "lui:w-6 lui:h-6 lui:text-zinc-300 lui:hover:text-indigo-500 lui:hover:cursor-pointer",
             data_action: "click->lui-dropzone#removeFile"
           }) %>
       </div>
-      <div class="relative flex items-center gap-2.5 py-1.5">
-        <div class="relative w-full h-2.5 overflow-hidden rounded-3xl bg-gray-100">
-          <div data-lui-dropzone-target="progressbar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 0%" class="flex h-full items-center justify-center bg-indigo-600 text-white rounded-3xl"></div>
+      <div class="lui:relative lui:flex lui:items-center lui:gap-2.5 lui:py-1.5">
+        <div class="lui:relative lui:w-full lui:h-2.5 lui:overflow-hidden lui:rounded-3xl lui:bg-gray-100">
+          <div data-lui-dropzone-target="progressbar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 0%" class="lui:flex lui:h-full lui:items-center lui:justify-center lui:bg-indigo-600 lui:text-white lui:rounded-3xl"></div>
         </div>
-        <span data-lui-dropzone-target="percentage-progress" class="ml-2 bg-white rounded-full text-gray-800 text-xs font-medium flex justify-center items-center">0%</span>
+        <span data-lui-dropzone-target="percentage-progress" class="lui:ml-2 lui:bg-white lui:rounded-full lui:text-gray-800 lui:text-xs lui:font-medium lui:flex lui:justify-center lui:items-center">0%</span>
       </div>
     </div>
   </template>
@@ -29,31 +29,31 @@
   <% if @label %>
     <%= tag.label(
       @label,
-      class: "text-base/6 text-zinc-950 select-none data-disabled:opacity-50 sm:text-sm/6",
+      class: "lui:text-base/6 lui:text-zinc-950 lui:select-none lui:data-disabled:opacity-50 lui:sm:text-sm/6",
       data: label_data
     ) %>
   <% end %>
   <% if @description %>
     <%= tag.p(
       @description,
-      class: "text-base/6 text-zinc-500 data-disabled:opacity-50 sm:text-sm/6",
+      class: "lui:text-base/6 lui:text-zinc-500 lui:data-disabled:opacity-50 lui:sm:text-sm/6",
       data: description_data
     ) %>
   <% end %>
 
-  <div class="py-9 bg-zinc-50 rounded-2xl border border-gray-300 border-dotted hover:cursor-pointer hover:bg-zinc-100" data-action="click->lui-dropzone#selectFiles">
-    <div class="mb-3 flex items-center justify-center">
-      <%= heroicon("cloud-arrow-up", variant: :outline, options: {class: "w-10 h-10 text-indigo-500"}) %>
+  <div class="lui:py-9 lui:bg-zinc-50 lui:rounded-2xl lui:border lui:border-gray-300 lui:border-dotted lui:hover:cursor-pointer lui:hover:bg-zinc-100" data-action="click->lui-dropzone#selectFiles">
+    <div class="lui:mb-3 lui:flex lui:items-center lui:justify-center">
+      <%= heroicon("cloud-arrow-up", variant: :outline, options: {class: "lui:w-10 lui:h-10 lui:text-indigo-500"}) %>
     </div>
-    <p class="text-center text-gray-900 text-base font-medium leading-snug"><%= t("dropzone.default_message") %></p>
+    <p class="lui:text-center lui:text-gray-900 lui:text-base lui:font-medium lui:leading-snug"><%= t("dropzone.default_message") %></p>
     <% if @placeholder %>
-      <p class="text-center text-gray-400 text-base sm:text-sm/6 font-normal leading-4 mt-1.5"><%= @placeholder %></p>
+      <p class="lui:text-center lui:text-gray-400 lui:text-base lui:sm:text-sm/6 lui:font-normal lui:leading-4 lui:mt-1.5"><%= @placeholder %></p>
     <% end %>
     <% if @form %>
       <%= @form.file_field(
         @name,
         multiple: @multiple,
-        class: "hidden",
+        class: "lui:hidden",
         direct_upload: true,
         data: input_data,
         accept: @accept
@@ -63,7 +63,7 @@
         @name,
         value: @value,
         multiple: @multiple,
-        class: "hidden",
+        class: "lui:hidden",
         direct_upload: true,
         data: input_data,
         accept: @accept
@@ -74,7 +74,7 @@
   <% if has_errors? %>
     <%= tag.p(
       error_messages,
-      class: "text-base/6 text-red-600 data-disabled:opacity-50 sm:text-sm/6",
+      class: "lui:text-base/6 lui:text-red-600 lui:data-disabled:opacity-50 lui:sm:text-sm/6",
       data: error_data
     ) %>
   <% end %>

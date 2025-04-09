@@ -1,5 +1,5 @@
-<div data-controller="lui-dropdown" class="relative">
-  <button type="button" data-action="lui-dropdown#toggle click@window->lui-dropdown#hide" class="flex items-center justify-between cursor-pointer w-full text-sm/6 font-medium text-zinc-700 hover:text-zinc-950">
+<div data-controller="lui-dropdown" class="lui:relative">
+  <button type="button" data-action="lui-dropdown#toggle click@window->lui-dropdown#hide" class="lui:flex lui:items-center lui:justify-between lui:cursor-pointer lui:w-full lui:text-sm/6 lui:font-medium lui:text-zinc-700 lui:hover:text-zinc-950">
     <% if trigger? %>
       <%= trigger %>
     <% else %>
@@ -8,11 +8,11 @@
 
     <% case @anchor.to_s %>
     <% when "bottom_right" %>
-      <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+      <svg class="lui:w-2.5 lui:h-2.5 lui:ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
       </svg>
     <% when "top_right" %>
-      <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+      <svg class="lui:w-2.5 lui:h-2.5 lui:ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 5 4-4 4 4"/>
       </svg>
     <% end %>
@@ -27,7 +27,7 @@
     data-transition-leave-to="opacity-0 scale-95"
     >
     <% items.each do |item| %>
-      <div class="px-4 py-2 text-sm/5 font-medium text-zinc-950 hover:bg-zinc-950/5">
+      <div class="lui:px-4 lui:py-2 lui:text-sm/5 lui:font-medium lui:text-zinc-950 lui:hover:bg-zinc-950/5">
         <%= item %>
       </div>
     <% end %>

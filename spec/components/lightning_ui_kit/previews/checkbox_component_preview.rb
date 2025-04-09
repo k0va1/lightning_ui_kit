@@ -4,6 +4,14 @@ class CheckboxComponentPreview < Lookbook::Preview
     end
   end
 
+  def with_label
+    render LightningUiKit::CheckboxComponent.new(
+      name: :enabled,
+      label: "Send messages",
+      value: true
+    )
+  end
+
   def with_description
     render LightningUiKit::CheckboxComponent.new(
       name: :enabled,

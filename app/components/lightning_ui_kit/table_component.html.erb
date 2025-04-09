@@ -1,32 +1,32 @@
-<div class="border-zinc-950/5 border rounded-lg">
-  <table class="min-w-full text-left text-sm/6 text-zinc-950 border-collapse border-inherit">
-    <thead class="text-zinc-500">
+<div class="lui:border-zinc-950/5 lui:border lui:rounded-lg">
+  <table class="lui:min-w-full lui:text-left lui:text-sm/6 lui:text-zinc-950 lui:border-collapse lui:border-inherit">
+    <thead class="lui:text-zinc-500">
       <tr class="">
         <% columns.each do |column| %>
-          <th class="border-b border-b-zinc-950/10 px-4 py-2 font-medium"><%= column.title %></th>
+          <th class="lui:border-b lui:border-b-zinc-950/10 lui:px-4 lui:py-2 lui:font-medium"><%= column.title %></th>
         <% end %>
         <% if actions.present? %>
-          <th class="border-b border-b-zinc-950/10 px-4 py-2 font-medium"><%= @actions_title %></th>
+          <th class="lui:border-b lui:border-b-zinc-950/10 lui:px-4 lui:py-2 lui:font-medium"><%= @actions_title %></th>
         <% end %>
       </tr>
     </thead>
     <tbody>
       <% if @data.empty? %>
         <tr>
-          <td class="p-4 text-center" colspan="<%= columns.size + (actions.present? ? 1 : 0) %>">
-            <p class="font-medium"><%= @empty_message %></p>
+          <td class="lui:p-4 lui:text-center" colspan="<%= columns.size + (actions.present? ? 1 : 0) %>">
+            <p class="lui:font-medium"><%= @empty_message %></p>
           </td>
         </tr>
       <% else %>
         <% @data.each do |row| %>
-          <tr class="group">
+          <tr class="lui:group">
             <% columns.each do |column| %>
-              <td class="p-4 border-b border-zinc-950/5 group-last:border-b-0">
+              <td class="lui:p-4 lui:border-b lui:border-zinc-950/5 lui:group-last:border-b-0">
                 <%= column.call(row) %>
               </td>
             <% end %>
             <% if actions.present? %>
-              <td class="p-4 flex gap-3 border-b border-zinc-950/5 group-last:border-b-0">
+              <td class="lui:p-4 lui:flex lui:gap-3 lui:border-b lui:border-zinc-950/5 lui:group-last:border-b-0">
                 <% actions.each do |action| %>
                   <%= action.call(row) %>
                 <% end %>

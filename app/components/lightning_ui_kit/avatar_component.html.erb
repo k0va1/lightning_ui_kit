@@ -1,20 +1,20 @@
 <%= tag.span(
   class: class_names(
-    "inline-grid shrink-0 align-middle [--avatar-radius:20%] [--ring-opacity:20%] *:col-start-1 *:row-start-1 outline -outline-offset-1 outline-black/(--ring-opacity)",
+    "lui:inline-grid lui:shrink-0 lui:align-middle lui:[--avatar-radius:20%] lui:[--ring-opacity:20%] *:lui:col-start-1 *:lui:row-start-1 lui:outline lui:-outline-offset-1 lui:outline-black/(--ring-opacity)",
     SIZE_CLASSES.fetch(@size, SIZE_CLASSES[:md]),
-    @initials ? "text-white bg-zinc-900" : "text-zinc-500 bg-zinc-200",
-    @square ? "rounded-(--avatar-radius) *:rounded-(--avatar-radius)" : "rounded-full *:rounded-full",
+    @initials ? "lui:text-white lui:bg-zinc-900" : "lui:text-zinc-500 lui:bg-zinc-200",
+    @square ? "lui:rounded-(--avatar-radius) lui:*:rounded-(--avatar-radius)" : "lui:rounded-full lui:*:rounded-full",
     @options[:class]
   ),
   data: { slot: "avatar" }
 ) do %>
   <% if @initials %>
-    <svg class="size-full fill-current p-[5%] text-[48px] font-medium uppercase select-none" viewBox="0 0 100 100" aria-hidden="true">
+    <svg class="lui:size-full lui:fill-current lui:p-[5%] lui:text-[48px] lui:font-medium lui:uppercase lui:select-none" viewBox="0 0 100 100" aria-hidden="true">
       <text x="50%" y="50%" alignment-baseline="middle" dominant-baseline="middle" text-anchor="middle" dy=".125em">
       <%= @initials %>
       </text>
     </svg>
   <% else %>
-    <%= image_tag(@url, class: "size-full", alt: @alt) %>
+    <%= image_tag(@url, class: "lui:size-full", alt: @alt) %>
   <% end %>
 <% end %>

@@ -1,23 +1,25 @@
 <%= tag.div(
-  class: "[&>[data-slot=label]+[data-slot=control]]:mt-3 [&>[data-slot=label]+[data-slot=description]]:mt-1 [&>[data-slot=description]+[data-slot=control]]:mt-3 [&>[data-slot=control]+[data-slot=description]]:mt-3 [&>[data-slot=control]+[data-slot=error]]:mt-3 *:data-[slot=label]:font-medium",
+  class: "lui:[&>[data-slot=label]+[data-slot=control]]:mt-3 lui:[&>[data-slot=label]+[data-slot=description]]:mt-1
+  lui:[&>[data-slot=description]+[data-slot=control]]:mt-3 lui:[&>[data-slot=control]+[data-slot=description]]:mt-3
+  lui:[&>[data-slot=control]+[data-slot=error]]:mt-3 lui:*:data-[slot=label]:font-medium",
   data:
 ) do %>
   <% if @label %>
     <%= tag.label(
       @label,
-      class: "text-base/6 text-zinc-950 select-none data-disabled:opacity-50 sm:text-sm/6",
+      class: "lui:text-base/6 lui:text-zinc-950 lui:select-none lui:data-disabled:opacity-50 lui:sm:text-sm/6",
       data: label_data
     ) %>
   <% end %>
   <% if @description %>
     <%= tag.p(
       @description,
-      class: "text-base/6 text-zinc-500 data-disabled:opacity-50 sm:text-sm/6",
+      class: "lui:text-base/6 lui:text-zinc-500 lui:data-disabled:opacity-50 lui:sm:text-sm/6",
       data: description_data
     ) %>
   <% end %>
   <% if @form %>
-    <span data-slot="control" class="relative block w-full before:absolute before:inset-px before:rounded-[calc(var(--radius-lg)-1px)] before:bg-white before:shadow-sm after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-transparent after:ring-inset sm:focus-within:after:ring-2 sm:focus-within:after:ring-blue-500 has-data-disabled:opacity-50 has-data-disabled:before:bg-zinc-950/5 has-data-disabled:before:shadow-none has-data-invalid:before:shadow-red-500/10">
+    <span data-slot="control" class="lui:relative lui:block lui:w-full lui:before:absolute lui:before:inset-px lui:before:rounded-[calc(var(--radius-lg)-1px)] lui:before:bg-white lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-transparent lui:after:ring-inset lui:sm:focus-within:after:ring-2 lui:sm:focus-within:after:ring-blue-500 lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-zinc-950/5 lui:has-data-disabled:before:shadow-none lui:has-data-invalid:before:shadow-red-500/10">
       <%= @form.text_area(
         @name,
         value: @value,
@@ -25,13 +27,13 @@
         cols: @cols,
         multiple: @multiple,
         data: input_data,
-        class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:hover:border-red-500 data-disabled:border-zinc-950/20",
+        class: "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] lui:sm:px-[calc(--spacing(3)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:hover:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:hover:border-red-500 lui:data-disabled:border-zinc-950/20",
         disabled: @disabled,
         autofocus: @autofocus
       ) %>
     </span>
   <% else %>
-    <span data-slot="control" class="relative block w-full before:absolute before:inset-px before:rounded-[calc(var(--radius-lg)-1px)] before:bg-white before:shadow-sm after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-transparent after:ring-inset sm:focus-within:after:ring-2 sm:focus-within:after:ring-blue-500 has-data-disabled:opacity-50 has-data-disabled:before:bg-zinc-950/5 has-data-disabled:before:shadow-none has-data-invalid:before:shadow-red-500/10">
+    <span data-slot="control" class="lui:relative lui:block lui:w-full lui:before:absolute lui:before:inset-px lui:before:rounded-[calc(var(--radius-lg)-1px)] lui:before:bg-white lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-transparent lui:after:ring-inset lui:sm:focus-within:after:ring-2 lui:sm:focus-within:after:ring-blue-500 lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-zinc-950/5 lui:has-data-disabled:before:shadow-none lui:has-data-invalid:before:shadow-red-500/10">
       <%= text_area_tag(
         @name,
         @value,
@@ -39,7 +41,7 @@
         cols: @cols,
         multiple: @multiple,
         data: input_data,
-        class: "relative block w-full appearance-none rounded-lg px-[calc(--spacing(3.5)-1px)] py-[calc(--spacing(2.5)-1px)] sm:px-[calc(--spacing(3)-1px)] sm:py-[calc(--spacing(1.5)-1px)] text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 border border-zinc-950/10 hover:border-zinc-950/20 bg-transparent focus:outline-hidden data-invalid:border-red-500 data-invalid:hover:border-red-500 data-disabled:border-zinc-950/20",
+        class: "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] lui:sm:px-[calc(--spacing(3)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:hover:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:hover:border-red-500 lui:data-disabled:border-zinc-950/20",
         disabled: @disabled,
         autofocus: @autofocus
       ) %>
@@ -48,7 +50,7 @@
   <% if has_errors? %>
     <%= tag.p(
       error_messages,
-      class: "text-base/6 text-red-600 data-disabled:opacity-50 sm:text-sm/6",
+      class: "lui:text-base/6 lui:text-red-600 lui:data-disabled:opacity-50 lui:sm:text-sm/6",
       data: error_data
     ) %>
   <% end %>

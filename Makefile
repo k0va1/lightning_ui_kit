@@ -1,4 +1,4 @@
-.PHONY: test lookbook install docs lint-fix
+.PHONY: test lookbook install docs lint-fix start release check_clean
 
 install:
 	bundle install
@@ -9,9 +9,8 @@ docs:
 	bin/dev
 
 start:
-	cd lookbook
 	rm -rf app/assets/vendor/lightning_ui_kit.*
-	bin/dev
+	foreman start -f Procfile.dev
 
 lint-fix:
 	bundle exec standardrb --fix

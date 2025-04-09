@@ -1021,6 +1021,9 @@
       --checkbox-checked-border: color-mix(in oklab, var(--color-zinc-950) 90%, transparent);
     }
   }
+  .lui\:\[--gutter\:--spacing\(8\)\] {
+    --gutter: calc(var(--lui-spacing) * 8);
+  }
   .lui\:\[--ring-opacity\:20\%\] {
     --ring-opacity: 20%;
   }

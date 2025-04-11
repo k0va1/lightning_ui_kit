@@ -1,0 +1,22 @@
+<%= tag.div(
+  class: "lui:w-full lui:flex lui:justify-center lui:fixed lui:bottom-5",
+  data: {
+    controller: "lui-toast",
+    lui_toast_target: "toast",
+    lui_toast_autodismiss_value: @autodismiss,
+    lui_toast_dismiss_after_value: @dismiss_after,
+  }
+) do %>
+  <div class="lui:flex lui:items-center lui:w-full lui:max-w-xs lui:p-4 lui:text-zinc-600 lui:bg-white lui:rounded-lg lui:shadow" role="alert">
+    <div class="lui:ml-3 lui:text-sm lui:font-normal"><%= content %></div>
+    <button
+      type="button"
+      class="lui:ml-auto lui:-mx-1.5 lui:-my-1.5 lui:bg-white lui:text-zinc-600 lui:hover:text-zinc-950
+      lui:rounded-lg lui:focus:ring-2 lui:focus:ring-zinc-950/10 lui:p-1.5 lui:hover:bg-gray-100 lui:inline-flex
+      lui:items-center lui:justify-center lui:h-8 lui:w-8 lui:cursor-pointer" data-action="click->lui-toast#close" aria-label="Close">
+      <svg class="lui:w-3 lui:h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+      </svg>
+    </button>
+  </div>
+<% end %>

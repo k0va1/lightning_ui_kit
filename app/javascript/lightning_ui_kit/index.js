@@ -18,6 +18,7 @@ import RevealController from './controllers/reveal_controller'
 import SwitchController from './controllers/switch_controller'
 import DropdownController from './controllers/dropdown_controller'
 import DropzoneController from './controllers/dropzone_controller'
+import ToastController from './controllers/toast_controller'
 
 export function registerLuiControllers(application) {
   application.register(`${namespace}-clipboard`, ClipboardController)
@@ -30,6 +31,7 @@ export function registerLuiControllers(application) {
   application.register(`${namespace}-switch`, SwitchController)
   application.register(`${namespace}-dropdown`, DropdownController)
   application.register(`${namespace}-dropzone`, DropzoneController)
+  application.register(`${namespace}-toast`, ToastController)
 }
 registerLuiControllers(application)
 

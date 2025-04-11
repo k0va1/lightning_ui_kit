@@ -25,6 +25,12 @@ check_clean:
 		exit 1; \
 	fi
 
+build:
+	sh -c 'rm -rf app/assets/vendor/lightning_ui_kit.*'
+	@echo "Building assets..."
+	@NODE_ENV=production npm run prod:build:js
+	@NODE_ENV=production npm run prod:build:css
+
 release: check_clean
 	sh -c 'rm -rf app/assets/vendor/lightning_ui_kit.*'
 	NODE_ENV=production npm run prod:build:js

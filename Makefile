@@ -25,6 +25,18 @@ check_clean:
 		exit 1; \
 	fi
 
+include lookbook/.env
+
+kamal:
+	@cd lookbook && \
+		env $$(cat .env | xargs) kamal $(filter-out $@,$(MAKECMDGOALS))
+
+deploy:
+	@echo "Deploying to production..."
+	@cd lookbook && \
+		env $$(cat .env | xargs) kamal  deploy
+
+
 build:
 	sh -c 'rm -rf app/assets/vendor/lightning_ui_kit.*'
 	@echo "Building assets..."

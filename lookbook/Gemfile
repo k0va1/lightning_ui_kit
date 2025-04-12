@@ -10,7 +10,11 @@ gem "stimulus-rails"
 gem "lookbook", "~> 2.3"
 gem "propshaft"
 
-gem "lightning_ui_kit", path: "../"
+if ENV["RAILS_ENV"] == "production"
+  gem "lightning_ui_kit", git: "https://github.com/k0va1/lightning_ui_kit.git"
+else
+  gem "lightning_ui_kit", path: "../"
+end
 
 group :development, :test do
   gem "foreman"

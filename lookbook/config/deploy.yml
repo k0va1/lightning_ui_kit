@@ -13,7 +13,7 @@ registry:
 builder:
   arch: amd64
   args:
-    RUBY_VERSION: "3.3.6"
+    RUBY_VERSION: "3.3.5"
     NODE_VERSION: "20.18.1"
     RAILS_ENV: "production"
 

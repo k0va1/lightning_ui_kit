@@ -24,6 +24,8 @@
 !/lookbook/tmp/storage/
 !/lookbook/tmp/storage/.keep
 
+/lookbook/config/master.key
+
 /public/assets
 
 # Ignore master key for decrypting credentials and more.

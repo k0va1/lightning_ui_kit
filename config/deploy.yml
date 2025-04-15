@@ -25,7 +25,7 @@ servers:
       memory: 512M
 
 volumes:
-  - storage:/rails/lookbook/storage
+  - ./storage:/rails/lookbook/storage
 
 env:
   clear:

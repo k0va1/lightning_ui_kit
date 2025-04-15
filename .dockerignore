@@ -17,6 +17,7 @@ loookbook/tmp/pids/*
 !/loookbook/tmp/pids/.keep
 
 /loookbook/storage/*
+!/loookbook/storage/.keep
 
 node_modules/
 app/assets/builds/*

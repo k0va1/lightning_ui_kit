@@ -52,7 +52,7 @@ WORKDIR /rails/lookbook
 
 # Run and own only the runtime files as a non-root user for security
 RUN useradd www --create-home --shell /bin/bash && \
-    chown -R www:www db log tmp
+    chown -R www:www db log tmp storage
 
 USER www:www
 

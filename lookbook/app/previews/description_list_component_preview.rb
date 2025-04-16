@@ -1,4 +1,4 @@
-class LightningUiKit::DescriptionListComponentPreview < Lookbook::Preview
+class DescriptionListComponentPreview < Lookbook::Preview
   def default
     render LightningUiKit::DescriptionListComponent.new do |dl|
       dl.with_item(label: "Balance", value: "$100.00")

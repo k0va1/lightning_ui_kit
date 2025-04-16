@@ -1,4 +1,4 @@
-class LightningUiKit::InputComponentPreview < Lookbook::Preview
+class InputComponentPreview < Lookbook::Preview
   def default
     render LightningUiKit::InputComponent.new(
       name: :text,

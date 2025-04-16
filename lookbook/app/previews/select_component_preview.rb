@@ -1,4 +1,4 @@
-class LightningUiKit::SelectComponentPreview < Lookbook::Preview
+class SelectComponentPreview < Lookbook::Preview
   include ActionView::Helpers::FormOptionsHelper
 
   def default

@@ -1,4 +1,4 @@
-class LightningUiKit::ButtonComponentPreview < Lookbook::Preview
+class ButtonComponentPreview < Lookbook::Preview
   def default
     render(LightningUiKit::ButtonComponent.new) do
       "Press me"

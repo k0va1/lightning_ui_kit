@@ -1,4 +1,4 @@
-class LightningUiKit::PaginationComponentPreview < Lookbook::Preview
+class PaginationComponentPreview < Lookbook::Preview
   def default
     render LightningUiKit::PaginationComponent.new(
       current_page: 5,

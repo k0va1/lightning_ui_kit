@@ -1,4 +1,4 @@
-class LightningUiKit::CheckboxComponentPreview < Lookbook::Preview
+class CheckboxComponentPreview < Lookbook::Preview
   def default
     render LightningUiKit::CheckboxComponent.new(name: :enabled, value: true) do
     end

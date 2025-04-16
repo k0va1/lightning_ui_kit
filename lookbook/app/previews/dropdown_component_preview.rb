@@ -1,4 +1,4 @@
-class LightningUiKit::DropdownComponentPreview < Lookbook::Preview
+class DropdownComponentPreview < Lookbook::Preview
   def default
     render LightningUiKit::DropdownComponent.new do |dropdown|
       dropdown.with_trigger do

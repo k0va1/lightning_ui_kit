@@ -1,4 +1,4 @@
-class LightningUiKit::TableComponentPreview < Lookbook::Preview
+class TableComponentPreview < Lookbook::Preview
   include ActionView::Helpers::UrlHelper
 
   def default

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class LightningUiKit::DropzoneComponentPreview < Lookbook::Preview
+class DropzoneComponentPreview < Lookbook::Preview
   def default
     render LightningUiKit::DropzoneComponent.new(
       name: "file",

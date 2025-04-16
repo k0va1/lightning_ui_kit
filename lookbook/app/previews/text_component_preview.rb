@@ -1,4 +1,4 @@
-class TextComponentPreview < ViewComponent::Preview
+class TextComponentPreview < Lookbook::Preview
   def default
     render LightningUiKit::TextComponent.new.with_content("Hello, world!")
   end

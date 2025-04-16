@@ -1,4 +1,4 @@
-class TextareaComponentPreview < ViewComponent::Preview
+class TextareaComponentPreview < Lookbook::Preview
   def default
     render LightningUiKit::TextareaComponent.new(
       name: "bio",

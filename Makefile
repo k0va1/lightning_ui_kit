@@ -25,6 +25,12 @@ check_clean:
 		exit 1; \
 	fi
 
+kamal:
+	env $$(cat .env | xargs) kamal $(filter-out $@,$(MAKECMDGOALS))
+
+deploy:
+	env $$(cat .env | xargs) kamal  deploy
+
 build:
 	sh -c 'rm -rf app/assets/vendor/lightning_ui_kit.*'
 	@echo "Building assets..."

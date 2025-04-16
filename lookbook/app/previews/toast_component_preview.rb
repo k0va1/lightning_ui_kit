@@ -1,4 +1,4 @@
-class ToastComponentPreview < ViewComponent::Preview
+class ToastComponentPreview < Lookbook::Preview
   def default
     render LightningUiKit::ToastComponent.new(autodismiss: false).with_content("Hello, world!")
   end

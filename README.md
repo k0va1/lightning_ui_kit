@@ -1,11 +1,14 @@
 # LightningUiKit
 UI components for fast prototyping in Rails applications.
 
+Preview is available at [ui.lightningrails.xyz](https://ui.lightningrails.xyz)
+
 ## Usage
 
 Add this line to your application's Gemfile:
 
 ```ruby
+gem "propshaft"
 gem "lightning_ui_kit"
 ```
 

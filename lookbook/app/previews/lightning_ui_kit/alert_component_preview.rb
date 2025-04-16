@@ -1,4 +1,4 @@
-class AlertComponentPreview < Lookbook::Preview
+class LightningUiKit::AlertComponentPreview < Lookbook::Preview
   def default
     render(LightningUiKit::AlertComponent.new) do
       "Hello, world!"

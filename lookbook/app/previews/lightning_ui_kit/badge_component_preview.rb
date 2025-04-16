@@ -1,4 +1,4 @@
-class BadgeComponentPreview < Lookbook::Preview
+class LightningUiKit::BadgeComponentPreview < Lookbook::Preview
   def default
     render LightningUiKit::BadgeComponent.new do
       "Badge"

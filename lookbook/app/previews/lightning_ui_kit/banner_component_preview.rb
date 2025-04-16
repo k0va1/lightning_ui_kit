@@ -1,4 +1,4 @@
-class BannerComponentPreview < Lookbook::Preview
+class LightningUiKit::BannerComponentPreview < Lookbook::Preview
   def default
   end
 

@@ -1,4 +1,4 @@
-class AvatarComponentPreview < Lookbook::Preview
+class LightningUiKit::AvatarComponentPreview < Lookbook::Preview
   def default
     render LightningUiKit::AvatarComponent.new(url: "https://picsum.photos/100/100")
   end

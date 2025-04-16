@@ -1,4 +1,4 @@
-class SkeletonComponentPreview < Lookbook::Preview
+class LightningUiKit::SkeletonComponentPreview < Lookbook::Preview
   def default
     render LightningUiKit::SkeletonComponent.new(
       with_title: true,

@@ -1,4 +1,4 @@
-class SwitchComponentPreview < Lookbook::Preview
+class LightningUiKit::SwitchComponentPreview < Lookbook::Preview
   def default
     render LightningUiKit::SwitchComponent.new(
       name: "enable_notifications",

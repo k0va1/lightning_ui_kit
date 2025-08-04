@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    lightning_ui_kit (0.2.1)
+    lightning_ui_kit (0.2.3)
       heroicons
       rails (>= 8.0.0)
       tailwind_merge

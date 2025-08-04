@@ -21,7 +21,7 @@ class LightningUiKit::CheckboxComponent < LightningUiKit::BaseComponent
       action: "click->lui-checkbox#toggle"
     }
 
-    data[:checked] = true if !!@value
+    data[:checked] = true if !!@checked
     data.merge(@options[:control_data] || {})
   end
 end

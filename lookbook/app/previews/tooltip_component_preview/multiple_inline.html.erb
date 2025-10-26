@@ -1,0 +1,24 @@
+<div class="lui:space-y-4">
+  <p class="lui:text-gray-700 lui:leading-relaxed">
+    Here's a paragraph with multiple tooltips. The first 
+    <%= render LightningUiKit::TooltipComponent.new(text: "API stands for Application Programming Interface") do %>
+      <span class="lui:text-blue-600 lui:underline lui:decoration-dotted lui:underline-offset-2 lui:cursor-help">API</span>
+    <% end %>
+    term is explained, and so is this 
+    <%= render LightningUiKit::TooltipComponent.new(text: "JSON stands for JavaScript Object Notation - a lightweight data interchange format") do %>
+      <span class="lui:text-blue-600 lui:underline lui:decoration-dotted lui:underline-offset-2 lui:cursor-help">JSON</span>
+    <% end %>
+    format. Each tooltip provides specific context.
+  </p>
+  
+  <p class="lui:text-gray-700 lui:leading-relaxed">
+    Another paragraph with a 
+    <%= render LightningUiKit::TooltipComponent.new(
+      text: "Database queries can be optimized using indexes, proper WHERE clauses, and avoiding N+1 query problems",
+      position: :top
+    ) do %>
+      <span class="lui:text-green-600 lui:underline lui:decoration-dotted lui:underline-offset-2 lui:cursor-help">database optimization</span>
+    <% end %>
+    tooltip that appears above the text due to position settings.
+  </p>
+</div>

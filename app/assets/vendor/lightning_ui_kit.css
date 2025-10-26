@@ -1,4 +1,4 @@
-/*! tailwindcss v4.1.11 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.1.16 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -13,12 +13,14 @@
     --lui-color-green-200: oklch(0.925 0.084 155.995);
     --lui-color-green-600: oklch(0.627 0.194 149.214);
     --lui-color-blue-500: oklch(0.623 0.214 259.815);
+    --lui-color-blue-600: oklch(0.546 0.245 262.881);
     --lui-color-indigo-500: oklch(0.585 0.233 277.117);
     --lui-color-indigo-600: oklch(0.511 0.262 276.966);
     --lui-color-gray-50: oklch(0.985 0.002 247.839);
     --lui-color-gray-100: oklch(0.967 0.003 264.542);
     --lui-color-gray-300: oklch(0.872 0.01 258.338);
     --lui-color-gray-400: oklch(0.707 0.022 261.325);
+    --lui-color-gray-700: oklch(0.373 0.034 259.733);
     --lui-color-gray-800: oklch(0.278 0.033 256.848);
     --lui-color-gray-900: oklch(0.21 0.034 264.665);
     --lui-color-zinc-50: oklch(0.985 0 0);
@@ -47,6 +49,7 @@
     --lui-font-weight-medium: 500;
     --lui-font-weight-semibold: 600;
     --lui-leading-snug: 1.375;
+    --lui-leading-relaxed: 1.625;
     --lui-radius-md: 0.375rem;
     --lui-radius-lg: 0.5rem;
     --lui-radius-2xl: 1rem;
@@ -215,7 +218,7 @@
     padding: 0;
     margin: -1px;
     overflow: hidden;
-    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
     white-space: nowrap;
     border-width: 0;
   }
@@ -251,6 +254,9 @@
   }
   .lui\:isolate {
     isolation: isolate;
+  }
+  .lui\:z-50 {
+    z-index: 50;
   }
   .lui\:col-start-1 {
     grid-column-start: 1;
@@ -412,9 +418,6 @@
   .lui\:w-48 {
     width: calc(var(--lui-spacing) * 48);
   }
-  .lui\:w-56 {
-    width: calc(var(--lui-spacing) * 56);
-  }
   .lui\:w-\[2\.25rem\] {
     width: 2.25rem;
   }
@@ -443,7 +446,7 @@
     border-collapse: collapse;
   }
   .lui\:origin-top-left {
-    transform-origin: top left;
+    transform-origin: 0 0;
   }
   .lui\:translate-x-0 {
     --tw-translate-x: calc(var(--lui-spacing) * 0);
@@ -461,6 +464,9 @@
     --tw-scale-z: 100%;
     scale: var(--tw-scale-x) var(--tw-scale-y);
   }
+  .lui\:rotate-45 {
+    rotate: 45deg;
+  }
   .lui\:rotate-180 {
     rotate: 180deg;
   }
@@ -475,6 +481,9 @@
   }
   .lui\:cursor-default {
     cursor: default;
+  }
+  .lui\:cursor-help {
+    cursor: help;
   }
   .lui\:cursor-pointer {
     cursor: pointer;
@@ -691,6 +700,9 @@
   .lui\:bg-gray-300 {
     background-color: var(--lui-color-gray-300);
   }
+  .lui\:bg-gray-900 {
+    background-color: var(--lui-color-gray-900);
+  }
   .lui\:bg-green-200 {
     background-color: var(--lui-color-green-200);
   }
@@ -777,6 +789,9 @@
   }
   .lui\:px-2\.5 {
     padding-inline: calc(var(--lui-spacing) * 2.5);
+  }
+  .lui\:px-3 {
+    padding-inline: calc(var(--lui-spacing) * 3);
   }
   .lui\:px-4 {
     padding-inline: calc(var(--lui-spacing) * 4);
@@ -874,6 +889,10 @@
     --tw-leading: 18px;
     line-height: 18px;
   }
+  .lui\:leading-relaxed {
+    --tw-leading: var(--lui-leading-relaxed);
+    line-height: var(--lui-leading-relaxed);
+  }
   .lui\:leading-snug {
     --tw-leading: var(--lui-leading-snug);
     line-height: var(--lui-leading-snug);
@@ -896,14 +915,23 @@
   .lui\:text-pretty {
     text-wrap: pretty;
   }
+  .lui\:text-blue-600 {
+    color: var(--lui-color-blue-600);
+  }
   .lui\:text-gray-400 {
     color: var(--lui-color-gray-400);
+  }
+  .lui\:text-gray-700 {
+    color: var(--lui-color-gray-700);
   }
   .lui\:text-gray-800 {
     color: var(--lui-color-gray-800);
   }
   .lui\:text-gray-900 {
     color: var(--lui-color-gray-900);
+  }
+  .lui\:text-green-600 {
+    color: var(--lui-color-green-600);
   }
   .lui\:text-indigo-500 {
     color: var(--lui-color-indigo-500);
@@ -931,6 +959,15 @@
   }
   .lui\:uppercase {
     text-transform: uppercase;
+  }
+  .lui\:underline {
+    text-decoration-line: underline;
+  }
+  .lui\:decoration-dotted {
+    text-decoration-style: dotted;
+  }
+  .lui\:underline-offset-2 {
+    text-underline-offset: 2px;
   }
   .lui\:opacity-0 {
     opacity: 0%;
@@ -980,7 +1017,7 @@
     }
   }
   .lui\:transition {
-    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, visibility, content-visibility, overlay, pointer-events;
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
     transition-timing-function: var(--tw-ease, var(--lui-default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--lui-default-transition-duration));
   }

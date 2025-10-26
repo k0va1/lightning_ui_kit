@@ -1,0 +1,7 @@
+<p class="lui:text-gray-700 lui:leading-relaxed">
+  This is a paragraph with an inline 
+  <%= render LightningUiKit::TooltipComponent.new(text: "This tooltip provides additional context about the highlighted term") do %>
+    <span class="lui:text-blue-600 lui:underline lui:decoration-dotted lui:underline-offset-2 lui:cursor-help">tooltip</span>
+  <% end %>
+  that appears when you hover over the highlighted word. This demonstrates how tooltips work within flowing text content.
+</p>

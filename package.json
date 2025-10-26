@@ -24,6 +24,7 @@
     "prod:build:css": "npx @tailwindcss/cli -i ./app/assets/stylesheets/lightning_ui_kit/application.css -o ./app/assets/vendor/lightning_ui_kit.css -c ./tailwind.config.js"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.7.4",
     "@rails/activestorage": "^8.0.200"
   }
 }

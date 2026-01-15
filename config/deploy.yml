@@ -34,10 +34,9 @@ env:
 
 proxy:
   ssl: false
+  host: ui.k0va1.dev
   app_port: 8000
   forward_headers: true
-  path_prefix: /ui-kit
-  strip_path_prefix: false
   healthcheck:
     interval: 3
     path: /up

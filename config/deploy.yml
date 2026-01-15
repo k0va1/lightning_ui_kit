@@ -5,10 +5,7 @@ ssh:
   user: www
 
 registry:
-  server: ghcr.io
-  username: k0va1
-  password:
-    - KAMAL_REGISTRY_PASSWORD
+  server: "localhost:5555"
 
 builder:
   arch: amd64

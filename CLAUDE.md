@@ -72,6 +72,9 @@ make release [version]  # Build assets, commit, tag, and release gem
 - Uses Floating UI library for positioning (tooltips, dropdowns)
 - Entry point: `app/javascript/lightning_ui_kit/index.js`
 
+### Documentation Maintenance
+- **IMPORTANT**: When adding or removing components/features, always update `llms.txt` to keep LLM documentation in sync
+
 ## Dependencies
 
 ### Core Dependencies

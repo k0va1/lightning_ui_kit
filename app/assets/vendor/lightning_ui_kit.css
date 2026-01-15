@@ -1,4 +1,4 @@
-/*! tailwindcss v4.1.16 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.1.18 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -690,6 +690,9 @@
   }
   .lui\:bg-\(--btn-border\) {
     background-color: var(--btn-border);
+  }
+  .lui\:bg-blue-500 {
+    background-color: var(--lui-color-blue-500);
   }
   .lui\:bg-gray-50 {
     background-color: var(--lui-color-gray-50);
@@ -1620,6 +1623,13 @@
       }
     }
   }
+  .lui\:hover\:bg-zinc-50 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--lui-color-zinc-50);
+      }
+    }
+  }
   .lui\:hover\:bg-zinc-100 {
     &:hover {
       @media (hover: hover) {
@@ -2310,6 +2320,11 @@
   .lui\:sm\:p-4 {
     @media (width >= 40rem) {
       padding: calc(var(--lui-spacing) * 4);
+    }
+  }
+  .lui\:sm\:px-3 {
+    @media (width >= 40rem) {
+      padding-inline: calc(var(--lui-spacing) * 3);
     }
   }
   .lui\:sm\:px-6 {

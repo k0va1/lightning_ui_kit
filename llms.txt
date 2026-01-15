@@ -1,0 +1,378 @@
+# LightningUiKit
+
+> LightningUiKit is a Ruby gem providing UI components for Rails applications, built on ViewComponent with Tailwind CSS styling and Stimulus controllers for interactivity.
+
+Important notes:
+
+- All Tailwind CSS classes **MUST** be prefixed with `lui:` (e.g., `lui:px-4`, `lui:text-blue-600`, `lui:hover:bg-zinc-50`)
+- Components extend `LightningUiKit::BaseComponent` and use ViewComponent patterns
+- Interactive components use Stimulus controllers registered under the `lui-` namespace
+- Uses TailwindMerge for intelligent CSS class conflict resolution via `merge_classes()` helper
+
+## Architecture
+
+### Component Structure
+
+Every component follows this pattern:
+
+```ruby
+# app/components/lightning_ui_kit/example_component.rb
+class LightningUiKit::ExampleComponent < LightningUiKit::BaseComponent
+  def initialize(required_param:, optional_param: default_value, **options)
+    @required_param = required_param
+    @optional_param = optional_param
+    @options = options  # Captures extra attributes for flexibility
+  end
+
+  def classes
+    merge_classes(["lui:base-classes", @options[:class]].compact.join(" "))
+  end
+
+  def data_attributes
+    { controller: "lui-example" }.merge(@options[:data] || {})
+  end
+end
+```
+
+```erb
+<%# app/components/lightning_ui_kit/example_component.html.erb %>
+<%= tag.div(class: classes, data: data_attributes) do %>
+  <%= content %>
+<% end %>
+```
+
+### Stimulus Controller Pattern
+
+```javascript
+// app/javascript/lightning_ui_kit/controllers/example_controller.js
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+  static targets = ["element"]
+  static values = { active: Boolean, position: String }
+
+  connect() {
+    // Setup logic
+  }
+
+  toggle() {
+    // Action logic
+  }
+}
+```
+
+Register in `app/javascript/lightning_ui_kit/index.js`:
+```javascript
+application.register(`${namespace}-example`, ExampleController)
+```
+
+## Available Components
+
+### Form Components
+- **ButtonComponent** - `style: :default/:outline/:destructive`, `size: :default/:small`, `disabled:`, `url:` (renders as link)
+- **InputComponent** - `name:`, `type: :text/:email/:password/:number`, `label:`, `form:`, `error:`, `description:`, `placeholder:`
+- **TextareaComponent** - `name:`, `label:`, `form:`, `rows:`, `error:`
+- **CheckboxComponent** - `name:`, `label:`, `checked:`, `form:`
+- **SwitchComponent** - `name:`, `label:`, `checked:`, `enabled:`
+- **SelectComponent** - `name:`, `options:`, `label:`, `form:`, `multiple:`
+- **FileInputComponent** - `name:`, `label:`, `accept:`, `error:`
+- **DropzoneComponent** - Drag-and-drop file upload with ActiveStorage integration
+
+### Display Components
+- **TextComponent** - `size: :sm/:md/:lg`
+- **BadgeComponent** - `style: :default/:success/:warning/:error`, progress indicator support
+- **AvatarComponent** - `src:`, `initials:`, `size: :sm/:md/:lg`, `square:`
+- **AlertComponent** - `type:` for different alert styles
+- **BannerComponent** - `type: :info/:error`, with header/footer slots
+- **ToastComponent** - `timeout:` for auto-dismiss, notification styling
+- **SkeletonComponent** - `title:`, `lines:` for loading states
+- **SpinnerComponent** - Loading spinner
+
+### Structural Components
+- **TableComponent** - `data:`, `actions_title:`, `empty_message:` with column/action slots
+- **PaginationComponent** - Page navigation with smart gap rendering
+- **DescriptionListComponent** - Key-value list with item slots
+- **DropdownComponent** - `trigger_text:`, `anchor:`, `position:` with item slots
+- **ModalComponent** - `id:`, `title:`, `description:`, `open:` with body/actions slots
+- **TooltipComponent** - `text:`, `position: :top/:bottom/:left/:right`, `active:`
+- **SidebarComponent** - Sidebar layout
+- **LinkComponent** - Styled link wrapper
+
+## Component Composition
+
+### Slots API
+
+Use `renders_one` and `renders_many` for component composition:
+
+```ruby
+class LightningUiKit::ModalComponent < LightningUiKit::BaseComponent
+  renders_one :body
+  renders_many :actions
+
+  def initialize(id:, title:, description: nil, open: false, **options)
+    # ...
+  end
+end
+```
+
+Usage:
+```erb
+<%= render LightningUiKit::ModalComponent.new(id: "confirm", title: "Confirm") do |modal| %>
+  <% modal.with_body do %>
+    <p>Are you sure?</p>
+  <% end %>
+  <% modal.with_action do %>
+    <%= render LightningUiKit::ButtonComponent.new(style: :outline) { "Cancel" } %>
+  <% end %>
+  <% modal.with_action do %>
+    <%= render LightningUiKit::ButtonComponent.new { "Confirm" } %>
+  <% end %>
+<% end %>
+```
+
+### Table with Dynamic Columns
+
+```erb
+<%= render LightningUiKit::TableComponent.new(data: @users) do |table| %>
+  <% table.with_column("Name") { |user| user.name } %>
+  <% table.with_column("Email") { |user| user.email } %>
+  <% table.with_action { |user| link_to "Edit", edit_user_path(user) } %>
+<% end %>
+```
+
+### Dropdown Menu
+
+```erb
+<%= render LightningUiKit::DropdownComponent.new(trigger_text: "Options") do |dropdown| %>
+  <% dropdown.with_item do %>
+    <%= link_to "Edit", "#", class: "lui:block lui:px-4 lui:py-2" %>
+  <% end %>
+  <% dropdown.with_item do %>
+    <%= link_to "Delete", "#", class: "lui:block lui:px-4 lui:py-2" %>
+  <% end %>
+<% end %>
+```
+
+## Form Integration
+
+### With Rails Form Builder
+
+```erb
+<%= form_with model: @user do |form| %>
+  <%= render LightningUiKit::InputComponent.new(
+    name: :email,
+    type: :email,
+    label: "Email Address",
+    form: form,
+    placeholder: "user@example.com"
+  ) %>
+
+  <%= render LightningUiKit::TextareaComponent.new(
+    name: :bio,
+    label: "Biography",
+    form: form,
+    rows: 4
+  ) %>
+
+  <%= render LightningUiKit::ButtonComponent.new(type: :submit) { "Save" } %>
+<% end %>
+```
+
+### Error Handling
+
+Components include `LightningUiKit::Errors` module for automatic validation error display:
+
+```ruby
+# Errors are automatically extracted from form object
+<%= render LightningUiKit::InputComponent.new(
+  name: :email,
+  form: form,
+  error: @user.errors[:email].first  # Or omit for auto-detection
+) %>
+```
+
+## Styling Guide
+
+### Critical: lui: Prefix
+
+**ALL Tailwind classes must use the `lui:` prefix:**
+
+```erb
+<%# Correct %>
+<div class="lui:px-4 lui:py-2 lui:text-blue-600 lui:hover:bg-zinc-50">
+
+<%# WRONG - will not work %>
+<div class="px-4 py-2 text-blue-600 hover:bg-zinc-50">
+```
+
+### Responsive and State Variants
+
+```erb
+lui:sm:px-3          <%# Responsive %>
+lui:hover:bg-zinc-50 <%# Hover state %>
+lui:focus:ring-2     <%# Focus state %>
+lui:disabled:opacity-50  <%# Disabled state %>
+lui:data-invalid:border-red-500  <%# Data attribute state %>
+```
+
+### Using merge_classes()
+
+The `merge_classes()` helper from TailwindMerge resolves class conflicts:
+
+```ruby
+def classes
+  class_list = ["lui:px-4 lui:py-2"]
+  class_list << "lui:bg-blue-500" if @primary
+  class_list << @options[:class]  # User overrides
+  merge_classes(class_list.compact.join(" "))
+end
+```
+
+### Data Slots for Layout
+
+Use `data-slot` attributes for semantic structure:
+
+```erb
+<label data-slot="label">Email</label>
+<p data-slot="description">We'll never share your email</p>
+<span data-slot="control"><input /></span>
+<p data-slot="error">Invalid email</p>
+```
+
+CSS handles relationships:
+```css
+lui:[&>[data-slot=label]+[data-slot=control]]:mt-3
+```
+
+## Stimulus Controllers
+
+All controllers use `lui-` prefix:
+
+| Controller | Purpose | Key Features |
+|------------|---------|--------------|
+| `lui-dropdown` | Toggle dropdown visibility | Animations via stimulus-use |
+| `lui-modal` | Dialog control | Native `<dialog>`, form handling |
+| `lui-tooltip` | Floating tooltips | @floating-ui/dom positioning |
+| `lui-switch` | Toggle state | True/false field binding |
+| `lui-checkbox` | Checkbox state | Visual state updates |
+| `lui-toast` | Auto-dismiss notifications | Configurable timeout |
+| `lui-banner` | Banner close | Fade animation |
+| `lui-dropzone` | File uploads | ActiveStorage direct upload |
+| `lui-accordion` | Expand/collapse | Single-open enforcement |
+| `lui-clipboard` | Copy to clipboard | navigator.clipboard API |
+
+### Binding Controllers
+
+```erb
+<div data-controller="lui-dropdown">
+  <button data-action="click->lui-dropdown#toggle">Menu</button>
+  <div data-lui-dropdown-target="menu">...</div>
+</div>
+```
+
+## Examples
+
+### Button Variants
+
+```erb
+<%# Default button %>
+<%= render LightningUiKit::ButtonComponent.new { "Submit" } %>
+
+<%# Outline style %>
+<%= render LightningUiKit::ButtonComponent.new(style: :outline) { "Cancel" } %>
+
+<%# Destructive action %>
+<%= render LightningUiKit::ButtonComponent.new(style: :destructive) { "Delete" } %>
+
+<%# Small size %>
+<%= render LightningUiKit::ButtonComponent.new(size: :small) { "Edit" } %>
+
+<%# As link %>
+<%= render LightningUiKit::ButtonComponent.new(url: "/dashboard") { "Go to Dashboard" } %>
+
+<%# Disabled %>
+<%= render LightningUiKit::ButtonComponent.new(disabled: true) { "Loading..." } %>
+```
+
+### Input with All Options
+
+```erb
+<%= render LightningUiKit::InputComponent.new(
+  name: :username,
+  type: :text,
+  label: "Username",
+  description: "Choose a unique username",
+  placeholder: "john_doe",
+  autofocus: true,
+  form: form
+) %>
+```
+
+### Tooltip
+
+```erb
+<%= render LightningUiKit::TooltipComponent.new(
+  text: "This is helpful information",
+  position: :top
+) do %>
+  <button>Hover me</button>
+<% end %>
+```
+
+### Toast Notification
+
+```erb
+<%= render LightningUiKit::ToastComponent.new(timeout: 5000) do %>
+  <p>Your changes have been saved!</p>
+<% end %>
+```
+
+## File Structure
+
+```
+app/
+├── components/lightning_ui_kit/
+│   ├── base_component.rb           # Base class with helpers
+│   ├── button_component.rb         # Ruby class
+│   ├── button_component.html.erb   # Template
+│   └── ...
+├── javascript/lightning_ui_kit/
+│   ├── controllers/
+│   │   ├── dropdown_controller.js
+│   │   ├── modal_controller.js
+│   │   └── ...
+│   └── index.js                    # Controller registration
+└── assets/stylesheets/
+    └── lightning_ui_kit/
+        └── application.css         # Tailwind entry point
+```
+
+## Dependencies
+
+- **Rails 8.0+** - Framework
+- **ViewComponent** - Component architecture
+- **TailwindMerge** - CSS class conflict resolution
+- **Heroicons** - SVG icons (via `heroicon()` helper)
+- **Stimulus** - JavaScript interactivity
+- **@floating-ui/dom** - Tooltip/dropdown positioning
+- **stimulus-use** - Animation utilities
+
+## Creating New Components
+
+1. Create Ruby class extending `LightningUiKit::BaseComponent`
+2. Create `.html.erb` template in same directory
+3. Use `merge_classes()` for class handling
+4. Add Stimulus controller if interactive (register in index.js)
+5. Prefix all Tailwind classes with `lui:`
+6. Add preview in `lookbook/app/previews/`
+7. **Update this llms.txt file with the new component**
+
+## Commands
+
+```bash
+make install     # Install dependencies
+make start       # Development server with asset watching
+make docs        # Lookbook preview server
+make test        # Run RSpec tests
+make build       # Build production assets
+```

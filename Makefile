@@ -11,7 +11,7 @@ docs:
 
 start:
 	rm -rf app/assets/vendor/lightning_ui_kit.*
-	foreman start -f Procfile.dev
+	overmind start -f Procfile.dev
 
 lint-fix:
 	bundle exec standardrb --fix

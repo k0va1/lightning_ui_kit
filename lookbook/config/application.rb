@@ -29,7 +29,6 @@ module Lookbook
     }
 
     config.lookbook.project_name = "Lightning UI"
-    config.relative_url_root = "/ui-kit"
 
     # Configuration for the application, engines, and railties goes here.
     #

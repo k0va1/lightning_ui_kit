@@ -1,0 +1,13 @@
+---
+title: Lightning UI Kit
+label: Overview
+---
+
+LightningUiKit is a Ruby gem providing UI components for Rails applications, built on ViewComponent with Tailwind CSS styling and Stimulus controllers for interactivity.
+
+**Important notes:**
+
+- All Tailwind CSS classes **MUST** be prefixed with `lui:` (e.g., `lui:px-4`, `lui:text-blue-600`, `lui:hover:bg-zinc-50`)
+- Components extend `LightningUiKit::BaseComponent` and use ViewComponent patterns
+- Interactive components use Stimulus controllers registered under the `lui-` namespace
+- Uses TailwindMerge for intelligent CSS class conflict resolution via `merge_classes()` helper

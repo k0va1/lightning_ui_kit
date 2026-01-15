@@ -17,7 +17,7 @@ lint-fix:
 	bundle exec standardrb --fix
 
 test:
-	 bundle exec rspec $(filter-out $@,$(MAKECMDGOALS))
+	bundle exec rake test
 
 check_clean:
 	@if [ -n "$$(git status --porcelain)" ]; then \

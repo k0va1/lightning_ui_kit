@@ -1,7 +1,7 @@
 # LightningUiKit
 UI components for fast prototyping in Rails applications.
 
-Preview is available at [ui.lightningrails.xyz](https://ui.lightningrails.xyz)
+Preview is available at [ui.k0va1.dev](https://ui.k0va1.dev)
 
 ## Usage
 

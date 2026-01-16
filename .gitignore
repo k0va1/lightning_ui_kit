@@ -12,6 +12,8 @@
 /lookbook/log/*.log
 /lookbook/tmp/.keep
 
+test/dummy/log/*.log
+
 # Ignore pidfiles, but keep the directory.
 /lookbook/tmp/pids/*
 !/lookbook/tmp/pids/

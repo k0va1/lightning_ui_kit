@@ -95,6 +95,7 @@ application.register(`${namespace}-example`, ExampleController)
 - **DropdownComponent** - `trigger_text:`, `anchor:`, `position:` with item slots
 - **ModalComponent** - `id:`, `title:`, `description:`, `open:` with body/actions slots
 - **TooltipComponent** - `text:`, `position: :top/:bottom/:left/:right`, `active:`
+- **LayoutComponent** - `sidebar_width:` with sidebar/footer/mobile_header slots for app shell layout
 - **SidebarComponent** - Sidebar layout
 - **LinkComponent** - Styled link wrapper
 
@@ -140,7 +141,6 @@ Then you can use components in your views like this:
 ```erb
 <%= render LightningUiKit::ButtonComponent.new(text: "Click me!") %>
 ```
-
 
 ```erb
 <%= render LightningUiKit::ModalComponent.new(id: "confirm", title: "Confirm") do |modal| %>
@@ -277,6 +277,7 @@ All controllers use `lui-` prefix:
 | Controller | Purpose | Key Features |
 |------------|---------|--------------|
 | `lui-dropdown` | Toggle dropdown visibility | Animations via stimulus-use |
+| `lui-layout` | Mobile sidebar toggle | Animated drawer, backdrop overlay |
 | `lui-modal` | Dialog control | Native `<dialog>`, form handling |
 | `lui-tooltip` | Floating tooltips | @floating-ui/dom positioning |
 | `lui-switch` | Toggle state | True/false field binding |
@@ -350,6 +351,37 @@ All controllers use `lui-` prefix:
 ```erb
 <%= render LightningUiKit::ToastComponent.new(timeout: 5000) do %>
   <p>Your changes have been saved!</p>
+<% end %>
+```
+
+### Layout with Sidebar
+
+```erb
+<%= render LightningUiKit::LayoutComponent.new do |layout| %>
+  <% layout.with_sidebar do %>
+    <div class="lui:p-4">
+      <div class="lui:flex lui:items-center lui:mb-6">
+        <span class="lui:text-xl lui:font-semibold">My App</span>
+      </div>
+      <nav class="lui:flex lui:flex-col lui:gap-1">
+        <a href="#" class="lui:px-3 lui:py-2 lui:rounded-lg lui:bg-zinc-100">Home</a>
+        <a href="#" class="lui:px-3 lui:py-2 lui:rounded-lg lui:hover:bg-zinc-50">Settings</a>
+      </nav>
+    </div>
+  <% end %>
+
+  <% layout.with_footer do %>
+    <div class="lui:p-4">
+      <p class="lui:text-sm lui:text-zinc-500">Logged in as user@example.com</p>
+    </div>
+  <% end %>
+
+  <% layout.with_mobile_header do %>
+    <span class="lui:font-semibold">My App</span>
+  <% end %>
+
+  <h1 class="lui:text-2xl lui:font-bold">Dashboard</h1>
+  <p>Main content goes here</p>
 <% end %>
 ```
 

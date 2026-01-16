@@ -26,5 +26,4 @@ Gem::Specification.new do |spec|
   spec.add_dependency "heroicons"
 
   spec.add_development_dependency "standard"
-  spec.add_development_dependency "rspec-rails"
 end

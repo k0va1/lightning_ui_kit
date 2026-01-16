@@ -1,0 +1,69 @@
+<%= render LightningUiKit::LayoutComponent.new do |layout| %>
+  <% layout.with_sidebar do %>
+    <div class="lui:flex lui:flex-col lui:border-b lui:border-zinc-950/5 lui:p-4">
+      <div class="lui:flex lui:items-center">
+        <div class="lui:flex lui:items-center lui:justify-center lui:w-11 lui:h-11 lui:bg-zinc-950 lui:rounded-xl">
+          <span class="lui:text-2xl">⚡</span>
+        </div>
+        <span class="lui:self-center lui:text-xl lui:font-semibold lui:whitespace-nowrap lui:text-zinc-950 lui:ml-2">Lightning UI</span>
+      </div>
+    </div>
+
+    <div class="lui:flex lui:flex-1 lui:flex-col lui:overflow-y-auto lui:p-4">
+      <div class="lui:flex lui:flex-col lui:gap-0.5">
+        <a href="#" class="lui:flex lui:w-full lui:items-center lui:gap-3 lui:rounded-lg lui:px-2 lui:py-2.5 lui:text-left lui:text-base/6 lui:font-medium lui:text-zinc-950 lui:sm:py-2 lui:sm:text-sm/5 lui:bg-zinc-950/5">
+          <svg class="lui:size-6 lui:shrink-0 lui:fill-zinc-950 lui:sm:size-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M9.293 2.293a1 1 0 0 1 1.414 0l7 7A1 1 0 0 1 17 11h-1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6H3a1 1 0 0 1-.707-1.707l7-7Z" clip-rule="evenodd" />
+          </svg>
+          <span class="lui:truncate">Home</span>
+        </a>
+        <a href="#" class="lui:flex lui:w-full lui:items-center lui:gap-3 lui:rounded-lg lui:px-2 lui:py-2.5 lui:text-left lui:text-base/6 lui:font-medium lui:text-zinc-950 lui:sm:py-2 lui:sm:text-sm/5 lui:hover:bg-zinc-950/5">
+          <svg class="lui:size-6 lui:shrink-0 lui:fill-zinc-500 lui:sm:size-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M6 4.75A.75.75 0 0 1 6.75 4h10.5a.75.75 0 0 1 0 1.5H6.75A.75.75 0 0 1 6 4.75ZM6 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H6.75A.75.75 0 0 1 6 10Zm0 5.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H6.75a.75.75 0 0 1-.75-.75ZM1.99 4.75a1 1 0 0 1 1-1H3a1 1 0 0 1 1 1v.01a1 1 0 0 1-1 1h-.01a1 1 0 0 1-1-1v-.01ZM1.99 15.25a1 1 0 0 1 1-1H3a1 1 0 0 1 1 1v.01a1 1 0 0 1-1 1h-.01a1 1 0 0 1-1-1v-.01ZM1.99 10a1 1 0 0 1 1-1H3a1 1 0 0 1 1 1v.01a1 1 0 0 1-1 1h-.01a1 1 0 0 1-1-1V10Z" clip-rule="evenodd" />
+          </svg>
+          <span class="lui:truncate">Events</span>
+        </a>
+        <a href="#" class="lui:flex lui:w-full lui:items-center lui:gap-3 lui:rounded-lg lui:px-2 lui:py-2.5 lui:text-left lui:text-base/6 lui:font-medium lui:text-zinc-950 lui:sm:py-2 lui:sm:text-sm/5 lui:hover:bg-zinc-950/5">
+          <svg class="lui:size-6 lui:shrink-0 lui:fill-zinc-500 lui:sm:size-5" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M1 4.25a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 19 4.25v11.5A2.25 2.25 0 0 1 16.75 18H3.25A2.25 2.25 0 0 1 1 15.75V4.25ZM3.25 3.5a.75.75 0 0 0-.75.75v.75h15v-.75a.75.75 0 0 0-.75-.75H3.25Zm14.25 3H2.5v8.25c0 .414.336.75.75.75h13.5a.75.75 0 0 0 .75-.75V6.5Z" />
+          </svg>
+          <span class="lui:truncate">Orders</span>
+        </a>
+        <a href="#" class="lui:flex lui:w-full lui:items-center lui:gap-3 lui:rounded-lg lui:px-2 lui:py-2.5 lui:text-left lui:text-base/6 lui:font-medium lui:text-zinc-950 lui:sm:py-2 lui:sm:text-sm/5 lui:hover:bg-zinc-950/5">
+          <svg class="lui:size-6 lui:shrink-0 lui:fill-zinc-500 lui:sm:size-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M8.34 1.804A1 1 0 0 1 9.32 1h1.36a1 1 0 0 1 .98.804l.295 1.473c.497.144.971.342 1.416.587l1.25-.834a1 1 0 0 1 1.262.125l.962.962a1 1 0 0 1 .125 1.262l-.834 1.25c.245.445.443.919.587 1.416l1.473.295a1 1 0 0 1 .804.98v1.36a1 1 0 0 1-.804.98l-1.473.295a6.95 6.95 0 0 1-.587 1.416l.834 1.25a1 1 0 0 1-.125 1.262l-.962.962a1 1 0 0 1-1.262.125l-1.25-.834a6.953 6.953 0 0 1-1.416.587l-.295 1.473a1 1 0 0 1-.98.804H9.32a1 1 0 0 1-.98-.804l-.295-1.473a6.957 6.957 0 0 1-1.416-.587l-1.25.834a1 1 0 0 1-1.262-.125l-.962-.962a1 1 0 0 1-.125-1.262l.834-1.25a6.957 6.957 0 0 1-.587-1.416l-1.473-.295A1 1 0 0 1 1 10.68V9.32a1 1 0 0 1 .804-.98l1.473-.295c.144-.497.342-.971.587-1.416l-.834-1.25a1 1 0 0 1 .125-1.262l.962-.962A1 1 0 0 1 5.38 3.03l1.25.834a6.957 6.957 0 0 1 1.416-.587l.294-1.473ZM13 10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" clip-rule="evenodd" />
+          </svg>
+          <span class="lui:truncate">Settings</span>
+        </a>
+      </div>
+    </div>
+  <% end %>
+
+  <% layout.with_footer do %>
+    <div class="lui:p-4">
+      <div class="lui:flex lui:items-center lui:gap-3">
+        <div class="lui:w-10 lui:h-10 lui:flex lui:items-center lui:justify-center lui:rounded-full lui:bg-zinc-200">
+          <span class="lui:text-sm lui:font-medium lui:text-zinc-600">JD</span>
+        </div>
+        <div class="lui:min-w-0">
+          <p class="lui:text-sm lui:font-medium lui:text-zinc-950 lui:truncate">John Doe</p>
+          <p class="lui:text-xs lui:text-zinc-500 lui:truncate">john@example.com</p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% layout.with_mobile_header do %>
+    <div aria-hidden="true" class="lui:-ml-4 lui:flex-1"></div>
+    <div class="lui:flex lui:items-center lui:gap-3">
+      <span class="lui:text-lg lui:font-semibold">Lightning UI</span>
+    </div>
+  <% end %>
+
+  <div class="lui:space-y-6">
+    <h1 class="lui:text-2xl lui:font-bold lui:text-zinc-950">Home</h1>
+    <hr class="lui:border-zinc-950/10" />
+    <p class="lui:text-zinc-600">This is the main content area. The sidebar layout provides a fixed navigation on desktop and a collapsible drawer on mobile devices.</p>
+    <p class="lui:text-zinc-600">Resize the window to see the responsive behavior. On mobile, tap the hamburger menu to open the sidebar.</p>
+  </div>
+<% end %>

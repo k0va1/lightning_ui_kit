@@ -2,8 +2,20 @@
   <%# Desktop Sidebar (absolute to parent, hidden on mobile) %>
   <div class="lui:absolute lui:inset-y-0 lui:left-0 <%= sidebar_width_class %> lui:max-lg:hidden">
     <nav class="lui:flex lui:h-full lui:min-h-0 lui:flex-col">
-      <%# Sidebar content from slot %>
-      <div class="lui:flex lui:flex-1 lui:flex-col lui:overflow-y-auto">
+      <%# Sidebar content %>
+      <div class="lui:flex lui:flex-1 lui:flex-col lui:overflow-y-auto lui:p-4">
+        <% if header? %>
+          <div class="lui:mb-4">
+            <%= header %>
+          </div>
+        <% end %>
+        <% if sections? %>
+          <div class="lui:space-y-6">
+            <% sections.each do |section| %>
+              <%= section %>
+            <% end %>
+          </div>
+        <% end %>
         <%= sidebar %>
       </div>
 
@@ -69,7 +81,19 @@
         </div>
 
         <%# Sidebar content %>
-        <div class="lui:flex lui:flex-1 lui:flex-col lui:overflow-y-auto">
+        <div class="lui:flex lui:flex-1 lui:flex-col lui:overflow-y-auto lui:p-4">
+          <% if header? %>
+            <div class="lui:mb-4">
+              <%= header %>
+            </div>
+          <% end %>
+          <% if sections? %>
+            <div class="lui:space-y-6">
+              <% sections.each do |section| %>
+                <%= section %>
+              <% end %>
+            </div>
+          <% end %>
           <%= sidebar %>
         </div>
 

@@ -1,0 +1,6 @@
+<%= link_to @url, class: classes, data: data do %>
+  <% if @icon %>
+    <%= heroicon(@icon, options: { class: icon_classes }) %>
+  <% end %>
+  <span><%= @title %></span>
+<% end %>

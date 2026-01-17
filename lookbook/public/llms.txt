@@ -97,7 +97,9 @@ application.register(`${namespace}-example`, ExampleController)
 - **DropdownComponent** - `trigger_text:`, `anchor:`, `position:` with item slots
 - **ModalComponent** - `id:`, `title:`, `description:`, `open:` with body/actions slots
 - **TooltipComponent** - `text:`, `position: :top/:bottom/:left/:right`, `active:`
-- **LayoutComponent** - `sidebar_width:` with sidebar/footer/mobile_header slots for app shell layout
+- **LayoutComponent** - `sidebar_width:` with header/sections/sidebar/footer/mobile_header slots for app shell layout
+- **SidebarSectionComponent** - `title:` - Groups sidebar links with optional section title
+- **SidebarLinkComponent** - `title:`, `url:`, `icon:`, `current:` - Navigation link with Heroicon support and active state
 - **SidebarComponent** - Sidebar layout
 - **LinkComponent** - Styled link wrapper
 
@@ -489,6 +491,43 @@ All controllers use `lui-` prefix:
 
   <h1 class="lui:text-2xl lui:font-bold">Dashboard</h1>
   <p>Main content goes here</p>
+<% end %>
+```
+
+### Layout with Sidebar Sections
+
+```erb
+<%= render LightningUiKit::LayoutComponent.new do |layout| %>
+  <% layout.with_header do %>
+    <div class="lui:flex lui:items-center lui:gap-2">
+      <%= image_tag "logo.svg", class: "lui:h-6" %>
+      <span class="lui:font-semibold">My App</span>
+    </div>
+  <% end %>
+
+  <% layout.with_section do |section| %>
+    <% section.with_link(title: "Search", url: "/search", icon: "magnifying-glass") %>
+    <% section.with_link(title: "Inbox", url: "/inbox", icon: "inbox") %>
+  <% end %>
+
+  <% layout.with_section do |section| %>
+    <% section.with_link(title: "Home", url: "/", icon: "home", current: true) %>
+    <% section.with_link(title: "Events", url: "/events", icon: "calendar") %>
+    <% section.with_link(title: "Settings", url: "/settings", icon: "cog-6-tooth") %>
+  <% end %>
+
+  <% layout.with_section(title: "Upcoming Events") do |section| %>
+    <% section.with_link(title: "Bear Hug: Live in Concert", url: "/events/1") %>
+    <% section.with_link(title: "Viking People", url: "/events/2") %>
+  <% end %>
+
+  <% layout.with_footer do %>
+    <div class="lui:p-4">
+      <%= render LightningUiKit::SidebarLinkComponent.new(title: "Support", url: "/support", icon: "question-mark-circle") %>
+    </div>
+  <% end %>
+
+  <p>Main content here</p>
 <% end %>
 ```
 

@@ -75,6 +75,7 @@ application.register(`${namespace}-example`, ExampleController)
 - **CheckboxComponent** - `name:`, `label:`, `checked:`, `form:`
 - **SwitchComponent** - `name:`, `label:`, `checked:`, `enabled:`
 - **SelectComponent** - `name:`, `options:`, `label:`, `form:`, `multiple:`
+- **ComboboxComponent** - `name:`, `options:`, `label:`, `form:`, `multiple:`, `allow_custom:`, `url:` (async), `placeholder:`, `selected:`, `min_chars:`, `debounce:`
 - **FileInputComponent** - `name:`, `label:`, `accept:`, `error:`
 - **DropzoneComponent** - Drag-and-drop file upload with ActiveStorage integration
 
@@ -287,6 +288,7 @@ All controllers use `lui-` prefix:
 | `lui-dropzone` | File uploads | ActiveStorage direct upload |
 | `lui-accordion` | Expand/collapse | Single-open enforcement |
 | `lui-clipboard` | Copy to clipboard | navigator.clipboard API |
+| `lui-combobox` | Autocomplete/typeahead | Floating UI, keyboard nav, async filtering |
 
 ### Binding Controllers
 
@@ -352,6 +354,45 @@ All controllers use `lui-` prefix:
 <%= render LightningUiKit::ToastComponent.new(timeout: 5000) do %>
   <p>Your changes have been saved!</p>
 <% end %>
+```
+
+### Combobox (Autocomplete)
+
+```erb
+<%# Single selection with client-side filtering %>
+<%= render LightningUiKit::ComboboxComponent.new(
+  name: :country,
+  label: "Country",
+  placeholder: "Search countries...",
+  options: [
+    { value: "us", label: "United States" },
+    { value: "uk", label: "United Kingdom" },
+    { value: "ca", label: "Canada" }
+  ]
+) %>
+
+<%# Multiple selection %>
+<%= render LightningUiKit::ComboboxComponent.new(
+  name: :tags,
+  label: "Tags",
+  multiple: true,
+  allow_custom: true,
+  selected: ["ruby", "rails"],
+  options: [
+    { value: "ruby", label: "Ruby" },
+    { value: "rails", label: "Rails" },
+    { value: "javascript", label: "JavaScript" }
+  ]
+) %>
+
+<%# Server-side filtering %>
+<%= render LightningUiKit::ComboboxComponent.new(
+  name: :user_id,
+  label: "User",
+  url: "/api/users/search",
+  min_chars: 2,
+  debounce: 300
+) %>
 ```
 
 ### Layout with Sidebar

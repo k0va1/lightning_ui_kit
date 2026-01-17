@@ -153,4 +153,32 @@ class ComboboxComponentPreview < Lookbook::Preview
       debounce: 300
     )
   end
+
+  # @label Nested Attributes (Association Mode)
+  # @note This demonstrates using the combobox with Rails nested attributes for has_many :through associations.
+  # Selecting existing tags uses tag_id, creating new tags uses tag_attributes[name], removing tags uses _destroy.
+  def nested_attributes
+    # Simulates: Post.find(1) with existing post_tags
+    # @post.post_tags => [{id: 1, tag_id: 1}, {id: 2, tag_id: 3}]
+    render LightningUiKit::ComboboxComponent.new(
+      name: :post_tags_attributes,
+      label: "Tags",
+      description: "Select existing tags or create new ones (uses nested attributes)",
+      placeholder: "Search or create tags...",
+      foreign_key: :tag_id,
+      nested_model: :tag,
+      allow_custom: true,
+      options: [
+        {value: 1, label: "Ruby"},
+        {value: 2, label: "Rails"},
+        {value: 3, label: "JavaScript"},
+        {value: 4, label: "TypeScript"},
+        {value: 5, label: "Python"}
+      ],
+      selected: [
+        {join_id: 1, value: 1},  # Existing post_tag (id=1) with tag_id=1 (Ruby)
+        {join_id: 2, value: 3}   # Existing post_tag (id=2) with tag_id=3 (JavaScript)
+      ]
+    )
+  end
 end

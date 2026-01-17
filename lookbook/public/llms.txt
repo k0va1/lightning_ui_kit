@@ -75,7 +75,7 @@ application.register(`${namespace}-example`, ExampleController)
 - **CheckboxComponent** - `name:`, `label:`, `checked:`, `form:`
 - **SwitchComponent** - `name:`, `label:`, `checked:`, `enabled:`
 - **SelectComponent** - `name:`, `options:`, `label:`, `form:`, `multiple:`
-- **ComboboxComponent** - `name:`, `options:`, `label:`, `form:`, `multiple:`, `allow_custom:`, `url:` (async), `placeholder:`, `selected:`, `min_chars:`, `debounce:`
+- **ComboboxComponent** - `name:`, `options:`, `label:`, `form:`, `multiple:`, `allow_custom:`, `url:` (async), `placeholder:`, `selected:`, `min_chars:`, `debounce:`, `association:`, `foreign_key:`, `nested_model:`, `collection:`, `label_method:`, `value_method:`
 - **FileInputComponent** - `name:`, `label:`, `accept:`, `error:`
 - **DropzoneComponent** - Drag-and-drop file upload with ActiveStorage integration
 
@@ -392,6 +392,39 @@ All controllers use `lui-` prefix:
   url: "/api/users/search",
   min_chars: 2,
   debounce: 300
+) %>
+
+<%# Nested attributes for has_many :through associations (SimpleForm-inspired) %>
+<%# Supports: selecting existing records, creating new records, removing associations %>
+<%= form_with model: @post do |f| %>
+  <%= render LightningUiKit::ComboboxComponent.new(
+    form: f,
+    association: :post_tags,        # Join association name
+    foreign_key: :tag_id,           # FK in join table for existing records
+    nested_model: :tag,             # Nested model for creating new records
+    collection: Tag.all,            # Or array of objects
+    label_method: :name,            # Method for labels (default: :to_s)
+    value_method: :id,              # Method for values (default: :id)
+    allow_custom: true,             # Enable creating new tags inline
+    label: "Tags",
+    placeholder: "Search or create tags..."
+  ) %>
+<% end %>
+
+<%# Manual nested attributes (without association helper) %>
+<%= render LightningUiKit::ComboboxComponent.new(
+  name: :post_tags_attributes,
+  foreign_key: :tag_id,
+  nested_model: :tag,
+  allow_custom: true,
+  options: [
+    { value: 1, label: "Ruby" },
+    { value: 2, label: "Rails" }
+  ],
+  selected: [
+    { join_id: 1, value: 1 },  # Existing join record (id=1) with tag_id=1
+    { join_id: 2, value: 2 }   # Existing join record (id=2) with tag_id=2
+  ]
 ) %>
 ```
 

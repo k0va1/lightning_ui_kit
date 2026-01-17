@@ -25,7 +25,9 @@ export default class extends Controller {
     minChars: { type: Number, default: 0 },
     debounce: { type: Number, default: 300 },
     options: { type: Array, default: [] },
-    selected: { type: Array, default: [] }
+    selected: { type: Array, default: [] },
+    foreignKey: String,
+    nestedModel: String
   }
 
   connect() {
@@ -35,11 +37,18 @@ export default class extends Controller {
     this.cleanup = null
     this.debounceTimer = null
 
+    // Store original selected for detecting removals in association mode
+    this.originalSelected = this.deepClone(this.selectedValue)
+
     this.initializeSelected()
 
     if (!this.hasUrlValue) {
       this.filteredOptions = this.optionsValue
     }
+  }
+
+  get isAssociationMode() {
+    return this.hasForeignKeyValue
   }
 
   disconnect() {
@@ -81,6 +90,28 @@ export default class extends Controller {
   }
 
   onKeydown(event) {
+    // Handle Ctrl+N and Ctrl+P for navigation
+    if (event.ctrlKey) {
+      if (event.key === "n") {
+        event.preventDefault()
+        if (!this.isOpen) {
+          this.open()
+        } else {
+          this.highlightNext()
+        }
+        return
+      }
+      if (event.key === "p") {
+        event.preventDefault()
+        if (!this.isOpen) {
+          this.open()
+        } else {
+          this.highlightPrevious()
+        }
+        return
+      }
+    }
+
     switch (event.key) {
       case "ArrowDown":
         event.preventDefault()
@@ -104,6 +135,7 @@ export default class extends Controller {
         break
       case "Escape":
         this.close()
+        this.inputTarget.value = ""
         break
       case "Backspace":
         if (this.multipleValue && this.inputTarget.value === "") {
@@ -141,18 +173,38 @@ export default class extends Controller {
     }
   }
 
-  toggleSelection(value, _label) {
-    const index = this.selectedValue.indexOf(value)
-    if (index > -1) {
-      this.selectedValue = this.selectedValue.filter(v => v !== value)
+  toggleSelection(value, _label, isCustom = false) {
+    const selectedIdx = this.findSelectedIndex(value)
+
+    if (selectedIdx > -1) {
+      // Remove from selection
+      this.selectedValue = this.selectedValue.filter((_, i) => i !== selectedIdx)
     } else {
-      this.selectedValue = [...this.selectedValue, value]
+      // Add to selection
+      if (this.isAssociationMode) {
+        // In association mode, store as object
+        const newItem = { value: value }
+        if (isCustom) {
+          newItem.custom = true
+        }
+        this.selectedValue = [...this.selectedValue, newItem]
+      } else {
+        this.selectedValue = [...this.selectedValue, value]
+      }
     }
+
     this.updateSelectedTags()
     this.updateHiddenFields()
     this.renderOptions()
     this.inputTarget.value = ""
     this.inputTarget.focus()
+  }
+
+  findSelectedIndex(value) {
+    return this.selectedValue.findIndex(item => {
+      const itemValue = typeof item === 'object' ? item.value : item
+      return String(itemValue) === String(value)
+    })
   }
 
   setSingleSelection(value, label) {
@@ -174,7 +226,10 @@ export default class extends Controller {
     event.preventDefault()
     event.stopPropagation()
     const value = event.currentTarget.dataset.value
-    this.selectedValue = this.selectedValue.filter(v => v !== value)
+    const selectedIdx = this.findSelectedIndex(value)
+    if (selectedIdx > -1) {
+      this.selectedValue = this.selectedValue.filter((_, i) => i !== selectedIdx)
+    }
     this.updateSelectedTags()
     this.updateHiddenFields()
     this.renderOptions()
@@ -185,11 +240,11 @@ export default class extends Controller {
     const value = this.inputTarget.value.trim()
     if (value && this.allowCustomValue) {
       if (this.multipleValue) {
-        this.toggleSelection(value, value)
+        this.toggleSelection(value, value, true) // isCustom = true
       } else {
         this.setSingleSelection(value, value)
-        this.close()
       }
+      this.close()
     }
   }
 
@@ -259,7 +314,7 @@ export default class extends Controller {
       optionEl.dataset.index = index
       optionEl.querySelector("[data-label]").textContent = opt.label
 
-      const isSelected = this.selectedValue.includes(String(opt.value))
+      const isSelected = this.isValueSelected(opt.value)
       if (isSelected) {
         optionEl.dataset.selected = "true"
         optionEl.setAttribute("aria-selected", "true")
@@ -287,7 +342,8 @@ export default class extends Controller {
     existingTags.forEach(tag => tag.remove())
 
     // Insert new tags before the input
-    this.selectedValue.forEach(value => {
+    this.selectedValue.forEach(item => {
+      const value = this.getItemValue(item)
       const opt = this.findOptionByValue(value)
       const label = opt ? opt.label : value
 
@@ -296,7 +352,7 @@ export default class extends Controller {
       tag.className = "lui:inline-flex lui:items-center lui:gap-1 lui:rounded-md lui:bg-zinc-100 lui:px-2 lui:py-0.5 lui:text-sm lui:text-zinc-700"
       tag.innerHTML = `
         <span class="lui:truncate lui:max-w-[150px]">${this.escapeHtml(label)}</span>
-        <button type="button" data-value="${this.escapeHtml(value)}" data-action="click->lui-combobox#removeTag" class="lui:text-zinc-500 lui:hover:text-zinc-700 lui:flex-shrink-0 lui:ml-0.5">
+        <button type="button" data-value="${this.escapeHtml(String(value))}" data-action="click->lui-combobox#removeTag" class="lui:text-zinc-500 lui:hover:text-zinc-700 lui:flex-shrink-0 lui:ml-0.5">
           <svg class="lui:h-3.5 lui:w-3.5" viewBox="0 0 16 16" fill="currentColor">
             <path d="M5.28 4.22a.75.75 0 00-1.06 1.06L6.94 8l-2.72 2.72a.75.75 0 101.06 1.06L8 9.06l2.72 2.72a.75.75 0 101.06-1.06L9.06 8l2.72-2.72a.75.75 0 00-1.06-1.06L8 6.94 5.28 4.22z"/>
           </svg>
@@ -317,18 +373,84 @@ export default class extends Controller {
   updateHiddenFields() {
     if (!this.hasHiddenFieldsTarget) return
 
+    if (this.isAssociationMode) {
+      this.updateNestedHiddenFields()
+    } else {
+      this.updateSimpleHiddenFields()
+    }
+  }
+
+  updateSimpleHiddenFields() {
     const container = this.hiddenFieldsTarget
     const name = container.dataset.name
 
     container.innerHTML = ""
 
-    this.selectedValue.forEach(value => {
+    this.selectedValue.forEach(item => {
+      const value = this.getItemValue(item)
       const input = document.createElement("input")
       input.type = "hidden"
       input.name = name
       input.value = value
       container.appendChild(input)
     })
+  }
+
+  updateNestedHiddenFields() {
+    const container = this.hiddenFieldsTarget
+    const baseName = container.dataset.name
+    const fk = this.foreignKeyValue
+    const nestedModel = this.hasNestedModelValue ? this.nestedModelValue : null
+
+    container.innerHTML = ""
+    let idx = 0
+
+    // Current selections (preserved existing + new)
+    this.selectedValue.forEach(item => {
+      const isObject = typeof item === 'object'
+      const joinId = isObject ? item.join_id : null
+      const value = isObject ? item.value : item
+      const isCustom = isObject ? item.custom : !this.isExistingOption(value)
+
+      if (joinId) {
+        // Existing record - include join table id
+        this.addHiddenInput(container, `${baseName}[${idx}][id]`, joinId)
+      }
+
+      if (isCustom && nestedModel) {
+        // New record via nested attributes (e.g., tag_attributes[name])
+        this.addHiddenInput(container, `${baseName}[${idx}][${nestedModel}_attributes][name]`, value)
+      } else {
+        // Existing record by foreign key (e.g., tag_id)
+        this.addHiddenInput(container, `${baseName}[${idx}][${fk}]`, value)
+      }
+      idx++
+    })
+
+    // Removed records - mark for destruction
+    this.originalSelected.forEach(orig => {
+      const origValue = typeof orig === 'object' ? orig.value : orig
+      const origJoinId = typeof orig === 'object' ? orig.join_id : null
+
+      const stillSelected = this.selectedValue.some(sel => {
+        const selValue = typeof sel === 'object' ? sel.value : sel
+        return String(selValue) === String(origValue)
+      })
+
+      if (!stillSelected && origJoinId) {
+        this.addHiddenInput(container, `${baseName}[${idx}][id]`, origJoinId)
+        this.addHiddenInput(container, `${baseName}[${idx}][_destroy]`, 'true')
+        idx++
+      }
+    })
+  }
+
+  addHiddenInput(container, name, value) {
+    const input = document.createElement("input")
+    input.type = "hidden"
+    input.name = name
+    input.value = value
+    container.appendChild(input)
   }
 
   // Dropdown Positioning (Floating UI)
@@ -516,5 +638,25 @@ export default class extends Controller {
     const div = document.createElement("div")
     div.textContent = text
     return div.innerHTML
+  }
+
+  // Helper to get the value from an item (handles both simple values and objects)
+  getItemValue(item) {
+    return typeof item === 'object' ? item.value : item
+  }
+
+  // Check if a value is currently selected
+  isValueSelected(value) {
+    return this.findSelectedIndex(value) > -1
+  }
+
+  // Check if a value exists in the options (not a custom value)
+  isExistingOption(value) {
+    return this.optionsValue.some(opt => String(opt.value) === String(value))
+  }
+
+  // Deep clone for storing original selected state
+  deepClone(obj) {
+    return JSON.parse(JSON.stringify(obj))
   }
 }

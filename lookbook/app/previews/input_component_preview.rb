@@ -15,4 +15,13 @@ class InputComponentPreview < Lookbook::Preview
       description: "Select your date of birth"
     )
   end
+
+  def datetime
+    render LightningUiKit::InputComponent.new(
+      name: :scheduled_at,
+      type: :datetime,
+      label: "Scheduled At",
+      description: "Select date and time"
+    )
+  end
 end

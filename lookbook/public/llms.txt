@@ -70,7 +70,7 @@ application.register(`${namespace}-example`, ExampleController)
 
 ### Form Components
 - **ButtonComponent** - `style: :default/:outline/:destructive`, `size: :default/:small`, `disabled:`, `url:` (renders as link)
-- **InputComponent** - `name:`, `type: :text/:email/:password/:number`, `label:`, `form:`, `error:`, `description:`, `placeholder:`
+- **InputComponent** - `name:`, `type: :text/:email/:password/:number/:date/:datetime`, `label:`, `form:`, `error:`, `description:`, `placeholder:`, `min:`, `max:`
 - **TextareaComponent** - `name:`, `label:`, `form:`, `rows:`, `error:`
 - **CheckboxComponent** - `name:`, `label:`, `checked:`, `form:`
 - **SwitchComponent** - `name:`, `label:`, `checked:`, `enabled:`

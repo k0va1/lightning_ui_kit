@@ -44,4 +44,10 @@ class LightningUiKit::InputComponentTest < ViewComponent::TestCase
 
     assert_includes result.to_html, "password"
   end
+
+  def test_renders_datetime_type
+    result = render_inline(LightningUiKit::InputComponent.new(name: "scheduled_at", type: :datetime))
+
+    assert_includes result.to_html, "datetime-local"
+  end
 end

@@ -22,7 +22,7 @@ class LightningUiKit::JsonbComponent < LightningUiKit::BaseComponent
 
   def data
     {
-      controller: "lui-jsonb",
+      :controller => "lui-jsonb",
       "lui-jsonb-mode-value" => mode,
       "lui-jsonb-disabled-value" => @disabled,
       "lui-jsonb-key-placeholder-value" => @key_placeholder,
@@ -85,6 +85,6 @@ class LightningUiKit::JsonbComponent < LightningUiKit::BaseComponent
   end
 
   def add_button_text
-    mode == "array" ? "Add Item" : "Add Field"
+    (mode == "array") ? "Add Item" : "Add Field"
   end
 end

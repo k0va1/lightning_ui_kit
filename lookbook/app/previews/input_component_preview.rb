@@ -6,4 +6,13 @@ class InputComponentPreview < Lookbook::Preview
       description: "Enter some text"
     )
   end
+
+  def date
+    render LightningUiKit::InputComponent.new(
+      name: :birthday,
+      type: :date,
+      label: "Birthday",
+      description: "Select your date of birth"
+    )
+  end
 end

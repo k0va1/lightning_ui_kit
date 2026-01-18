@@ -24,7 +24,7 @@ class LightningUiKit::SelectComponent < LightningUiKit::BaseComponent
   end
 
   def select_data
-    {lui_field_target: "field"}.dup.merge(@options[:select_data]).tap do |data|
+    {lui_field_target: "field"}.merge(@options[:select_data] || {}).tap do |data|
       data[:invalid] = "true" if has_errors?
     end
   end

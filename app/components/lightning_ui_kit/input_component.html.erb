@@ -23,6 +23,10 @@
       <span data-slot="control" class="lui:block lui:w-full lui:py-2">
         <%= @form.range_field(@name, **range_html_options) %>
       </span>
+    <% elsif @type == :color %>
+      <span data-slot="control" class="lui:block lui:py-1">
+        <%= @form.color_field(@name, **color_html_options) %>
+      </span>
     <% else %>
       <span data-slot="control" class="lui:relative lui:block lui:w-full lui:before:absolute lui:before:inset-px lui:before:rounded-[calc(var(--radius-lg)-1px)] lui:before:bg-white lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-transparent lui:after:ring-inset lui:sm:focus-within:after:ring-2 lui:sm:focus-within:after:ring-blue-500 lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-zinc-950/5 lui:has-data-disabled:before:shadow-none lui:has-data-invalid:before:shadow-red-500/10">
         <% case @type %>
@@ -59,6 +63,10 @@
     <% elsif @type == :range %>
       <span data-slot="control" class="lui:block lui:w-full lui:py-2">
         <%= range_field_tag(@name, @value, **range_html_options) %>
+      </span>
+    <% elsif @type == :color %>
+      <span data-slot="control" class="lui:block lui:py-1">
+        <%= color_field_tag(@name, @value, **color_html_options) %>
       </span>
     <% else %>
       <span data-slot="control" class="lui:relative lui:block lui:w-full lui:before:absolute lui:before:inset-px lui:before:rounded-[calc(var(--radius-lg)-1px)] lui:before:bg-white lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-transparent lui:after:ring-inset lui:sm:focus-within:after:ring-2 lui:sm:focus-within:after:ring-blue-500 lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-zinc-950/5 lui:has-data-disabled:before:shadow-none lui:has-data-invalid:before:shadow-red-500/10">

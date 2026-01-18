@@ -483,6 +483,9 @@
   .lui\:w-11 {
     width: calc(var(--lui-spacing) * 11);
   }
+  .lui\:w-14 {
+    width: calc(var(--lui-spacing) * 14);
+  }
   .lui\:w-48 {
     width: calc(var(--lui-spacing) * 48);
   }
@@ -1999,6 +2002,11 @@
       box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
+  .lui\:focus\:ring-blue-500 {
+    &:focus {
+      --tw-ring-color: var(--lui-color-blue-500);
+    }
+  }
   .lui\:focus\:ring-zinc-950\/10 {
     &:focus {
       --tw-ring-color: var(--lui-color-zinc-950);
@@ -2097,6 +2105,11 @@
         content: var(--tw-content);
         background-color: var(--btn-hover-overlay);
       }
+    }
+  }
+  .lui\:disabled\:cursor-not-allowed {
+    &:disabled {
+      cursor: not-allowed;
     }
   }
   .lui\:disabled\:opacity-50 {

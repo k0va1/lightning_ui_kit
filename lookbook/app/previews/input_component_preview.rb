@@ -125,6 +125,16 @@ class InputComponentPreview < Lookbook::Preview
     )
   end
 
+  def color
+    render LightningUiKit::InputComponent.new(
+      name: :brand_color,
+      type: :color,
+      label: "Brand Color",
+      description: "Select your brand color",
+      value: "#3b82f6"
+    )
+  end
+
   def with_html_options
     render LightningUiKit::InputComponent.new(
       name: :username,

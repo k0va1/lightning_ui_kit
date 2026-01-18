@@ -98,6 +98,22 @@ class LightningUiKit::InputComponent < LightningUiKit::BaseComponent
     {data: input_data}.merge(@input_options).compact
   end
 
+  def color_html_options
+    {
+      data: input_data,
+      class: color_classes,
+      disabled: @disabled
+    }.merge(@input_options).compact
+  end
+
+  def color_classes
+    "lui:h-10 lui:w-14 lui:cursor-pointer lui:appearance-none lui:rounded-lg lui:border lui:border-zinc-950/10 lui:bg-transparent lui:p-1 " \
+    "lui:hover:border-zinc-950/20 lui:focus:outline-none lui:focus:ring-2 lui:focus:ring-blue-500 " \
+    "[&::-webkit-color-swatch-wrapper]:lui:p-0 [&::-webkit-color-swatch]:lui:rounded-md [&::-webkit-color-swatch]:lui:border-0 " \
+    "[&::-moz-color-swatch]:lui:rounded-md [&::-moz-color-swatch]:lui:border-0 " \
+    "lui:disabled:opacity-50 lui:disabled:cursor-not-allowed"
+  end
+
   def range_classes
     "lui:w-full lui:h-2 lui:appearance-none lui:cursor-pointer lui:bg-zinc-200 lui:rounded-full lui:focus:outline-none " \
     "[&::-webkit-slider-thumb]:lui:appearance-none [&::-webkit-slider-thumb]:lui:w-4 [&::-webkit-slider-thumb]:lui:h-4 [&::-webkit-slider-thumb]:lui:bg-blue-600 [&::-webkit-slider-thumb]:lui:rounded-full [&::-webkit-slider-thumb]:lui:cursor-pointer [&::-webkit-slider-thumb]:lui:shadow-sm [&::-webkit-slider-thumb]:lui:transition-transform [&::-webkit-slider-thumb]:hover:lui:scale-110 " \

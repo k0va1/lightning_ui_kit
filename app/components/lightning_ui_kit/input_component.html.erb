@@ -18,290 +18,75 @@
   <% end %>
   <% if @form %>
     <% if @type == :hidden %>
-      <%= @form.hidden_field(@name, data: input_data) %>
+      <%= @form.hidden_field(@name, **hidden_html_options) %>
     <% elsif @type == :range %>
       <span data-slot="control" class="lui:block lui:w-full lui:py-2">
-        <%= @form.range_field(
-          @name,
-          data: input_data,
-          class: range_classes,
-          disabled: @disabled,
-          autofocus: @autofocus,
-          min: @options[:min],
-          max: @options[:max],
-          step: @options[:step]
-        ) %>
+        <%= @form.range_field(@name, **range_html_options) %>
       </span>
     <% else %>
       <span data-slot="control" class="lui:relative lui:block lui:w-full lui:before:absolute lui:before:inset-px lui:before:rounded-[calc(var(--radius-lg)-1px)] lui:before:bg-white lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-transparent lui:after:ring-inset lui:sm:focus-within:after:ring-2 lui:sm:focus-within:after:ring-blue-500 lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-zinc-950/5 lui:has-data-disabled:before:shadow-none lui:has-data-invalid:before:shadow-red-500/10">
         <% case @type %>
         <% when :text %>
-          <%= @form.text_field(
-            @name,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            placeholder: @placeholder
-          ) %>
+          <%= @form.text_field(@name, **input_html_options) %>
         <% when :email %>
-          <%= @form.email_field(
-            @name,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            placeholder: @placeholder
-          ) %>
+          <%= @form.email_field(@name, **input_html_options) %>
         <% when :password %>
-          <%= @form.password_field(
-            @name,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            placeholder: @placeholder
-          ) %>
+          <%= @form.password_field(@name, **input_html_options) %>
         <% when :number %>
-          <%= @form.number_field(
-            @name,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            placeholder: @placeholder,
-            min: @options[:min],
-            max: @options[:max],
-            step: @options[:step]
-          ) %>
+          <%= @form.number_field(@name, **input_html_options) %>
         <% when :date %>
-          <%= @form.date_field(
-            @name,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            min: @options[:min],
-            max: @options[:max]
-          ) %>
+          <%= @form.date_field(@name, **input_html_options) %>
         <% when :datetime %>
-          <%= @form.datetime_field(
-            @name,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            min: @options[:min],
-            max: @options[:max]
-          ) %>
+          <%= @form.datetime_field(@name, **input_html_options) %>
         <% when :month %>
-          <%= @form.month_field(
-            @name,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            min: @options[:min],
-            max: @options[:max]
-          ) %>
+          <%= @form.month_field(@name, **input_html_options) %>
         <% when :week %>
-          <%= @form.week_field(
-            @name,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            min: @options[:min],
-            max: @options[:max]
-          ) %>
+          <%= @form.week_field(@name, **input_html_options) %>
         <% when :time %>
-          <%= @form.time_field(
-            @name,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            min: @options[:min],
-            max: @options[:max]
-          ) %>
+          <%= @form.time_field(@name, **input_html_options) %>
         <% when :url %>
-          <%= @form.url_field(
-            @name,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            placeholder: @placeholder
-          ) %>
+          <%= @form.url_field(@name, **input_html_options) %>
         <% when :search %>
-          <%= @form.search_field(
-            @name,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            placeholder: @placeholder
-          ) %>
+          <%= @form.search_field(@name, **input_html_options) %>
         <% when :phone, :telephone %>
-          <%= @form.telephone_field(
-            @name,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            placeholder: @placeholder
-          ) %>
+          <%= @form.telephone_field(@name, **input_html_options) %>
         <% end %>
       </span>
     <% end %>
   <% else %>
     <% if @type == :hidden %>
-      <%= hidden_field_tag(@name, @value, data: input_data) %>
+      <%= hidden_field_tag(@name, @value, **hidden_html_options) %>
     <% elsif @type == :range %>
       <span data-slot="control" class="lui:block lui:w-full lui:py-2">
-        <%= range_field_tag(
-          @name,
-          @value,
-          data: input_data,
-          class: range_classes,
-          disabled: @disabled,
-          autofocus: @autofocus,
-          min: @options[:min],
-          max: @options[:max],
-          step: @options[:step]
-        ) %>
+        <%= range_field_tag(@name, @value, **range_html_options) %>
       </span>
     <% else %>
       <span data-slot="control" class="lui:relative lui:block lui:w-full lui:before:absolute lui:before:inset-px lui:before:rounded-[calc(var(--radius-lg)-1px)] lui:before:bg-white lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-transparent lui:after:ring-inset lui:sm:focus-within:after:ring-2 lui:sm:focus-within:after:ring-blue-500 lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-zinc-950/5 lui:has-data-disabled:before:shadow-none lui:has-data-invalid:before:shadow-red-500/10">
         <% case @type %>
         <% when :text %>
-          <%= text_field_tag(
-            @name,
-            @value,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            placeholder: @placeholder
-          ) %>
+          <%= text_field_tag(@name, @value, **input_html_options) %>
         <% when :email %>
-          <%= email_field_tag(
-            @name,
-            @value,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            placeholder: @placeholder
-          ) %>
+          <%= email_field_tag(@name, @value, **input_html_options) %>
         <% when :password %>
-          <%= password_field_tag(
-            @name,
-            @value,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            placeholder: @placeholder
-          ) %>
+          <%= password_field_tag(@name, @value, **input_html_options) %>
         <% when :number %>
-          <%= number_field_tag(
-            @name,
-            @value,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            placeholder: @placeholder,
-            min: @options[:min],
-            max: @options[:max],
-            step: @options[:step]
-          ) %>
+          <%= number_field_tag(@name, @value, **input_html_options) %>
         <% when :date %>
-          <%= date_field_tag(
-            @name,
-            @value,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            min: @options[:min],
-            max: @options[:max]
-          ) %>
+          <%= date_field_tag(@name, @value, **input_html_options) %>
         <% when :datetime %>
-          <%= datetime_field_tag(
-            @name,
-            @value,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            min: @options[:min],
-            max: @options[:max]
-          ) %>
+          <%= datetime_field_tag(@name, @value, **input_html_options) %>
         <% when :month %>
-          <%= month_field_tag(
-            @name,
-            @value,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            min: @options[:min],
-            max: @options[:max]
-          ) %>
+          <%= month_field_tag(@name, @value, **input_html_options) %>
         <% when :week %>
-          <%= week_field_tag(
-            @name,
-            @value,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            min: @options[:min],
-            max: @options[:max]
-          ) %>
+          <%= week_field_tag(@name, @value, **input_html_options) %>
         <% when :time %>
-          <%= time_field_tag(
-            @name,
-            @value,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            min: @options[:min],
-            max: @options[:max]
-          ) %>
+          <%= time_field_tag(@name, @value, **input_html_options) %>
         <% when :url %>
-          <%= url_field_tag(
-            @name,
-            @value,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            placeholder: @placeholder
-          ) %>
+          <%= url_field_tag(@name, @value, **input_html_options) %>
         <% when :search %>
-          <%= search_field_tag(
-            @name,
-            @value,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            placeholder: @placeholder
-          ) %>
+          <%= search_field_tag(@name, @value, **input_html_options) %>
         <% when :phone, :telephone %>
-          <%= telephone_field_tag(
-            @name,
-            @value,
-            data: input_data,
-            class: input_classes,
-            disabled: @disabled,
-            autofocus: @autofocus,
-            placeholder: @placeholder
-          ) %>
+          <%= telephone_field_tag(@name, @value, **input_html_options) %>
         <% end %>
       </span>
     <% end %>

@@ -124,4 +124,28 @@ class InputComponentPreview < Lookbook::Preview
       step: 10
     )
   end
+
+  def with_html_options
+    render LightningUiKit::InputComponent.new(
+      name: :username,
+      label: "Username",
+      description: "Choose a username (required, max 20 chars)",
+      input_options: {
+        required: true,
+        maxlength: 20,
+        pattern: "[a-z0-9_]+",
+        autocomplete: "username"
+      }
+    )
+  end
+
+  def readonly
+    render LightningUiKit::InputComponent.new(
+      name: :api_key,
+      label: "API Key",
+      value: "sk_live_abc123xyz",
+      description: "Your API key (read-only)",
+      input_options: {readonly: true}
+    )
+  end
 end

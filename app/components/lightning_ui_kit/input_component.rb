@@ -3,17 +3,17 @@
 class LightningUiKit::InputComponent < LightningUiKit::BaseComponent
   include LightningUiKit::Errors
 
-  def initialize(name:, value: nil, autofocus: false, label: nil, form: nil, type: :text, description: nil, disabled: false, placeholder: nil, error: nil, **options)
+  def initialize(name:, value: nil, label: nil, form: nil, type: :text, description: nil, disabled: false, placeholder: nil, error: nil, input_options: {}, **options)
     @name = name
     @value = value
     @disabled = disabled
-    @autofocus = autofocus
     @error = error
     @label = label
     @form = form
     @type = type
     @description = description
     @placeholder = placeholder
+    @input_options = input_options
     @options = options
   end
 
@@ -59,6 +59,43 @@ class LightningUiKit::InputComponent < LightningUiKit::BaseComponent
 
   def input_classes
     "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] lui:sm:px-[calc(--spacing(3)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:hover:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:hover:border-red-500/60 lui:data-disabled:border-zinc-950/20"
+  end
+
+  def input_html_options
+    base_options = {
+      data: input_data,
+      class: input_classes,
+      disabled: @disabled,
+      placeholder: @placeholder
+    }
+
+    # Add type-specific options
+    case @type
+    when :number
+      base_options[:min] = @options[:min]
+      base_options[:max] = @options[:max]
+      base_options[:step] = @options[:step]
+    when :date, :datetime, :month, :week, :time
+      base_options[:min] = @options[:min]
+      base_options[:max] = @options[:max]
+    end
+
+    base_options.merge(@input_options).compact
+  end
+
+  def range_html_options
+    {
+      data: input_data,
+      class: range_classes,
+      disabled: @disabled,
+      min: @options[:min],
+      max: @options[:max],
+      step: @options[:step]
+    }.merge(@input_options).compact
+  end
+
+  def hidden_html_options
+    {data: input_data}.merge(@input_options).compact
   end
 
   def range_classes

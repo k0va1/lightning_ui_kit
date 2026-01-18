@@ -41,10 +41,40 @@ export default class extends Controller {
     this.originalSelected = this.deepClone(this.selectedValue)
 
     this.initializeSelected()
+    this.setupHoverHandlers()
 
     if (!this.hasUrlValue) {
       this.filteredOptions = this.optionsValue
     }
+  }
+
+  setupHoverHandlers() {
+    // For single mode, add hover to input
+    if (this.hasInputTarget) {
+      this.inputTarget.addEventListener("mouseenter", this.handleMouseEnter)
+      this.inputTarget.addEventListener("mouseleave", this.handleMouseLeave)
+    }
+    // For multiple mode, add hover to inputWrapper
+    if (this.hasInputWrapperTarget) {
+      this.inputWrapperTarget.addEventListener("mouseenter", this.handleWrapperMouseEnter)
+      this.inputWrapperTarget.addEventListener("mouseleave", this.handleWrapperMouseLeave)
+    }
+  }
+
+  handleMouseEnter = (event) => {
+    event.target.dataset.hover = ""
+  }
+
+  handleMouseLeave = (event) => {
+    delete event.target.dataset.hover
+  }
+
+  handleWrapperMouseEnter = (event) => {
+    event.currentTarget.dataset.hover = ""
+  }
+
+  handleWrapperMouseLeave = (event) => {
+    delete event.currentTarget.dataset.hover
   }
 
   get isAssociationMode() {
@@ -54,6 +84,18 @@ export default class extends Controller {
   disconnect() {
     this.destroyFloating()
     this.clearDebounce()
+    this.cleanupHoverHandlers()
+  }
+
+  cleanupHoverHandlers() {
+    if (this.hasInputTarget) {
+      this.inputTarget.removeEventListener("mouseenter", this.handleMouseEnter)
+      this.inputTarget.removeEventListener("mouseleave", this.handleMouseLeave)
+    }
+    if (this.hasInputWrapperTarget) {
+      this.inputWrapperTarget.removeEventListener("mouseenter", this.handleWrapperMouseEnter)
+      this.inputWrapperTarget.removeEventListener("mouseleave", this.handleWrapperMouseLeave)
+    }
   }
 
   // Event Handlers

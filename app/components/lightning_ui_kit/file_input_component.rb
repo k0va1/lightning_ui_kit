@@ -21,8 +21,12 @@ class LightningUiKit::FileInputComponent < LightningUiKit::BaseComponent
     merge_classes(["lui:[&>[data-slot=label]+[data-slot=control]]:mt-3 lui:[&>[data-slot=label]+[data-slot=description]]:mt-1 lui:[&>[data-slot=description]+[data-slot=control]]:mt-3 lui:[&>[data-slot=control]+[data-slot=description]]:mt-3 lui:[&>[data-slot=control]+[data-slot=error]]:mt-3 lui:*:data-[slot=label]:font-medium", @options[:class]].compact.join(" "))
   end
 
+  def data
+    {controller: "lui-field"}.merge(@options[:data] || {})
+  end
+
   def input_data
-    (@options[:input_data] || {}).dup.tap do |data|
+    {lui_field_target: "field"}.merge(@options[:input_data] || {}).dup.tap do |data|
       data[:disabled] = "true" if @disabled
       data[:invalid] = "true" if has_errors?
     end
@@ -64,7 +68,7 @@ class LightningUiKit::FileInputComponent < LightningUiKit::BaseComponent
   end
 
   def file_input_classes
-    "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:hover:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:hover:border-red-500 lui:data-disabled:hover:none lui:data-disabled:cursor-not-allowed lui:data-disabled:border-zinc-950/20 lui:data-disabled:file:cursor-not-allowed lui:file:cursor-pointer lui:cursor-pointer lui:file:border-0 lui:file:px-[calc(--spacing(3.5)-1px)] lui:file:py-[calc(--spacing(2.5)-1px)] lui:file:sm:px-[calc(--spacing(3)-1px)] lui:file:sm:py-[calc(--spacing(1.5)-1px)] lui:file:mr-4 lui:file:bg-zinc-100 lui:file:rounded-l-[calc(var(--radius-lg)-1px)]"
+    "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:data-[hover]:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:data-[hover]:border-red-500 lui:data-disabled:cursor-not-allowed lui:data-disabled:border-zinc-950/20 lui:data-disabled:file:cursor-not-allowed lui:file:cursor-pointer lui:cursor-pointer lui:file:border-0 lui:file:px-[calc(--spacing(3.5)-1px)] lui:file:py-[calc(--spacing(2.5)-1px)] lui:file:sm:px-[calc(--spacing(3)-1px)] lui:file:sm:py-[calc(--spacing(1.5)-1px)] lui:file:mr-4 lui:file:bg-zinc-100 lui:file:rounded-l-[calc(var(--radius-lg)-1px)]"
   end
 
   def file_input_html_options

@@ -19,7 +19,7 @@
     <% if @multiple %>
       <%# Multiple selection: tags + input in a styled container %>
       <div
-        class="lui:relative lui:flex lui:flex-wrap lui:items-center lui:gap-1.5 lui:w-full lui:min-h-[42px] lui:sm:min-h-[38px] lui:rounded-lg lui:border lui:border-zinc-950/10 lui:hover:border-zinc-950/20 lui:bg-white lui:shadow-sm lui:px-2 lui:py-1.5 lui:focus-within:ring-2 lui:focus-within:ring-blue-500 lui:focus-within:ring-offset-0 <%= 'lui:opacity-50' if @disabled %> <%= 'lui:border-red-500' if has_errors? %>"
+        class="lui:relative lui:flex lui:flex-wrap lui:items-center lui:gap-1.5 lui:w-full lui:min-h-[42px] lui:sm:min-h-[38px] lui:rounded-lg lui:border lui:border-zinc-950/10 lui:data-[hover]:border-zinc-950/20 lui:bg-white lui:shadow-sm lui:px-2 lui:py-1.5 lui:focus-within:ring-2 lui:focus-within:ring-blue-500 lui:focus-within:ring-offset-0 <%= 'lui:opacity-50' if @disabled %> <%= 'lui:border-red-500' if has_errors? %>"
         data-lui-combobox-target="inputWrapper selectedTags"
       >
         <input

@@ -40,8 +40,12 @@ class LightningUiKit::InputComponent < LightningUiKit::BaseComponent
     merge_classes(["lui:[&>[data-slot=label]+[data-slot=control]]:mt-3 lui:[&>[data-slot=label]+[data-slot=description]]:mt-1 lui:[&>[data-slot=description]+[data-slot=control]]:mt-3 lui:[&>[data-slot=control]+[data-slot=description]]:mt-3 lui:[&>[data-slot=control]+[data-slot=error]]:mt-3 lui:*:data-[slot=label]:font-medium", @options[:class]].compact.join(" "))
   end
 
+  def data
+    {controller: "lui-field"}.merge(@options[:data] || {})
+  end
+
   def input_data
-    (@options[:input_data] || {}).dup.tap do |data|
+    {lui_field_target: "field"}.merge(@options[:input_data] || {}).dup.tap do |data|
       data[:invalid] = "true" if has_errors?
     end
   end
@@ -65,7 +69,7 @@ class LightningUiKit::InputComponent < LightningUiKit::BaseComponent
   end
 
   def input_classes
-    "lui:peer lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] lui:sm:px-[calc(--spacing(3)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:hover:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:hover:border-red-500/60 lui:data-disabled:border-zinc-950/20"
+    "lui:peer lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] lui:sm:px-[calc(--spacing(3)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:data-[hover]:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:data-[hover]:border-red-500/60 lui:data-disabled:border-zinc-950/20"
   end
 
   def input_html_options
@@ -107,7 +111,7 @@ class LightningUiKit::InputComponent < LightningUiKit::BaseComponent
 
   def color_html_options
     {
-      data: input_data,
+      data: {lui_field_target: "field"},
       class: color_classes,
       disabled: @disabled
     }.merge(@input_options).compact
@@ -115,7 +119,7 @@ class LightningUiKit::InputComponent < LightningUiKit::BaseComponent
 
   def color_classes
     "lui:h-10 lui:w-14 lui:cursor-pointer lui:appearance-none lui:rounded-lg lui:border lui:border-zinc-950/10 lui:bg-transparent lui:p-1 " \
-    "lui:hover:border-zinc-950/20 lui:focus:outline-none lui:focus:ring-2 lui:focus:ring-blue-500 " \
+    "lui:data-[hover]:border-zinc-950/20 lui:focus:outline-none lui:focus:ring-2 lui:focus:ring-blue-500 " \
     "[&::-webkit-color-swatch-wrapper]:lui:p-0 [&::-webkit-color-swatch]:lui:rounded-md [&::-webkit-color-swatch]:lui:border-0 " \
     "[&::-moz-color-swatch]:lui:rounded-md [&::-moz-color-swatch]:lui:border-0 " \
     "lui:disabled:opacity-50 lui:disabled:cursor-not-allowed"

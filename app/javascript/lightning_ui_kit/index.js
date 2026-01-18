@@ -22,6 +22,7 @@ import DropzoneController from './controllers/dropzone_controller'
 import ToastController from './controllers/toast_controller'
 import TooltipController from './controllers/tooltip_controller'
 import ComboboxController from './controllers/combobox_controller'
+import FieldController from './controllers/field_controller'
 
 export function registerLuiControllers(application) {
   application.register(`${namespace}-clipboard`, ClipboardController)
@@ -38,6 +39,7 @@ export function registerLuiControllers(application) {
   application.register(`${namespace}-toast`, ToastController)
   application.register(`${namespace}-tooltip`, TooltipController)
   application.register(`${namespace}-combobox`, ComboboxController)
+  application.register(`${namespace}-field`, FieldController)
 }
 registerLuiControllers(application)
 

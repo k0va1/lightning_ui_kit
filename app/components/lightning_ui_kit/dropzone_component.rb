@@ -26,36 +26,63 @@ class LightningUiKit::DropzoneComponent < LightningUiKit::BaseComponent
   end
 
   def input_data
-    (@options[:input_data] || {}).tap do |data|
+    (@options[:input_data] || {}).dup.tap do |data|
       data[:lui_dropzone_target] = "input"
       data[:action] = "dragover->lui-dropzone#activate drop->lui-dropzone#uploadFiles change->lui-dropzone#uploadFiles"
-      if has_errors?
-        data[:invalid] = "true"
-      end
+      data[:invalid] = "true" if has_errors?
     end
   end
 
   def label_data
-    {slot: "label"}.merge(@options[:label_data] || {}).tap do |data|
-      if @disabled
-        data[:disabled] = "true"
-      end
+    {slot: "label"}.merge(@options[:label_data] || {}).dup.tap do |data|
+      data[:disabled] = "true" if @disabled
     end
   end
 
   def description_data
-    {slot: "description"}.merge(@options[:description_data] || {}).tap do |data|
-      if @disabled
-        data[:disabled] = "true"
-      end
+    {slot: "description"}.merge(@options[:description_data] || {}).dup.tap do |data|
+      data[:disabled] = "true" if @disabled
     end
   end
 
   def error_data
-    {slot: "error"}.merge(@options[:error_data] || {}).tap do |data|
-      if @disabled
-        data[:disabled] = "true"
-      end
+    {slot: "error"}.merge(@options[:error_data] || {}).dup.tap do |data|
+      data[:disabled] = "true" if @disabled
+    end
+  end
+
+  def label_html_options
+    {
+      class: "lui:text-base/6 lui:text-zinc-950 lui:select-none lui:data-disabled:opacity-50 lui:sm:text-sm/6",
+      data: label_data
+    }
+  end
+
+  def render_label
+    return unless @label
+
+    if @form
+      @form.label(@name, @label, **label_html_options)
+    else
+      helpers.label_tag(@name, @label, **label_html_options)
+    end
+  end
+
+  def file_input_html_options
+    {
+      multiple: @multiple,
+      class: "lui:hidden",
+      direct_upload: true,
+      data: input_data,
+      accept: @accept
+    }
+  end
+
+  def render_file_input
+    if @form
+      @form.file_field(@name, **file_input_html_options)
+    else
+      helpers.file_field_tag(@name, value: @value, **file_input_html_options)
     end
   end
 end

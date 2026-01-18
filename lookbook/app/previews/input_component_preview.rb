@@ -52,7 +52,16 @@ class InputComponentPreview < Lookbook::Preview
       name: :scheduled_at,
       type: :datetime,
       label: "Scheduled At",
-      description: "Select date and time"
+      description: "Select date and time (uses datetime_local_field)"
+    )
+  end
+
+  def datetime_local
+    render LightningUiKit::InputComponent.new(
+      name: :event_at,
+      type: :datetime_local,
+      label: "Event Date/Time",
+      description: "Select date and time (preferred type)"
     )
   end
 

@@ -56,4 +56,16 @@ class LightningUiKit::InputComponent < LightningUiKit::BaseComponent
       end
     end
   end
+
+  def input_classes
+    "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] lui:sm:px-[calc(--spacing(3)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:hover:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:hover:border-red-500/60 lui:data-disabled:border-zinc-950/20"
+  end
+
+  def range_classes
+    "lui:w-full lui:h-2 lui:appearance-none lui:cursor-pointer lui:bg-zinc-200 lui:rounded-full lui:focus:outline-none " \
+    "[&::-webkit-slider-thumb]:lui:appearance-none [&::-webkit-slider-thumb]:lui:w-4 [&::-webkit-slider-thumb]:lui:h-4 [&::-webkit-slider-thumb]:lui:bg-blue-600 [&::-webkit-slider-thumb]:lui:rounded-full [&::-webkit-slider-thumb]:lui:cursor-pointer [&::-webkit-slider-thumb]:lui:shadow-sm [&::-webkit-slider-thumb]:lui:transition-transform [&::-webkit-slider-thumb]:hover:lui:scale-110 " \
+    "[&::-moz-range-thumb]:lui:appearance-none [&::-moz-range-thumb]:lui:w-4 [&::-moz-range-thumb]:lui:h-4 [&::-moz-range-thumb]:lui:bg-blue-600 [&::-moz-range-thumb]:lui:rounded-full [&::-moz-range-thumb]:lui:border-0 [&::-moz-range-thumb]:lui:cursor-pointer [&::-moz-range-thumb]:lui:shadow-sm [&::-moz-range-thumb]:lui:transition-transform [&::-moz-range-thumb]:hover:lui:scale-110 " \
+    "[&::-moz-range-track]:lui:bg-zinc-200 [&::-moz-range-track]:lui:rounded-full " \
+    "lui:disabled:opacity-50 lui:disabled:cursor-not-allowed"
+  end
 end

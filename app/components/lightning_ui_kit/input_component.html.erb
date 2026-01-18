@@ -17,136 +17,294 @@
     ) %>
   <% end %>
   <% if @form %>
-    <span data-slot="control" class="lui:relative lui:block lui:w-full lui:before:absolute lui:before:inset-px lui:before:rounded-[calc(var(--radius-lg)-1px)] lui:before:bg-white lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-transparent lui:after:ring-inset lui:sm:focus-within:after:ring-2 lui:sm:focus-within:after:ring-blue-500 lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-zinc-950/5 lui:has-data-disabled:before:shadow-none lui:has-data-invalid:before:shadow-red-500/10">
-      <% case @type %>
-      <% when :text %>
-        <%= @form.text_field(
+    <% if @type == :hidden %>
+      <%= @form.hidden_field(@name, data: input_data) %>
+    <% elsif @type == :range %>
+      <span data-slot="control" class="lui:block lui:w-full lui:py-2">
+        <%= @form.range_field(
           @name,
           data: input_data,
-          class: "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] lui:sm:px-[calc(--spacing(3)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:hover:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:hover:border-red-500/60 lui:data-disabled:border-zinc-950/20",
+          class: range_classes,
           disabled: @disabled,
           autofocus: @autofocus,
-          placeholder: @placeholder
-        ) %>
-      <% when :email %>
-        <%= @form.email_field(
-          @name,
-          data: input_data,
-          class: "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] lui:sm:px-[calc(--spacing(3)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:hover:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:hover:border-red-500/60 lui:data-disabled:border-zinc-950/20",
-          disabled: @disabled,
-          autofocus: @autofocus,
-          placeholder: @placeholder
-        ) %>
-      <% when :password %>
-        <%= @form.password_field(
-          @name,
-          data: input_data,
-          class: "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] lui:sm:px-[calc(--spacing(3)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:hover:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:hover:border-red-500/60 lui:data-disabled:border-zinc-950/20",
-          disabled: @disabled,
-          autofocus: @autofocus,
-          placeholder: @placeholder
-        ) %>
-      <% when :number %>
-        <%= @form.number_field(
-          @name,
-          data: input_data,
-          class: "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] lui:sm:px-[calc(--spacing(3)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:hover:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:hover:border-red-500/60 lui:data-disabled:border-zinc-950/20",
-          disabled: @disabled,
-          autofocus: @autofocus,
-          placeholder: @placeholder,
           min: @options[:min],
           max: @options[:max],
           step: @options[:step]
         ) %>
-      <% when :date %>
-        <%= @form.date_field(
-          @name,
-          data: input_data,
-          class: "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] lui:sm:px-[calc(--spacing(3)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:hover:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:hover:border-red-500/60 lui:data-disabled:border-zinc-950/20",
-          disabled: @disabled,
-          autofocus: @autofocus,
-          min: @options[:min],
-          max: @options[:max]
-        ) %>
-      <% when :datetime %>
-        <%= @form.datetime_local_field(
-          @name,
-          data: input_data,
-          class: "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] lui:sm:px-[calc(--spacing(3)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:hover:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:hover:border-red-500/60 lui:data-disabled:border-zinc-950/20",
-          disabled: @disabled,
-          autofocus: @autofocus,
-          min: @options[:min],
-          max: @options[:max]
-        ) %>
-      <% end %>
-    </span>
+      </span>
+    <% else %>
+      <span data-slot="control" class="lui:relative lui:block lui:w-full lui:before:absolute lui:before:inset-px lui:before:rounded-[calc(var(--radius-lg)-1px)] lui:before:bg-white lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-transparent lui:after:ring-inset lui:sm:focus-within:after:ring-2 lui:sm:focus-within:after:ring-blue-500 lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-zinc-950/5 lui:has-data-disabled:before:shadow-none lui:has-data-invalid:before:shadow-red-500/10">
+        <% case @type %>
+        <% when :text %>
+          <%= @form.text_field(
+            @name,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            placeholder: @placeholder
+          ) %>
+        <% when :email %>
+          <%= @form.email_field(
+            @name,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            placeholder: @placeholder
+          ) %>
+        <% when :password %>
+          <%= @form.password_field(
+            @name,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            placeholder: @placeholder
+          ) %>
+        <% when :number %>
+          <%= @form.number_field(
+            @name,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            placeholder: @placeholder,
+            min: @options[:min],
+            max: @options[:max],
+            step: @options[:step]
+          ) %>
+        <% when :date %>
+          <%= @form.date_field(
+            @name,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            min: @options[:min],
+            max: @options[:max]
+          ) %>
+        <% when :datetime %>
+          <%= @form.datetime_field(
+            @name,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            min: @options[:min],
+            max: @options[:max]
+          ) %>
+        <% when :month %>
+          <%= @form.month_field(
+            @name,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            min: @options[:min],
+            max: @options[:max]
+          ) %>
+        <% when :week %>
+          <%= @form.week_field(
+            @name,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            min: @options[:min],
+            max: @options[:max]
+          ) %>
+        <% when :time %>
+          <%= @form.time_field(
+            @name,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            min: @options[:min],
+            max: @options[:max]
+          ) %>
+        <% when :url %>
+          <%= @form.url_field(
+            @name,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            placeholder: @placeholder
+          ) %>
+        <% when :search %>
+          <%= @form.search_field(
+            @name,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            placeholder: @placeholder
+          ) %>
+        <% when :phone, :telephone %>
+          <%= @form.telephone_field(
+            @name,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            placeholder: @placeholder
+          ) %>
+        <% end %>
+      </span>
+    <% end %>
   <% else %>
-    <span data-slot="control" class="lui:relative lui:block lui:w-full lui:before:absolute lui:before:inset-px lui:before:rounded-[calc(var(--radius-lg)-1px)] lui:before:bg-white lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-transparent lui:after:ring-inset lui:sm:focus-within:after:ring-2 lui:sm:focus-within:after:ring-blue-500 lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-zinc-950/5 lui:has-data-disabled:before:shadow-none lui:has-data-invalid:before:shadow-red-500/10">
-      <% case @type %>
-      <% when :text %>
-        <%= text_field_tag(
+    <% if @type == :hidden %>
+      <%= hidden_field_tag(@name, @value, data: input_data) %>
+    <% elsif @type == :range %>
+      <span data-slot="control" class="lui:block lui:w-full lui:py-2">
+        <%= range_field_tag(
           @name,
           @value,
           data: input_data,
-          class: "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] lui:sm:px-[calc(--spacing(3)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:hover:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:hover:border-red-500/60 lui:data-disabled:border-zinc-950/20",
-          disabled: @disabled,
-          autofocus: @autofocus,
-          placeholder: @placeholder
-        ) %>
-      <% when :email %>
-        <%= email_field_tag(
-          @name,
-          @value,
-          data: input_data,
-          class: "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] lui:sm:px-[calc(--spacing(3)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:hover:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:hover:border-red-500/60 lui:data-disabled:border-zinc-950/20",
-          disabled: @disabled,
-          autofocus: @autofocus,
-          placeholder: @placeholder
-        ) %>
-      <% when :password %>
-        <%= password_field_tag(
-          @name,
-          @value,
-          data: input_data,
-          class: "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] lui:sm:px-[calc(--spacing(3)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:hover:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:hover:border-red-500/60 lui:data-disabled:border-zinc-950/20",
-          disabled: @disabled,
-          autofocus: @autofocus,
-          placeholder: @placeholder
-        ) %>
-      <% when :number %>
-        <%= number_field_tag(
-          @name,
-          @value,
-          data: input_data,
-          class: "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] lui:sm:px-[calc(--spacing(3)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:hover:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:hover:border-red-500/60 lui:data-disabled:border-zinc-950/20",
-          disabled: @disabled,
-          autofocus: @autofocus,
-          placeholder: @placeholder,
-        ) %>
-      <% when :date %>
-        <%= date_field_tag(
-          @name,
-          @value,
-          data: input_data,
-          class: "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] lui:sm:px-[calc(--spacing(3)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:hover:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:hover:border-red-500/60 lui:data-disabled:border-zinc-950/20",
+          class: range_classes,
           disabled: @disabled,
           autofocus: @autofocus,
           min: @options[:min],
-          max: @options[:max]
+          max: @options[:max],
+          step: @options[:step]
         ) %>
-      <% when :datetime %>
-        <%= datetime_local_field_tag(
-          @name,
-          @value,
-          data: input_data,
-          class: "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] lui:sm:px-[calc(--spacing(3)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:hover:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:hover:border-red-500/60 lui:data-disabled:border-zinc-950/20",
-          disabled: @disabled,
-          autofocus: @autofocus,
-          min: @options[:min],
-          max: @options[:max]
-        ) %>
-      <% end %>
-    </span>
+      </span>
+    <% else %>
+      <span data-slot="control" class="lui:relative lui:block lui:w-full lui:before:absolute lui:before:inset-px lui:before:rounded-[calc(var(--radius-lg)-1px)] lui:before:bg-white lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-transparent lui:after:ring-inset lui:sm:focus-within:after:ring-2 lui:sm:focus-within:after:ring-blue-500 lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-zinc-950/5 lui:has-data-disabled:before:shadow-none lui:has-data-invalid:before:shadow-red-500/10">
+        <% case @type %>
+        <% when :text %>
+          <%= text_field_tag(
+            @name,
+            @value,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            placeholder: @placeholder
+          ) %>
+        <% when :email %>
+          <%= email_field_tag(
+            @name,
+            @value,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            placeholder: @placeholder
+          ) %>
+        <% when :password %>
+          <%= password_field_tag(
+            @name,
+            @value,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            placeholder: @placeholder
+          ) %>
+        <% when :number %>
+          <%= number_field_tag(
+            @name,
+            @value,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            placeholder: @placeholder,
+            min: @options[:min],
+            max: @options[:max],
+            step: @options[:step]
+          ) %>
+        <% when :date %>
+          <%= date_field_tag(
+            @name,
+            @value,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            min: @options[:min],
+            max: @options[:max]
+          ) %>
+        <% when :datetime %>
+          <%= datetime_field_tag(
+            @name,
+            @value,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            min: @options[:min],
+            max: @options[:max]
+          ) %>
+        <% when :month %>
+          <%= month_field_tag(
+            @name,
+            @value,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            min: @options[:min],
+            max: @options[:max]
+          ) %>
+        <% when :week %>
+          <%= week_field_tag(
+            @name,
+            @value,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            min: @options[:min],
+            max: @options[:max]
+          ) %>
+        <% when :time %>
+          <%= time_field_tag(
+            @name,
+            @value,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            min: @options[:min],
+            max: @options[:max]
+          ) %>
+        <% when :url %>
+          <%= url_field_tag(
+            @name,
+            @value,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            placeholder: @placeholder
+          ) %>
+        <% when :search %>
+          <%= search_field_tag(
+            @name,
+            @value,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            placeholder: @placeholder
+          ) %>
+        <% when :phone, :telephone %>
+          <%= telephone_field_tag(
+            @name,
+            @value,
+            data: input_data,
+            class: input_classes,
+            disabled: @disabled,
+            autofocus: @autofocus,
+            placeholder: @placeholder
+          ) %>
+        <% end %>
+      </span>
+    <% end %>
   <% end %>
   <% if has_errors? %>
     <%= tag.p(

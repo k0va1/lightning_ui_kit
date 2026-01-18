@@ -2,6 +2,8 @@
 
 class LightningUiKit::LayoutComponent < LightningUiKit::BaseComponent
   renders_one :sidebar
+  renders_one :header
+  renders_many :sections, LightningUiKit::SidebarSectionComponent
   renders_one :footer
   renders_one :mobile_header
 
@@ -11,7 +13,11 @@ class LightningUiKit::LayoutComponent < LightningUiKit::BaseComponent
   end
 
   def sidebar_width_class
-    "lui:#{@sidebar_width}"
+    if @sidebar_width == "w-64"
+      "lui:lg:w-64"
+    else
+      "lui:lg:#{@sidebar_width}"
+    end
   end
 
   def main_padding_class

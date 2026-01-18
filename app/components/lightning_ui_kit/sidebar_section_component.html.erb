@@ -1,0 +1,8 @@
+<div class="<%= classes %>">
+  <% if @title %>
+    <h3 class="<%= title_classes %>"><%= @title %></h3>
+  <% end %>
+  <% links.each do |link| %>
+    <%= link %>
+  <% end %>
+</div>

@@ -16,7 +16,7 @@ class LightningUiKit::ButtonComponent < LightningUiKit::BaseComponent
   def render_icon
     return unless @icon
 
-    heroicon(@icon, variant: @icon_variant, options: { class: icon_classes, data: { slot: "icon" } })
+    heroicon(@icon, variant: @icon_variant, options: {class: icon_classes, data: {slot: "icon"}})
   end
 
   def icon_classes

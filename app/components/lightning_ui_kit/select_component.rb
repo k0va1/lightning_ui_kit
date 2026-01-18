@@ -20,14 +20,7 @@ class LightningUiKit::SelectComponent < LightningUiKit::BaseComponent
   end
 
   def data
-    default_data = {
-      slot: "field",
-      action: "click->switch#toggle",
-      controller: "select",
-      disabled: @disabled
-    }
-
-    default_data.merge(@options[:data] || {})
+    @options[:data] || {}
   end
 
   def select_data
@@ -83,14 +76,22 @@ class LightningUiKit::SelectComponent < LightningUiKit::BaseComponent
   end
 
   def control_classes
-    "lui:group lui:relative lui:block lui:w-full lui:before:absolute lui:before:inset-px lui:before:rounded-[calc(var(--radius-lg)-1px)] lui:before:bg-white lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-transparent lui:after:ring-inset lui:focus:after:ring-2 lui:focus:after:ring-blue-500 lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-zinc-950/5 lui:has-data-disabled:before:shadow-none"
+    "lui:group lui:relative lui:block lui:w-full lui:before:absolute lui:before:inset-px lui:before:rounded-[7px] lui:before:bg-white lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-inset lui:focus-within:after:ring-2 lui:focus-within:after:ring-blue-500 lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-zinc-950/5 lui:has-data-disabled:before:shadow-none"
+  end
+
+  def select_html_options
+    {
+      multiple: @multiple,
+      class: select_classes,
+      data: select_data
+    }
   end
 
   def render_select
     if @form
-      @form.select(@name, @options_for_select, {multiple: @multiple}, class: select_classes, data: select_data)
+      @form.select(@name, @options_for_select, {}, select_html_options)
     else
-      helpers.select_tag(@name, @options_for_select, multiple: @multiple, class: select_classes, data: select_data)
+      helpers.select_tag(@name, helpers.options_for_select(@options_for_select), select_html_options)
     end
   end
 end

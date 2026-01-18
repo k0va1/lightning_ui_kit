@@ -1,6 +1,8 @@
 <% if @url %>
   <%= link_to @url, class: classes, data: data_attributes do %>
+    <%= render_icon if leading_icon? %>
     <%= content %>
+    <%= render_icon if trailing_icon? %>
   <% end %>
 <% else %>
   <%= content_tag :button,
@@ -8,6 +10,8 @@
     data: data_attributes,
     disabled: @disabled,
     type: @type do %>
+    <%= render_icon if leading_icon? %>
     <%= content %>
+    <%= render_icon if trailing_icon? %>
   <% end %>
 <% end %>

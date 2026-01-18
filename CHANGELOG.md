@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.5](https://github.com/k0va1/lightning_ui_kit/compare/v0.2.4...v0.2.5) (2026-01-18)
+
+
+### Features
+
+* input component improvements ([#60](https://github.com/k0va1/lightning_ui_kit/issues/60)) ([7490f8d](https://github.com/k0va1/lightning_ui_kit/commit/7490f8da700d51df6e4d73fdafa9118982466657))
+
 ## [0.2.4](https://github.com/k0va1/lightning_ui_kit/compare/v0.2.3...v0.2.4) (2026-01-18)
 
 

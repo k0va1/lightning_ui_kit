@@ -1,8 +1,8 @@
 <%= tag.dialog(id: @id, open: @open, data:) do %>
   <div class="lui:fixed lui:inset-0 lui:flex lui:w-screen lui:justify-center lui:overflow-y-auto lui:bg-zinc-950/25 lui:px-2 lui:py-2 lui:transition lui:duration-100 lui:focus:outline-0 lui:data-closed:opacity-0 lui:data-enter:ease-out lui:data-leave:ease-in lui:sm:px-6 lui:sm:py-8 lg:lui:px-8 lg:lui:py-16" aria-hidden="true" data-open=""></div>
   <div class="lui:fixed lui:inset-0 lui:w-screen lui:overflow-y-auto lui:pt-6 lui:sm:pt-0">
-    <div class="lui:grid lui:min-h-full lui:grid-rows-[1fr_auto] lui:justify-items-center lui:sm:grid-rows-[1fr_auto_3fr] lui:sm:p-4">
-      <div class="lui:sm:max-w-3xl lui:row-start-2 lui:w-full lui:min-w-0 lui:rounded-t-3xl lui:bg-white lui:p-(--gutter) lui:ring-1 lui:shadow-lg lui:ring-zinc-950/10 lui:[--gutter:--spacing(8)] lui:sm:mb-auto lui:sm:rounded-2xl lui:forced-colors:outline lui:transition lui:duration-100 lui:will-change-transform lui:data-closed:translate-y-12 lui:data-closed:opacity-0 lui:data-enter:ease-out lui:data-leave:ease-in lui:sm:data-closed:translate-y-0 lui:sm:data-closed:data-enter:scale-95" data-open="">
+    <div class="lui:grid lui:min-h-full lui:grid-rows-[1fr_auto] lui:justify-items-center lui:sm:grid-rows-[1fr_auto_3fr] lui:sm:p-4" data-action="click->lui-modal#closeOnBackdrop">
+      <div class="lui:sm:max-w-3xl lui:row-start-2 lui:w-full lui:min-w-0 lui:rounded-t-3xl lui:bg-white lui:p-(--gutter) lui:ring-1 lui:shadow-lg lui:ring-zinc-950/10 lui:[--gutter:--spacing(8)] lui:sm:mb-auto lui:sm:rounded-2xl lui:forced-colors:outline lui:transition lui:duration-100 lui:will-change-transform lui:data-closed:translate-y-12 lui:data-closed:opacity-0 lui:data-enter:ease-out lui:data-leave:ease-in lui:sm:data-closed:translate-y-0 lui:sm:data-closed:data-enter:scale-95" data-open="" data-lui-modal-target="panel">
         <% if @title %>
           <h2 class="lui:text-lg/6 lui:font-semibold lui:text-balance lui:text-zinc-950 lui:sm:text-base/6" data-open="">
             <%= @title %>

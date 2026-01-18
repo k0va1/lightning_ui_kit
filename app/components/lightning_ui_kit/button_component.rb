@@ -1,13 +1,34 @@
 # frozen_string_literal: true
 
 class LightningUiKit::ButtonComponent < LightningUiKit::BaseComponent
-  def initialize(type: :button, style: :default, size: :default, disabled: false, url: nil, **options)
+  def initialize(type: :button, style: :default, size: :default, disabled: false, url: nil, icon: nil, icon_position: :leading, icon_variant: :outline, **options)
     @type = type
     @style = style
     @size = size
     @disabled = disabled
     @url = url
+    @icon = icon
+    @icon_position = icon_position
+    @icon_variant = icon_variant
     @options = options
+  end
+
+  def render_icon
+    return unless @icon
+
+    heroicon(@icon, variant: @icon_variant, options: {class: icon_classes, data: {slot: "icon"}})
+  end
+
+  def icon_classes
+    "lui:shrink-0"
+  end
+
+  def leading_icon?
+    @icon && @icon_position == :leading
+  end
+
+  def trailing_icon?
+    @icon && @icon_position == :trailing
   end
 
   def data_attributes
@@ -43,8 +64,8 @@ class LightningUiKit::ButtonComponent < LightningUiKit::BaseComponent
       lui:[--btn-bg:var(--lui-color-red-600)]\
       lui:[--btn-border:var(--lui-color-red-950)]/90
       lui:[--btn-hover-overlay:var(--lui-color-white)]/10\
-      lui:[--btn-icon:var(--lui-color-red-400)]\
-      lui:active:[--btn-icon:var(--lui-color-zinc-300)] lui:hover:[--btn-icon:var(--lui-color-zinc-300)] lui:cursor-pointer"
+      lui:[--btn-icon:var(--lui-color-white)]\
+      lui:active:[--btn-icon:var(--lui-color-white)] lui:hover:[--btn-icon:var(--lui-color-white)] lui:cursor-pointer"
   end
 
   def default_classes

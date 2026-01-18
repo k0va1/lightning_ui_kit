@@ -26,13 +26,7 @@
     </div>
   </template>
 
-  <% if @label %>
-    <%= tag.label(
-      @label,
-      class: "lui:text-base/6 lui:text-zinc-950 lui:select-none lui:data-disabled:opacity-50 lui:sm:text-sm/6",
-      data: label_data
-    ) %>
-  <% end %>
+  <%= render_label %>
   <% if @description %>
     <%= tag.p(
       @description,
@@ -49,26 +43,7 @@
     <% if @placeholder %>
       <p class="lui:text-center lui:text-zinc-500 lui:text-base lui:sm:text-sm/6 lui:font-normal lui:leading-4 lui:mt-1.5"><%= @placeholder %></p>
     <% end %>
-    <% if @form %>
-      <%= @form.file_field(
-        @name,
-        multiple: @multiple,
-        class: "lui:hidden",
-        direct_upload: true,
-        data: input_data,
-        accept: @accept
-      ) %>
-    <% else %>
-      <%= file_field_tag(
-        @name,
-        value: @value,
-        multiple: @multiple,
-        class: "lui:hidden",
-        direct_upload: true,
-        data: input_data,
-        accept: @accept
-      ) %>
-    <% end %>
+    <%= render_file_input %>
   </div>
 
   <% if has_errors? %>

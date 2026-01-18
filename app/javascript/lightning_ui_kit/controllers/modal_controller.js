@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["dialog"]
+  static targets = ["dialog", "panel"]
   static values = {
     open: Boolean
   }
@@ -35,6 +35,12 @@ export default class extends Controller {
   onClick(event) {
     if (event.target === this.dialogTarget) {
       this.dialogTarget.close()
+    }
+  }
+
+  closeOnBackdrop(event) {
+    if (this.hasPanelTarget && !this.panelTarget.contains(event.target)) {
+      this.close()
     }
   }
 

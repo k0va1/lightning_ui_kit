@@ -78,7 +78,6 @@ application.register(`${namespace}-example`, ExampleController)
 - **ComboboxComponent** - `name:`, `options:`, `label:`, `form:`, `multiple:`, `allow_custom:`, `url:` (async), `placeholder:`, `selected:`, `min_chars:`, `debounce:`, `association:`, `foreign_key:`, `nested_model:`, `collection:`, `label_method:`, `value_method:`
 - **FileInputComponent** - `name:`, `label:`, `accept:`, `error:`
 - **DropzoneComponent** - Drag-and-drop file upload with ActiveStorage integration
-- **JsonbComponent** - `name:`, `value:`, `label:`, `form:`, `key_placeholder:`, `value_placeholder:` - Edits JSONB fields as key-value pairs (object) or list items (array), auto-detects mode from initial value
 
 ### Display Components
 - **TextComponent** - `size: :sm/:md/:lg`
@@ -430,37 +429,6 @@ All controllers use `lui-` prefix:
     { join_id: 2, value: 2 }   # Existing join record (id=2) with tag_id=2
   ]
 ) %>
-```
-
-### JSONB Field Editor
-
-```erb
-<%# Object mode (key-value pairs) - default when empty or hash value %>
-<%= render LightningUiKit::JsonbComponent.new(
-  name: :metadata,
-  label: "Metadata",
-  description: "Add custom key-value pairs",
-  value: { name: "John", city: "NYC" }
-) %>
-
-<%# Array mode - auto-detected when value is an array %>
-<%= render LightningUiKit::JsonbComponent.new(
-  name: :tags,
-  label: "Tags",
-  description: "Add tags to this item",
-  value: ["ruby", "rails", "javascript"]
-) %>
-
-<%# With Rails form builder %>
-<%= form_with model: @product do |f| %>
-  <%= render LightningUiKit::JsonbComponent.new(
-    name: :specifications,
-    form: f,
-    label: "Specifications",
-    key_placeholder: "Attribute",
-    value_placeholder: "Value"
-  ) %>
-<% end %>
 ```
 
 ### Layout with Sidebar

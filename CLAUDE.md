@@ -74,6 +74,8 @@ make release [version]  # Build assets, commit, tag, and release gem
 
 ### Documentation Maintenance
 - **IMPORTANT**: When adding or removing components/features, always update `llms.txt` to keep LLM documentation in sync
+- **IMPORTANT**: Don't forget to update README.md and Lookbook previews for new components
+- **IMPORTANT**: Dont't forget to update lookbook/test/components/docs/*.md files for project documentation
 
 ## Dependencies
 

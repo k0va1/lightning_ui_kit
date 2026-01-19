@@ -3,11 +3,104 @@ title: Lightning UI Kit
 label: Overview
 ---
 
-LightningUiKit is a Ruby gem providing UI components for Rails applications, built on ViewComponent with Tailwind CSS styling and Stimulus controllers for interactivity.
+A production-ready component library for Rails applications. Build polished interfaces without writing repetitive UI code.
 
-**Important notes:**
+## Why?
 
-- All Tailwind CSS classes **MUST** be prefixed with `lui:` (e.g., `lui:px-4`, `lui:text-blue-600`, `lui:hover:bg-zinc-50`)
-- Components extend `LightningUiKit::BaseComponent` and use ViewComponent patterns
-- Interactive components use Stimulus controllers registered under the `lui-` namespace
-- Uses TailwindMerge for intelligent CSS class conflict resolution via `merge_classes()` helper
+### Ship Faster
+Pre-built components for forms, modals, dropdowns, tables, and more. Stop rebuilding the same UI patterns from scratch.
+
+### Rails Native
+Deep integration with Rails form builders, validations, and Active Record associations. Components work seamlessly with your existing Rails code.
+
+### Zero Conflicts
+All Tailwind classes are prefixed with `lui:` so they never clash with your application's styles. Use alongside your existing CSS without worry.
+
+---
+
+## What's Included
+
+### Form Components
+Complete form solution with intelligent error handling and validation feedback.
+
+- **Input** - All HTML5 types (text, email, password, date, number, search, etc.)
+- **Textarea** - Multi-line text with configurable dimensions
+- **Select** - Single and multi-select with Rails form integration
+- **Checkbox & Switch** - Boolean inputs with labels and descriptions
+- **Combobox** - Searchable select with remote data, multiple selection, and association support
+- **File Input & Dropzone** - File uploads with drag-and-drop and direct upload support
+
+### Interactive Components
+Polished interactions powered by Stimulus controllers.
+
+- **Modal** - Dialogs with smooth animations and backdrop handling
+- **Dropdown** - Menus with smart positioning via Floating UI
+- **Tooltip** - Contextual hints with configurable placement
+- **Toast** - Dismissible notifications with auto-dismiss
+- **Accordion** - Expandable content sections
+
+### Display Components
+Consistent visual elements for common UI patterns.
+
+- **Button** - Multiple styles (default, outline, destructive) with icon support
+- **Badge** - Status indicators (success, warning, error, progress states)
+- **Avatar** - User representations with images or initials
+- **Alert & Banner** - Contextual messages and notifications
+- **Skeleton & Spinner** - Loading states
+
+### Layout & Data
+Structure your pages and display data effectively.
+
+- **Layout** - Responsive page structure with sidebar navigation
+- **Table** - Data tables with columns and row actions
+- **Pagination** - Page navigation with smart gap handling
+- **Description List** - Key-value data display
+
+---
+
+## Quick Example
+
+```erb
+<%%= render LightningUiKit::InputComponent.new(
+  form: form,
+  attribute: :email,
+  type: :email,
+  label: "Email address",
+  placeholder: "you@example.com"
+) %>
+
+<%%= render LightningUiKit::ButtonComponent.new(type: :submit) do %>
+  Save changes
+<%% end %>
+```
+
+---
+
+## Technical Foundation
+
+| Layer | Technology |
+|-------|------------|
+| Components | [ViewComponent](https://viewcomponent.org/) |
+| Styling | [Tailwind CSS](https://tailwindcss.com/) with [TailwindMerge](https://github.com/gjtorikern/tailwind_merge) |
+| Interactivity | [Stimulus](https://stimulus.hotwired.dev/) controllers |
+| Positioning | [Floating UI](https://floating-ui.com/) for dropdowns and tooltips |
+| Icons | [Heroicons](https://heroicons.com/) |
+
+---
+
+## Key Features
+
+**Smart Class Merging** - TailwindMerge resolves class conflicts automatically. Pass custom classes and they'll merge intelligently with component defaults.
+
+**Association Handling** - Combobox supports `has_many` and `belongs_to` relationships, nested attributes, and tracks removed associations.
+
+**Remote Data** - Combobox supports server-side filtering with built-in debouncing for performance.
+
+**Error Integration** - Components automatically display validation errors from Rails form objects and associations.
+
+---
+
+## Requirements
+
+- Rails 8.0+
+- Ruby 3.2+

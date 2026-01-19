@@ -21,7 +21,7 @@
     <%= javascript_include_tag "lightning_ui_kit" %>
   </head>
 
-  <body style="padding: 20px;">
+  <body style="padding: <%= lookbook_display(:body_padding, '20px') %>">
     <%= yield %>
   </body>
 </html>

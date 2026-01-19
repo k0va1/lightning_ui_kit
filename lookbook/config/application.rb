@@ -19,6 +19,8 @@ module Lookbook
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
     config.view_component.preview_paths << File.expand_path("app/previews", Rails.root)
+    config.view_component.default_preview_layout = "application"
+    config.lookbook.preview_layout = "application"
     config.lookbook.preview_paths << File.expand_path("app/previews", Rails.root)
     config.lookbook.view_component_path = File.expand_path("../app/components", Rails.root)
 
@@ -29,6 +31,10 @@ module Lookbook
     }
 
     config.lookbook.project_name = "Lightning UI"
+
+    config.lookbook.preview_display_options = {
+      body_padding: "20px"
+    }
 
     # Configuration for the application, engines, and railties goes here.
     #

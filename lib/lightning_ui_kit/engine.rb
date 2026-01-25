@@ -8,6 +8,7 @@ module LightningUiKit
       ActiveSupport.on_load(:action_controller_base) do
         helper LightningUiKit::ApplicationHelper
         helper LightningUiKit::HeroiconHelper
+        helper LightningUiKit::ComponentHelper
       end
     end
   end

@@ -47,8 +47,8 @@ class LightningUiKit::ComboboxComponent < LightningUiKit::BaseComponent
     if association_mode?
       @name = nested_attributes_name
       @multiple = true
-      @options = derive_options_from_collection if @collection
-      @selected = derive_selected_from_association if @form&.object
+      @options = derive_options_from_collection
+      @selected = derive_selected_from_association
     else
       @name = name
       @multiple = multiple

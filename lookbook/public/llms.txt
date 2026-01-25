@@ -145,16 +145,42 @@ Then you can use components in your views like this:
 <%= render LightningUiKit::ButtonComponent.new(text: "Click me!") %>
 ```
 
+### Using the `lui` Helper (Recommended)
+
+The `lui` helper provides a convenient shorthand for rendering components:
+
 ```erb
-<%= render LightningUiKit::ModalComponent.new(id: "confirm", title: "Confirm") do |modal| %>
+<%# Instead of this: %>
+<%= render LightningUiKit::ButtonComponent.new { "Click me" } %>
+
+<%# You can write: %>
+<%= lui.button { "Click me" } %>
+```
+
+Available helper methods:
+- `lui.alert`, `lui.avatar`, `lui.badge`, `lui.banner`, `lui.button`
+- `lui.checkbox`, `lui.combobox`, `lui.description_list`, `lui.dropdown`, `lui.dropzone`
+- `lui.file_input`, `lui.input`, `lui.layout`, `lui.link`, `lui.modal`
+- `lui.pagination`, `lui.select`, `lui.sidebar`, `lui.sidebar_link`, `lui.sidebar_section`
+- `lui.skeleton`, `lui.spinner`, `lui.switch`, `lui.table`, `lui.text`
+- `lui.textarea`, `lui.toast`, `lui.tooltip`
+
+All arguments and blocks are passed directly to the component:
+
+```erb
+<%= lui.button(style: :destructive, size: :small) { "Delete" } %>
+
+<%= lui.input(name: :email, type: :email, label: "Email", form: form) %>
+
+<%= lui.modal(id: "confirm", title: "Confirm") do |modal| %>
   <% modal.with_body do %>
     <p>Are you sure?</p>
   <% end %>
   <% modal.with_action do %>
-    <%= render LightningUiKit::ButtonComponent.new(style: :outline) { "Cancel" } %>
+    <%= lui.button(style: :outline) { "Cancel" } %>
   <% end %>
   <% modal.with_action do %>
-    <%= render LightningUiKit::ButtonComponent.new { "Confirm" } %>
+    <%= lui.button { "Confirm" } %>
   <% end %>
 <% end %>
 ```
@@ -162,7 +188,7 @@ Then you can use components in your views like this:
 ### Table with Dynamic Columns
 
 ```erb
-<%= render LightningUiKit::TableComponent.new(data: @users) do |table| %>
+<%= lui.table(data: @users) do |table| %>
   <% table.with_column("Name") { |user| user.name } %>
   <% table.with_column("Email") { |user| user.email } %>
   <% table.with_action { |user| link_to "Edit", edit_user_path(user) } %>
@@ -172,7 +198,7 @@ Then you can use components in your views like this:
 ### Dropdown Menu
 
 ```erb
-<%= render LightningUiKit::DropdownComponent.new(trigger_text: "Options") do |dropdown| %>
+<%= lui.dropdown(trigger_text: "Options") do |dropdown| %>
   <% dropdown.with_item do %>
     <%= link_to "Edit", "#", class: "lui:block lui:px-4 lui:py-2" %>
   <% end %>
@@ -188,22 +214,9 @@ Then you can use components in your views like this:
 
 ```erb
 <%= form_with model: @user do |form| %>
-  <%= render LightningUiKit::InputComponent.new(
-    name: :email,
-    type: :email,
-    label: "Email Address",
-    form: form,
-    placeholder: "user@example.com"
-  ) %>
-
-  <%= render LightningUiKit::TextareaComponent.new(
-    name: :bio,
-    label: "Biography",
-    form: form,
-    rows: 4
-  ) %>
-
-  <%= render LightningUiKit::ButtonComponent.new(type: :submit) { "Save" } %>
+  <%= lui.input(name: :email, type: :email, label: "Email Address", form: form, placeholder: "user@example.com") %>
+  <%= lui.textarea(name: :bio, label: "Biography", form: form, rows: 4) %>
+  <%= lui.button(type: :submit) { "Save" } %>
 <% end %>
 ```
 
@@ -211,13 +224,9 @@ Then you can use components in your views like this:
 
 Components include `LightningUiKit::Errors` module for automatic validation error display:
 
-```ruby
-# Errors are automatically extracted from form object
-<%= render LightningUiKit::InputComponent.new(
-  name: :email,
-  form: form,
-  error: @user.errors[:email].first  # Or omit for auto-detection
-) %>
+```erb
+<%# Errors are automatically extracted from form object %>
+<%= lui.input(name: :email, form: form, error: @user.errors[:email].first) %>
 ```
 
 ## Styling Guide
@@ -307,29 +316,18 @@ All controllers use `lui-` prefix:
 ### Button Variants
 
 ```erb
-<%# Default button %>
-<%= render LightningUiKit::ButtonComponent.new { "Submit" } %>
-
-<%# Outline style %>
-<%= render LightningUiKit::ButtonComponent.new(style: :outline) { "Cancel" } %>
-
-<%# Destructive action %>
-<%= render LightningUiKit::ButtonComponent.new(style: :destructive) { "Delete" } %>
-
-<%# Small size %>
-<%= render LightningUiKit::ButtonComponent.new(size: :small) { "Edit" } %>
-
-<%# As link %>
-<%= render LightningUiKit::ButtonComponent.new(url: "/dashboard") { "Go to Dashboard" } %>
-
-<%# Disabled %>
-<%= render LightningUiKit::ButtonComponent.new(disabled: true) { "Loading..." } %>
+<%= lui.button { "Submit" } %>
+<%= lui.button(style: :outline) { "Cancel" } %>
+<%= lui.button(style: :destructive) { "Delete" } %>
+<%= lui.button(size: :small) { "Edit" } %>
+<%= lui.button(url: "/dashboard") { "Go to Dashboard" } %>
+<%= lui.button(disabled: true) { "Loading..." } %>
 ```
 
 ### Input with All Options
 
 ```erb
-<%= render LightningUiKit::InputComponent.new(
+<%= lui.input(
   name: :username,
   type: :text,
   label: "Username",
@@ -343,10 +341,7 @@ All controllers use `lui-` prefix:
 ### Tooltip
 
 ```erb
-<%= render LightningUiKit::TooltipComponent.new(
-  text: "This is helpful information",
-  position: :top
-) do %>
+<%= lui.tooltip(text: "This is helpful information", position: :top) do %>
   <button>Hover me</button>
 <% end %>
 ```
@@ -354,7 +349,7 @@ All controllers use `lui-` prefix:
 ### Toast Notification
 
 ```erb
-<%= render LightningUiKit::ToastComponent.new(timeout: 5000) do %>
+<%= lui.toast(timeout: 5000) do %>
   <p>Your changes have been saved!</p>
 <% end %>
 ```
@@ -363,7 +358,7 @@ All controllers use `lui-` prefix:
 
 ```erb
 <%# Single selection with client-side filtering %>
-<%= render LightningUiKit::ComboboxComponent.new(
+<%= lui.combobox(
   name: :country,
   label: "Country",
   placeholder: "Search countries...",
@@ -375,7 +370,7 @@ All controllers use `lui-` prefix:
 ) %>
 
 <%# Multiple selection %>
-<%= render LightningUiKit::ComboboxComponent.new(
+<%= lui.combobox(
   name: :tags,
   label: "Tags",
   multiple: true,
@@ -389,52 +384,29 @@ All controllers use `lui-` prefix:
 ) %>
 
 <%# Server-side filtering %>
-<%= render LightningUiKit::ComboboxComponent.new(
-  name: :user_id,
-  label: "User",
-  url: "/api/users/search",
-  min_chars: 2,
-  debounce: 300
-) %>
+<%= lui.combobox(name: :user_id, label: "User", url: "/api/users/search", min_chars: 2, debounce: 300) %>
 
 <%# Nested attributes for has_many :through associations (SimpleForm-inspired) %>
-<%# Supports: selecting existing records, creating new records, removing associations %>
 <%= form_with model: @post do |f| %>
-  <%= render LightningUiKit::ComboboxComponent.new(
+  <%= lui.combobox(
     form: f,
-    association: :post_tags,        # Join association name
-    foreign_key: :tag_id,           # FK in join table for existing records
-    nested_model: :tag,             # Nested model for creating new records
-    collection: Tag.all,            # Or array of objects
-    label_method: :name,            # Method for labels (default: :to_s)
-    value_method: :id,              # Method for values (default: :id)
-    allow_custom: true,             # Enable creating new tags inline
+    association: :post_tags,
+    foreign_key: :tag_id,
+    nested_model: :tag,
+    collection: Tag.all,
+    label_method: :name,
+    value_method: :id,
+    allow_custom: true,
     label: "Tags",
     placeholder: "Search or create tags..."
   ) %>
 <% end %>
-
-<%# Manual nested attributes (without association helper) %>
-<%= render LightningUiKit::ComboboxComponent.new(
-  name: :post_tags_attributes,
-  foreign_key: :tag_id,
-  nested_model: :tag,
-  allow_custom: true,
-  options: [
-    { value: 1, label: "Ruby" },
-    { value: 2, label: "Rails" }
-  ],
-  selected: [
-    { join_id: 1, value: 1 },  # Existing join record (id=1) with tag_id=1
-    { join_id: 2, value: 2 }   # Existing join record (id=2) with tag_id=2
-  ]
-) %>
 ```
 
 ### Layout with Sidebar
 
 ```erb
-<%= render LightningUiKit::LayoutComponent.new do |layout| %>
+<%= lui.layout do |layout| %>
   <% layout.with_sidebar do %>
     <div class="lui:p-4">
       <div class="lui:flex lui:items-center lui:mb-6">
@@ -465,7 +437,7 @@ All controllers use `lui-` prefix:
 ### Layout with Sidebar Sections
 
 ```erb
-<%= render LightningUiKit::LayoutComponent.new do |layout| %>
+<%= lui.layout do |layout| %>
   <% layout.with_header do %>
     <div class="lui:flex lui:items-center lui:gap-2">
       <%= image_tag "logo.svg", class: "lui:h-6" %>
@@ -491,7 +463,7 @@ All controllers use `lui-` prefix:
 
   <% layout.with_footer do %>
     <div class="lui:p-4">
-      <%= render LightningUiKit::SidebarLinkComponent.new(title: "Support", url: "/support", icon: "question-mark-circle") %>
+      <%= lui.sidebar_link(title: "Support", url: "/support", icon: "question-mark-circle") %>
     </div>
   <% end %>
 
@@ -537,7 +509,8 @@ app/
 4. Add Stimulus controller if interactive (register in index.js)
 5. Prefix all Tailwind classes with `lui:`
 6. Add preview in `lookbook/app/previews/`
-7. **Update this llms.txt file with the new component**
+7. **Add method to `lib/lightning_ui_kit/builder.rb` for the `lui` helper**
+8. **Update this llms.txt file with the new component**
 
 ## Commands
 

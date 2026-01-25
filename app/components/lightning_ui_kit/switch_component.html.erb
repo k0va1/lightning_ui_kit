@@ -1,22 +1,11 @@
-<div
-  data-slot="field"
-  class="
-  lui:grid lui:grid-cols-[1fr_auto] lui:items-center lui:gap-x-8 lui:gap-y-1 lui:sm:grid-cols-[1fr_auto]
-  lui:*:data-[slot=control]:col-start-2 lui:*:data-[slot=control]:self-center lui:*:data-[slot=label]:col-start-1
-  lui:*:data-[slot=label]:row-start-1 lui:*:data-[slot=label]:justify-self-start lui:*:data-[slot=description]:col-start-1
-  lui:*:data-[slot=description]:row-start-2 lui:has-data-[slot=description]:**:data-[slot=label]:font-medium
-  lui:*:data-[slot=error]:col-start-1 lui:*:data-[slot=error]:row-start-3"
-  data-controller="lui-switch"
-  >
-  <% if @label %>
-    <label data-slot="label" class="lui:text-base/6 lui:text-zinc-950 lui:select-none lui:data-disabled:opacity-50 lui:sm:text-sm/6">
-      <%= @label %>
-    </label>
-  <% end %>
+<%= tag.div(class: classes, data: data) do %>
+  <%= render_label %>
   <% if @description %>
-    <p data-slot="description" class="lui:text-base/6 lui:text-zinc-500 lui:data-disabled:opacity-50 lui:sm:text-sm/6">
-      <%= @description %>
-    </p>
+    <%= tag.p(
+      @description,
+      class: "lui:text-base/6 lui:text-zinc-500 lui:data-disabled:opacity-50 lui:sm:text-sm/6",
+      data: description_data
+    ) %>
   <% end %>
   <% if has_errors? %>
     <%= tag.p(
@@ -26,35 +15,14 @@
     ) %>
   <% end %>
   <%= tag.button(
-    class: "lui:group lui:relative lui:isolate lui:inline-flex lui:h-6 lui:w-10 lui:cursor-default lui:rounded-full
-    lui:p-[3px] lui:sm:h-5 lui:sm:w-8 lui:transition lui:duration-0 lui:ease-in-out
-    lui:forced-colors:outline lui:forced-colors:[--switch-bg:Highlight] ] lui:bg-zinc-200 lui:ring-1 lui:ring-black/5 lui:ring-inset
-    lui:data-checked:bg-(--switch-bg) lui:data-checked:ring-(--switch-bg-ring) lui:focus:outline-hidden lui:data-focus:outline-2
-    lui:data-focus:outline-offset-2 lui:data-focus:outline-blue-500 lui:hover:ring-black/15 lui:hover:data-checked:ring-(--switch-bg-ring)
-    lui:data-disabled:bg-zinc-200 lui:data-disabled:opacity-50 lui:data-disabled:data-checked:bg-zinc-200 lui:data-disabled:data-checked:ring-black/5
-    lui:[--switch-bg-ring:var(--lui-color-zinc-950)]/90
-    lui:[--switch-bg:var(--lui-color-zinc-900)]
-    lui:[--switch-ring:var(--lui-color-zinc-950)]/90
-    lui:[--switch-shadow:var(--lui-color-black)]/10
-    lui:[--switch:white]",
-    aria: { checked: @enabled },
+    class: button_classes,
+    aria: button_aria,
     role: "switch",
     type: "button",
     tabindex: 0,
-    data:
+    data: button_data
   ) do %>
-    <span
-      aria-hidden="true"
-      class="lui:pointer-events-none lui:relative lui:inline-block lui:size-[1.125rem] lui:rounded-full lui:sm:size-3.5 lui:translate-x-0 lui:transition lui:duration-200 lui:ease-in-out lui:border lui:border-transparent lui:bg-white lui:ring-1 lui:shadow-sm lui:ring-black/5 lui:group-data-checked:bg-(--switch) lui:group-data-checked:shadow-(--switch-shadow) lui:group-data-checked:ring-(--switch-ring) lui:group-data-checked:translate-x-4 lui:sm:group-data-checked:translate-x-3 lui:group-data-checked:group-data-disabled:bg-white lui:group-data-checked:group-data-disabled:shadow-sm lui:group-data-checked:group-data-disabled:ring-black/5">
-    </span>
-    <% if @form %>
-      <%= @form.hidden_field(@name, value: @enabled, data: { lui_switch_target: "field" }) %>
-    <% else %>
-      <%= hidden_field_tag(
-        @name,
-        @enabled,
-        data: { lui_switch_target: "field" }
-      ) %>
-    <% end %>
+    <%= tag.span(aria: { hidden: true }, class: knob_classes) %>
+    <%= render_hidden_field %>
   <% end %>
-</div>
+<% end %>

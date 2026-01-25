@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.3.1](https://github.com/k0va1/lightning_ui_kit/compare/v0.2.5...v0.3.1) (2026-01-25)
+
+
+### Features
+
+* add lui helper for convenient component rendering ([d9500e1](https://github.com/k0va1/lightning_ui_kit/commit/d9500e10cbc351e38006309e73500690452f9fee))
+* **forms:** add automatic label generation for form components ([0a96d94](https://github.com/k0va1/lightning_ui_kit/commit/0a96d94fca325762132c33771d13eb7e86808023))
+* **lookbook:** add configurable body padding for previews ([b03ea2c](https://github.com/k0va1/lightning_ui_kit/commit/b03ea2c36dfe4782d907765c9c2a8b2e3f08a176))
+
+
+### Bug Fixes
+
+* **switch:** use event.currentTarget for reliable toggle ([6731152](https://github.com/k0va1/lightning_ui_kit/commit/6731152b05028880a460c8f61e90354f26abb115))
+
 ## [0.2.5](https://github.com/k0va1/lightning_ui_kit/compare/v0.2.4...v0.2.5) (2026-01-18)
 
 

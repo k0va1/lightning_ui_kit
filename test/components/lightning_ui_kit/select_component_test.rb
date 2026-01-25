@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require "test_helper"
 
 class LightningUiKit::SelectComponentTest < ViewComponent::TestCase
@@ -33,5 +31,24 @@ class LightningUiKit::SelectComponentTest < ViewComponent::TestCase
     result = render_inline(LightningUiKit::SelectComponent.new(name: "type"))
 
     assert_includes result.to_html, "select"
+  end
+
+  def test_renders_default_label_from_name
+    result = render_inline(LightningUiKit::SelectComponent.new(name: "user_role"))
+
+    assert_includes result.to_html, "User role"
+  end
+
+  def test_renders_custom_label_over_default
+    result = render_inline(LightningUiKit::SelectComponent.new(name: "user_role", label: "Select Role"))
+
+    assert_includes result.to_html, "Select Role"
+    refute_includes result.to_html, "User role"
+  end
+
+  def test_does_not_render_label_when_false
+    result = render_inline(LightningUiKit::SelectComponent.new(name: "user_role", label: false))
+
+    refute_includes result.to_html, "User role"
   end
 end

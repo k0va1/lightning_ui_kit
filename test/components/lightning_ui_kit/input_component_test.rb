@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require "test_helper"
 
 class LightningUiKit::InputComponentTest < ViewComponent::TestCase
@@ -49,5 +47,25 @@ class LightningUiKit::InputComponentTest < ViewComponent::TestCase
     result = render_inline(LightningUiKit::InputComponent.new(name: "scheduled_at", type: :datetime))
 
     assert_includes result.to_html, "datetime-local"
+  end
+
+  def test_renders_default_label_from_name
+    result = render_inline(LightningUiKit::InputComponent.new(name: "first_name"))
+
+    assert_includes result.to_html, "First name"
+  end
+
+  def test_renders_custom_label_over_default
+    result = render_inline(LightningUiKit::InputComponent.new(name: "first_name", label: "Your Name"))
+
+    assert_includes result.to_html, "Your Name"
+    refute_includes result.to_html, "First name"
+  end
+
+  def test_does_not_render_label_when_false
+    result = render_inline(LightningUiKit::InputComponent.new(name: "first_name", label: false))
+
+    refute_includes result.to_html, "First name"
+    refute_includes result.to_html, "<label"
   end
 end

@@ -1,7 +1,6 @@
-# frozen_string_literal: true
-
 class LightningUiKit::InputComponent < LightningUiKit::BaseComponent
   include LightningUiKit::Errors
+  include LightningUiKit::Labelable
 
   INPUT_TYPES = {
     text: :text_field,
@@ -141,12 +140,13 @@ class LightningUiKit::InputComponent < LightningUiKit::BaseComponent
   end
 
   def render_label
-    return unless @label
+    return unless render_label?
 
+    label_text = effective_label
     if @form
-      @form.label(@name, @label, **label_html_options)
+      @form.label(@name, label_text, **label_html_options)
     else
-      helpers.label_tag(@name, @label, **label_html_options)
+      helpers.label_tag(@name, label_text, **label_html_options)
     end
   end
 

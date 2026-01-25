@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require "test_helper"
 
 class LightningUiKit::DropzoneComponentTest < ViewComponent::TestCase
@@ -25,5 +23,24 @@ class LightningUiKit::DropzoneComponentTest < ViewComponent::TestCase
     result = render_inline(LightningUiKit::DropzoneComponent.new(name: "images", multiple: true))
 
     assert_includes result.to_html, "multiple"
+  end
+
+  def test_renders_default_label_from_name
+    result = render_inline(LightningUiKit::DropzoneComponent.new(name: "attachment_files"))
+
+    assert_includes result.to_html, "Attachment files"
+  end
+
+  def test_renders_custom_label_over_default
+    result = render_inline(LightningUiKit::DropzoneComponent.new(name: "attachment_files", label: "Drop Files Here"))
+
+    assert_includes result.to_html, "Drop Files Here"
+    refute_includes result.to_html, "Attachment files"
+  end
+
+  def test_does_not_render_label_when_false
+    result = render_inline(LightningUiKit::DropzoneComponent.new(name: "attachment_files", label: false))
+
+    refute_includes result.to_html, "Attachment files"
   end
 end

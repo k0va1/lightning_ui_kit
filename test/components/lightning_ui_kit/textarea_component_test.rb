@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require "test_helper"
 
 class LightningUiKit::TextareaComponentTest < ViewComponent::TestCase
@@ -38,5 +36,24 @@ class LightningUiKit::TextareaComponentTest < ViewComponent::TestCase
     result = render_inline(LightningUiKit::TextareaComponent.new(name: "message", description: "Max 500 chars"))
 
     assert_includes result.to_html, "Max 500 chars"
+  end
+
+  def test_renders_default_label_from_name
+    result = render_inline(LightningUiKit::TextareaComponent.new(name: "user_bio"))
+
+    assert_includes result.to_html, "User bio"
+  end
+
+  def test_renders_custom_label_over_default
+    result = render_inline(LightningUiKit::TextareaComponent.new(name: "user_bio", label: "Your Bio"))
+
+    assert_includes result.to_html, "Your Bio"
+    refute_includes result.to_html, "User bio"
+  end
+
+  def test_does_not_render_label_when_false
+    result = render_inline(LightningUiKit::TextareaComponent.new(name: "user_bio", label: false))
+
+    refute_includes result.to_html, "User bio"
   end
 end

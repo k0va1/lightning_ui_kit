@@ -1,7 +1,6 @@
-# frozen_string_literal: true
-
 class LightningUiKit::SelectComponent < LightningUiKit::BaseComponent
   include LightningUiKit::Errors
+  include LightningUiKit::Labelable
 
   def initialize(name:, form: nil, label: nil, errors: nil, description: nil, disabled: false, options_for_select: [], multiple: false, **options)
     @name = name
@@ -62,12 +61,13 @@ class LightningUiKit::SelectComponent < LightningUiKit::BaseComponent
   end
 
   def render_label
-    return unless @label
+    return unless render_label?
 
+    label_text = effective_label
     if @form
-      @form.label(@name, @label, **label_html_options)
+      @form.label(@name, label_text, **label_html_options)
     else
-      helpers.label_tag(@name, @label, **label_html_options)
+      helpers.label_tag(@name, label_text, **label_html_options)
     end
   end
 

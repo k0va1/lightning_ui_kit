@@ -1,6 +1,6 @@
-# frozen_string_literal: true
-
 class LightningUiKit::CheckboxComponent < LightningUiKit::BaseComponent
+  include LightningUiKit::Labelable
+
   def initialize(name:, value: nil, label: nil, description: nil, form: nil, checked: false, disabled: false, **options)
     @form = form
     @name = name

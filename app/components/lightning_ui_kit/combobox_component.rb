@@ -1,7 +1,6 @@
-# frozen_string_literal: true
-
 class LightningUiKit::ComboboxComponent < LightningUiKit::BaseComponent
   include LightningUiKit::Errors
+  include LightningUiKit::Labelable
 
   def initialize(
     name: nil,

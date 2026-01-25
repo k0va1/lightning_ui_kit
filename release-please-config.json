@@ -9,7 +9,8 @@
       "bump-patch-for-minor-pre-major": true,
       "draft": false,
       "prerelease": false,
-      "version-file": "lib/lightning_ui_kit/version.rb"
+      "version-file": "lib/lightning_ui_kit/version.rb",
+      "release-as": "0.3.1"
     }
   },
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"

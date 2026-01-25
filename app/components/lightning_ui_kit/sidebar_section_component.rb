@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class LightningUiKit::SidebarSectionComponent < LightningUiKit::BaseComponent
   renders_many :links, LightningUiKit::SidebarLinkComponent
 

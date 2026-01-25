@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class LightningUiKit::BannerComponent < LightningUiKit::BaseComponent
   renders_one :footer
 

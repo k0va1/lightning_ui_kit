@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class LightningUiKit::AlertComponent < LightningUiKit::BaseComponent
   def initialize(type: :info, **options)
     @type = type

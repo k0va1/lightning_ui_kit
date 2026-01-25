@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class LightningUiKit::SidebarLinkComponent < LightningUiKit::BaseComponent
   def initialize(title:, url:, icon: nil, current: false, **options)
     @title = title

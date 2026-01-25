@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class LightningUiKit::TooltipComponent < LightningUiKit::BaseComponent
   POSITION_OPTIONS = [:top, :bottom, :left, :right]
   DEFAULT_POSITION = :bottom

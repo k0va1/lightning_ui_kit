@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class LightningUiKit::TableComponent < LightningUiKit::BaseComponent
   renders_many :columns, ->(title, &block) do
     LightningUiKit::Table::ColumnComponent.new(title, &block)

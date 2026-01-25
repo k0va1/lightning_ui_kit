@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class LightningUiKit::BadgeComponent < LightningUiKit::BaseComponent
   def initialize(status: :default, progress: nil)
     @status = status

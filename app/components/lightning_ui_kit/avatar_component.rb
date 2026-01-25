@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class LightningUiKit::AvatarComponent < LightningUiKit::BaseComponent
   SIZE_CLASSES = {
     sm: "lui:size-6",

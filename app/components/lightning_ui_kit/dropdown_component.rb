@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class LightningUiKit::DropdownComponent < LightningUiKit::BaseComponent
   renders_one :trigger
   renders_many :items

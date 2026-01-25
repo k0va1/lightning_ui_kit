@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class LightningUiKit::TextComponent < LightningUiKit::BaseComponent
   def initialize(size: :md, **options)
     @size = size

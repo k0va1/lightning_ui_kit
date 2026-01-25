@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class LightningUiKit::PaginationComponent < LightningUiKit::BaseComponent
   def initialize(current_page:, total_pages:, path:, page_param: "page", with_arrows: false, **options)
     @current_page = current_page

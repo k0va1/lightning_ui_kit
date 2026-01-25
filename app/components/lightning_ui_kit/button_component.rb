@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class LightningUiKit::ButtonComponent < LightningUiKit::BaseComponent
   def initialize(type: :button, style: :default, size: :default, disabled: false, url: nil, icon: nil, icon_position: :leading, icon_variant: :outline, **options)
     @type = type

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class LightningUiKit::LayoutComponent < LightningUiKit::BaseComponent
   renders_one :sidebar
   renders_one :header

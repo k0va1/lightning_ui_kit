@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class LightningUiKit::ModalComponent < LightningUiKit::BaseComponent
   renders_one :body
   renders_many :actions

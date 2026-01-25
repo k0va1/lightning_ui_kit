@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class DropzoneComponentPreview < Lookbook::Preview
   def default
     render LightningUiKit::DropzoneComponent.new(

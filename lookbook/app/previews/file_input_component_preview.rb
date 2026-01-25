@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class FileInputComponentPreview < Lookbook::Preview
   def default
     render LightningUiKit::FileInputComponent.new(

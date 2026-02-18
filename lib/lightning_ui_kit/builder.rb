@@ -4,116 +4,116 @@ module LightningUiKit
       @view_context = view_context
     end
 
-    def alert(...)
-      render(AlertComponent.new(...))
+    def alert(*, **, &block)
+      render(AlertComponent.new(*, **), &block)
     end
 
-    def avatar(...)
-      render(AvatarComponent.new(...))
+    def avatar(*, **, &block)
+      render(AvatarComponent.new(*, **), &block)
     end
 
-    def badge(...)
-      render(BadgeComponent.new(...))
+    def badge(*, **, &block)
+      render(BadgeComponent.new(*, **), &block)
     end
 
-    def banner(...)
-      render(BannerComponent.new(...))
+    def banner(*, **, &block)
+      render(BannerComponent.new(*, **), &block)
     end
 
-    def button(...)
-      render(ButtonComponent.new(...))
+    def button(*, **, &block)
+      render(ButtonComponent.new(*, **), &block)
     end
 
-    def checkbox(...)
-      render(CheckboxComponent.new(...))
+    def checkbox(*, **, &block)
+      render(CheckboxComponent.new(*, **), &block)
     end
 
-    def combobox(...)
-      render(ComboboxComponent.new(...))
+    def combobox(*, **, &block)
+      render(ComboboxComponent.new(*, **), &block)
     end
 
-    def description_list(...)
-      render(DescriptionListComponent.new(...))
+    def description_list(*, **, &block)
+      render(DescriptionListComponent.new(*, **), &block)
     end
 
-    def dropdown(...)
-      render(DropdownComponent.new(...))
+    def dropdown(*, **, &block)
+      render(DropdownComponent.new(*, **), &block)
     end
 
-    def dropzone(...)
-      render(DropzoneComponent.new(...))
+    def dropzone(*, **, &block)
+      render(DropzoneComponent.new(*, **), &block)
     end
 
-    def file_input(...)
-      render(FileInputComponent.new(...))
+    def file_input(*, **, &block)
+      render(FileInputComponent.new(*, **), &block)
     end
 
-    def input(...)
-      render(InputComponent.new(...))
+    def input(*, **, &block)
+      render(InputComponent.new(*, **), &block)
     end
 
-    def layout(...)
-      render(LayoutComponent.new(...))
+    def layout(*, **, &block)
+      render(LayoutComponent.new(*, **), &block)
     end
 
-    def link(...)
-      render(LinkComponent.new(...))
+    def link(*, **, &block)
+      render(LinkComponent.new(*, **), &block)
     end
 
-    def modal(...)
-      render(ModalComponent.new(...))
+    def modal(*, **, &block)
+      render(ModalComponent.new(*, **), &block)
     end
 
-    def pagination(...)
-      render(PaginationComponent.new(...))
+    def pagination(*, **, &block)
+      render(PaginationComponent.new(*, **), &block)
     end
 
-    def select(...)
-      render(SelectComponent.new(...))
+    def select(*, **, &block)
+      render(SelectComponent.new(*, **), &block)
     end
 
-    def sidebar(...)
-      render(SidebarComponent.new(...))
+    def sidebar(*, **, &block)
+      render(SidebarComponent.new(*, **), &block)
     end
 
-    def sidebar_link(...)
-      render(SidebarLinkComponent.new(...))
+    def sidebar_link(*, **, &block)
+      render(SidebarLinkComponent.new(*, **), &block)
     end
 
-    def sidebar_section(...)
-      render(SidebarSectionComponent.new(...))
+    def sidebar_section(*, **, &block)
+      render(SidebarSectionComponent.new(*, **), &block)
     end
 
-    def skeleton(...)
-      render(SkeletonComponent.new(...))
+    def skeleton(*, **, &block)
+      render(SkeletonComponent.new(*, **), &block)
     end
 
-    def spinner(...)
-      render(SpinnerComponent.new(...))
+    def spinner(*, **, &block)
+      render(SpinnerComponent.new(*, **), &block)
     end
 
-    def switch(...)
-      render(SwitchComponent.new(...))
+    def switch(*, **, &block)
+      render(SwitchComponent.new(*, **), &block)
     end
 
-    def table(...)
-      render(TableComponent.new(...))
+    def table(*, **, &block)
+      render(TableComponent.new(*, **), &block)
     end
 
-    def text(...)
-      render(TextComponent.new(...))
+    def text(*, **, &block)
+      render(TextComponent.new(*, **), &block)
     end
 
-    def textarea(...)
-      render(TextareaComponent.new(...))
+    def textarea(*, **, &block)
+      render(TextareaComponent.new(*, **), &block)
     end
 
-    def toast(...)
-      render(ToastComponent.new(...))
+    def toast(*, **, &block)
+      render(ToastComponent.new(*, **), &block)
     end
 
-    def tooltip(...)
-      render(TooltipComponent.new(...))
+    def tooltip(*, **, &block)
+      render(TooltipComponent.new(*, **), &block)
     end
 
     private

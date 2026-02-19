@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.3.2](https://github.com/k0va1/lightning_ui_kit/compare/v0.3.1...v0.3.2) (2026-02-19)
+
+
+### Features
+
+* add CSS custom property theming system with light/dark themes ([429448c](https://github.com/k0va1/lightning_ui_kit/commit/429448c036fbb1a1f45c26bf7af1d2738825a04f))
+* add pagination params forwarding and sidebar icon bounce animation ([f088e84](https://github.com/k0va1/lightning_ui_kit/commit/f088e84aa5aa51fbb8eaad19df163775f33b6662))
+
+
+### Bug Fixes
+
+* improve badge visibility in dark mode ([f96f5c2](https://github.com/k0va1/lightning_ui_kit/commit/f96f5c23f22c66f66448dd01887585c2be921316))
+* improve dark theme surface hierarchy for layout and components ([4591c2a](https://github.com/k0va1/lightning_ui_kit/commit/4591c2a4d83d9a3d92dd36909df5e00ccb4624a8))
+* improve layout sidebar link styles and use semantic tokens ([0c0e859](https://github.com/k0va1/lightning_ui_kit/commit/0c0e859ea46179c2ba526b8f406a1391af3bd679))
+* make pagination arrow hover state square with aspect-square ([c5e1a5f](https://github.com/k0va1/lightning_ui_kit/commit/c5e1a5fd9acfabdee3df7843cc3b2ee0b4d92fbb))
+
 ## [0.3.1](https://github.com/k0va1/lightning_ui_kit/compare/v0.2.5...v0.3.1) (2026-01-25)
 
 

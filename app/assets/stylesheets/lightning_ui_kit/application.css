@@ -31,9 +31,11 @@
 
   --color-success-bg: var(--lui-theme-success-bg);
   --color-success-indicator: var(--lui-theme-success-indicator);
+  --color-success-text: var(--lui-theme-success-text);
 
   --color-warning-bg: var(--lui-theme-warning-bg);
   --color-warning-indicator: var(--lui-theme-warning-indicator);
+  --color-warning-text: var(--lui-theme-warning-text);
 
   --color-tooltip-bg: var(--lui-theme-tooltip-bg);
   --color-tooltip-text: var(--lui-theme-tooltip-text);
@@ -43,4 +45,13 @@
 
   --color-spinner-primary: var(--lui-theme-spinner-primary);
   --color-spinner-secondary: var(--lui-theme-spinner-secondary);
+
+  --animate-icon-bounce: icon-bounce 350ms ease-out;
+}
+
+@keyframes icon-bounce {
+  0% { scale: 1; }
+  40% { scale: 1.2; }
+  70% { scale: 0.95; }
+  100% { scale: 1; }
 }

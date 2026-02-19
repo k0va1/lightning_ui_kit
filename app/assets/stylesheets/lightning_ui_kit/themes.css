@@ -51,10 +51,12 @@
   /* Success */
   --lui-theme-success-bg: oklch(0.925 0.084 155.995);
   --lui-theme-success-indicator: oklch(0.627 0.194 149.214);
+  --lui-theme-success-text: oklch(0.45 0.13 150);
 
   /* Warning */
   --lui-theme-warning-bg: oklch(0.945 0.129 101.54);
   --lui-theme-warning-indicator: oklch(0.852 0.199 91.936);
+  --lui-theme-warning-text: oklch(0.53 0.14 70);
 
   /* Tooltip */
   --lui-theme-tooltip-bg: oklch(0.274 0.006 286.033);
@@ -104,12 +106,14 @@
   --lui-theme-destructive-text: oklch(0.637 0.237 25.331);
 
   /* Success */
-  --lui-theme-success-bg: oklch(0.627 0.194 149.214 / 20%);
+  --lui-theme-success-bg: oklch(0.627 0.194 149.214 / 25%);
   --lui-theme-success-indicator: oklch(0.627 0.194 149.214);
+  --lui-theme-success-text: oklch(0.76 0.16 150);
 
   /* Warning */
-  --lui-theme-warning-bg: oklch(0.852 0.199 91.936 / 20%);
+  --lui-theme-warning-bg: oklch(0.852 0.199 91.936 / 25%);
   --lui-theme-warning-indicator: oklch(0.852 0.199 91.936);
+  --lui-theme-warning-text: oklch(0.82 0.15 85);
 
   /* Tooltip */
   --lui-theme-tooltip-bg: oklch(0.92 0.004 286.32);

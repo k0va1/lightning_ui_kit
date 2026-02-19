@@ -28,6 +28,6 @@ class LightningUiKit::BadgeComponentTest < ViewComponent::TestCase
   def test_renders_with_error_status
     result = render_inline(LightningUiKit::BadgeComponent.new(status: :error)) { "Error" }
 
-    assert_includes result.to_html, "lui:bg-destructive/80"
+    assert_includes result.to_html, "lui:bg-destructive/15"
   end
 end

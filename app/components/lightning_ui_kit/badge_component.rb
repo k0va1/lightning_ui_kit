@@ -7,11 +7,11 @@ class LightningUiKit::BadgeComponent < LightningUiKit::BaseComponent
   def classes
     status_classes = case @status
     when :success
-      "lui:bg-success-bg lui:text-foreground-muted"
+      "lui:bg-success-bg lui:text-success-text"
     when :warning
-      "lui:bg-warning-bg lui:text-foreground-muted"
+      "lui:bg-warning-bg lui:text-warning-text"
     when :error
-      "lui:bg-destructive/80 lui:text-foreground-invert"
+      "lui:bg-destructive/15 lui:text-destructive-text"
     else
       "lui:bg-foreground-faint/20 lui:text-foreground-muted"
     end

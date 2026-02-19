@@ -23,6 +23,13 @@ class LightningUiKit::PaginationComponent < LightningUiKit::BaseComponent
      lui:data-[active]:bg-surface-hover lui:hover:bg-surface-hover"
   end
 
+  def arrow_link_classes
+    "lui:min-w-[2.25rem] lui:aspect-square lui:flex lui:items-center lui:justify-center lui:rounded-lg lui:border \
+     lui:focus:outline-hidden lui:focus:outline lui:focus:outline-2 lui:focus:outline-offset-2 lui:focus:outline-focus \
+     lui:data-[disabled]:opacity-50 lui:data-[disabled]:pointer-events-none lui:border-transparent lui:text-foreground \
+     lui:hover:bg-surface-hover"
+  end
+
   def pages_with_gaps
     return (1..@total_pages).to_a if @total_pages <= 7
 

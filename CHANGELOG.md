@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.3](https://github.com/k0va1/lightning_ui_kit/compare/v0.3.2...v0.3.3) (2026-02-19)
+
+
+### Bug Fixes
+
+* release assets ([e13fc7b](https://github.com/k0va1/lightning_ui_kit/commit/e13fc7b186ebdf2028ef8a9d81400fc9e1ff2c60))
+
 ## [0.3.2](https://github.com/k0va1/lightning_ui_kit/compare/v0.3.1...v0.3.2) (2026-02-19)
 
 

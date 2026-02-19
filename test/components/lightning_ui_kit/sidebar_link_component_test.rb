@@ -35,4 +35,23 @@ class LightningUiKit::SidebarLinkComponentTest < ViewComponent::TestCase
     assert_includes result.to_html, "lui:text-foreground-secondary"
     assert_includes result.to_html, "lui:hover:bg-surface-hover"
   end
+
+  def test_animate_icon_adds_bounce_class
+    result = render_inline(LightningUiKit::SidebarLinkComponent.new(title: "Home", url: "/", icon: "home", animate_icon: true))
+
+    assert_includes result.to_html, "lui:group-hover:animate-icon-bounce"
+  end
+
+  def test_animate_icon_default_off
+    result = render_inline(LightningUiKit::SidebarLinkComponent.new(title: "Home", url: "/", icon: "home"))
+
+    refute_includes result.to_html, "lui:group-hover:animate-icon-bounce"
+  end
+
+  def test_animate_icon_with_current_state
+    result = render_inline(LightningUiKit::SidebarLinkComponent.new(title: "Home", url: "/", icon: "home", current: true, animate_icon: true))
+
+    assert_includes result.to_html, "lui:group-hover:animate-icon-bounce"
+    assert_includes result.to_html, "lui:bg-surface-hover"
+  end
 end

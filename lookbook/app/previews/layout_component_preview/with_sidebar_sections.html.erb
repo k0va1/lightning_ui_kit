@@ -9,16 +9,16 @@
   <% end %>
 
   <% layout.with_section do |section| %>
-    <% section.with_link(title: "Search", url: "#", icon: "magnifying-glass") %>
-    <% section.with_link(title: "Inbox", url: "#", icon: "inbox") %>
+    <% section.with_link(title: "Search", url: "#", icon: "magnifying-glass", animate_icon: true) %>
+    <% section.with_link(title: "Inbox", url: "#", icon: "inbox", animate_icon: true) %>
   <% end %>
 
   <% layout.with_section do |section| %>
-    <% section.with_link(title: "Home", url: "#", icon: "home", current: true) %>
-    <% section.with_link(title: "Events", url: "#", icon: "calendar") %>
-    <% section.with_link(title: "Orders", url: "#", icon: "clipboard-document-list") %>
-    <% section.with_link(title: "Broadcasts", url: "#", icon: "megaphone") %>
-    <% section.with_link(title: "Settings", url: "#", icon: "cog-6-tooth") %>
+    <% section.with_link(title: "Home", url: "#", icon: "home", current: true, animate_icon: true) %>
+    <% section.with_link(title: "Events", url: "#", icon: "calendar", animate_icon: true) %>
+    <% section.with_link(title: "Orders", url: "#", icon: "clipboard-document-list", animate_icon: true) %>
+    <% section.with_link(title: "Broadcasts", url: "#", icon: "megaphone", animate_icon: true) %>
+    <% section.with_link(title: "Settings", url: "#", icon: "cog-6-tooth", animate_icon: true) %>
   <% end %>
 
   <% layout.with_section(title: "Upcoming Events") do |section| %>

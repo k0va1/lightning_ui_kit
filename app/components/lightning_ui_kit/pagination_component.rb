@@ -1,10 +1,11 @@
 class LightningUiKit::PaginationComponent < LightningUiKit::BaseComponent
-  def initialize(current_page:, total_pages:, path:, page_param: "page", with_arrows: false, **options)
+  def initialize(current_page:, total_pages:, path:, page_param: "page", params: {}, with_arrows: false, **options)
     @current_page = current_page
     @total_pages = total_pages
     @with_arrows = with_arrows
     @path = path
     @page_param = page_param
+    @params = params
     @options = options
   end
 
@@ -43,6 +44,7 @@ class LightningUiKit::PaginationComponent < LightningUiKit::BaseComponent
   end
 
   def url(page)
-    "#{@path}?#{@page_param}=#{page}"
+    query = @params.merge(@page_param => page).to_query
+    "#{@path}?#{query}"
   end
 end

@@ -99,7 +99,7 @@ application.register(`${namespace}-example`, ExampleController)
 - **TooltipComponent** - `text:`, `position: :top/:bottom/:left/:right`, `active:`
 - **LayoutComponent** - `sidebar_width:` with header/sections/sidebar/footer/mobile_header slots for app shell layout
 - **SidebarSectionComponent** - `title:` - Groups sidebar links with optional section title
-- **SidebarLinkComponent** - `title:`, `url:`, `icon:`, `current:` - Navigation link with Heroicon support and active state
+- **SidebarLinkComponent** - `title:`, `url:`, `icon:`, `current:`, `animate_icon:` - Navigation link with Heroicon support, active state, and optional icon bounce animation on hover
 - **SidebarComponent** - Sidebar layout
 - **LinkComponent** - Styled link wrapper
 

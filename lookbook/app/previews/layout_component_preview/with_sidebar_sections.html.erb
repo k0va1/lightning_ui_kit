@@ -1,10 +1,10 @@
 <%= render LightningUiKit::LayoutComponent.new do |layout| %>
   <% layout.with_header do %>
     <div class="lui:flex lui:items-center lui:gap-3 lui:mb-2">
-      <div class="lui:flex lui:items-center lui:justify-center lui:w-10 lui:h-10 lui:bg-zinc-950 lui:rounded-xl">
+      <div class="lui:flex lui:items-center lui:justify-center lui:w-10 lui:h-10 lui:bg-surface-invert lui:rounded-xl">
         <span class="lui:text-xl">⚡</span>
       </div>
-      <span class="lui:text-lg lui:font-semibold lui:text-zinc-950">Lightning UI</span>
+      <span class="lui:text-lg lui:font-semibold lui:text-foreground">Lightning UI</span>
     </div>
   <% end %>
 
@@ -33,14 +33,14 @@
       <%= render LightningUiKit::SidebarLinkComponent.new(title: "Support", url: "#", icon: "question-mark-circle") %>
       <%= render LightningUiKit::SidebarLinkComponent.new(title: "Changelog", url: "#", icon: "sparkles") %>
     </div>
-    <div class="lui:border-t lui:border-zinc-950/5 lui:p-4">
+    <div class="lui:border-t lui:border-border lui:p-4">
       <div class="lui:flex lui:items-center lui:gap-3">
-        <div class="lui:w-10 lui:h-10 lui:flex lui:items-center lui:justify-center lui:rounded-full lui:bg-zinc-200">
-          <span class="lui:text-sm lui:font-medium lui:text-zinc-600">ER</span>
+        <div class="lui:w-10 lui:h-10 lui:flex lui:items-center lui:justify-center lui:rounded-full lui:bg-surface-tertiary">
+          <span class="lui:text-sm lui:font-medium lui:text-foreground-secondary">ER</span>
         </div>
         <div class="lui:min-w-0 lui:flex-1">
-          <p class="lui:text-sm lui:font-medium lui:text-zinc-950 lui:truncate">Erica</p>
-          <p class="lui:text-xs lui:text-zinc-500 lui:truncate">erica@example.com</p>
+          <p class="lui:text-sm lui:font-medium lui:text-foreground lui:truncate">Erica</p>
+          <p class="lui:text-xs lui:text-foreground-muted lui:truncate">erica@example.com</p>
         </div>
       </div>
     </div>
@@ -48,15 +48,15 @@
 
   <% layout.with_mobile_header do %>
     <div aria-hidden="true" class="lui:-ml-4 lui:flex-1"></div>
-    <span class="lui:text-lg lui:font-semibold">Lightning UI</span>
+    <span class="lui:text-lg lui:font-semibold lui:text-foreground">Lightning UI</span>
   <% end %>
 
   <div class="lui:space-y-6">
-    <h1 class="lui:text-2xl lui:font-bold lui:text-zinc-950">Home</h1>
-    <hr class="lui:border-zinc-950/10" />
-    <p class="lui:text-zinc-600">This example uses the new <code class="lui:bg-zinc-100 lui:px-1 lui:py-0.5 lui:rounded lui:text-sm">SidebarSectionComponent</code> and <code class="lui:bg-zinc-100 lui:px-1 lui:py-0.5 lui:rounded lui:text-sm">SidebarLinkComponent</code> to create structured navigation.</p>
-    <p class="lui:text-zinc-600">Features:</p>
-    <ul class="lui:list-disc lui:pl-5 lui:text-zinc-600 lui:space-y-1">
+    <h1 class="lui:text-2xl lui:font-bold lui:text-foreground">Home</h1>
+    <hr class="lui:border-border" />
+    <p class="lui:text-foreground-secondary">This example uses the new <code class="lui:bg-surface-tertiary lui:px-1 lui:py-0.5 lui:rounded lui:text-sm lui:text-foreground">SidebarSectionComponent</code> and <code class="lui:bg-surface-tertiary lui:px-1 lui:py-0.5 lui:rounded lui:text-sm lui:text-foreground">SidebarLinkComponent</code> to create structured navigation.</p>
+    <p class="lui:text-foreground-secondary">Features:</p>
+    <ul class="lui:list-disc lui:pl-5 lui:text-foreground-secondary lui:space-y-1">
       <li>Sections with optional titles (like "Upcoming Events")</li>
       <li>Links with Heroicons support</li>
       <li>Active state indicator (current: true)</li>

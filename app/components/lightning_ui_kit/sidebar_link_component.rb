@@ -8,7 +8,7 @@ class LightningUiKit::SidebarLinkComponent < LightningUiKit::BaseComponent
   end
 
   def classes
-    base_classes = "lui:flex lui:items-center lui:gap-3 lui:rounded-lg lui:px-3 lui:py-2 lui:text-sm lui:transition-colors"
+    base_classes = "lui:relative lui:flex lui:items-center lui:gap-3 lui:rounded-lg lui:px-3 lui:py-2 lui:text-sm lui:transition-all lui:duration-150 lui:ease-out"
 
     if @current
       merge_classes([base_classes, "lui:bg-surface-hover lui:text-foreground lui:font-semibold", @options[:class]].compact.join(" "))
@@ -19,9 +19,9 @@ class LightningUiKit::SidebarLinkComponent < LightningUiKit::BaseComponent
 
   def icon_classes
     if @current
-      "lui:size-5 lui:shrink-0 lui:text-foreground-secondary"
+      "lui:size-5 lui:shrink-0 lui:text-foreground"
     else
-      "lui:size-5 lui:shrink-0 lui:text-foreground-faint"
+      "lui:size-5 lui:shrink-0 lui:text-foreground-faint lui:transition-colors lui:duration-150 lui:group-hover:text-foreground-secondary"
     end
   end
 

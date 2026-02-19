@@ -11,6 +11,6 @@ class LightningUiKit::SidebarSectionComponent < LightningUiKit::BaseComponent
   end
 
   def title_classes
-    "lui:px-3 lui:py-2 lui:text-xs lui:font-medium lui:text-foreground-faint lui:uppercase lui:tracking-wider"
+    "lui:px-3 lui:py-2 lui:text-[0.6875rem] lui:font-semibold lui:text-foreground-faint lui:uppercase lui:tracking-widest"
   end
 end

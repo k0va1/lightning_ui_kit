@@ -25,6 +25,7 @@ class LightningUiKit::SidebarLinkComponentTest < ViewComponent::TestCase
     result = render_inline(LightningUiKit::SidebarLinkComponent.new(title: "Home", url: "/", current: true))
 
     assert_includes result.to_html, "lui:bg-surface-hover"
+    assert_includes result.to_html, "lui:text-foreground"
     assert_includes result.to_html, "lui:font-semibold"
   end
 

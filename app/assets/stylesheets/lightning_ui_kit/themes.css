@@ -20,6 +20,8 @@
   --lui-theme-surface: #fff;
   --lui-theme-surface-secondary: oklch(0.985 0 0);
   --lui-theme-surface-tertiary: oklch(0.967 0.001 286.375);
+  --lui-theme-surface-aside: oklch(0.967 0.001 286.375);
+  --lui-theme-surface-input: #fff;
   --lui-theme-surface-invert: oklch(0.21 0.006 285.885);
   --lui-theme-surface-overlay: oklch(0.141 0.005 285.823 / 25%);
   --lui-theme-surface-hover: oklch(0.141 0.005 285.823 / 5%);
@@ -77,6 +79,8 @@
   --lui-theme-surface: oklch(0.141 0.005 285.823);
   --lui-theme-surface-secondary: oklch(0.21 0.006 285.885);
   --lui-theme-surface-tertiary: oklch(0.274 0.006 286.033);
+  --lui-theme-surface-aside: oklch(0.13 0.004 285.823);
+  --lui-theme-surface-input: color-mix(in oklab, white 5%, transparent);
   --lui-theme-surface-invert: oklch(0.985 0 0);
   --lui-theme-surface-overlay: oklch(0 0 0 / 50%);
   --lui-theme-surface-hover: oklch(1 0 0 / 7%);

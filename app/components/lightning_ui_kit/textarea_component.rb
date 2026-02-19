@@ -85,6 +85,6 @@ class LightningUiKit::TextareaComponent < LightningUiKit::BaseComponent
   end
 
   def control_classes
-    "lui:relative lui:block lui:w-full lui:before:absolute lui:before:inset-px lui:before:rounded-[7px] lui:before:bg-surface lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-transparent lui:after:ring-inset lui:sm:focus-within:after:ring-2 lui:sm:focus-within:after:ring-focus lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-surface-hover lui:has-data-disabled:before:shadow-none lui:has-data-invalid:before:shadow-destructive-border/10"
+    "lui:relative lui:block lui:w-full lui:before:absolute lui:before:inset-px lui:before:rounded-[7px] lui:before:bg-surface-input lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-transparent lui:after:ring-inset lui:sm:focus-within:after:ring-2 lui:sm:focus-within:after:ring-focus lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-surface-hover lui:has-data-disabled:before:shadow-none lui:has-data-invalid:before:shadow-destructive-border/10"
   end
 end

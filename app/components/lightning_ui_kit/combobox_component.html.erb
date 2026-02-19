@@ -17,7 +17,7 @@
     <% if @multiple %>
       <%# Multiple selection: tags + input in a styled container %>
       <div
-        class="lui:relative lui:flex lui:flex-wrap lui:items-center lui:gap-1.5 lui:w-full lui:min-h-[42px] lui:sm:min-h-[38px] lui:rounded-lg lui:border lui:border-border lui:data-[hover]:border-border-hover lui:bg-surface lui:shadow-sm lui:px-2 lui:py-1.5 lui:focus-within:ring-2 lui:focus-within:ring-focus lui:focus-within:ring-offset-0 <%= 'lui:opacity-50' if @disabled %> <%= 'lui:border-destructive-border' if has_errors? %>"
+        class="lui:relative lui:flex lui:flex-wrap lui:items-center lui:gap-1.5 lui:w-full lui:min-h-[42px] lui:sm:min-h-[38px] lui:rounded-lg lui:border lui:border-border lui:data-[hover]:border-border-hover lui:bg-surface-input lui:shadow-sm lui:px-2 lui:py-1.5 lui:focus-within:ring-2 lui:focus-within:ring-focus lui:focus-within:ring-offset-0 <%= 'lui:opacity-50' if @disabled %> <%= 'lui:border-destructive-border' if has_errors? %>"
         data-lui-combobox-target="inputWrapper selectedTags"
       >
         <input
@@ -44,7 +44,7 @@
         </div>
       <% else %>
         <%# Single selection: standard input styling %>
-        <span class="lui:relative lui:block lui:w-full lui:before:absolute lui:before:inset-px lui:before:rounded-[7px] lui:before:bg-surface lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-transparent lui:after:ring-inset lui:sm:focus-within:after:ring-2 lui:sm:focus-within:after:ring-focus lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-surface-hover lui:has-data-disabled:before:shadow-none lui:has-data-invalid:before:shadow-destructive-border/10">
+        <span class="lui:relative lui:block lui:w-full lui:before:absolute lui:before:inset-px lui:before:rounded-[7px] lui:before:bg-surface-input lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-transparent lui:after:ring-inset lui:sm:focus-within:after:ring-2 lui:sm:focus-within:after:ring-focus lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-surface-hover lui:has-data-disabled:before:shadow-none lui:has-data-invalid:before:shadow-destructive-border/10">
           <input
           type="text"
           role="combobox"
@@ -73,7 +73,7 @@
       data-lui-combobox-target="listbox"
       role="listbox"
       aria-label="<%= effective_label || 'Options' %>"
-      class="lui:hidden lui:absolute lui:z-50 lui:mt-1 lui:w-full lui:max-h-60 lui:overflow-auto lui:rounded-lg lui:bg-surface lui:shadow-lg lui:ring-1 lui:ring-border"
+      class="lui:hidden lui:absolute lui:z-50 lui:mt-1 lui:w-full lui:max-h-60 lui:overflow-auto lui:rounded-lg lui:bg-surface-secondary lui:shadow-lg lui:ring-1 lui:ring-border"
     >
           <template data-lui-combobox-target="optionTemplate">
             <div

@@ -1,4 +1,4 @@
-<div class="lui:relative lui:isolate lui:flex lui:h-screen lui:w-full lui:bg-surface lui:max-lg:flex-col lui:max-lg:h-auto lui:max-lg:min-h-screen lui:lg:bg-surface-tertiary lui:overflow-hidden" data-controller="lui-layout">
+<div class="lui:relative lui:isolate lui:flex lui:h-screen lui:w-full lui:bg-surface lui:max-lg:flex-col lui:max-lg:h-auto lui:max-lg:min-h-screen lui:lg:bg-surface-aside lui:overflow-hidden" data-controller="lui-layout">
   <%# Desktop Sidebar (fixed, hidden on mobile) %>
   <div class="lui:fixed lui:inset-y-0 lui:left-0 <%= sidebar_width_class %> lui:max-lg:hidden lui:z-10">
     <nav class="lui:flex lui:h-full lui:min-h-0 lui:flex-col">
@@ -64,7 +64,7 @@
     ></div>
 
     <%# Mobile Sidebar Panel %>
-    <div class="lui:fixed lui:inset-y-0 lui:left-0 <%= sidebar_width_class %> lui:bg-surface lui:-translate-x-full lui:transition-transform lui:duration-300 lui:ease-out lui:shadow-xl lui:group-data-[open]:translate-x-0">
+    <div class="lui:fixed lui:inset-y-0 lui:left-0 <%= sidebar_width_class %> lui:bg-surface-aside lui:-translate-x-full lui:transition-transform lui:duration-300 lui:ease-out lui:shadow-xl lui:group-data-[open]:translate-x-0">
       <nav class="lui:flex lui:h-full lui:min-h-0 lui:flex-col">
         <%# Close button %>
         <div class="lui:flex lui:items-center lui:justify-end lui:p-4">
@@ -109,7 +109,7 @@
 
   <%# Main Content Area %>
   <main class="lui:flex lui:flex-1 lui:flex-col lui:min-h-0 lui:pb-4 lui:lg:min-w-0 lui:lg:pt-4 lui:lg:pr-4 <%= main_padding_class %>">
-    <div class="lui:flex-1 lui:min-h-0 lui:p-6 lui:lg:rounded-lg lui:lg:bg-surface lui:lg:p-10 lui:lg:shadow-xs lui:lg:ring-1 lui:lg:ring-border-subtle lui:lg:overflow-y-auto">
+    <div class="lui:flex-1 lui:min-h-0 lui:p-6 lui:lg:rounded-lg lui:lg:bg-surface-secondary lui:lg:p-10 lui:lg:shadow-xs lui:lg:ring-1 lui:lg:ring-border-subtle lui:lg:overflow-y-auto">
       <div class="lui:mx-auto lui:max-w-6xl">
         <%= content %>
       </div>

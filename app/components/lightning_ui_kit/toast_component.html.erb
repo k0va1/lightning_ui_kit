@@ -7,11 +7,11 @@
     lui_toast_dismiss_after_value: @dismiss_after,
   }
 ) do %>
-  <div class="lui:flex lui:items-center lui:w-full lui:max-w-xs lui:p-4 lui:text-foreground-secondary lui:bg-surface lui:rounded-lg lui:shadow" role="alert">
+  <div class="lui:flex lui:items-center lui:w-full lui:max-w-xs lui:p-4 lui:text-foreground-secondary lui:bg-surface-secondary lui:rounded-lg lui:shadow" role="alert">
     <div class="lui:ml-3 lui:text-sm lui:font-normal"><%= content %></div>
     <button
       type="button"
-      class="lui:ml-auto lui:-mx-1.5 lui:-my-1.5 lui:bg-surface lui:text-foreground-secondary lui:hover:text-foreground
+      class="lui:ml-auto lui:-mx-1.5 lui:-my-1.5 lui:bg-surface-secondary lui:text-foreground-secondary lui:hover:text-foreground
       lui:rounded-lg lui:focus:ring-2 lui:focus:ring-border lui:p-1.5 lui:hover:bg-surface-tertiary lui:inline-flex
       lui:items-center lui:justify-center lui:h-8 lui:w-8 lui:cursor-pointer" data-action="click->lui-toast#close" aria-label="Close">
       <svg class="lui:w-3 lui:h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">

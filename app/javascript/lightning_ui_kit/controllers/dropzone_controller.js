@@ -16,7 +16,7 @@ class Upload {
         const fileContainer = this.controller.filesTarget.querySelector(`#upload_${this.directUpload.id}`)
         const status = fileContainer.querySelector("[data-lui-dropzone-target='status']")
         status.textContent = "Failed. " + error
-        status.classList.add("text-red-500")
+        status.classList.add("text-destructive-text")
       } else {
         const hiddenField = document.createElement('input')
         hiddenField.setAttribute("type", "hidden");

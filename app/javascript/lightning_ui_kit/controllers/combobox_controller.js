@@ -391,10 +391,10 @@ export default class extends Controller {
 
       const tag = document.createElement("span")
       tag.setAttribute("data-combobox-tag", "true")
-      tag.className = "lui:inline-flex lui:items-center lui:gap-1 lui:rounded-md lui:bg-zinc-100 lui:px-2 lui:py-0.5 lui:text-sm lui:text-zinc-700"
+      tag.className = "lui:inline-flex lui:items-center lui:gap-1 lui:rounded-md lui:bg-surface-tertiary lui:px-2 lui:py-0.5 lui:text-sm lui:text-foreground-secondary"
       tag.innerHTML = `
         <span class="lui:truncate lui:max-w-[150px]">${this.escapeHtml(label)}</span>
-        <button type="button" data-value="${this.escapeHtml(String(value))}" data-action="click->lui-combobox#removeTag" class="lui:text-zinc-500 lui:hover:text-zinc-700 lui:flex-shrink-0 lui:ml-0.5">
+        <button type="button" data-value="${this.escapeHtml(String(value))}" data-action="click->lui-combobox#removeTag" class="lui:text-foreground-muted lui:hover:text-foreground-secondary lui:flex-shrink-0 lui:ml-0.5">
           <svg class="lui:h-3.5 lui:w-3.5" viewBox="0 0 16 16" fill="currentColor">
             <path d="M5.28 4.22a.75.75 0 00-1.06 1.06L6.94 8l-2.72 2.72a.75.75 0 101.06 1.06L8 9.06l2.72 2.72a.75.75 0 101.06-1.06L9.06 8l2.72-2.72a.75.75 0 00-1.06-1.06L8 6.94 5.28 4.22z"/>
           </svg>

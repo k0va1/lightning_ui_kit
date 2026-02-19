@@ -2,7 +2,7 @@
   class: class_names(
     "lui:inline-grid lui:shrink-0 lui:align-middle lui:[--avatar-radius:20%] lui:[--ring-opacity:20%] *:lui:col-start-1 *:lui:row-start-1 lui:outline lui:-outline-offset-1 lui:outline-black/(--ring-opacity)",
     SIZE_CLASSES.fetch(@size, SIZE_CLASSES[:md]),
-    @initials ? "lui:text-white lui:bg-zinc-900" : "lui:text-zinc-500 lui:bg-zinc-200",
+    @initials ? "lui:text-foreground-invert lui:bg-surface-invert" : "lui:text-foreground-muted lui:bg-surface-tertiary",
     @square ? "lui:rounded-(--avatar-radius) lui:*:rounded-(--avatar-radius)" : "lui:rounded-full lui:*:rounded-full",
     @options[:class]
   ),

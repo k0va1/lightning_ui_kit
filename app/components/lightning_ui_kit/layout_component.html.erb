@@ -1,4 +1,4 @@
-<div class="lui:relative lui:isolate lui:flex lui:h-screen lui:w-full lui:bg-white lui:max-lg:flex-col lui:max-lg:h-auto lui:max-lg:min-h-screen lui:lg:bg-zinc-100 lui:overflow-hidden" data-controller="lui-layout">
+<div class="lui:relative lui:isolate lui:flex lui:h-screen lui:w-full lui:bg-surface lui:max-lg:flex-col lui:max-lg:h-auto lui:max-lg:min-h-screen lui:lg:bg-surface-tertiary lui:overflow-hidden" data-controller="lui-layout">
   <%# Desktop Sidebar (fixed, hidden on mobile) %>
   <div class="lui:fixed lui:inset-y-0 lui:left-0 <%= sidebar_width_class %> lui:max-lg:hidden lui:z-10">
     <nav class="lui:flex lui:h-full lui:min-h-0 lui:flex-col">
@@ -21,7 +21,7 @@
 
       <%# Footer at bottom of sidebar %>
       <% if footer? %>
-        <div class="lui:border-t lui:border-zinc-950/5">
+        <div class="lui:border-t lui:border-border-subtle">
           <%= footer %>
         </div>
       <% end %>
@@ -34,11 +34,11 @@
       <button
         type="button"
         aria-label="Open navigation"
-        class="lui:cursor-pointer lui:relative lui:flex lui:min-w-0 lui:items-center lui:gap-3 lui:rounded-lg lui:p-2 lui:text-left lui:text-base/6 lui:font-medium lui:text-zinc-950 lui:sm:text-sm/5 lui:hover:bg-zinc-950/5"
+        class="lui:cursor-pointer lui:relative lui:flex lui:min-w-0 lui:items-center lui:gap-3 lui:rounded-lg lui:p-2 lui:text-left lui:text-base/6 lui:font-medium lui:text-foreground lui:sm:text-sm/5 lui:hover:bg-surface-hover"
         data-action="lui-layout#openSidebar"
       >
         <span class="lui:absolute lui:top-1/2 lui:left-1/2 lui:size-[max(100%,2.75rem)] lui:-translate-x-1/2 lui:-translate-y-1/2 [@media(pointer:fine)]:lui:hidden" aria-hidden="true"></span>
-        <svg class="lui:size-6 lui:shrink-0 lui:fill-zinc-500 lui:sm:size-5" viewBox="0 0 20 20" aria-hidden="true">
+        <svg class="lui:size-6 lui:shrink-0 lui:fill-foreground-muted lui:sm:size-5" viewBox="0 0 20 20" aria-hidden="true">
           <path d="M2 6.75C2 6.33579 2.33579 6 2.75 6H17.25C17.6642 6 18 6.33579 18 6.75C18 7.16421 17.6642 7.5 17.25 7.5H2.75C2.33579 7.5 2 7.16421 2 6.75ZM2 13.25C2 12.8358 2.33579 12.5 2.75 12.5H17.25C17.6642 12.5 18 12.8358 18 13.25C18 13.6642 17.6642 14 17.25 14H2.75C2.33579 14 2 13.6642 2 13.25Z"></path>
         </svg>
       </button>
@@ -59,22 +59,22 @@
   >
     <%# Backdrop %>
     <div
-      class="lui:fixed lui:inset-0 lui:bg-zinc-950/25 lui:opacity-0 lui:transition-opacity lui:duration-300 lui:group-data-[open]:opacity-100"
+      class="lui:fixed lui:inset-0 lui:bg-surface-overlay lui:opacity-0 lui:transition-opacity lui:duration-300 lui:group-data-[open]:opacity-100"
       data-action="click->lui-layout#closeSidebar"
     ></div>
 
     <%# Mobile Sidebar Panel %>
-    <div class="lui:fixed lui:inset-y-0 lui:left-0 <%= sidebar_width_class %> lui:bg-white lui:-translate-x-full lui:transition-transform lui:duration-300 lui:ease-out lui:shadow-xl lui:group-data-[open]:translate-x-0">
+    <div class="lui:fixed lui:inset-y-0 lui:left-0 <%= sidebar_width_class %> lui:bg-surface lui:-translate-x-full lui:transition-transform lui:duration-300 lui:ease-out lui:shadow-xl lui:group-data-[open]:translate-x-0">
       <nav class="lui:flex lui:h-full lui:min-h-0 lui:flex-col">
         <%# Close button %>
         <div class="lui:flex lui:items-center lui:justify-end lui:p-4">
           <button
             type="button"
             aria-label="Close navigation"
-            class="lui:cursor-pointer lui:rounded-lg lui:p-2 lui:hover:bg-zinc-950/5"
+            class="lui:cursor-pointer lui:rounded-lg lui:p-2 lui:hover:bg-surface-hover"
             data-action="lui-layout#closeSidebar"
           >
-            <svg class="lui:size-6 lui:fill-zinc-500" viewBox="0 0 20 20" aria-hidden="true">
+            <svg class="lui:size-6 lui:fill-foreground-muted" viewBox="0 0 20 20" aria-hidden="true">
               <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
             </svg>
           </button>
@@ -99,7 +99,7 @@
 
         <%# Footer %>
         <% if footer? %>
-          <div class="lui:border-t lui:border-zinc-950/5">
+          <div class="lui:border-t lui:border-border-subtle">
             <%= footer %>
           </div>
         <% end %>
@@ -109,7 +109,7 @@
 
   <%# Main Content Area %>
   <main class="lui:flex lui:flex-1 lui:flex-col lui:min-h-0 lui:pb-4 lui:lg:min-w-0 lui:lg:pt-4 lui:lg:pr-4 <%= main_padding_class %>">
-    <div class="lui:flex-1 lui:min-h-0 lui:p-6 lui:lg:rounded-lg lui:lg:bg-white lui:lg:p-10 lui:lg:shadow-xs lui:lg:ring-1 lui:lg:ring-zinc-950/5 lui:lg:overflow-y-auto">
+    <div class="lui:flex-1 lui:min-h-0 lui:p-6 lui:lg:rounded-lg lui:lg:bg-surface lui:lg:p-10 lui:lg:shadow-xs lui:lg:ring-1 lui:lg:ring-border-subtle lui:lg:overflow-y-auto">
       <div class="lui:mx-auto lui:max-w-6xl">
         <%= content %>
       </div>

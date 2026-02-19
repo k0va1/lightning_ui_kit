@@ -3,7 +3,7 @@
   <% if @description %>
     <%= tag.p(
       @description,
-      class: "lui:text-base/6 lui:text-zinc-500 lui:data-disabled:opacity-50 lui:sm:text-sm/6",
+      class: "lui:text-base/6 lui:text-foreground-muted lui:data-disabled:opacity-50 lui:sm:text-sm/6",
       data: description_data
     ) %>
   <% end %>
@@ -13,7 +13,7 @@
   <% if has_errors? %>
     <%= tag.p(
       error_messages,
-      class: "lui:text-base/6 lui:text-red-600 lui:data-disabled:opacity-50 lui:sm:text-sm/6",
+      class: "lui:text-base/6 lui:text-destructive-text lui:data-disabled:opacity-50 lui:sm:text-sm/6",
       data: error_data
     ) %>
   <% end %>

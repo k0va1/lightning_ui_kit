@@ -114,11 +114,11 @@ class LightningUiKit::ComboboxComponent < LightningUiKit::BaseComponent
       "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg",
       "lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)]",
       "lui:sm:px-[calc(--spacing(3)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)]",
-      "lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6",
-      "lui:border lui:border-zinc-950/10 lui:data-[hover]:border-zinc-950/20",
+      "lui:text-base/6 lui:text-foreground lui:placeholder:text-foreground-muted lui:sm:text-sm/6",
+      "lui:border lui:border-border lui:data-[hover]:border-border-hover",
       "lui:bg-transparent lui:focus:outline-hidden",
-      "lui:data-invalid:border-red-500 lui:data-invalid:data-[hover]:border-red-500/60",
-      "lui:data-disabled:border-zinc-950/20",
+      "lui:data-invalid:border-destructive-border lui:data-invalid:data-[hover]:border-destructive-border/60",
+      "lui:data-disabled:border-border-hover",
       "lui:pr-10"
     ].join(" "))
   end

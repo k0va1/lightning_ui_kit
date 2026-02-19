@@ -51,7 +51,7 @@ class LightningUiKit::FileInputComponent < LightningUiKit::BaseComponent
 
   def label_html_options
     {
-      class: "lui:text-base/6 lui:text-zinc-950 lui:select-none lui:data-disabled:opacity-50 lui:sm:text-sm/6",
+      class: "lui:text-base/6 lui:text-foreground lui:select-none lui:data-disabled:opacity-50 lui:sm:text-sm/6",
       data: label_data
     }
   end
@@ -68,7 +68,7 @@ class LightningUiKit::FileInputComponent < LightningUiKit::BaseComponent
   end
 
   def file_input_classes
-    "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:data-[hover]:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:data-[hover]:border-red-500 lui:data-disabled:cursor-not-allowed lui:data-disabled:border-zinc-950/20 lui:data-disabled:file:cursor-not-allowed lui:file:cursor-pointer lui:cursor-pointer lui:file:border-0 lui:file:px-[calc(--spacing(3.5)-1px)] lui:file:py-[calc(--spacing(2.5)-1px)] lui:file:sm:px-[calc(--spacing(3)-1px)] lui:file:sm:py-[calc(--spacing(1.5)-1px)] lui:file:mr-4 lui:file:bg-zinc-100 lui:file:rounded-l-[calc(var(--radius-lg)-1px)]"
+    "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:text-base/6 lui:text-foreground lui:placeholder:text-foreground-muted lui:sm:text-sm/6 lui:border lui:border-border lui:data-[hover]:border-border-hover lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-destructive-border lui:data-invalid:data-[hover]:border-destructive-border lui:data-disabled:cursor-not-allowed lui:data-disabled:border-border-hover lui:data-disabled:file:cursor-not-allowed lui:file:cursor-pointer lui:cursor-pointer lui:file:border-0 lui:file:px-[calc(--spacing(3.5)-1px)] lui:file:py-[calc(--spacing(2.5)-1px)] lui:file:sm:px-[calc(--spacing(3)-1px)] lui:file:sm:py-[calc(--spacing(1.5)-1px)] lui:file:mr-4 lui:file:bg-surface-tertiary lui:file:rounded-l-[calc(var(--radius-lg)-1px)]"
   end
 
   def file_input_html_options
@@ -91,6 +91,6 @@ class LightningUiKit::FileInputComponent < LightningUiKit::BaseComponent
   end
 
   def control_classes
-    "lui:relative lui:block lui:w-full lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-transparent lui:after:ring-inset lui:sm:focus-within:after:ring-2 lui:sm:focus-within:after:ring-blue-500 lui:has-data-disabled:opacity-50"
+    "lui:relative lui:block lui:w-full lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-transparent lui:after:ring-inset lui:sm:focus-within:after:ring-2 lui:sm:focus-within:after:ring-focus lui:has-data-disabled:opacity-50"
   end
 end

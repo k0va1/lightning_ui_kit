@@ -7,13 +7,13 @@ class LightningUiKit::BadgeComponent < LightningUiKit::BaseComponent
   def classes
     status_classes = case @status
     when :success
-      "lui:bg-green-200 lui:text-zinc-500"
+      "lui:bg-success-bg lui:text-foreground-muted"
     when :warning
-      "lui:bg-yellow-200 lui:text-zinc-500"
+      "lui:bg-warning-bg lui:text-foreground-muted"
     when :error
-      "lui:bg-red-600/80 lui:text-white"
+      "lui:bg-destructive/80 lui:text-foreground-invert"
     else
-      "lui:bg-zinc-400/20 lui:text-zinc-500"
+      "lui:bg-foreground-faint/20 lui:text-foreground-muted"
     end
     [defalt_classes, status_classes].join(" ")
   end
@@ -23,20 +23,20 @@ class LightningUiKit::BadgeComponent < LightningUiKit::BaseComponent
     when :complete
       case @status
       when :success
-        "lui:bg-green-600 lui:border-green-600"
+        "lui:bg-success-indicator lui:border-success-indicator"
       when :warning
-        "lui:bg-yellow-400 lui:border-yellow-400"
+        "lui:bg-warning-indicator lui:border-warning-indicator"
       when :error
-        "lui:bg-red-700 lui:border-red-700"
+        "lui:bg-destructive lui:border-destructive"
       else
-        "lui:bg-zinc-400 lui:border-zinc-400"
+        "lui:bg-foreground-faint lui:border-foreground-faint"
       end
     when :incomplete
       case @status
       when :error
-        "lui:bg-transparent lui:border-white"
+        "lui:bg-transparent lui:border-foreground-invert"
       else
-        "lui:bg-transparent lui:border-zinc-400"
+        "lui:bg-transparent lui:border-foreground-faint"
       end
     when :partialy_complete
       partialy_complete_classes = "lui:relative lui:after:w-[3.75px] lui:after:h-[8.2px]\
@@ -44,13 +44,13 @@ class LightningUiKit::BadgeComponent < LightningUiKit::BaseComponent
        lui:after:left-[1px] lui:after:margin-0 lui:after-margin-y-[1px]"
       case @status
       when :success
-        "#{partialy_complete_classes} lui:border-green-600 lui:after:border-l-green-600 lui:after:border-r-green-600"
+        "#{partialy_complete_classes} lui:border-success-indicator lui:after:border-l-success-indicator lui:after:border-r-success-indicator"
       when :warning
-        "#{partialy_complete_classes} lui:border-yellow-400 lui:after:border-l-yellow-400 lui:after:border-r-yellow-400"
+        "#{partialy_complete_classes} lui:border-warning-indicator lui:after:border-l-warning-indicator lui:after:border-r-warning-indicator"
       when :error
-        "#{partialy_complete_classes} lui:border-white lui:after:border-l-white lui:after:border-r-white"
+        "#{partialy_complete_classes} lui:border-foreground-invert lui:after:border-l-foreground-invert lui:after:border-r-foreground-invert"
       else
-        "#{partialy_complete_classes} lui:border-zinc-400 lui:after:border-l-zinc-400 lui:after:border-r-zinc-400"
+        "#{partialy_complete_classes} lui:border-foreground-faint lui:after:border-l-foreground-faint lui:after:border-r-foreground-faint"
       end
     end
     [default_progress_classes, progress_classes].join(" ")

@@ -68,7 +68,7 @@ class LightningUiKit::InputComponent < LightningUiKit::BaseComponent
   end
 
   def input_classes
-    "lui:peer lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] lui:sm:px-[calc(--spacing(3)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:data-[hover]:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:data-[hover]:border-red-500/60 lui:data-disabled:border-zinc-950/20"
+    "lui:peer lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] lui:sm:px-[calc(--spacing(3)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:text-base/6 lui:text-foreground lui:placeholder:text-foreground-muted lui:sm:text-sm/6 lui:border lui:border-border lui:data-[hover]:border-border-hover lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-destructive-border lui:data-invalid:data-[hover]:border-destructive-border/60 lui:data-disabled:border-border-hover"
   end
 
   def input_html_options
@@ -117,24 +117,24 @@ class LightningUiKit::InputComponent < LightningUiKit::BaseComponent
   end
 
   def color_classes
-    "lui:h-10 lui:w-14 lui:cursor-pointer lui:appearance-none lui:rounded-lg lui:border lui:border-zinc-950/10 lui:bg-transparent lui:p-1 " \
-    "lui:data-[hover]:border-zinc-950/20 lui:focus:outline-none lui:focus:ring-2 lui:focus:ring-blue-500 " \
+    "lui:h-10 lui:w-14 lui:cursor-pointer lui:appearance-none lui:rounded-lg lui:border lui:border-border lui:bg-transparent lui:p-1 " \
+    "lui:data-[hover]:border-border-hover lui:focus:outline-none lui:focus:ring-2 lui:focus:ring-focus " \
     "[&::-webkit-color-swatch-wrapper]:lui:p-0 [&::-webkit-color-swatch]:lui:rounded-md [&::-webkit-color-swatch]:lui:border-0 " \
     "[&::-moz-color-swatch]:lui:rounded-md [&::-moz-color-swatch]:lui:border-0 " \
     "lui:disabled:opacity-50 lui:disabled:cursor-not-allowed"
   end
 
   def range_classes
-    "lui:w-full lui:h-2 lui:appearance-none lui:cursor-pointer lui:bg-zinc-200 lui:rounded-full lui:focus:outline-none " \
-    "[&::-webkit-slider-thumb]:lui:appearance-none [&::-webkit-slider-thumb]:lui:w-4 [&::-webkit-slider-thumb]:lui:h-4 [&::-webkit-slider-thumb]:lui:bg-blue-600 [&::-webkit-slider-thumb]:lui:rounded-full [&::-webkit-slider-thumb]:lui:cursor-pointer [&::-webkit-slider-thumb]:lui:shadow-sm [&::-webkit-slider-thumb]:lui:transition-transform [&::-webkit-slider-thumb]:hover:lui:scale-110 " \
-    "[&::-moz-range-thumb]:lui:appearance-none [&::-moz-range-thumb]:lui:w-4 [&::-moz-range-thumb]:lui:h-4 [&::-moz-range-thumb]:lui:bg-blue-600 [&::-moz-range-thumb]:lui:rounded-full [&::-moz-range-thumb]:lui:border-0 [&::-moz-range-thumb]:lui:cursor-pointer [&::-moz-range-thumb]:lui:shadow-sm [&::-moz-range-thumb]:lui:transition-transform [&::-moz-range-thumb]:hover:lui:scale-110 " \
-    "[&::-moz-range-track]:lui:bg-zinc-200 [&::-moz-range-track]:lui:rounded-full " \
+    "lui:w-full lui:h-2 lui:appearance-none lui:cursor-pointer lui:bg-surface-tertiary lui:rounded-full lui:focus:outline-none " \
+    "[&::-webkit-slider-thumb]:lui:appearance-none [&::-webkit-slider-thumb]:lui:w-4 [&::-webkit-slider-thumb]:lui:h-4 [&::-webkit-slider-thumb]:lui:bg-interactive [&::-webkit-slider-thumb]:lui:rounded-full [&::-webkit-slider-thumb]:lui:cursor-pointer [&::-webkit-slider-thumb]:lui:shadow-sm [&::-webkit-slider-thumb]:lui:transition-transform [&::-webkit-slider-thumb]:hover:lui:scale-110 " \
+    "[&::-moz-range-thumb]:lui:appearance-none [&::-moz-range-thumb]:lui:w-4 [&::-moz-range-thumb]:lui:h-4 [&::-moz-range-thumb]:lui:bg-interactive [&::-moz-range-thumb]:lui:rounded-full [&::-moz-range-thumb]:lui:border-0 [&::-moz-range-thumb]:lui:cursor-pointer [&::-moz-range-thumb]:lui:shadow-sm [&::-moz-range-thumb]:lui:transition-transform [&::-moz-range-thumb]:hover:lui:scale-110 " \
+    "[&::-moz-range-track]:lui:bg-surface-tertiary [&::-moz-range-track]:lui:rounded-full " \
     "lui:disabled:opacity-50 lui:disabled:cursor-not-allowed"
   end
 
   def label_html_options
     {
-      class: "lui:text-base/6 lui:text-zinc-950 lui:select-none lui:data-disabled:opacity-50 lui:sm:text-sm/6",
+      class: "lui:text-base/6 lui:text-foreground lui:select-none lui:data-disabled:opacity-50 lui:sm:text-sm/6",
       data: label_data
     }
   end
@@ -151,7 +151,7 @@ class LightningUiKit::InputComponent < LightningUiKit::BaseComponent
   end
 
   def control_classes
-    "lui:relative lui:block lui:w-full lui:before:pointer-events-none lui:before:absolute lui:before:inset-px lui:before:rounded-[7px] lui:before:bg-white lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-transparent lui:after:ring-inset lui:sm:focus-within:after:ring-2 lui:sm:focus-within:after:ring-blue-500 lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-zinc-950/5 lui:has-data-disabled:before:shadow-none lui:has-data-invalid:before:shadow-red-500/10"
+    "lui:relative lui:block lui:w-full lui:before:pointer-events-none lui:before:absolute lui:before:inset-px lui:before:rounded-[7px] lui:before:bg-surface lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-transparent lui:after:ring-inset lui:sm:focus-within:after:ring-2 lui:sm:focus-within:after:ring-focus lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-surface-hover lui:has-data-disabled:before:shadow-none lui:has-data-invalid:before:shadow-destructive-border/10"
   end
 
   def standard_input_type?

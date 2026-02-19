@@ -2,14 +2,14 @@
   <% if render_label? %>
     <%= tag.label(
       effective_label,
-      class: "lui:text-base/6 lui:text-zinc-950 lui:select-none lui:data-disabled:opacity-50 lui:sm:text-sm/6",
+      class: "lui:text-base/6 lui:text-foreground lui:select-none lui:data-disabled:opacity-50 lui:sm:text-sm/6",
       data: label_data
     ) %>
   <% end %>
   <% if @description %>
     <%= tag.p(
       @description,
-      class: "lui:text-base/6 lui:text-zinc-500 lui:data-disabled:opacity-50 lui:sm:text-sm/6",
+      class: "lui:text-base/6 lui:text-foreground-muted lui:data-disabled:opacity-50 lui:sm:text-sm/6",
       data: description_data
     ) %>
   <% end %>
@@ -17,7 +17,7 @@
     <% if @multiple %>
       <%# Multiple selection: tags + input in a styled container %>
       <div
-        class="lui:relative lui:flex lui:flex-wrap lui:items-center lui:gap-1.5 lui:w-full lui:min-h-[42px] lui:sm:min-h-[38px] lui:rounded-lg lui:border lui:border-zinc-950/10 lui:data-[hover]:border-zinc-950/20 lui:bg-white lui:shadow-sm lui:px-2 lui:py-1.5 lui:focus-within:ring-2 lui:focus-within:ring-blue-500 lui:focus-within:ring-offset-0 <%= 'lui:opacity-50' if @disabled %> <%= 'lui:border-red-500' if has_errors? %>"
+        class="lui:relative lui:flex lui:flex-wrap lui:items-center lui:gap-1.5 lui:w-full lui:min-h-[42px] lui:sm:min-h-[38px] lui:rounded-lg lui:border lui:border-border lui:data-[hover]:border-border-hover lui:bg-surface lui:shadow-sm lui:px-2 lui:py-1.5 lui:focus-within:ring-2 lui:focus-within:ring-focus lui:focus-within:ring-offset-0 <%= 'lui:opacity-50' if @disabled %> <%= 'lui:border-destructive-border' if has_errors? %>"
         data-lui-combobox-target="inputWrapper selectedTags"
       >
         <input
@@ -27,7 +27,7 @@
           aria-expanded="false"
           aria-haspopup="listbox"
           autocomplete="off"
-          class="lui:flex-1 lui:min-w-[120px] lui:border-0 lui:bg-transparent lui:p-0 lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:focus:outline-none lui:focus:ring-0"
+          class="lui:flex-1 lui:min-w-[120px] lui:border-0 lui:bg-transparent lui:p-0 lui:text-base/6 lui:text-foreground lui:placeholder:text-foreground-muted lui:sm:text-sm/6 lui:focus:outline-none lui:focus:ring-0"
           placeholder="<%= @placeholder %>"
           data-lui-combobox-target="input"
           data-action="input->lui-combobox#onInput focus->lui-combobox#onFocus keydown->lui-combobox#onKeydown"
@@ -36,7 +36,7 @@
           <%= "data-invalid=true" if has_errors? %>
           />
           <span class="lui:pointer-events-none lui:flex lui:items-center">
-            <svg class="lui:size-5 lui:stroke-zinc-500 lui:sm:size-4" viewBox="0 0 16 16" aria-hidden="true" fill="none">
+            <svg class="lui:size-5 lui:stroke-foreground-muted lui:sm:size-4" viewBox="0 0 16 16" aria-hidden="true" fill="none">
               <path d="M5.75 10.75L8 13L10.25 10.75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
               <path d="M10.25 5.25L8 3L5.75 5.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
@@ -44,7 +44,7 @@
         </div>
       <% else %>
         <%# Single selection: standard input styling %>
-        <span class="lui:relative lui:block lui:w-full lui:before:absolute lui:before:inset-px lui:before:rounded-[7px] lui:before:bg-white lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-transparent lui:after:ring-inset lui:sm:focus-within:after:ring-2 lui:sm:focus-within:after:ring-blue-500 lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-zinc-950/5 lui:has-data-disabled:before:shadow-none lui:has-data-invalid:before:shadow-red-500/10">
+        <span class="lui:relative lui:block lui:w-full lui:before:absolute lui:before:inset-px lui:before:rounded-[7px] lui:before:bg-surface lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-transparent lui:after:ring-inset lui:sm:focus-within:after:ring-2 lui:sm:focus-within:after:ring-focus lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-surface-hover lui:has-data-disabled:before:shadow-none lui:has-data-invalid:before:shadow-destructive-border/10">
           <input
           type="text"
           role="combobox"
@@ -61,7 +61,7 @@
             <%= "data-invalid=true" if has_errors? %>
             />
             <span class="lui:pointer-events-none lui:absolute lui:inset-y-0 lui:right-0 lui:flex lui:items-center lui:pr-2">
-              <svg class="lui:size-5 lui:stroke-zinc-500 lui:sm:size-4" viewBox="0 0 16 16" aria-hidden="true" fill="none">
+              <svg class="lui:size-5 lui:stroke-foreground-muted lui:sm:size-4" viewBox="0 0 16 16" aria-hidden="true" fill="none">
                 <path d="M5.75 10.75L8 13L10.25 10.75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                 <path d="M10.25 5.25L8 3L5.75 5.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
@@ -73,17 +73,17 @@
       data-lui-combobox-target="listbox"
       role="listbox"
       aria-label="<%= effective_label || 'Options' %>"
-      class="lui:hidden lui:absolute lui:z-50 lui:mt-1 lui:w-full lui:max-h-60 lui:overflow-auto lui:rounded-lg lui:bg-white lui:shadow-lg lui:ring-1 lui:ring-zinc-950/10"
+      class="lui:hidden lui:absolute lui:z-50 lui:mt-1 lui:w-full lui:max-h-60 lui:overflow-auto lui:rounded-lg lui:bg-surface lui:shadow-lg lui:ring-1 lui:ring-border"
     >
           <template data-lui-combobox-target="optionTemplate">
             <div
           role="option"
           data-lui-combobox-target="option"
-          class="lui:relative lui:cursor-pointer lui:select-none lui:py-2 lui:px-3 lui:text-zinc-900 lui:hover:bg-zinc-100 lui:data-[selected]:bg-blue-50 lui:data-[highlighted]:bg-zinc-100 lui:data-[disabled]:opacity-50 lui:data-[disabled]:cursor-not-allowed"
+          class="lui:relative lui:cursor-pointer lui:select-none lui:py-2 lui:px-3 lui:text-foreground lui:hover:bg-surface-tertiary lui:data-[selected]:bg-interactive-subtle lui:data-[highlighted]:bg-surface-tertiary lui:data-[disabled]:opacity-50 lui:data-[disabled]:cursor-not-allowed"
           data-action="click->lui-combobox#selectOption mouseenter->lui-combobox#highlightOption"
               >
               <span data-label class="lui:block lui:truncate"></span>
-              <span data-checkmark class="lui:hidden lui:absolute lui:inset-y-0 lui:right-0 lui:flex lui:items-center lui:pr-3 lui:text-blue-600">
+              <span data-checkmark class="lui:hidden lui:absolute lui:inset-y-0 lui:right-0 lui:flex lui:items-center lui:pr-3 lui:text-interactive">
                 <svg class="lui:size-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
                 </svg>
@@ -91,16 +91,16 @@
             </div>
           </template>
           <div data-lui-combobox-target="optionsContainer"></div>
-          <div data-lui-combobox-target="loading" class="lui:hidden lui:py-2 lui:px-3 lui:text-zinc-500 lui:text-sm">
+          <div data-lui-combobox-target="loading" class="lui:hidden lui:py-2 lui:px-3 lui:text-foreground-muted lui:text-sm">
             Loading...
           </div>
-          <div data-lui-combobox-target="noResults" class="lui:hidden lui:py-2 lui:px-3 lui:text-zinc-500 lui:text-sm">
+          <div data-lui-combobox-target="noResults" class="lui:hidden lui:py-2 lui:px-3 lui:text-foreground-muted lui:text-sm">
             No results found
           </div>
           <% if @allow_custom %>
             <div
           data-lui-combobox-target="createOption"
-          class="lui:hidden lui:cursor-pointer lui:py-2 lui:px-3 lui:text-blue-600 lui:hover:bg-blue-50 lui:border-t lui:border-zinc-100 lui:flex lui:items-center lui:gap-1.5"
+          class="lui:hidden lui:cursor-pointer lui:py-2 lui:px-3 lui:text-interactive lui:hover:bg-interactive-subtle lui:border-t lui:border-border-subtle lui:flex lui:items-center lui:gap-1.5"
           data-action="click->lui-combobox#createCustomOption"
               >
               <%= heroicon "plus", variant: :solid, options: { class: "lui:size-4" } %>
@@ -121,7 +121,7 @@
       <% if has_errors? %>
         <%= tag.p(
       error_messages,
-      class: "lui:text-base/6 lui:text-red-600 lui:data-disabled:opacity-50 lui:sm:text-sm/6",
+      class: "lui:text-base/6 lui:text-destructive-text lui:data-disabled:opacity-50 lui:sm:text-sm/6",
       data: error_data
     ) %>
       <% end %>

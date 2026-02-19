@@ -7,9 +7,9 @@
   <%= content %>
 
   <%= tag.div(data: { "lui-tooltip-target" => "template" }, class: "lui:hidden") do %>
-    <%= tag.div( class: "lui:absolute lui:z-50 lui:px-3 lui:py-2 lui:text-sm lui:font-medium lui:text-white lui:bg-zinc-800 lui:rounded-lg lui:shadow-sm lui:opacity-0 lui:transition-opacity lui:duration-200 lui:ease-in-out") do %>
+    <%= tag.div( class: "lui:absolute lui:z-50 lui:px-3 lui:py-2 lui:text-sm lui:font-medium lui:text-tooltip-text lui:bg-tooltip-bg lui:rounded-lg lui:shadow-sm lui:opacity-0 lui:transition-opacity lui:duration-200 lui:ease-in-out") do %>
       <%= @text %>
-      <%= tag.div( class: "tooltip-arrow lui:absolute lui:w-2 lui:h-2 lui:bg-zinc-800 lui:transform lui:rotate-45", data: { "tooltip-arrow" => "true" }) %>
+      <%= tag.div( class: "tooltip-arrow lui:absolute lui:w-2 lui:h-2 lui:bg-tooltip-bg lui:transform lui:rotate-45", data: { "tooltip-arrow" => "true" }) %>
     <% end %>
   <% end %>
 <% end %>

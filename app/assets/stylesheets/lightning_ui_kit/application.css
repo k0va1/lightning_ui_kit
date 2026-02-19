@@ -1,1 +1,46 @@
 @import "tailwindcss" prefix(lui);
+@import "./themes.css";
+
+@theme inline {
+  --color-surface: var(--lui-theme-surface);
+  --color-surface-secondary: var(--lui-theme-surface-secondary);
+  --color-surface-tertiary: var(--lui-theme-surface-tertiary);
+  --color-surface-invert: var(--lui-theme-surface-invert);
+  --color-surface-overlay: var(--lui-theme-surface-overlay);
+  --color-surface-hover: var(--lui-theme-surface-hover);
+
+  --color-foreground: var(--lui-theme-foreground);
+  --color-foreground-secondary: var(--lui-theme-foreground-secondary);
+  --color-foreground-muted: var(--lui-theme-foreground-muted);
+  --color-foreground-faint: var(--lui-theme-foreground-faint);
+  --color-foreground-invert: var(--lui-theme-foreground-invert);
+
+  --color-border: var(--lui-theme-border);
+  --color-border-hover: var(--lui-theme-border-hover);
+  --color-border-strong: var(--lui-theme-border-strong);
+  --color-border-subtle: var(--lui-theme-border-subtle);
+  --color-border-invert: var(--lui-theme-border-invert);
+
+  --color-focus: var(--lui-theme-focus);
+  --color-interactive: var(--lui-theme-interactive);
+  --color-interactive-subtle: var(--lui-theme-interactive-subtle);
+
+  --color-destructive: var(--lui-theme-destructive);
+  --color-destructive-border: var(--lui-theme-destructive-border);
+  --color-destructive-text: var(--lui-theme-destructive-text);
+
+  --color-success-bg: var(--lui-theme-success-bg);
+  --color-success-indicator: var(--lui-theme-success-indicator);
+
+  --color-warning-bg: var(--lui-theme-warning-bg);
+  --color-warning-indicator: var(--lui-theme-warning-indicator);
+
+  --color-tooltip-bg: var(--lui-theme-tooltip-bg);
+  --color-tooltip-text: var(--lui-theme-tooltip-text);
+
+  --color-neutral-bg: var(--lui-theme-neutral-bg);
+  --color-neutral-text: var(--lui-theme-neutral-text);
+
+  --color-spinner-primary: var(--lui-theme-spinner-primary);
+  --color-spinner-secondary: var(--lui-theme-spinner-secondary);
+}

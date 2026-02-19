@@ -10,9 +10,9 @@ class LightningUiKit::BannerComponent < LightningUiKit::BaseComponent
   def classes
     type_classes = case @type
     when :error
-      "lui:*:data-[slot=header]:bg-red-600/80 lui:*:data-[slot=header]:text-white"
+      "lui:*:data-[slot=header]:bg-destructive/80 lui:*:data-[slot=header]:text-foreground-invert"
     else
-      "lui:*:data-[slot=header]:bg-gray-50"
+      "lui:*:data-[slot=header]:bg-neutral-bg"
     end
 
     merge_classes([default_classes, type_classes, @options[:class]].compact.join(" "))
@@ -28,6 +28,6 @@ class LightningUiKit::BannerComponent < LightningUiKit::BaseComponent
   end
 
   def default_classes
-    "lui:border lui:border-zinc-950/10 lui:rounded-lg lui:overflow-hidden lui:transition-opacity lui:duration-300 lui:ease-out lui:opacity-100"
+    "lui:border lui:border-border lui:rounded-lg lui:overflow-hidden lui:transition-opacity lui:duration-300 lui:ease-out lui:opacity-100"
   end
 end

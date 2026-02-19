@@ -1,5 +1,5 @@
 <div data-controller="lui-dropdown" class="lui:relative">
-  <button type="button" data-action="lui-dropdown#toggle click@window->lui-dropdown#hide" class="lui:flex lui:items-center lui:justify-between lui:cursor-pointer lui:w-full lui:text-sm/6 lui:font-medium lui:text-zinc-700 lui:hover:text-zinc-950">
+  <button type="button" data-action="lui-dropdown#toggle click@window->lui-dropdown#hide" class="lui:flex lui:items-center lui:justify-between lui:cursor-pointer lui:w-full lui:text-sm/6 lui:font-medium lui:text-foreground-secondary lui:hover:text-foreground">
     <% if trigger? %>
       <%= trigger %>
     <% else %>
@@ -27,7 +27,7 @@
     data-transition-leave-to="opacity-0 scale-95"
     >
     <% items.each do |item| %>
-      <div class="lui:px-4 lui:py-2 lui:text-sm/5 lui:font-medium lui:text-zinc-950 lui:hover:bg-zinc-950/5 lui:rounded-md">
+      <div class="lui:px-4 lui:py-2 lui:text-sm/5 lui:font-medium lui:text-foreground lui:hover:bg-surface-hover lui:rounded-md">
         <%= item %>
       </div>
     <% end %>

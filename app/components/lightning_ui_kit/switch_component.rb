@@ -53,13 +53,13 @@ class LightningUiKit::SwitchComponent < LightningUiKit::BaseComponent
   def button_classes
     "lui:group lui:relative lui:isolate lui:inline-flex lui:h-6 lui:w-10 lui:cursor-default lui:rounded-full " \
     "lui:p-[3px] lui:sm:h-5 lui:sm:w-8 lui:transition lui:duration-200 lui:ease-in-out " \
-    "lui:forced-colors:outline lui:forced-colors:[--switch-bg:Highlight] lui:bg-zinc-200 lui:ring-1 lui:ring-black/5 lui:ring-inset " \
+    "lui:forced-colors:outline lui:forced-colors:[--switch-bg:Highlight] lui:bg-surface-tertiary lui:ring-1 lui:ring-black/5 lui:ring-inset " \
     "lui:data-checked:bg-(--switch-bg) lui:data-checked:ring-(--switch-bg-ring) lui:focus:outline-hidden lui:data-focus:outline-2 " \
-    "lui:data-focus:outline-offset-2 lui:data-focus:outline-blue-500 lui:hover:ring-black/15 lui:hover:data-checked:ring-(--switch-bg-ring) " \
-    "lui:data-disabled:bg-zinc-200 lui:data-disabled:opacity-50 lui:data-disabled:data-checked:bg-zinc-200 lui:data-disabled:data-checked:ring-black/5 " \
-    "lui:[--switch-bg-ring:var(--lui-color-zinc-950)]/90 " \
-    "lui:[--switch-bg:var(--lui-color-zinc-900)] " \
-    "lui:[--switch-ring:var(--lui-color-zinc-950)]/90 " \
+    "lui:data-focus:outline-offset-2 lui:data-focus:outline-focus lui:hover:ring-black/15 lui:hover:data-checked:ring-(--switch-bg-ring) " \
+    "lui:data-disabled:bg-surface-tertiary lui:data-disabled:opacity-50 lui:data-disabled:data-checked:bg-surface-tertiary lui:data-disabled:data-checked:ring-black/5 " \
+    "lui:[--switch-bg-ring:var(--lui-theme-border-invert)] " \
+    "lui:[--switch-bg:var(--lui-theme-surface-invert)] " \
+    "lui:[--switch-ring:var(--lui-theme-border-invert)] " \
     "lui:[--switch-shadow:var(--lui-color-black)]/10 " \
     "lui:[--switch:white]"
   end
@@ -97,7 +97,7 @@ class LightningUiKit::SwitchComponent < LightningUiKit::BaseComponent
   def render_label
     return unless render_label?
 
-    tag.label(effective_label, id: label_id, class: "lui:text-base/6 lui:text-zinc-950 lui:select-none lui:data-disabled:opacity-50 lui:sm:text-sm/6", data: label_data)
+    tag.label(effective_label, id: label_id, class: "lui:text-base/6 lui:text-foreground lui:select-none lui:data-disabled:opacity-50 lui:sm:text-sm/6", data: label_data)
   end
 
   def render_hidden_field

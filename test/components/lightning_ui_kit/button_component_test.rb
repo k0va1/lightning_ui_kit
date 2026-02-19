@@ -18,13 +18,13 @@ class LightningUiKit::ButtonComponentTest < ViewComponent::TestCase
   def test_renders_outline_style
     result = render_inline(LightningUiKit::ButtonComponent.new(style: :outline)) { "Outline" }
 
-    assert_includes result.to_html, "lui:border-zinc-950/10"
+    assert_includes result.to_html, "lui:border-border"
   end
 
   def test_renders_destructive_style
     result = render_inline(LightningUiKit::ButtonComponent.new(style: :destructive)) { "Delete" }
 
-    assert_includes result.to_html, "lui:border-red-500"
+    assert_includes result.to_html, "lui:border-destructive-border"
   end
 
   def test_renders_small_size

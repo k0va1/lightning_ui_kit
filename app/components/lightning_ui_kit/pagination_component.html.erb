@@ -7,7 +7,7 @@
 
   <% pages_with_gaps.each do |page| %>
     <% if page == :gap %>
-      <span aria-hidden="true" class="lui:w-[2.25rem] lui:text-center lui:text-sm/6 lui:font-semibold lui:text-zinc-950 lui:select-none">…</span>
+      <span aria-hidden="true" class="lui:w-[2.25rem] lui:text-center lui:text-sm/6 lui:font-semibold lui:text-foreground lui:select-none">…</span>
     <% else %>
       <%= link_to(page, url(page), class: link_classes, data: data(active: @current_page == page)) %>
     <% end %>

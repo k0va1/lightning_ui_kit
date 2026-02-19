@@ -52,7 +52,7 @@ class LightningUiKit::DropzoneComponent < LightningUiKit::BaseComponent
 
   def label_html_options
     {
-      class: "lui:text-base/6 lui:text-zinc-950 lui:select-none lui:data-disabled:opacity-50 lui:sm:text-sm/6",
+      class: "lui:text-base/6 lui:text-foreground lui:select-none lui:data-disabled:opacity-50 lui:sm:text-sm/6",
       data: label_data
     }
   end

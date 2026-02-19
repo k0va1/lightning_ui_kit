@@ -58,12 +58,12 @@ class LightningUiKit::ButtonComponent < LightningUiKit::BaseComponent
   end
 
   def destructive_classes
-    "lui:text-white lui:border-red-500 lui:hover:bg-red-600 lui:active:bg-red-700\
-      lui:[--btn-bg:var(--lui-color-red-600)]\
-      lui:[--btn-border:var(--lui-color-red-950)]/90
-      lui:[--btn-hover-overlay:var(--lui-color-white)]/10\
-      lui:[--btn-icon:var(--lui-color-white)]\
-      lui:active:[--btn-icon:var(--lui-color-white)] lui:hover:[--btn-icon:var(--lui-color-white)] lui:cursor-pointer"
+    "lui:text-foreground-invert lui:border-destructive-border lui:hover:bg-destructive lui:active:bg-destructive\
+      lui:[--btn-bg:var(--lui-theme-destructive)]\
+      lui:[--btn-border:var(--lui-theme-destructive-border)]
+      lui:[--btn-hover-overlay:var(--lui-theme-foreground-invert)]/10\
+      lui:[--btn-icon:var(--lui-theme-foreground-invert)]\
+      lui:active:[--btn-icon:var(--lui-theme-foreground-invert)] lui:hover:[--btn-icon:var(--lui-theme-foreground-invert)] lui:cursor-pointer"
   end
 
   def default_classes
@@ -75,21 +75,21 @@ class LightningUiKit::ButtonComponent < LightningUiKit::BaseComponent
       lui:after:-z-10 lui:after:rounded-[calc(var(--lui-radius-lg)-1px)] lui:after:shadow-[shadow:inset_0_1px_--theme(--color-white/15%)]\
       lui:active:after:bg-(--btn-hover-overlay) lui:hover:after:bg-(--btn-hover-overlay)\
       lui:disabled:opacity-50 lui:disabled:before:shadow-none lui:disabled:after:shadow-none lui:disabled:hover:after:bg-transparent\
-      lui:text-white lui:cursor-pointer\
-      lui:[--btn-bg:var(--lui-color-zinc-900)]\
-      lui:[--btn-border:var(--lui-color-zinc-950)]/90
-      lui:[--btn-hover-overlay:var(--lui-color-white)]/10\
-      lui:[--btn-icon:var(--lui-color-zinc-400)]\
-      lui:active:[--btn-icon:var(--lui-color-zinc-300)]\
-      lui:hover:[--btn-icon:var(--lui-color-zinc-300)]"
+      lui:text-foreground-invert lui:cursor-pointer\
+      lui:[--btn-bg:var(--lui-theme-surface-invert)]\
+      lui:[--btn-border:var(--lui-theme-border-invert)]
+      lui:[--btn-hover-overlay:var(--lui-theme-foreground-invert)]/10\
+      lui:[--btn-icon:var(--lui-theme-foreground-faint)]\
+      lui:active:[--btn-icon:var(--lui-theme-foreground-muted)]\
+      lui:hover:[--btn-icon:var(--lui-theme-foreground-muted)]"
   end
 
   def outline_classes
     "lui:relative lui:isolate lui:inline-flex lui:items-baseline lui:justify-center lui:gap-x-2 lui:rounded-lg lui:border lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] sm:lui:px-[calc(--spacing(3)-1px)]\
       lui:sm:py-[calc(--spacing(1.5)-1px)] lui:focus:outline-hidden lui:focus:outline lui:focus:outline-2 lui:focus:outline-offset-2\
-      lui:focus:outline-blue-500 lui:disabled:opacity-50 lui:*:data-[slot=icon]:-mx-0.5 lui:*:data-[slot=icon]:my-0.5 lui:*:data-[slot=icon]:size-5\
+      lui:focus:outline-focus lui:disabled:opacity-50 lui:*:data-[slot=icon]:-mx-0.5 lui:*:data-[slot=icon]:my-0.5 lui:*:data-[slot=icon]:size-5\
       lui:*:data-[slot=icon]:shrink-0 lui:*:data-[slot=icon]:self-center lui:*:data-[slot=icon]:text-(--btn-icon) lui:sm:*:data-[slot=icon]:my-1\
-      lui:sm:*:data-[slot=icon]:size-4 lui:border-zinc-950/10 lui:text-zinc-950 lui:active:bg-zinc-950/[2.5%] lui:hover:bg-zinc-950/[2.5%]\
-      lui:[--btn-icon:var(--lui-color-zinc-500)] lui:active:[--btn-icon:var(--lui-color-zinc-700)] lui:hover:[--btn-icon:var(--lui-color-zinc-700)] lui:cursor-pointer"
+      lui:sm:*:data-[slot=icon]:size-4 lui:border-border lui:text-foreground lui:active:bg-surface-hover lui:hover:bg-surface-hover\
+      lui:[--btn-icon:var(--lui-theme-foreground-muted)] lui:active:[--btn-icon:var(--lui-theme-foreground-secondary)] lui:hover:[--btn-icon:var(--lui-theme-foreground-secondary)] lui:cursor-pointer"
   end
 end

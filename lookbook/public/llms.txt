@@ -4,10 +4,11 @@
 
 Important notes:
 
-- All Tailwind CSS classes **MUST** be prefixed with `lui:` (e.g., `lui:px-4`, `lui:text-blue-600`, `lui:hover:bg-zinc-50`)
+- All Tailwind CSS classes **MUST** be prefixed with `lui:` (e.g., `lui:px-4`, `lui:text-foreground`, `lui:hover:bg-surface-hover`)
 - Components extend `LightningUiKit::BaseComponent` and use ViewComponent patterns
 - Interactive components use Stimulus controllers registered under the `lui-` namespace
 - Uses TailwindMerge for intelligent CSS class conflict resolution via `merge_classes()` helper
+- **Theming**: All color classes use semantic design tokens (e.g., `lui:bg-surface`, `lui:text-foreground`) instead of hardcoded Tailwind colors. Tokens are defined as CSS custom properties in `themes.css`
 
 ## Architecture
 
@@ -229,6 +230,74 @@ Components include `LightningUiKit::Errors` module for automatic validation erro
 <%= lui.input(name: :email, form: form, error: @user.errors[:email].first) %>
 ```
 
+## Theming
+
+LightningUiKit uses CSS custom properties for theming. All components use semantic design tokens instead of hardcoded Tailwind color classes.
+
+### Available Themes
+
+- **Default (light)** - Applied automatically via `:root` CSS variables
+- **Dark** - Applied by adding `class="lui-theme-dark"` to a container element
+
+```erb
+<%# Light theme (default) %>
+<body>
+  <%= lui.button { "Click me" } %>
+</body>
+
+<%# Dark theme %>
+<body class="lui-theme-dark">
+  <%= lui.button { "Click me" } %>
+</body>
+```
+
+### Semantic Design Tokens
+
+| Token | Purpose | Example Usage |
+|-------|---------|---------------|
+| `surface` | Primary background | `lui:bg-surface` |
+| `surface-secondary` | Secondary background | `lui:bg-surface-secondary` |
+| `surface-tertiary` | Tertiary background | `lui:bg-surface-tertiary` |
+| `surface-invert` | Inverted background | `lui:bg-surface-invert` |
+| `surface-hover` | Hover background | `lui:hover:bg-surface-hover` |
+| `foreground` | Primary text | `lui:text-foreground` |
+| `foreground-secondary` | Secondary text | `lui:text-foreground-secondary` |
+| `foreground-muted` | Muted text | `lui:text-foreground-muted` |
+| `foreground-invert` | Inverted text | `lui:text-foreground-invert` |
+| `border` | Default border | `lui:border-border` |
+| `border-hover` | Hover border | `lui:border-border-hover` |
+| `border-subtle` | Subtle border | `lui:border-border-subtle` |
+| `focus` | Focus ring | `lui:focus:outline-focus` |
+| `interactive` | Interactive accent | `lui:bg-interactive` |
+| `destructive` | Destructive actions | `lui:bg-destructive` |
+| `destructive-border` | Destructive border | `lui:border-destructive-border` |
+| `destructive-text` | Destructive text | `lui:text-destructive-text` |
+| `success-bg` | Success background | `lui:bg-success-bg` |
+| `warning-bg` | Warning background | `lui:bg-warning-bg` |
+
+### Custom Themes
+
+Create custom themes by overriding CSS custom properties:
+
+```css
+.my-custom-theme {
+  --lui-theme-surface: oklch(0.98 0.01 250);
+  --lui-theme-foreground: oklch(0.2 0.02 250);
+  --lui-theme-interactive: oklch(0.6 0.2 250);
+  /* ... override any --lui-theme-* variable */
+}
+```
+
+```erb
+<body class="my-custom-theme">
+  <%= lui.button { "Themed button" } %>
+</body>
+```
+
+### Token File Location
+
+Theme definitions are in `app/assets/stylesheets/lightning_ui_kit/themes.css`. Token registration for Tailwind is in `app/assets/stylesheets/lightning_ui_kit/application.css`.
+
 ## Styling Guide
 
 ### Critical: lui: Prefix
@@ -237,20 +306,20 @@ Components include `LightningUiKit::Errors` module for automatic validation erro
 
 ```erb
 <%# Correct %>
-<div class="lui:px-4 lui:py-2 lui:text-blue-600 lui:hover:bg-zinc-50">
+<div class="lui:px-4 lui:py-2 lui:text-foreground lui:hover:bg-surface-hover">
 
 <%# WRONG - will not work %>
-<div class="px-4 py-2 text-blue-600 hover:bg-zinc-50">
+<div class="px-4 py-2 text-foreground hover:bg-surface-hover">
 ```
 
 ### Responsive and State Variants
 
 ```erb
-lui:sm:px-3          <%# Responsive %>
-lui:hover:bg-zinc-50 <%# Hover state %>
-lui:focus:ring-2     <%# Focus state %>
+lui:sm:px-3              <%# Responsive %>
+lui:hover:bg-surface-hover  <%# Hover state %>
+lui:focus:ring-2         <%# Focus state %>
 lui:disabled:opacity-50  <%# Disabled state %>
-lui:data-invalid:border-red-500  <%# Data attribute state %>
+lui:data-invalid:border-destructive-border  <%# Data attribute state %>
 ```
 
 ### Using merge_classes()
@@ -488,7 +557,8 @@ app/
 │   └── index.js                    # Controller registration
 └── assets/stylesheets/
     └── lightning_ui_kit/
-        └── application.css         # Tailwind entry point
+        ├── application.css         # Tailwind entry point with token registration
+        └── themes.css              # Theme definitions (light/dark CSS custom properties)
 ```
 
 ## Dependencies
@@ -508,6 +578,7 @@ app/
 3. Use `merge_classes()` for class handling
 4. Add Stimulus controller if interactive (register in index.js)
 5. Prefix all Tailwind classes with `lui:`
+5b. Use semantic design tokens for colors (e.g., `lui:bg-surface`, `lui:text-foreground`) — never hardcode colors like `lui:bg-zinc-900`
 6. Add preview in `lookbook/app/previews/`
 7. **Add method to `lib/lightning_ui_kit/builder.rb` for the `lui` helper**
 8. **Update this llms.txt file with the new component**

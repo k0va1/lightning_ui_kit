@@ -22,6 +22,6 @@ class LightningUiKit::TextComponentTest < ViewComponent::TestCase
   def test_renders_text_color
     result = render_inline(LightningUiKit::TextComponent.new) { "Styled" }
 
-    assert_includes result.to_html, "lui:text-zinc-600"
+    assert_includes result.to_html, "lui:text-foreground-secondary"
   end
 end

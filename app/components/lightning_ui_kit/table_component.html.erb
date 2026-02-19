@@ -1,12 +1,12 @@
-<div class="lui:border-zinc-950/5 lui:border lui:rounded-lg">
-  <table class="lui:min-w-full lui:text-left lui:text-sm/6 lui:text-zinc-950 lui:border-collapse lui:border-inherit">
-    <thead class="lui:text-zinc-500">
+<div class="lui:border-border-subtle lui:border lui:rounded-lg">
+  <table class="lui:min-w-full lui:text-left lui:text-sm/6 lui:text-foreground lui:border-collapse lui:border-inherit">
+    <thead class="lui:text-foreground-muted">
       <tr class="">
         <% columns.each do |column| %>
-          <th class="lui:border-b lui:border-b-zinc-950/10 lui:px-4 lui:py-2 lui:font-medium"><%= column.title %></th>
+          <th class="lui:border-b lui:border-b-border lui:px-4 lui:py-2 lui:font-medium"><%= column.title %></th>
         <% end %>
         <% if actions.present? %>
-          <th class="lui:border-b lui:border-b-zinc-950/10 lui:px-4 lui:py-2 lui:font-medium"><%= @actions_title %></th>
+          <th class="lui:border-b lui:border-b-border lui:px-4 lui:py-2 lui:font-medium"><%= @actions_title %></th>
         <% end %>
       </tr>
     </thead>
@@ -21,12 +21,12 @@
         <% @data.each do |row| %>
           <tr class="lui:group">
             <% columns.each do |column| %>
-              <td class="lui:p-4 lui:border-b lui:border-zinc-950/5 lui:group-last:border-b-0">
+              <td class="lui:p-4 lui:border-b lui:border-border-subtle lui:group-last:border-b-0">
                 <%= column.call(row) %>
               </td>
             <% end %>
             <% if actions.present? %>
-              <td class="lui:p-4 lui:flex lui:gap-3 lui:border-b lui:border-zinc-950/5 lui:group-last:border-b-0">
+              <td class="lui:p-4 lui:flex lui:gap-3 lui:border-b lui:border-border-subtle lui:group-last:border-b-0">
                 <% actions.each do |action| %>
                   <%= action.call(row) %>
                 <% end %>

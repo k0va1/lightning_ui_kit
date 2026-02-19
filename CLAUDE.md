@@ -63,9 +63,11 @@ make release [version]  # Build assets, commit, tag, and release gem
 
 ### Styling Conventions
 - Uses Tailwind CSS classes exclusively
-- **CRITICAL**: Always prefix Tailwind classes with `lui:` (e.g., `lui:px-4`, `lui:text-blue-600`, `lui:underline`)
+- **CRITICAL**: Always prefix Tailwind classes with `lui:` (e.g., `lui:px-4`, `lui:text-foreground`, `lui:underline`)
+- **CRITICAL**: Use semantic design tokens for all colors (e.g., `lui:bg-surface`, `lui:text-foreground`, `lui:border-border`) — never hardcode Tailwind colors like `lui:bg-zinc-900` or `lui:text-red-600`
+- Semantic tokens are defined as CSS custom properties (`--lui-theme-*`) in `app/assets/stylesheets/lightning_ui_kit/themes.css`
 - TailwindMerge handles class conflicts and duplicates via `merge_classes()` helper
-- Dark mode is disabled in configuration
+- Themes: light (default via `:root`) and dark (`lui-theme-dark` class). Custom themes via CSS variable overrides
 
 ### JavaScript Architecture
 - Stimulus controllers in `app/javascript/lightning_ui_kit/controllers/`

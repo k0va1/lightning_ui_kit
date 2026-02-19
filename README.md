@@ -94,6 +94,36 @@ You can also use the standard ViewComponent render syntax:
 <%= render LightningUiKit::ButtonComponent.new { "Click me" } %>
 ```
 
+## Theming
+
+LightningUiKit supports theming via CSS custom properties. All components use semantic design tokens instead of hardcoded colors.
+
+### Built-in Themes
+
+- **Light** (default) — applied automatically
+- **Dark** — add `class="lui-theme-dark"` to a container element
+
+```erb
+<body class="lui-theme-dark">
+  <%= lui.button { "Dark themed" } %>
+</body>
+```
+
+### Custom Themes
+
+Override `--lui-theme-*` CSS variables to create your own theme:
+
+```css
+.my-brand-theme {
+  --lui-theme-surface: oklch(0.98 0.01 250);
+  --lui-theme-foreground: oklch(0.2 0.02 250);
+  --lui-theme-interactive: oklch(0.6 0.2 250);
+  /* See themes.css for all available tokens */
+}
+```
+
+Full token definitions are in `app/assets/stylesheets/lightning_ui_kit/themes.css`.
+
 ## Contributing
 
 Bug reports and pull requests are welcome

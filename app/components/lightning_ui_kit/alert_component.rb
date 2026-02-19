@@ -5,7 +5,7 @@ class LightningUiKit::AlertComponent < LightningUiKit::BaseComponent
   end
 
   def default_classes
-    "lui:flex lui:items-center lui:p-4 lui:text-sm lui:text-gray-800 lui:rounded-lg lui:bg-gray-50"
+    "lui:flex lui:items-center lui:p-4 lui:text-sm lui:text-neutral-text lui:rounded-lg lui:bg-neutral-bg"
   end
 
   def classes

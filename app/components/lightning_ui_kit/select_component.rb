@@ -55,7 +55,7 @@ class LightningUiKit::SelectComponent < LightningUiKit::BaseComponent
 
   def label_html_options
     {
-      class: "lui:text-base/6 lui:text-zinc-950 lui:select-none lui:data-disabled:opacity-50 lui:sm:text-sm/6",
+      class: "lui:text-base/6 lui:text-foreground lui:select-none lui:data-disabled:opacity-50 lui:sm:text-sm/6",
       data: label_data
     }
   end
@@ -72,11 +72,11 @@ class LightningUiKit::SelectComponent < LightningUiKit::BaseComponent
   end
 
   def select_classes
-    "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:py-[calc(--spacing(2.5)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:pr-[calc(--spacing(10)-1px)] lui:pl-[calc(--spacing(3.5)-1px)] lui:sm:pr-[calc(--spacing(9)-1px)] lui:sm:pl-[calc(--spacing(3)-1px)] lui:[&_optgroup]:font-semibold lui:text-base/6 lui:text-zinc-950 lui:placeholder:text-zinc-500 lui:sm:text-sm/6 lui:border lui:border-zinc-950/10 lui:data-[hover]:border-zinc-950/20 lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-red-500 lui:data-invalid:data-[hover]:border-red-500 lui:data-disabled:border-zinc-950/20 lui:data-disabled:opacity-100"
+    "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:py-[calc(--spacing(2.5)-1px)] lui:sm:py-[calc(--spacing(1.5)-1px)] lui:pr-[calc(--spacing(10)-1px)] lui:pl-[calc(--spacing(3.5)-1px)] lui:sm:pr-[calc(--spacing(9)-1px)] lui:sm:pl-[calc(--spacing(3)-1px)] lui:[&_optgroup]:font-semibold lui:text-base/6 lui:text-foreground lui:placeholder:text-foreground-muted lui:sm:text-sm/6 lui:border lui:border-border lui:data-[hover]:border-border-hover lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-destructive-border lui:data-invalid:data-[hover]:border-destructive-border lui:data-disabled:border-border-hover lui:data-disabled:opacity-100"
   end
 
   def control_classes
-    "lui:relative lui:block lui:w-full lui:before:pointer-events-none lui:before:absolute lui:before:inset-px lui:before:rounded-[7px] lui:before:bg-white lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-inset lui:focus-within:after:ring-2 lui:focus-within:after:ring-blue-500 lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-zinc-950/5 lui:has-data-disabled:before:shadow-none"
+    "lui:relative lui:block lui:w-full lui:before:pointer-events-none lui:before:absolute lui:before:inset-px lui:before:rounded-[7px] lui:before:bg-surface lui:before:shadow-sm lui:after:pointer-events-none lui:after:absolute lui:after:inset-0 lui:after:rounded-lg lui:after:ring-inset lui:focus-within:after:ring-2 lui:focus-within:after:ring-focus lui:has-data-disabled:opacity-50 lui:has-data-disabled:before:bg-surface-hover lui:has-data-disabled:before:shadow-none"
   end
 
   def select_html_options

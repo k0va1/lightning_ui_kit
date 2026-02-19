@@ -17,6 +17,7 @@ class LightningUiKit::BannerComponentTest < ViewComponent::TestCase
   def test_renders_error_type
     result = render_inline(LightningUiKit::BannerComponent.new(title: "Error", type: :error)) { "Error content" }
 
-    assert_includes result.to_html, "lui:*:data-[slot=header]:bg-destructive/80"
+    assert_includes result.to_html, "lui:bg-destructive/5"
+    assert_includes result.to_html, "lui:*:data-[slot=header]:text-destructive-text"
   end
 end

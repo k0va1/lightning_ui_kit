@@ -10,7 +10,7 @@ class LightningUiKit::BannerComponent < LightningUiKit::BaseComponent
   def classes
     type_classes = case @type
     when :error
-      "lui:*:data-[slot=header]:bg-destructive/80 lui:*:data-[slot=header]:text-foreground-invert"
+      "lui:bg-destructive/5 lui:border-destructive-border/40 lui:*:data-[slot=header]:bg-destructive/10 lui:*:data-[slot=header]:text-destructive-text"
     else
       "lui:*:data-[slot=header]:bg-neutral-bg"
     end

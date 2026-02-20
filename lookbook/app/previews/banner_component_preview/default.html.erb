@@ -1,5 +1,11 @@
-<%= render LightningUiKit::BannerComponent.new(type: :error, title: "Error occured") do |banner| %>
-  <p> 2 errors prohibited this parse from being saved:</p>
+<%= render LightningUiKit::BannerComponent.new(title: "Heads up!") do |banner| %>
+  <p>You can add components to your app using the CLI.</p>
+<% end %>
+
+<br>
+
+<%= render LightningUiKit::BannerComponent.new(type: :error, title: "Error occurred") do |banner| %>
+  <p>2 errors prohibited this parse from being saved:</p>
   <ul class="lui:mt-2 lui:list-disc lui:list-inside">
     <li>Error 1</li>
     <li>Error 2</li>

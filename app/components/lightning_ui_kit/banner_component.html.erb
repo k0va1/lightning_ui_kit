@@ -1,16 +1,10 @@
 <%= tag.div(class: classes, data: { type: @type, controller: "lui-banner" }) do %>
-  <div data-slot="header" class="lui:flex lui:items-center lui:px-4 lui:py-3">
-    <%= heroicon(icon, variant: :outline, options: { class: "lui:shrink-0 lui:w-5 lui:h-5 lui:me-2" }) %>
-    <span class="lui:sr-only"><%= @type.to_s.humanize %></span>
-    <h3 class="lui:text-md lui:font-medium"><%= @title %></h3>
-  </div>
-
-  <div class="lui:text-sm lui:text-neutral-text lui:p-4">
-    <%= content %>
-  </div>
-
+  <%= heroicon(icon, variant: :outline, options: { class: icon_classes }) %>
+  <span class="lui:sr-only"><%= @type.to_s.humanize %></span>
+  <h5 class="<%= title_classes %>"><%= @title %></h5>
+  <div class="lui:text-foreground-secondary"><%= content %></div>
   <% if footer.present? %>
-    <div class="lui:p-4 lui:pt-0">
+    <div class="lui:mt-3">
       <%= footer %>
     </div>
   <% end %>

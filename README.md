@@ -80,11 +80,11 @@ Use the `lui` helper to render components:
 
 ### Available Components
 
-**Form**: `button`, `input`, `textarea`, `select`, `checkbox`, `switch`, `combobox`, `file_input`, `dropzone`
+**Form**: `button`, `input`, `textarea`, `select`, `checkbox`, `switch`, `radio_group`, `combobox`, `file_input`, `dropzone`
 
 **Display**: `text`, `badge`, `avatar`, `alert`, `banner`, `toast`, `skeleton`, `spinner`
 
-**Structure**: `table`, `pagination`, `description_list`, `dropdown`, `modal`, `tooltip`, `layout`, `sidebar`, `sidebar_section`, `sidebar_link`, `link`
+**Structure**: `card`, `tabs`, `accordion`, `table`, `pagination`, `description_list`, `dropdown`, `modal`, `tooltip`, `layout`, `sidebar`, `sidebar_section`, `sidebar_link`, `link`
 
 ### Alternative Syntax
 

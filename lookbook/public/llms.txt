@@ -78,6 +78,7 @@ application.register(`${namespace}-example`, ExampleController)
 - **SelectComponent** - `name:`, `options:`, `label:`, `form:`, `multiple:`
 - **ComboboxComponent** - `name:`, `options:`, `label:`, `form:`, `multiple:`, `allow_custom:`, `url:` (async), `placeholder:`, `selected:`, `min_chars:`, `debounce:`, `association:`, `foreign_key:`, `nested_model:`, `collection:`, `label_method:`, `value_method:`
 - **FileInputComponent** - `name:`, `label:`, `accept:`, `error:`
+- **RadioGroupComponent** - `name:`, `label:`, `form:`, `selected:`, `description:`, `error:`, `disabled:` with option slots (`value:`, `label:`, `description:`)
 - **DropzoneComponent** - Drag-and-drop file upload with ActiveStorage integration
 
 ### Display Components
@@ -90,6 +91,9 @@ application.register(`${namespace}-example`, ExampleController)
 - **SpinnerComponent** - Loading spinner
 
 ### Structural Components
+- **CardComponent** - Container with optional `title`, `description`, `action`, `header`, and `footer` slots
+- **TabsComponent** - `default_tab:`, `variant: :default/:line` with tab slots (`title:`) — tabbed content panels with keyboard navigation
+- **AccordionComponent** - `open_first:` with item slots (`title:`) — expandable/collapsible sections
 - **TableComponent** - `data:`, `actions_title:`, `empty_message:` with column/action slots
 - **PaginationComponent** - Page navigation with smart gap rendering
 - **DescriptionListComponent** - Key-value list with item slots
@@ -158,11 +162,11 @@ The `lui` helper provides a convenient shorthand for rendering components:
 ```
 
 Available helper methods:
-- `lui.alert`, `lui.avatar`, `lui.badge`, `lui.button`
+- `lui.accordion`, `lui.alert`, `lui.avatar`, `lui.badge`, `lui.button`, `lui.card`
 - `lui.checkbox`, `lui.combobox`, `lui.description_list`, `lui.dropdown`, `lui.dropzone`
 - `lui.file_input`, `lui.input`, `lui.layout`, `lui.link`, `lui.modal`
-- `lui.pagination`, `lui.select`, `lui.sidebar`, `lui.sidebar_link`, `lui.sidebar_section`
-- `lui.skeleton`, `lui.spinner`, `lui.switch`, `lui.table`, `lui.text`
+- `lui.pagination`, `lui.radio_group`, `lui.select`, `lui.sidebar`, `lui.sidebar_link`, `lui.sidebar_section`
+- `lui.skeleton`, `lui.spinner`, `lui.switch`, `lui.table`, `lui.tabs`, `lui.text`
 - `lui.textarea`, `lui.toast`, `lui.tooltip`
 
 All arguments and blocks are passed directly to the component:
@@ -368,6 +372,8 @@ All controllers use `lui-` prefix:
 | `lui-accordion` | Expand/collapse | Single-open enforcement |
 | `lui-clipboard` | Copy to clipboard | navigator.clipboard API |
 | `lui-combobox` | Autocomplete/typeahead | Floating UI, keyboard nav, async filtering |
+| `lui-tabs` | Tab switching | Keyboard nav, ARIA tablist/tab/tabpanel |
+| `lui-radio-group` | Radio selection | Keyboard nav, hidden field binding |
 | `lui-jsonb` | JSONB field editor | Key-value pairs, array mode, auto-serialization |
 
 ### Binding Controllers

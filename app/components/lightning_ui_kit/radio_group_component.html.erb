@@ -1,0 +1,60 @@
+<%= tag.div(class: classes, data: data, role: "radiogroup") do %>
+  <%= render_label %>
+  <% if @description %>
+    <%= tag.p(
+      @description,
+      class: "lui:text-base/6 lui:text-foreground-muted lui:data-disabled:opacity-50 lui:sm:text-sm/6",
+      data: description_data
+    ) %>
+  <% end %>
+  <div data-slot="options" class="lui:space-y-3">
+    <% options.each_with_index do |option, index| %>
+      <div
+        role="radio"
+        tabindex="<%= index == 0 ? 0 : -1 %>"
+        aria-checked="<%= selected?(option.value) %>"
+        data-lui-radio-group-target="option"
+        data-value="<%= option.value %>"
+        data-action="click->lui-radio-group#select keydown->lui-radio-group#keydown"
+        class="lui:group lui:flex lui:items-start lui:gap-4 lui:cursor-pointer lui:focus:outline-hidden lui:sm:gap-3"
+        <%= "data-checked" if selected?(option.value) %>
+        <%= "data-disabled" if @disabled || option.disabled? %>
+      >
+        <span class="lui:relative lui:isolate lui:mt-0.5 lui:flex lui:size-[1.125rem] lui:shrink-0 lui:items-center lui:justify-center lui:rounded-full lui:sm:size-4
+          lui:border lui:border-border-strong
+          lui:before:absolute lui:before:inset-0 lui:before:-z-10 lui:before:rounded-full lui:before:bg-surface-input lui:before:shadow-sm
+          lui:after:absolute lui:after:inset-0 lui:after:rounded-full lui:after:shadow-[inset_0_1px_--theme(--color-white/15%)]
+          lui:group-data-checked:border-transparent lui:group-data-checked:bg-(--radio-checked-border) lui:group-data-checked:before:bg-(--radio-checked-bg)
+          lui:group-hover:border-border-hover lui:group-hover:group-data-checked:border-transparent
+          lui:group-data-focus:outline lui:group-data-focus:outline-2 lui:group-data-focus:outline-offset-2 lui:group-data-focus:outline-focus
+          lui:group-data-disabled:opacity-50 lui:group-data-disabled:border-border-strong lui:group-data-disabled:bg-surface-hover
+          lui:group-data-disabled:[--radio-indicator:var(--lui-theme-foreground)]/50 lui:group-data-disabled:before:bg-transparent
+          lui:forced-colors:[--radio-indicator:HighlightText] lui:forced-colors:[--radio-checked-bg:Highlight]
+          lui:forced-colors:group-data-disabled:[--radio-indicator:Highlight]
+          lui:[--radio-checked-bg:var(--lui-theme-surface-invert)] lui:[--radio-checked-border:var(--lui-theme-border-invert)] lui:[--radio-indicator:var(--lui-theme-foreground-invert)]
+          lui:transition-colors lui:duration-150"
+        >
+          <span class="lui:size-2 lui:rounded-full lui:bg-(--radio-indicator) lui:opacity-0 lui:group-data-checked:opacity-100 lui:transition-opacity lui:duration-150"></span>
+        </span>
+        <div class="lui:flex lui:flex-col lui:gap-0.5">
+          <span class="lui:text-base/6 lui:text-foreground lui:select-none lui:group-data-disabled:opacity-50 lui:sm:text-sm/6 lui:font-medium" data-slot="label">
+            <%= option.label %>
+          </span>
+          <% if option.description %>
+            <span class="lui:text-sm/5 lui:text-foreground-muted lui:group-data-disabled:opacity-50">
+              <%= option.description %>
+            </span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= render_hidden_field %>
+  <% if has_errors? %>
+    <%= tag.p(
+      error_messages,
+      class: "lui:text-base/6 lui:text-destructive-text lui:data-disabled:opacity-50 lui:sm:text-sm/6",
+      data: error_data
+    ) %>
+  <% end %>
+<% end %>

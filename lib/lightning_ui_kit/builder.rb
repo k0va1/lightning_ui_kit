@@ -4,6 +4,10 @@ module LightningUiKit
       @view_context = view_context
     end
 
+    def accordion(*, **, &block)
+      render(AccordionComponent.new(*, **), &block)
+    end
+
     def alert(*, **, &block)
       render(AlertComponent.new(*, **), &block)
     end
@@ -18,6 +22,10 @@ module LightningUiKit
 
     def button(*, **, &block)
       render(ButtonComponent.new(*, **), &block)
+    end
+
+    def card(*, **, &block)
+      render(CardComponent.new(*, **), &block)
     end
 
     def checkbox(*, **, &block)
@@ -64,6 +72,10 @@ module LightningUiKit
       render(PaginationComponent.new(*, **), &block)
     end
 
+    def radio_group(*, **, &block)
+      render(RadioGroupComponent.new(*, **), &block)
+    end
+
     def select(*, **, &block)
       render(SelectComponent.new(*, **), &block)
     end
@@ -94,6 +106,10 @@ module LightningUiKit
 
     def table(*, **, &block)
       render(TableComponent.new(*, **), &block)
+    end
+
+    def tabs(*, **, &block)
+      render(TabsComponent.new(*, **), &block)
     end
 
     def text(*, **, &block)

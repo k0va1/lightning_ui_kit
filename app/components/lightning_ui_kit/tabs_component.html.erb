@@ -1,0 +1,30 @@
+<%= tag.div(class: classes, data: data) do %>
+  <div role="tablist" class="<%= list_classes %>">
+    <% tabs.each_with_index do |tab, index| %>
+      <button
+        type="button"
+        role="tab"
+        id="<%= tab_id(index) %>"
+        aria-controls="<%= panel_id(index) %>"
+        aria-selected="<%= index == @default_tab %>"
+        class="<%= tab_classes %>"
+        data-lui-tabs-target="tab"
+        data-action="click->lui-tabs#select"
+      >
+        <%= tab.title %>
+      </button>
+    <% end %>
+  </div>
+  <% tabs.each_with_index do |tab, index| %>
+    <div
+      role="tabpanel"
+      id="<%= panel_id(index) %>"
+      aria-labelledby="<%= tab_id(index) %>"
+      class="lui:flex-1 lui:outline-hidden lui:hidden"
+      tabindex="0"
+      data-lui-tabs-target="panel"
+    >
+      <%= tab %>
+    </div>
+  <% end %>
+<% end %>

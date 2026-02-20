@@ -25,6 +25,9 @@
         var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
         if (stored === "dark" || (!stored && prefersDark)) {
           document.documentElement.classList.add("lui-theme-dark");
+          document.addEventListener("DOMContentLoaded", function() {
+            document.body.style.background = "var(--lui-theme-surface-secondary)";
+          });
         }
       })();
     </script>
@@ -62,6 +65,7 @@
         toggle.addEventListener("click", function() {
           var isDark = document.documentElement.classList.toggle("lui-theme-dark");
           localStorage.setItem("lui-theme", isDark ? "dark" : "light");
+          document.body.style.background = isDark ? "var(--lui-theme-surface-secondary)" : "var(--lui-theme-surface)";
           updateIcons();
         });
       })();

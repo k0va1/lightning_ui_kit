@@ -1,0 +1,30 @@
+<div class="<%= classes %>" data-lui-accordion-target="item">
+  <button
+    type="button"
+    class="lui:flex lui:w-full lui:items-center lui:justify-between lui:gap-4 lui:rounded-lg lui:py-4 lui:px-1 lui:text-left lui:text-base/6 lui:font-medium lui:text-foreground
+      lui:hover:text-foreground-secondary lui:sm:text-sm/6 lui:cursor-pointer
+      lui:focus:outline-hidden lui:focus-visible:outline lui:focus-visible:outline-2 lui:focus-visible:outline-offset-2 lui:focus-visible:outline-focus
+      lui:transition-colors lui:duration-150"
+    data-action="click->lui-accordion#toggle"
+  >
+    <span><%= @title %></span>
+    <svg
+      data-lui-accordion-target="arrow"
+      class="lui:size-4 lui:shrink-0 lui:text-foreground-muted lui:transition-transform lui:duration-300 lui:ease-[cubic-bezier(0.16,1,0.3,1)]"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+    >
+      <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+    </svg>
+  </button>
+  <div
+    data-lui-accordion-target="content"
+    class="lui:grid lui:grid-rows-[0fr] lui:opacity-0 lui:transition-all lui:duration-300 lui:ease-[cubic-bezier(0.16,1,0.3,1)]"
+  >
+    <div class="lui:overflow-hidden">
+      <div class="lui:pb-4 lui:px-1 lui:text-base/6 lui:text-foreground-muted lui:sm:text-sm/6">
+        <%= content %>
+      </div>
+    </div>
+  </div>
+</div>

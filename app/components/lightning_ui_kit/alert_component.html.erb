@@ -1,4 +1,15 @@
-<%= tag.div class: classes do %>
-  <%= heroicon("information-circle", options: { class: "lui:w-4 lui:h-4 lui:me-3 lui:shrink-0 lui:inline" }) %>
-  <%= content %>
+<%= tag.div(class: classes, role: "alert", data: @title ? { type: @type, controller: "lui-alert" } : { type: @type }) do %>
+  <%= heroicon(icon, variant: @title ? :outline : :solid, options: { class: icon_classes }) %>
+  <span class="lui:sr-only"><%= @type.to_s.humanize %></span>
+  <% if @title %>
+    <h5 class="<%= title_classes %>"><%= @title %></h5>
+    <div class="lui:text-foreground-secondary"><%= content %></div>
+    <% if footer.present? %>
+      <div class="lui:mt-3">
+        <%= footer %>
+      </div>
+    <% end %>
+  <% else %>
+    <%= content %>
+  <% end %>
 <% end %>

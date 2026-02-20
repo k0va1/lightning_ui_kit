@@ -16,10 +16,6 @@ module LightningUiKit
       render(BadgeComponent.new(*, **), &block)
     end
 
-    def banner(*, **, &block)
-      render(BannerComponent.new(*, **), &block)
-    end
-
     def button(*, **, &block)
       render(ButtonComponent.new(*, **), &block)
     end

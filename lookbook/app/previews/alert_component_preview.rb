@@ -4,4 +4,7 @@ class AlertComponentPreview < Lookbook::Preview
       "Hello, world!"
     end
   end
+
+  def with_title
+  end
 end

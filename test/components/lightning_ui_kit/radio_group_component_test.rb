@@ -29,7 +29,7 @@ class LightningUiKit::RadioGroupComponentTest < ViewComponent::TestCase
       group.with_option(value: "pro", label: "Pro")
     end
 
-    assert_includes result.to_html, 'data-checked'
+    assert_includes result.to_html, "data-checked"
     assert_includes result.to_html, 'aria-checked="true"'
   end
 

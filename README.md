@@ -84,7 +84,7 @@ Use the `lui` helper to render components:
 
 **Display**: `text`, `badge`, `avatar`, `alert`, `banner`, `toast`, `skeleton`, `spinner`
 
-**Structure**: `card`, `tabs`, `accordion`, `table`, `pagination`, `description_list`, `dropdown`, `modal`, `tooltip`, `layout`, `sidebar`, `sidebar_section`, `sidebar_link`, `link`
+**Structure**: `card`, `tabs`, `accordion`, `table`, `pagination`, `description_list`, `dropdown`, `modal`, `tooltip`, `layout` (frosted glass sidebar with backdrop blur), `sidebar`, `sidebar_section`, `sidebar_link`, `link`
 
 ### Alternative Syntax
 

@@ -100,7 +100,7 @@ application.register(`${namespace}-example`, ExampleController)
 - **DropdownComponent** - `trigger_text:`, `anchor:`, `position:` with item slots
 - **ModalComponent** - `id:`, `title:`, `description:`, `open:` with body/actions slots
 - **TooltipComponent** - `text:`, `position: :top/:bottom/:left/:right`, `active:`
-- **LayoutComponent** - `sidebar_width:` with header/sections/sidebar/footer/mobile_header slots for app shell layout
+- **LayoutComponent** - `sidebar_width:` with header/sections/sidebar/footer/mobile_header slots for app shell layout. Uses `surface-page` background with frosted glass sidebar (backdrop blur). Add `lui-page-gradient` class for theme-aware radial gradient overlays (light/dark)
 - **SidebarSectionComponent** - `title:` - Groups sidebar links with optional section title
 - **SidebarLinkComponent** - `title:`, `url:`, `icon:`, `current:`, `animate_icon:` - Navigation link with Heroicon support, active state, and optional icon bounce animation on hover
 - **SidebarComponent** - Sidebar layout
@@ -261,6 +261,7 @@ LightningUiKit uses CSS custom properties for theming. All components use semant
 | `surface` | Primary background | `lui:bg-surface` |
 | `surface-secondary` | Secondary background | `lui:bg-surface-secondary` |
 | `surface-tertiary` | Tertiary background | `lui:bg-surface-tertiary` |
+| `surface-page` | Page/body background | `lui:bg-surface-page` |
 | `surface-invert` | Inverted background | `lui:bg-surface-invert` |
 | `surface-hover` | Hover background | `lui:hover:bg-surface-hover` |
 | `foreground` | Primary text | `lui:text-foreground` |
@@ -594,6 +595,6 @@ app/
 make install     # Install dependencies
 make start       # Development server with asset watching
 make docs        # Lookbook preview server
-make test        # Run RSpec tests
+make test        # Run Minitest tests
 make build       # Build production assets
 ```

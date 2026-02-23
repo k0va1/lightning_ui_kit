@@ -6,6 +6,7 @@
   --color-surface-secondary: var(--lui-theme-surface-secondary);
   --color-surface-tertiary: var(--lui-theme-surface-tertiary);
   --color-surface-aside: var(--lui-theme-surface-aside);
+  --color-surface-page: var(--lui-theme-surface-page);
   --color-surface-input: var(--lui-theme-surface-input);
   --color-surface-invert: var(--lui-theme-surface-invert);
   --color-surface-overlay: var(--lui-theme-surface-overlay);

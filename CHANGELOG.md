@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.5](https://github.com/k0va1/lightning_ui_kit/compare/v0.3.4...v0.3.5) (2026-02-23)
+
+
+### Bug Fixes
+
+* body padding ([40e8a22](https://github.com/k0va1/lightning_ui_kit/commit/40e8a223c269d7f4206586fbf1355ab18c333266))
+* theme switcher ([9bd5f3a](https://github.com/k0va1/lightning_ui_kit/commit/9bd5f3a9217574e87deca92f6b44839e0089328a))
+* upgrade Tailwind CSS to v4.2 and fix pagination arrow sizing ([2c918da](https://github.com/k0va1/lightning_ui_kit/commit/2c918dab6a4164240fed22bc1d81af7d8c2a8c5a))
+
 ## [0.3.4](https://github.com/k0va1/lightning_ui_kit/compare/v0.3.3...v0.3.4) (2026-02-23)
 
 

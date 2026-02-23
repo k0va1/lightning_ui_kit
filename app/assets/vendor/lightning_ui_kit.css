@@ -935,9 +935,6 @@
   .lui\:bg-surface {
     background-color: var(--lui-theme-surface);
   }
-  .lui\:bg-surface-aside {
-    background-color: var(--lui-theme-surface-aside);
-  }
   .lui\:bg-surface-hover {
     background-color: var(--lui-theme-surface-hover);
   }
@@ -949,6 +946,9 @@
   }
   .lui\:bg-surface-overlay {
     background-color: var(--lui-theme-surface-overlay);
+  }
+  .lui\:bg-surface-page {
+    background-color: var(--lui-theme-surface-page);
   }
   .lui\:bg-surface-secondary {
     background-color: var(--lui-theme-surface-secondary);
@@ -1342,6 +1342,16 @@
     @supports (color: color-mix(in lab, red, red)) {
       outline-color: color-mix(in oklab, var(--lui-color-black) var(--ring-opacity), transparent);
     }
+  }
+  .lui\:backdrop-blur-\[24px\] {
+    --tw-backdrop-blur: blur(24px);
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+  }
+  .lui\:backdrop-saturate-150 {
+    --tw-backdrop-saturate: saturate(150%);
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
   }
   .lui\:transition {
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
@@ -3062,11 +3072,6 @@
       border-radius: var(--lui-radius-lg);
     }
   }
-  .lui\:lg\:bg-surface-aside {
-    @media (width >= 64rem) {
-      background-color: var(--lui-theme-surface-aside);
-    }
-  }
   .lui\:lg\:bg-surface-secondary {
     @media (width >= 64rem) {
       background-color: var(--lui-theme-surface-secondary);
@@ -3210,7 +3215,7 @@
   --lui-theme-surface: #fff;
   --lui-theme-surface-secondary: oklch(0.985 0 0);
   --lui-theme-surface-tertiary: oklch(0.967 0.001 286.375);
-  --lui-theme-surface-aside: oklch(0.967 0.001 286.375);
+  --lui-theme-surface-page: #f3f1ed;
   --lui-theme-surface-input: #fff;
   --lui-theme-surface-invert: oklch(0.21 0.006 285.885);
   --lui-theme-surface-overlay: oklch(0.141 0.005 285.823 / 25%);
@@ -3248,7 +3253,7 @@
   --lui-theme-surface: oklch(0.141 0.005 285.823);
   --lui-theme-surface-secondary: oklch(0.21 0.006 285.885);
   --lui-theme-surface-tertiary: oklch(0.274 0.006 286.033);
-  --lui-theme-surface-aside: oklch(0.13 0.004 285.823);
+  --lui-theme-surface-page: oklch(0.141 0.005 285.823);
   --lui-theme-surface-input: color-mix(in oklab, white 5%, transparent);
   --lui-theme-surface-invert: oklch(0.985 0 0);
   --lui-theme-surface-overlay: oklch(0 0 0 / 50%);
@@ -3443,6 +3448,42 @@
   inherits: false;
   initial-value: solid;
 }
+@property --tw-backdrop-blur {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-brightness {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-contrast {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-grayscale {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-hue-rotate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-invert {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-opacity {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-saturate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-sepia {
+  syntax: "*";
+  inherits: false;
+}
 @property --tw-duration {
   syntax: "*";
   inherits: false;
@@ -3501,6 +3542,15 @@
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
       --tw-outline-style: solid;
+      --tw-backdrop-blur: initial;
+      --tw-backdrop-brightness: initial;
+      --tw-backdrop-contrast: initial;
+      --tw-backdrop-grayscale: initial;
+      --tw-backdrop-hue-rotate: initial;
+      --tw-backdrop-invert: initial;
+      --tw-backdrop-opacity: initial;
+      --tw-backdrop-saturate: initial;
+      --tw-backdrop-sepia: initial;
       --tw-duration: initial;
       --tw-ease: initial;
       --tw-content: "";

@@ -20,7 +20,7 @@
   --lui-theme-surface: #fff;
   --lui-theme-surface-secondary: oklch(0.985 0 0);
   --lui-theme-surface-tertiary: oklch(0.967 0.001 286.375);
-  --lui-theme-surface-aside: oklch(0.967 0.001 286.375);
+  --lui-theme-surface-page: #f0f0ee;
   --lui-theme-surface-input: #fff;
   --lui-theme-surface-invert: oklch(0.21 0.006 285.885);
   --lui-theme-surface-overlay: oklch(0.141 0.005 285.823 / 25%);
@@ -79,7 +79,7 @@
   --lui-theme-surface: oklch(0.141 0.005 285.823);
   --lui-theme-surface-secondary: oklch(0.21 0.006 285.885);
   --lui-theme-surface-tertiary: oklch(0.274 0.006 286.033);
-  --lui-theme-surface-aside: oklch(0.13 0.004 285.823);
+  --lui-theme-surface-page: oklch(0.141 0.005 285.823);
   --lui-theme-surface-input: color-mix(in oklab, white 5%, transparent);
   --lui-theme-surface-invert: oklch(0.985 0 0);
   --lui-theme-surface-overlay: oklch(0 0 0 / 50%);
@@ -130,4 +130,17 @@
   /* Spinner */
   --lui-theme-spinner-primary: oklch(0.705 0.015 286.067);
   --lui-theme-spinner-secondary: oklch(0.442 0.017 285.786);
+}
+
+/* ===== Page Background Gradient ===== */
+.lui-page-gradient {
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(200,210,230,0.35) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(220,205,235,0.25) 0%, transparent 50%);
+}
+
+.lui-theme-dark .lui-page-gradient {
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(40,50,80,0.4) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(60,40,80,0.3) 0%, transparent 50%);
 }

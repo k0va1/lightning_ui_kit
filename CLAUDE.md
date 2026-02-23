@@ -43,9 +43,8 @@ make build             # Build production assets
 
 ### Testing and Code Quality
 ```bash
-make test             # Run RSpec tests
+make test             # Run tests
 make lint-fix         # Fix Ruby style issues with StandardRB
-bundle exec rspec     # Run specific tests
 ```
 
 ### Release Process
@@ -68,6 +67,8 @@ make release [version]  # Build assets, commit, tag, and release gem
 - Semantic tokens are defined as CSS custom properties (`--lui-theme-*`) in `app/assets/stylesheets/lightning_ui_kit/themes.css`
 - TailwindMerge handles class conflicts and duplicates via `merge_classes()` helper
 - Themes: light (default via `:root`) and dark (`lui-theme-dark` class). Custom themes via CSS variable overrides
+- Layout uses `surface-page` token for page background and `lui-page-gradient` CSS class for theme-aware radial gradient overlays
+- Sidebar uses frosted glass effect via `backdrop-blur` and `backdrop-saturate` on the translucent `surface-aside` background
 
 ### JavaScript Architecture
 - Stimulus controllers in `app/javascript/lightning_ui_kit/controllers/`
@@ -89,6 +90,6 @@ make release [version]  # Build assets, commit, tag, and release gem
 
 ### Development Dependencies
 - StandardRB for Ruby linting
-- RSpec for testing
+- Minitest for testing
 - Lookbook for component previews
 - esbuild for JavaScript bundling

@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.3.4](https://github.com/k0va1/lightning_ui_kit/compare/v0.3.3...v0.3.4) (2026-02-23)
+
+
+### Features
+
+* add Card, Accordion, Tabs, and RadioGroup components ([8ebf0f5](https://github.com/k0va1/lightning_ui_kit/commit/8ebf0f534f0f4b5c3754a933f0588ccf758ae5eb))
+* redesign layout with frosted glass sidebar and page background ([#70](https://github.com/k0va1/lightning_ui_kit/issues/70)) ([53b4432](https://github.com/k0va1/lightning_ui_kit/commit/53b44328db74bac76e73e2442d6372c951a66b0d))
+
+
+### Bug Fixes
+
+* redesign banner component with shadcn alert pattern and add lookbook theme toggle ([6935997](https://github.com/k0va1/lightning_ui_kit/commit/69359978608c9f034084e0d5d169b9252a6e3b7e))
+* update css ([458cd4f](https://github.com/k0va1/lightning_ui_kit/commit/458cd4f383083204d65ab039189141f03ee1926b))
+
 ## [0.3.3](https://github.com/k0va1/lightning_ui_kit/compare/v0.3.2...v0.3.3) (2026-02-19)
 
 

@@ -1,7 +1,7 @@
 <%= tag.div(class: "lui:items-center lui:gap-x-2 lui:sm:flex") do %>
   <% if @with_arrows %>
     <%= link_to(url(@current_page - 1), class: arrow_link_classes, data: data(disabled: @current_page == 1)) do %>
-      <%= heroicon("chevron-left", options: { class: "w-5 h-5" }) %>
+      <%= heroicon("chevron-left", options: { class: "lui:w-5 lui:h-5" }) %>
     <% end %>
   <% end %>
 
@@ -15,7 +15,7 @@
 
   <% if @with_arrows %>
     <%= link_to(url(@current_page + 1), class: arrow_link_classes, data: data(disabled: @current_page == @total_pages)) do %>
-      <%= heroicon("chevron-right", options: {class: "w-5 h-5" }) %>
+      <%= heroicon("chevron-right", options: {class: "lui:w-5 lui:h-5" }) %>
     <% end %>
   <% end %>
 <% end %>

@@ -80,10 +80,6 @@ module LightningUiKit
       render(SelectComponent.new(*, **), &block)
     end
 
-    def sidebar(*, **, &block)
-      render(SidebarComponent.new(*, **), &block)
-    end
-
     def sidebar_link(*, **, &block)
       render(SidebarLinkComponent.new(*, **), &block)
     end

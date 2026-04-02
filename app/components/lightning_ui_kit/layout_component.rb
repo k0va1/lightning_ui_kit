@@ -1,5 +1,4 @@
 class LightningUiKit::LayoutComponent < LightningUiKit::BaseComponent
-  renders_one :sidebar
   renders_one :header
   renders_many :sections, LightningUiKit::SidebarSectionComponent
   renders_one :footer

@@ -67,7 +67,7 @@ class LightningUiKit::ComboboxComponentTest < ViewComponent::TestCase
     ]
     result = render_inline(LightningUiKit::ComboboxComponent.new(name: "country", options: options, selected: "us"))
 
-    assert_includes result.to_html, '["us"]'
+    assert result.css("[data-lui-combobox-selected-value]").first["data-lui-combobox-selected-value"] == '["us"]'
   end
 
   def test_renders_with_selected_values_multiple
@@ -82,7 +82,7 @@ class LightningUiKit::ComboboxComponentTest < ViewComponent::TestCase
       selected: ["ruby", "python"]
     ))
 
-    assert_includes result.to_html, '["ruby","python"]'
+    assert result.css("[data-lui-combobox-selected-value]").first["data-lui-combobox-selected-value"] == '["ruby","python"]'
   end
 
   def test_renders_multiple_mode

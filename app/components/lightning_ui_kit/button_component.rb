@@ -47,14 +47,25 @@ class LightningUiKit::ButtonComponent < LightningUiKit::BaseComponent
       class_list << default_classes
     end
 
-    case @size
-    when :small
-      class_list << "lui:text-xs"
-    when :default
-      class_list << "lui:text-base/6 lui:font-semibold lui:sm:text-sm/6"
-    end
+    class_list << size_classes
 
     merge_classes(class_list.compact.join(" "))
+  end
+
+  def size_classes
+    case @size
+    when :small
+      "lui:text-xs lui:px-2.5 lui:py-1 lui:sm:px-2 lui:sm:py-0.5 lui:gap-x-1.5\
+        lui:*:data-[slot=icon]:-mx-0.5 lui:*:data-[slot=icon]:my-0 lui:*:data-[slot=icon]:size-3.5\
+        lui:*:data-[slot=icon]:shrink-0 lui:*:data-[slot=icon]:self-center lui:*:data-[slot=icon]:text-(--btn-icon)\
+        lui:sm:*:data-[slot=icon]:my-0 lui:sm:*:data-[slot=icon]:size-3.5"
+    when :default
+      "lui:text-base/6 lui:font-semibold lui:sm:text-sm/6 lui:px-4 lui:py-2 lui:sm:px-[calc(--spacing(3)-1px)]\
+        lui:sm:py-[calc(--spacing(1.5)-1px)] lui:gap-x-2\
+        lui:*:data-[slot=icon]:-mx-0.5 lui:*:data-[slot=icon]:my-0.5\
+        lui:*:data-[slot=icon]:size-5 lui:*:data-[slot=icon]:shrink-0 lui:*:data-[slot=icon]:self-center lui:*:data-[slot=icon]:text-(--btn-icon)\
+        lui:sm:*:data-[slot=icon]:my-1 lui:sm:*:data-[slot=icon]:size-4"
+    end
   end
 
   def destructive_classes
@@ -67,10 +78,9 @@ class LightningUiKit::ButtonComponent < LightningUiKit::BaseComponent
   end
 
   def default_classes
-    "lui:relative lui:isolate lui:rounded-lg lui:border lui:inline-flex lui:items-baseline lui:justify-center lui:gap-x-2 lui:px-4 lui:py-2 lui:sm:px-[calc(--spacing(3)-1px)]\
-      lui:sm:py-[calc(--spacing(1.5)-1px)] lui:focus:outline-hidden lui:*:data-[slot=icon]:-mx-0.5 lui:*:data-[slot=icon]:my-0.5\
-      lui:*:data-[slot=icon]:size-5 lui:*:data-[slot=icon]:shrink-0 lui:*:data-[slot=icon]:self-center lui:*:data-[slot=icon]:text-(--btn-icon)\
-      lui:sm:*:data-[slot=icon]:my-1 lui:sm:*:data-[slot=icon]:size-4 lui:border-transparent lui:bg-(--btn-border) lui:before:absolute lui:before:inset-0\
+    "lui:relative lui:isolate lui:rounded-lg lui:border lui:inline-flex lui:items-center lui:justify-center\
+      lui:focus:outline-hidden\
+      lui:border-transparent lui:bg-(--btn-border) lui:before:absolute lui:before:inset-0\
       lui:before:-z-10 lui:before:rounded-[calc(var(--lui-radius-lg)-1px)] lui:before:bg-(--btn-bg) lui:before:shadow-sm lui:after:absolute lui:after:inset-0
       lui:after:-z-10 lui:after:rounded-[calc(var(--lui-radius-lg)-1px)] lui:after:shadow-[shadow:inset_0_1px_--theme(--color-white/15%)]\
       lui:active:after:bg-(--btn-hover-overlay) lui:hover:after:bg-(--btn-hover-overlay)\
@@ -85,11 +95,10 @@ class LightningUiKit::ButtonComponent < LightningUiKit::BaseComponent
   end
 
   def outline_classes
-    "lui:relative lui:isolate lui:inline-flex lui:items-baseline lui:justify-center lui:gap-x-2 lui:rounded-lg lui:border lui:px-[calc(--spacing(3.5)-1px)] lui:py-[calc(--spacing(2.5)-1px)] sm:lui:px-[calc(--spacing(3)-1px)]\
-      lui:sm:py-[calc(--spacing(1.5)-1px)] lui:focus:outline-hidden lui:focus:outline lui:focus:outline-2 lui:focus:outline-offset-2\
-      lui:focus:outline-focus lui:disabled:opacity-50 lui:*:data-[slot=icon]:-mx-0.5 lui:*:data-[slot=icon]:my-0.5 lui:*:data-[slot=icon]:size-5\
-      lui:*:data-[slot=icon]:shrink-0 lui:*:data-[slot=icon]:self-center lui:*:data-[slot=icon]:text-(--btn-icon) lui:sm:*:data-[slot=icon]:my-1\
-      lui:sm:*:data-[slot=icon]:size-4 lui:border-border lui:text-foreground lui:active:bg-surface-hover lui:hover:bg-surface-hover\
+    "lui:relative lui:isolate lui:inline-flex lui:items-center lui:justify-center lui:rounded-lg lui:border\
+      lui:focus:outline-hidden lui:focus:outline lui:focus:outline-2 lui:focus:outline-offset-2\
+      lui:focus:outline-focus lui:disabled:opacity-50\
+      lui:border-border lui:text-foreground lui:active:bg-surface-hover lui:hover:bg-surface-hover\
       lui:[--btn-icon:var(--lui-theme-foreground-muted)] lui:active:[--btn-icon:var(--lui-theme-foreground-secondary)] lui:hover:[--btn-icon:var(--lui-theme-foreground-secondary)] lui:cursor-pointer"
   end
 end

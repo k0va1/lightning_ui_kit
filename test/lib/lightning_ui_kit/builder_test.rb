@@ -4,7 +4,7 @@ class LightningUiKit::BuilderTest < ActiveSupport::TestCase
   COMPONENT_METHODS = %i[
     alert avatar badge button checkbox combobox description_list
     dropdown dropzone file_input input layout link modal pagination
-    select sidebar sidebar_link sidebar_section skeleton spinner switch
+    select sidebar_link sidebar_section skeleton spinner switch
     table text textarea toast tooltip
   ].freeze
 

@@ -82,5 +82,33 @@ class ButtonComponentPreview < Lookbook::Preview
   def icon_only
     render LightningUiKit::ButtonComponent.new(icon: "plus", icon_variant: :solid)
   end
+
+  def small_with_leading_icon
+    render LightningUiKit::ButtonComponent.new(size: :small, icon: "plus") do
+      "Add Item"
+    end
+  end
+
+  def small_with_trailing_icon
+    render LightningUiKit::ButtonComponent.new(size: :small, icon: "arrow-right", icon_position: :trailing) do
+      "Next"
+    end
+  end
+
+  def small_outline_with_icon
+    render LightningUiKit::ButtonComponent.new(size: :small, style: :outline, icon: "pencil") do
+      "Edit"
+    end
+  end
+
+  def small_destructive_with_icon
+    render LightningUiKit::ButtonComponent.new(size: :small, style: :destructive, icon: "trash") do
+      "Delete"
+    end
+  end
+
+  def small_icon_only
+    render LightningUiKit::ButtonComponent.new(size: :small, icon: "plus", icon_variant: :solid)
+  end
   # @endgroup
 end

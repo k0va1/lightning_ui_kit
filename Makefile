@@ -4,6 +4,7 @@ install:
 	bundle install
 	npm install
 	cd lookbook && bundle install
+	git config core.hooksPath .githooks
 
 docs:
 	cd lookbook

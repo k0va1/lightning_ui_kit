@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -e
+
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+if [ "$branch" != "master" ]; then
+  exit 0
+fi
+
+echo "Checking production assets are up to date..."
+
+make build > /dev/null 2>&1
+
+if ! git diff --quiet app/assets/vendor/; then
+  echo "ERROR: Production assets are out of date."
+  echo "Run 'make build' and commit the changes before pushing."
+  git diff --stat app/assets/vendor/
+  exit 1
+fi
+
+echo "Assets are up to date."

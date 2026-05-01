@@ -35,3 +35,35 @@ jobs:
 
       - name: Run tests
         run: bundle exec rake test
+
+  assets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ruby-3.3.5
+          bundler-cache: true
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Rebuild production assets
+        run: make build
+
+      - name: Check for uncommitted asset changes
+        run: |
+          if ! git diff --quiet app/assets/vendor/; then
+            echo "::error::Production assets are out of date. Run 'make build' and commit the changes."
+            git diff --stat app/assets/vendor/
+            exit 1
+          fi

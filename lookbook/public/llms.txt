@@ -70,7 +70,7 @@ application.register(`${namespace}-example`, ExampleController)
 ## Available Components
 
 ### Form Components
-- **ButtonComponent** - `style: :default/:outline/:destructive`, `size: :default/:small`, `disabled:`, `url:` (renders as link)
+- **ButtonComponent** - `style: :default/:outline/:destructive`, `size: :default/:small`, `disabled:`, `url:` (renders as link), `icon:` (Heroicon name), `icon_position: :leading/:trailing`, `icon_variant: :outline/:solid`
 - **InputComponent** - `name:`, `type: :text/:email/:password/:number/:date/:datetime`, `label:`, `form:`, `error:`, `description:`, `placeholder:`, `min:`, `max:`
 - **TextareaComponent** - `name:`, `label:`, `form:`, `rows:`, `error:`
 - **CheckboxComponent** - `name:`, `label:`, `checked:`, `form:`
@@ -103,7 +103,6 @@ application.register(`${namespace}-example`, ExampleController)
 - **LayoutComponent** - `sidebar_width:` with header/sections/sidebar/footer/mobile_header slots for app shell layout. Uses `surface-page` background with frosted glass sidebar (backdrop blur). Add `lui-page-gradient` class for theme-aware radial gradient overlays (light/dark)
 - **SidebarSectionComponent** - `title:` - Groups sidebar links with optional section title
 - **SidebarLinkComponent** - `title:`, `url:`, `icon:`, `current:`, `animate_icon:` - Navigation link with Heroicon support, active state, and optional icon bounce animation on hover
-- **SidebarComponent** - Sidebar layout
 - **LinkComponent** - Styled link wrapper
 
 ## Component Composition
@@ -165,7 +164,7 @@ Available helper methods:
 - `lui.accordion`, `lui.alert`, `lui.avatar`, `lui.badge`, `lui.button`, `lui.card`
 - `lui.checkbox`, `lui.combobox`, `lui.description_list`, `lui.dropdown`, `lui.dropzone`
 - `lui.file_input`, `lui.input`, `lui.layout`, `lui.link`, `lui.modal`
-- `lui.pagination`, `lui.radio_group`, `lui.select`, `lui.sidebar`, `lui.sidebar_link`, `lui.sidebar_section`
+- `lui.pagination`, `lui.radio_group`, `lui.select`, `lui.sidebar_link`, `lui.sidebar_section`
 - `lui.skeleton`, `lui.spinner`, `lui.switch`, `lui.table`, `lui.tabs`, `lui.text`
 - `lui.textarea`, `lui.toast`, `lui.tooltip`
 
@@ -397,6 +396,11 @@ All controllers use `lui-` prefix:
 <%= lui.button(size: :small) { "Edit" } %>
 <%= lui.button(url: "/dashboard") { "Go to Dashboard" } %>
 <%= lui.button(disabled: true) { "Loading..." } %>
+<%= lui.button(icon: "plus") { "Add Item" } %>
+<%= lui.button(icon: "arrow-right", icon_position: :trailing) { "Next" } %>
+<%= lui.button(icon: "check", icon_variant: :solid) { "Save" } %>
+<%= lui.button(size: :small, icon: "pencil") { "Edit" } %>
+<%= lui.button(icon: "plus", icon_variant: :solid) %>  <%# icon-only button %>
 ```
 
 ### Input with All Options

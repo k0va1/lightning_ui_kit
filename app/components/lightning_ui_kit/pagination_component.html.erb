@@ -1,4 +1,4 @@
-<%= tag.div(class: "lui:items-center lui:gap-x-2 lui:sm:flex") do %>
+<%= tag.div(class: "lui:flex lui:flex-wrap lui:items-center lui:gap-2") do %>
   <% if @with_arrows %>
     <%= link_to(url(@current_page - 1), class: arrow_link_classes, data: data(disabled: @current_page == 1)) do %>
       <%= heroicon("chevron-left", options: { class: "lui:w-5 lui:h-5" }) %>
@@ -7,7 +7,7 @@
 
   <% pages_with_gaps.each do |page| %>
     <% if page == :gap %>
-      <span aria-hidden="true" class="lui:w-[2.25rem] lui:text-center lui:text-sm/6 lui:font-semibold lui:text-foreground lui:select-none">…</span>
+      <span aria-hidden="true" class="lui:min-w-10 lui:h-10 lui:sm:min-w-9 lui:sm:h-9 lui:flex lui:items-center lui:justify-center lui:text-sm/6 lui:font-semibold lui:text-foreground lui:select-none">…</span>
     <% else %>
       <%= link_to(page, url(page), class: link_classes, data: data(active: @current_page == page)) %>
     <% end %>

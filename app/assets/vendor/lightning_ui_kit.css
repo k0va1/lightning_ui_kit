@@ -501,9 +501,6 @@
   .lui\:w-48 {
     width: calc(var(--lui-spacing) * 48);
   }
-  .lui\:w-\[2\.25rem\] {
-    width: 2.25rem;
-  }
   .lui\:w-fit {
     width: fit-content;
   }
@@ -527,6 +524,9 @@
   }
   .lui\:min-w-0 {
     min-width: calc(var(--lui-spacing) * 0);
+  }
+  .lui\:min-w-10 {
+    min-width: calc(var(--lui-spacing) * 10);
   }
   .lui\:min-w-\[2\.25rem\] {
     min-width: 2.25rem;
@@ -2778,11 +2778,6 @@
       margin-bottom: auto;
     }
   }
-  .lui\:sm\:flex {
-    @media (width >= 40rem) {
-      display: flex;
-    }
-  }
   .lui\:sm\:size-3\.5 {
     @media (width >= 40rem) {
       width: calc(var(--lui-spacing) * 3.5);
@@ -2811,6 +2806,11 @@
       height: calc(var(--lui-spacing) * 5);
     }
   }
+  .lui\:sm\:h-9 {
+    @media (width >= 40rem) {
+      height: calc(var(--lui-spacing) * 9);
+    }
+  }
   .lui\:sm\:min-h-\[38px\] {
     @media (width >= 40rem) {
       min-height: 38px;
@@ -2829,6 +2829,11 @@
   .lui\:sm\:max-w-3xl {
     @media (width >= 40rem) {
       max-width: var(--lui-container-3xl);
+    }
+  }
+  .lui\:sm\:min-w-9 {
+    @media (width >= 40rem) {
+      min-width: calc(var(--lui-spacing) * 9);
     }
   }
   .lui\:sm\:grid-cols-\[1fr_auto\] {

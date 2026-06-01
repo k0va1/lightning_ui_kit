@@ -46,6 +46,7 @@ class LightningUiKit::InputComponent < LightningUiKit::BaseComponent
   def input_data
     {lui_field_target: "field"}.merge(@options[:input_data] || {}).dup.tap do |data|
       data[:invalid] = "true" if has_errors?
+      data[:disabled] = "true" if @disabled
     end
   end
 

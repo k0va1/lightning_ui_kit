@@ -26,10 +26,12 @@
               </td>
             <% end %>
             <% if actions.present? %>
-              <td class="lui:p-4 lui:flex lui:gap-3 lui:border-b lui:border-border-subtle lui:group-last:border-b-0">
-                <% actions.each do |action| %>
-                  <%= action.call(row) %>
-                <% end %>
+              <td class="lui:p-4 lui:border-b lui:border-border-subtle lui:group-last:border-b-0">
+                <div class="lui:flex lui:gap-3">
+                  <% actions.each do |action| %>
+                    <%= action.call(row) %>
+                  <% end %>
+                </div>
               </td>
             <% end %>
           </tr>

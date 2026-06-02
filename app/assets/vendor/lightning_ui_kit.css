@@ -1219,6 +1219,9 @@
   .lui\:text-pretty {
     text-wrap: pretty;
   }
+  .lui\:break-words {
+    overflow-wrap: break-word;
+  }
   .lui\:whitespace-nowrap {
     white-space: nowrap;
   }

@@ -13,7 +13,7 @@
     <tbody>
       <% if @data.empty? %>
         <tr>
-          <td class="lui:p-4 lui:text-center" colspan="<%= columns.size + (actions.present? ? 1 : 0) %>">
+          <td class="lui:p-4 lui:text-center lui:break-words" colspan="<%= columns.size + (actions.present? ? 1 : 0) %>">
             <p class="lui:font-medium"><%= @empty_message %></p>
           </td>
         </tr>
@@ -21,12 +21,12 @@
         <% @data.each do |row| %>
           <tr class="lui:group">
             <% columns.each do |column| %>
-              <td class="lui:p-4 lui:border-b lui:border-border-subtle lui:group-last:border-b-0">
+              <td class="lui:p-4 lui:border-b lui:border-border-subtle lui:group-last:border-b-0 lui:break-words">
                 <%= column.call(row) %>
               </td>
             <% end %>
             <% if actions.present? %>
-              <td class="lui:p-4 lui:border-b lui:border-border-subtle lui:group-last:border-b-0">
+              <td class="lui:p-4 lui:border-b lui:border-border-subtle lui:group-last:border-b-0 lui:break-words">
                 <div class="lui:flex lui:gap-3">
                   <% actions.each do |action| %>
                     <%= action.call(row) %>

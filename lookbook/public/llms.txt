@@ -77,6 +77,7 @@ application.register(`${namespace}-example`, ExampleController)
 - **SwitchComponent** - `name:`, `label:`, `checked:`, `enabled:`
 - **SelectComponent** - `name:`, `options:`, `label:`, `form:`, `multiple:`
 - **ComboboxComponent** - `name:`, `options:`, `label:`, `form:`, `multiple:`, `allow_custom:`, `url:` (async), `placeholder:`, `selected:`, `min_chars:`, `debounce:`, `association:`, `foreign_key:`, `nested_model:`, `collection:`, `label_method:`, `value_method:`
+- **CopyInputComponent** - `value:`, `label:`, `description:`, `secret:` (masks text with reveal toggle) — Readonly input with copy-to-clipboard button, uses `lui-clipboard` controller
 - **FileInputComponent** - `name:`, `label:`, `accept:`, `error:`
 - **RadioGroupComponent** - `name:`, `label:`, `form:`, `selected:`, `description:`, `error:`, `disabled:` with option slots (`value:`, `label:`, `description:`)
 - **DropzoneComponent** - Drag-and-drop file upload with ActiveStorage integration
@@ -162,7 +163,7 @@ The `lui` helper provides a convenient shorthand for rendering components:
 
 Available helper methods:
 - `lui.accordion`, `lui.alert`, `lui.avatar`, `lui.badge`, `lui.button`, `lui.card`
-- `lui.checkbox`, `lui.combobox`, `lui.description_list`, `lui.dropdown`, `lui.dropzone`
+- `lui.checkbox`, `lui.combobox`, `lui.copy_input`, `lui.description_list`, `lui.dropdown`, `lui.dropzone`
 - `lui.file_input`, `lui.input`, `lui.layout`, `lui.link`, `lui.modal`
 - `lui.pagination`, `lui.radio_group`, `lui.select`, `lui.sidebar_link`, `lui.sidebar_section`
 - `lui.skeleton`, `lui.spinner`, `lui.switch`, `lui.table`, `lui.tabs`, `lui.text`

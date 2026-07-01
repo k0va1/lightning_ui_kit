@@ -36,6 +36,10 @@ module LightningUiKit
       render(ComboboxComponent.new(*, **), &block)
     end
 
+    def copy_input(*, **, &block)
+      render(CopyInputComponent.new(*, **), &block)
+    end
+
     def description_list(*, **, &block)
       render(DescriptionListComponent.new(*, **), &block)
     end

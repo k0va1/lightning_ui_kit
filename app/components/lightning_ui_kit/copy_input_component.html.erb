@@ -1,0 +1,37 @@
+<%= tag.div(class: classes, data: data) do %>
+  <%= render_label %>
+  <% if @description %>
+    <%= tag.p(
+      @description,
+      class: "lui:text-base/6 lui:text-foreground-muted lui:sm:text-sm/6",
+      data: { slot: "description" }
+    ) %>
+  <% end %>
+  <span data-slot="control" class="<%= control_classes %>">
+    <input
+      type="<%= input_type %>"
+      value="<%= @value %>"
+      readonly
+      class="<%= input_classes %>"
+      data-lui-clipboard-target="input"
+    />
+    <button type="button" class="<%= copy_button_classes %>" data-action="click->lui-clipboard#copy" aria-label="Copy to clipboard">
+      <span data-lui-clipboard-target="icon">
+        <%= heroicon("clipboard-document", variant: :outline, options: { class: "lui:size-5" }) %>
+      </span>
+      <span data-lui-clipboard-target="successIcon" class="lui:hidden">
+        <%= heroicon("clipboard-document-check", variant: :outline, options: { class: "lui:size-5 lui:text-success-text" }) %>
+      </span>
+    </button>
+    <% if @secret %>
+      <button type="button" class="<%= toggle_button_classes %>" data-action="click->lui-clipboard#toggle" aria-label="Toggle visibility">
+        <span data-lui-clipboard-target="showIcon">
+          <%= heroicon("eye", variant: :outline, options: { class: "lui:size-5" }) %>
+        </span>
+        <span data-lui-clipboard-target="hideIcon" class="lui:hidden">
+          <%= heroicon("eye-slash", variant: :outline, options: { class: "lui:size-5" }) %>
+        </span>
+      </button>
+    <% end %>
+  </span>
+<% end %>

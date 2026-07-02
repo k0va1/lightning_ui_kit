@@ -48,6 +48,10 @@ module LightningUiKit
       render(CarouselComponent.new(*, **), &block)
     end
 
+    def chart(*, **, &block)
+      render(ChartComponent.new(*, **), &block)
+    end
+
     def checkbox(*, **, &block)
       render(CheckboxComponent.new(*, **), &block)
     end

@@ -84,7 +84,7 @@ Use the `lui` helper to render components:
 
 **Form**: `button`, `input`, `input_otp`, `textarea`, `select`, `checkbox`, `switch`, `radio_group`, `combobox`, `file_input`, `dropzone`, `slider`, `toggle`, `toggle_group`, `calendar`, `date_picker`
 
-**Display**: `text`, `badge`, `avatar`, `alert`, `banner`, `toast`, `skeleton`, `spinner`, `progress`
+**Display**: `text`, `badge`, `avatar`, `alert`, `banner`, `toast`, `skeleton`, `spinner`, `progress`, `chart`
 
 **Structure**: `card`, `separator`, `aspect_ratio`, `breadcrumb`, `collapsible`, `popover`, `hover_card`, `sheet`, `alert_dialog`, `scroll_area`, `resizable`, `carousel`, `tabs`, `accordion`, `table`, `pagination`, `description_list`, `dropdown`, `context_menu`, `command`, `navigation_menu`, `menubar`, `modal`, `tooltip`, `layout` (frosted glass sidebar with backdrop blur), `sidebar_section`, `sidebar_link`, `link`
 

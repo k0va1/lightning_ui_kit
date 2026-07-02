@@ -97,6 +97,7 @@ application.register(`${namespace}-example`, ExampleController)
 - **SkeletonComponent** - `title:`, `lines:` for loading states
 - **SpinnerComponent** - Loading spinner
 - **ProgressComponent** - `value:`, `max:` — determinate progress bar with accessible `role="progressbar"`
+- **ChartComponent** - `type: :bar/:line/:area`, `data:`, `series:`, `x_key:`, `height:`, `show_grid:`, `show_legend:`, `show_axis:` — dependency-free inline-SVG charts themed with `--lui-theme-chart-1..5`; native `<title>` hover tooltips
 
 ### Structural Components
 - **CardComponent** - Container with optional `title`, `description`, `action`, `header`, and `footer` slots
@@ -184,7 +185,7 @@ The `lui` helper provides a convenient shorthand for rendering components:
 ```
 
 Available helper methods:
-- `lui.accordion`, `lui.alert`, `lui.alert_dialog`, `lui.aspect_ratio`, `lui.avatar`, `lui.badge`, `lui.breadcrumb`, `lui.button`, `lui.calendar`, `lui.card`, `lui.carousel`
+- `lui.accordion`, `lui.alert`, `lui.alert_dialog`, `lui.aspect_ratio`, `lui.avatar`, `lui.badge`, `lui.breadcrumb`, `lui.button`, `lui.calendar`, `lui.card`, `lui.carousel`, `lui.chart`
 - `lui.checkbox`, `lui.collapsible`, `lui.combobox`, `lui.command`, `lui.context_menu`, `lui.copy_input`, `lui.date_picker`, `lui.description_list`, `lui.dropdown`, `lui.dropzone`
 - `lui.file_input`, `lui.hover_card`, `lui.input`, `lui.input_otp`, `lui.layout`, `lui.link`, `lui.menubar`, `lui.modal`, `lui.navigation_menu`
 - `lui.pagination`, `lui.popover`, `lui.progress`, `lui.radio_group`, `lui.resizable`, `lui.scroll_area`, `lui.select`, `lui.separator`, `lui.sheet`, `lui.sidebar_link`, `lui.sidebar_section`

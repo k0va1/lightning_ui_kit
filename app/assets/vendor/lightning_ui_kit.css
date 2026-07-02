@@ -23,6 +23,7 @@
     --lui-container-sm: 24rem;
     --lui-container-md: 28rem;
     --lui-container-lg: 32rem;
+    --lui-container-xl: 36rem;
     --lui-container-2xl: 42rem;
     --lui-container-3xl: 48rem;
     --lui-container-6xl: 72rem;
@@ -425,6 +426,10 @@
     width: calc(var(--lui-spacing) * 2);
     height: calc(var(--lui-spacing) * 2);
   }
+  .lui\:size-2\.5 {
+    width: calc(var(--lui-spacing) * 2.5);
+    height: calc(var(--lui-spacing) * 2.5);
+  }
   .lui\:size-3\.5 {
     width: calc(var(--lui-spacing) * 3.5);
     height: calc(var(--lui-spacing) * 3.5);
@@ -504,6 +509,9 @@
   }
   .lui\:h-11 {
     height: calc(var(--lui-spacing) * 11);
+  }
+  .lui\:h-40 {
+    height: calc(var(--lui-spacing) * 40);
   }
   .lui\:h-48 {
     height: calc(var(--lui-spacing) * 48);
@@ -627,6 +635,9 @@
   }
   .lui\:max-w-sm {
     max-width: var(--lui-container-sm);
+  }
+  .lui\:max-w-xl {
+    max-width: var(--lui-container-xl);
   }
   .lui\:max-w-xs {
     max-width: var(--lui-container-xs);
@@ -929,6 +940,9 @@
   }
   .lui\:overflow-hidden {
     overflow: hidden;
+  }
+  .lui\:overflow-visible {
+    overflow: visible;
   }
   .lui\:overflow-x-auto {
     overflow-x: auto;
@@ -3645,6 +3659,11 @@
   --lui-theme-neutral-text: oklch(0.278 0.033 256.848);
   --lui-theme-spinner-primary: oklch(0.552 0.016 285.938);
   --lui-theme-spinner-secondary: oklch(0.872 0.01 258.338);
+  --lui-theme-chart-1: oklch(0.646 0.222 41.116);
+  --lui-theme-chart-2: oklch(0.6 0.118 184.704);
+  --lui-theme-chart-3: oklch(0.398 0.07 227.392);
+  --lui-theme-chart-4: oklch(0.828 0.189 84.429);
+  --lui-theme-chart-5: oklch(0.769 0.188 70.08);
 }
 .lui-theme-dark {
   --lui-theme-surface: oklch(0.141 0.005 285.823);
@@ -3683,6 +3702,11 @@
   --lui-theme-neutral-text: oklch(0.871 0.006 286.286);
   --lui-theme-spinner-primary: oklch(0.705 0.015 286.067);
   --lui-theme-spinner-secondary: oklch(0.442 0.017 285.786);
+  --lui-theme-chart-1: oklch(0.488 0.243 264.376);
+  --lui-theme-chart-2: oklch(0.696 0.17 162.48);
+  --lui-theme-chart-3: oklch(0.769 0.188 70.08);
+  --lui-theme-chart-4: oklch(0.627 0.265 303.9);
+  --lui-theme-chart-5: oklch(0.645 0.246 16.439);
 }
 .lui-page-gradient {
   background-image: radial-gradient(ellipse at 20% 50%, rgba(200,210,230,0.35) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(220,205,235,0.25) 0%, transparent 50%);

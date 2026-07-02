@@ -1,0 +1,14 @@
+<div class="lui:max-w-sm">
+  <div class="lui:space-y-1">
+    <h4 class="lui:text-sm lui:font-medium lui:leading-none lui:text-foreground">Lightning UI Kit</h4>
+    <p class="lui:text-sm lui:text-foreground-muted">An open-source component library.</p>
+  </div>
+  <%= render LightningUiKit::SeparatorComponent.new(class: "lui:my-4") %>
+  <div class="lui:flex lui:h-5 lui:items-center lui:gap-4 lui:text-sm lui:text-foreground">
+    <span>Blog</span>
+    <%= render LightningUiKit::SeparatorComponent.new(orientation: :vertical) %>
+    <span>Docs</span>
+    <%= render LightningUiKit::SeparatorComponent.new(orientation: :vertical) %>
+    <span>Source</span>
+  </div>
+</div>

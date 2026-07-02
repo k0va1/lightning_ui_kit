@@ -1,0 +1,24 @@
+<%= tag.div(class: classes, data: data, role: "region", "aria-roledescription": "carousel") do %>
+  <div class="lui:overflow-hidden lui:rounded-lg">
+    <div data-lui-carousel-target="track" class="lui:flex lui:transition-transform lui:duration-300 lui:ease-out">
+      <% slides.each do |slide| %>
+        <div data-lui-carousel-target="slide" class="lui:min-w-0 lui:shrink-0 lui:grow-0 lui:basis-full" aria-roledescription="slide">
+          <%= slide %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <% if show_arrows %>
+    <button type="button" class="<%= arrow_classes(:prev) %>" aria-label="Previous slide" data-lui-carousel-target="prev" data-action="click->lui-carousel#prev">
+      <%= heroicon("chevron-left", variant: :outline, options: {class: "lui:size-4"}) %>
+    </button>
+    <button type="button" class="<%= arrow_classes(:next) %>" aria-label="Next slide" data-lui-carousel-target="next" data-action="click->lui-carousel#next">
+      <%= heroicon("chevron-right", variant: :outline, options: {class: "lui:size-4"}) %>
+    </button>
+  <% end %>
+
+  <% if show_dots %>
+    <div data-lui-carousel-target="dots" class="lui:mt-3 lui:flex lui:items-center lui:justify-center lui:gap-1.5"></div>
+  <% end %>
+<% end %>

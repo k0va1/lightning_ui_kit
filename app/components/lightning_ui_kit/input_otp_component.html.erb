@@ -1,0 +1,19 @@
+<%= tag.div(class: classes, data: data) do %>
+  <% length.times do |index| %>
+    <%= tag.input(
+          type: "text",
+          inputmode: numeric ? "numeric" : "text",
+          maxlength: 1,
+          value: digit_at(index),
+          autocomplete: index.zero? ? "one-time-code" : "off",
+          "aria-label": "Character #{index + 1}",
+          data: {
+            lui_otp_target: "slot",
+            index: index,
+            action: "input->lui-otp#onInput keydown->lui-otp#onKeydown paste->lui-otp#onPaste focus->lui-otp#onFocus"
+          },
+          class: slot_classes
+        ) %>
+  <% end %>
+  <%= tag.input(type: "hidden", name: input_name, value: @value, data: {lui_otp_target: "hidden"}) %>
+<% end %>

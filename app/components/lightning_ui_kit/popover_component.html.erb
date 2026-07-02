@@ -1,0 +1,8 @@
+<%= tag.div(class: "lui:relative lui:inline-block", data: data) do %>
+  <div data-lui-popover-target="trigger" data-action="click->lui-popover#toggle">
+    <%= trigger %>
+  </div>
+  <div data-lui-popover-target="content" role="dialog" class="<%= content_classes %>">
+    <%= body %>
+  </div>
+<% end %>

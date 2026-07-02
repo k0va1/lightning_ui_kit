@@ -1,0 +1,15 @@
+<%= tag.div(class: "lui:relative lui:inline-block", data: data) do %>
+  <div
+    data-lui-hover-card-target="trigger"
+    data-action="mouseenter->lui-hover-card#open mouseleave->lui-hover-card#scheduleClose focusin->lui-hover-card#open focusout->lui-hover-card#scheduleClose"
+  >
+    <%= trigger %>
+  </div>
+  <div
+    data-lui-hover-card-target="content"
+    class="<%= content_classes %>"
+    data-action="mouseenter->lui-hover-card#cancelClose mouseleave->lui-hover-card#scheduleClose"
+  >
+    <%= body %>
+  </div>
+<% end %>

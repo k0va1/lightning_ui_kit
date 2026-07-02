@@ -12,6 +12,14 @@ module LightningUiKit
       render(AlertComponent.new(*, **), &block)
     end
 
+    def alert_dialog(*, **, &block)
+      render(AlertDialogComponent.new(*, **), &block)
+    end
+
+    def aspect_ratio(*, **, &block)
+      render(AspectRatioComponent.new(*, **), &block)
+    end
+
     def avatar(*, **, &block)
       render(AvatarComponent.new(*, **), &block)
     end
@@ -20,24 +28,52 @@ module LightningUiKit
       render(BadgeComponent.new(*, **), &block)
     end
 
+    def breadcrumb(*, **, &block)
+      render(BreadcrumbComponent.new(*, **), &block)
+    end
+
     def button(*, **, &block)
       render(ButtonComponent.new(*, **), &block)
+    end
+
+    def calendar(*, **, &block)
+      render(CalendarComponent.new(*, **), &block)
     end
 
     def card(*, **, &block)
       render(CardComponent.new(*, **), &block)
     end
 
+    def carousel(*, **, &block)
+      render(CarouselComponent.new(*, **), &block)
+    end
+
     def checkbox(*, **, &block)
       render(CheckboxComponent.new(*, **), &block)
+    end
+
+    def collapsible(*, **, &block)
+      render(CollapsibleComponent.new(*, **), &block)
     end
 
     def combobox(*, **, &block)
       render(ComboboxComponent.new(*, **), &block)
     end
 
+    def command(*, **, &block)
+      render(CommandComponent.new(*, **), &block)
+    end
+
+    def context_menu(*, **, &block)
+      render(ContextMenuComponent.new(*, **), &block)
+    end
+
     def copy_input(*, **, &block)
       render(CopyInputComponent.new(*, **), &block)
+    end
+
+    def date_picker(*, **, &block)
+      render(DatePickerComponent.new(*, **), &block)
     end
 
     def description_list(*, **, &block)
@@ -56,8 +92,16 @@ module LightningUiKit
       render(FileInputComponent.new(*, **), &block)
     end
 
+    def hover_card(*, **, &block)
+      render(HoverCardComponent.new(*, **), &block)
+    end
+
     def input(*, **, &block)
       render(InputComponent.new(*, **), &block)
+    end
+
+    def input_otp(*, **, &block)
+      render(InputOtpComponent.new(*, **), &block)
     end
 
     def layout(*, **, &block)
@@ -68,20 +112,56 @@ module LightningUiKit
       render(LinkComponent.new(*, **), &block)
     end
 
+    def menubar(*, **, &block)
+      render(MenubarComponent.new(*, **), &block)
+    end
+
     def modal(*, **, &block)
       render(ModalComponent.new(*, **), &block)
+    end
+
+    def navigation_menu(*, **, &block)
+      render(NavigationMenuComponent.new(*, **), &block)
     end
 
     def pagination(*, **, &block)
       render(PaginationComponent.new(*, **), &block)
     end
 
+    def popover(*, **, &block)
+      render(PopoverComponent.new(*, **), &block)
+    end
+
+    def progress(*, **, &block)
+      render(ProgressComponent.new(*, **), &block)
+    end
+
     def radio_group(*, **, &block)
       render(RadioGroupComponent.new(*, **), &block)
     end
 
+    def resizable(*, **, &block)
+      render(ResizableComponent.new(*, **), &block)
+    end
+
     def select(*, **, &block)
       render(SelectComponent.new(*, **), &block)
+    end
+
+    def scroll_area(*, **, &block)
+      render(ScrollAreaComponent.new(*, **), &block)
+    end
+
+    def separator(*, **, &block)
+      render(SeparatorComponent.new(*, **), &block)
+    end
+
+    def sheet(*, **, &block)
+      render(SheetComponent.new(*, **), &block)
+    end
+
+    def slider(*, **, &block)
+      render(SliderComponent.new(*, **), &block)
     end
 
     def sidebar_link(*, **, &block)
@@ -122,6 +202,14 @@ module LightningUiKit
 
     def toast(*, **, &block)
       render(ToastComponent.new(*, **), &block)
+    end
+
+    def toggle(*, **, &block)
+      render(ToggleComponent.new(*, **), &block)
+    end
+
+    def toggle_group(*, **, &block)
+      render(ToggleGroupComponent.new(*, **), &block)
     end
 
     def tooltip(*, **, &block)

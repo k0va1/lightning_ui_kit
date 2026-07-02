@@ -1,0 +1,12 @@
+<%= tag.div(class: "lui:relative lui:inline-block", data: data) do %>
+  <button type="button" class="<%= trigger_classes %>" data-lui-date-picker-target="trigger" data-action="click->lui-date-picker#toggle">
+    <%= heroicon("calendar", variant: :outline, options: {class: "lui:size-4 lui:shrink-0 lui:text-foreground-muted"}) %>
+    <span data-lui-date-picker-target="label"><%= label_text %></span>
+  </button>
+
+  <div class="<%= panel_classes %>" data-lui-date-picker-target="panel" data-action="lui-calendar:select->lui-date-picker#onSelect">
+    <%= render LightningUiKit::CalendarComponent.new(selected: selected_iso, class: "lui:shadow-md") %>
+  </div>
+
+  <%= tag.input(type: "hidden", name: input_name, value: selected_iso, data: {lui_date_picker_target: "input"}) %>
+<% end %>

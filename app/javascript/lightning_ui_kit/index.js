@@ -28,7 +28,6 @@ import RadioGroupController from './controllers/radio_group_controller'
 import CollapsibleController from './controllers/collapsible_controller'
 import PopoverController from './controllers/popover_controller'
 import SheetController from './controllers/sheet_controller'
-import AlertDialogController from './controllers/alert_dialog_controller'
 import ToggleController from './controllers/toggle_controller'
 import ToggleGroupController from './controllers/toggle_group_controller'
 import SliderController from './controllers/slider_controller'
@@ -65,7 +64,6 @@ export function registerLuiControllers(application) {
   application.register(`${namespace}-collapsible`, CollapsibleController)
   application.register(`${namespace}-popover`, PopoverController)
   application.register(`${namespace}-sheet`, SheetController)
-  application.register(`${namespace}-alert-dialog`, AlertDialogController)
   application.register(`${namespace}-toggle`, ToggleController)
   application.register(`${namespace}-toggle-group`, ToggleGroupController)
   application.register(`${namespace}-slider`, SliderController)

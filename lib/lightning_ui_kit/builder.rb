@@ -12,10 +12,6 @@ module LightningUiKit
       render(AlertComponent.new(*, **), &block)
     end
 
-    def alert_dialog(*, **, &block)
-      render(AlertDialogComponent.new(*, **), &block)
-    end
-
     def aspect_ratio(*, **, &block)
       render(AspectRatioComponent.new(*, **), &block)
     end

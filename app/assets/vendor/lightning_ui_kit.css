@@ -55,7 +55,6 @@
     --lui-radius-xl: 0.75rem;
     --lui-radius-2xl: 1rem;
     --lui-radius-3xl: 1.5rem;
-    --lui-ease-in: cubic-bezier(0.4, 0, 1, 1);
     --lui-ease-out: cubic-bezier(0, 0, 0.2, 1);
     --lui-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --lui-animate-spin: spin 1s linear infinite;
@@ -549,8 +548,14 @@
   .lui\:min-h-\[42px\] {
     min-height: 42px;
   }
+  .lui\:min-h-dvh {
+    min-height: 100dvh;
+  }
   .lui\:min-h-full {
     min-height: 100%;
+  }
+  .lui\:min-h-screen {
+    min-height: 100vh;
   }
   .lui\:w-1 {
     width: var(--lui-spacing);
@@ -621,9 +626,6 @@
   .lui\:max-w-\[150px\] {
     max-width: 150px;
   }
-  .lui\:max-w-lg {
-    max-width: var(--lui-container-lg);
-  }
   .lui\:max-w-max {
     max-width: max-content;
   }
@@ -674,6 +676,9 @@
   }
   .lui\:shrink-0 {
     flex-shrink: 0;
+  }
+  .lui\:grow {
+    flex-grow: 1;
   }
   .lui\:grow-0 {
     flex-grow: 0;
@@ -853,6 +858,9 @@
   .lui\:gap-6 {
     gap: calc(var(--lui-spacing) * 6);
   }
+  .lui\:gap-8 {
+    gap: calc(var(--lui-spacing) * 8);
+  }
   .lui\:space-y-1 {
     :where(& > :not(:last-child)) {
       --tw-space-y-reverse: 0;
@@ -971,6 +979,9 @@
   .lui\:rounded-\[0\.3125rem\] {
     border-radius: 0.3125rem;
   }
+  .lui\:rounded-\[2px\] {
+    border-radius: 2px;
+  }
   .lui\:rounded-\[3px\] {
     border-radius: 3px;
   }
@@ -1045,6 +1056,9 @@
   .lui\:border-border-hover {
     border-color: var(--lui-theme-border-hover);
   }
+  .lui\:border-border-invert {
+    border-color: var(--lui-theme-border-invert);
+  }
   .lui\:border-border-strong {
     border-color: var(--lui-theme-border-strong);
   }
@@ -1071,9 +1085,6 @@
   }
   .lui\:border-inherit {
     border-color: inherit;
-  }
-  .lui\:border-interactive {
-    border-color: var(--lui-theme-interactive);
   }
   .lui\:border-success-indicator {
     border-color: var(--lui-theme-success-indicator);
@@ -1134,9 +1145,6 @@
   }
   .lui\:bg-interactive {
     background-color: var(--lui-theme-interactive);
-  }
-  .lui\:bg-interactive-subtle {
-    background-color: var(--lui-theme-interactive-subtle);
   }
   .lui\:bg-success-bg {
     background-color: var(--lui-theme-success-bg);
@@ -1249,9 +1257,6 @@
   .lui\:px-3 {
     padding-inline: calc(var(--lui-spacing) * 3);
   }
-  .lui\:px-3\.5 {
-    padding-inline: calc(var(--lui-spacing) * 3.5);
-  }
   .lui\:px-4 {
     padding-inline: calc(var(--lui-spacing) * 4);
   }
@@ -1342,6 +1347,10 @@
   .lui\:text-2xl {
     font-size: var(--lui-text-2xl);
     line-height: var(--tw-leading, var(--lui-text-2xl--line-height));
+  }
+  .lui\:text-2xl\/8 {
+    font-size: var(--lui-text-2xl);
+    line-height: calc(var(--lui-spacing) * 8);
   }
   .lui\:text-4xl {
     font-size: var(--lui-text-4xl);
@@ -1500,6 +1509,10 @@
   .lui\:uppercase {
     text-transform: uppercase;
   }
+  .lui\:tabular-nums {
+    --tw-numeric-spacing: tabular-nums;
+    font-variant-numeric: var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,);
+  }
   .lui\:underline {
     text-decoration-line: underline;
   }
@@ -1606,10 +1619,6 @@
     transition-property: transform, translate, scale, rotate;
     transition-timing-function: var(--tw-ease, var(--lui-default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--lui-default-transition-duration));
-  }
-  .lui\:duration-100 {
-    --tw-duration: 100ms;
-    transition-duration: 100ms;
   }
   .lui\:duration-150 {
     --tw-duration: 150ms;
@@ -2324,16 +2333,6 @@
       }
     }
   }
-  .lui\:hover\:bg-destructive\/90 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--lui-theme-destructive);
-        @supports (color: color-mix(in lab, red, red)) {
-          background-color: color-mix(in oklab, var(--lui-theme-destructive) 90%, transparent);
-        }
-      }
-    }
-  }
   .lui\:hover\:bg-interactive {
     &:hover {
       @media (hover: hover) {
@@ -2345,16 +2344,6 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--lui-theme-interactive-subtle);
-      }
-    }
-  }
-  .lui\:hover\:bg-interactive\/90 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--lui-theme-interactive);
-        @supports (color: color-mix(in lab, red, red)) {
-          background-color: color-mix(in oklab, var(--lui-theme-interactive) 90%, transparent);
-        }
       }
     }
   }
@@ -2502,12 +2491,6 @@
     &:focus {
       outline-style: var(--tw-outline-style);
       outline-width: 1px;
-    }
-  }
-  .lui\:focus\:outline-0 {
-    &:focus {
-      outline-style: var(--tw-outline-style);
-      outline-width: 0px;
     }
   }
   .lui\:focus\:outline-2 {
@@ -2694,17 +2677,6 @@
       }
     }
   }
-  .lui\:data-closed\:translate-y-12 {
-    &[data-closed] {
-      --tw-translate-y: calc(var(--lui-spacing) * 12);
-      translate: var(--tw-translate-x) var(--tw-translate-y);
-    }
-  }
-  .lui\:data-closed\:opacity-0 {
-    &[data-closed] {
-      opacity: 0%;
-    }
-  }
   .lui\:data-disabled\:cursor-not-allowed {
     &[data-disabled] {
       cursor: not-allowed;
@@ -2754,12 +2726,6 @@
       }
     }
   }
-  .lui\:data-enter\:ease-out {
-    &[data-enter] {
-      --tw-ease: var(--lui-ease-out);
-      transition-timing-function: var(--lui-ease-out);
-    }
-  }
   .lui\:data-focus\:outline-2 {
     &[data-focus] {
       outline-style: var(--tw-outline-style);
@@ -2779,12 +2745,6 @@
   .lui\:data-invalid\:border-destructive-border {
     &[data-invalid] {
       border-color: var(--lui-theme-destructive-border);
-    }
-  }
-  .lui\:data-leave\:ease-in {
-    &[data-leave] {
-      --tw-ease: var(--lui-ease-in);
-      transition-timing-function: var(--lui-ease-in);
     }
   }
   .lui\:data-\[active\]\:border-border {
@@ -3145,6 +3105,11 @@
       max-width: var(--lui-container-3xl);
     }
   }
+  .lui\:sm\:max-w-lg {
+    @media (width >= 40rem) {
+      max-width: var(--lui-container-lg);
+    }
+  }
   .lui\:sm\:min-w-9 {
     @media (width >= 40rem) {
       min-width: calc(var(--lui-spacing) * 9);
@@ -3221,11 +3186,6 @@
       padding-inline: calc(var(--lui-spacing) * 3);
     }
   }
-  .lui\:sm\:px-6 {
-    @media (width >= 40rem) {
-      padding-inline: calc(var(--lui-spacing) * 6);
-    }
-  }
   .lui\:sm\:px-\[calc\(--spacing\(3\)-1px\)\] {
     @media (width >= 40rem) {
       padding-inline: calc(calc(var(--lui-spacing) * 3) - 1px);
@@ -3239,11 +3199,6 @@
   .lui\:sm\:py-3 {
     @media (width >= 40rem) {
       padding-block: calc(var(--lui-spacing) * 3);
-    }
-  }
-  .lui\:sm\:py-8 {
-    @media (width >= 40rem) {
-      padding-block: calc(var(--lui-spacing) * 8);
     }
   }
   .lui\:sm\:py-\[calc\(--spacing\(1\.5\)-1px\)\] {
@@ -3282,6 +3237,12 @@
     @media (width >= 40rem) {
       font-size: var(--lui-text-sm);
       line-height: calc(var(--lui-spacing) * 6);
+    }
+  }
+  .lui\:sm\:text-xl\/8 {
+    @media (width >= 40rem) {
+      font-size: var(--lui-text-xl);
+      line-height: calc(var(--lui-spacing) * 8);
     }
   }
   .lui\:sm\:text-xs {
@@ -3336,26 +3297,6 @@
         &::after {
           content: var(--tw-content);
           --tw-ring-color: var(--lui-theme-focus);
-        }
-      }
-    }
-  }
-  .lui\:sm\:data-closed\:translate-y-0 {
-    @media (width >= 40rem) {
-      &[data-closed] {
-        --tw-translate-y: 0;
-        translate: var(--tw-translate-x) var(--tw-translate-y);
-      }
-    }
-  }
-  .lui\:sm\:data-closed\:data-enter\:scale-95 {
-    @media (width >= 40rem) {
-      &[data-closed] {
-        &[data-enter] {
-          --tw-scale-x: 95%;
-          --tw-scale-y: 95%;
-          --tw-scale-z: 95%;
-          scale: var(--tw-scale-x) var(--tw-scale-y);
         }
       }
     }
@@ -3805,6 +3746,26 @@
   syntax: "*";
   inherits: false;
 }
+@property --tw-ordinal {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-slashed-zero {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-numeric-figure {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-numeric-spacing {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-numeric-fraction {
+  syntax: "*";
+  inherits: false;
+}
 @property --tw-shadow {
   syntax: "*";
   inherits: false;
@@ -3954,6 +3915,11 @@
       --tw-leading: initial;
       --tw-font-weight: initial;
       --tw-tracking: initial;
+      --tw-ordinal: initial;
+      --tw-slashed-zero: initial;
+      --tw-numeric-figure: initial;
+      --tw-numeric-spacing: initial;
+      --tw-numeric-fraction: initial;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;
       --tw-shadow-alpha: 100%;

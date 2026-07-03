@@ -7,7 +7,7 @@ export default class extends Controller {
   connect() {
     if (!this.initialShowValue) {
       this.itemTargets.forEach(item => {
-        item.classList.add("hidden");
+        item.classList.add("lui:hidden");
       });
     }
   }
@@ -16,7 +16,7 @@ export default class extends Controller {
     event.preventDefault();
 
     this.itemTargets.forEach(item => {
-      item.classList.toggle("hidden");
+      item.classList.toggle("lui:hidden");
     });
   }
 }

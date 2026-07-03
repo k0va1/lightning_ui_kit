@@ -86,7 +86,7 @@ Use the `lui` helper to render components:
 
 **Display**: `text`, `badge`, `avatar`, `alert`, `banner`, `toast`, `skeleton`, `spinner`, `progress`, `chart`
 
-**Structure**: `card`, `separator`, `aspect_ratio`, `breadcrumb`, `collapsible`, `popover`, `hover_card`, `sheet`, `alert_dialog`, `scroll_area`, `resizable`, `carousel`, `tabs`, `accordion`, `table`, `pagination`, `description_list`, `dropdown`, `context_menu`, `command`, `navigation_menu`, `menubar`, `modal`, `tooltip`, `layout` (frosted glass sidebar with backdrop blur), `sidebar_section`, `sidebar_link`, `link`
+**Structure**: `card`, `separator`, `aspect_ratio`, `breadcrumb`, `collapsible`, `popover`, `hover_card`, `sheet`, `alert_dialog`, `scroll_area`, `resizable`, `carousel`, `tabs`, `accordion`, `table`, `pagination`, `description_list`, `dropdown`, `context_menu`, `command`, `navigation_menu`, `menubar`, `modal`, `tooltip`, `layout` (frosted glass sidebar with backdrop blur), `auth_layout` (centered layout for sign in/sign up pages), `sidebar_section`, `sidebar_link`, `link`
 
 ### Alternative Syntax
 

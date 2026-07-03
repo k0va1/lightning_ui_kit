@@ -125,6 +125,7 @@ application.register(`${namespace}-example`, ExampleController)
 - **ModalComponent** - `id:`, `title:`, `description:`, `open:` with body/actions slots
 - **TooltipComponent** - `text:`, `position: :top/:bottom/:left/:right`, `active:`
 - **LayoutComponent** - `sidebar_width:` with header/sections/sidebar/footer/mobile_header slots for app shell layout. Uses `surface-page` background with frosted glass sidebar (backdrop blur). Add `lui-page-gradient` class for theme-aware radial gradient overlays (light/dark)
+- **AuthLayoutComponent** - Centered full-page layout for authentication pages (Devise sign in/sign up/password reset/confirmation/unlock). Wraps content in a `surface-secondary` card on `surface-page` background with `lui-page-gradient`. Pair with a `lui:grid lui:w-full lui:max-w-sm lui:grid-cols-1 lui:gap-8` form
 - **SidebarSectionComponent** - `title:` - Groups sidebar links with optional section title
 - **SidebarLinkComponent** - `title:`, `url:`, `icon:`, `current:`, `animate_icon:` - Navigation link with Heroicon support, active state, and optional icon bounce animation on hover
 - **LinkComponent** - Styled link wrapper

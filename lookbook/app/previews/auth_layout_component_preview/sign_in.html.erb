@@ -1,0 +1,32 @@
+<style>body { padding: 0 !important; }</style>
+<%= render LightningUiKit::AuthLayoutComponent.new do %>
+  <form action="#" method="post" class="lui:grid lui:w-full lui:max-w-sm lui:grid-cols-1 lui:gap-8">
+    <div class="lui:flex lui:items-center lui:gap-3">
+      <div class="lui:flex lui:items-center lui:justify-center lui:w-10 lui:h-10 lui:bg-surface-invert lui:rounded-xl">
+        <span class="lui:text-xl">⚡</span>
+      </div>
+      <span class="lui:text-lg lui:font-semibold lui:text-foreground">Lightning UI</span>
+    </div>
+
+    <h1 class="lui:text-2xl/8 lui:font-semibold lui:text-foreground lui:sm:text-xl/8">Sign in to your account</h1>
+
+    <%= render LightningUiKit::InputComponent.new(name: "user[email]", type: :email, label: "Email") %>
+    <%= render LightningUiKit::InputComponent.new(name: "user[password]", type: :password, label: "Password") %>
+
+    <div class="lui:flex lui:items-center lui:justify-between">
+      <%= render LightningUiKit::CheckboxComponent.new(name: "user[remember_me]", value: "1", label: "Remember me") %>
+      <%= render LightningUiKit::TextComponent.new(size: :sm) do %>
+        <%= render LightningUiKit::LinkComponent.new(title: "Forgot password?", url: "#") %>
+      <% end %>
+    </div>
+
+    <%= render LightningUiKit::ButtonComponent.new(type: :submit, class: "lui:w-full") do %>
+      Sign in
+    <% end %>
+
+    <%= render LightningUiKit::TextComponent.new(size: :sm) do %>
+      Don't have an account?
+      <%= render LightningUiKit::LinkComponent.new(title: "Sign up", url: "#") %>
+    <% end %>
+  </form>
+<% end %>

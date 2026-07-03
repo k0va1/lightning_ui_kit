@@ -20,6 +20,10 @@ module LightningUiKit
       render(AspectRatioComponent.new(*, **), &block)
     end
 
+    def auth_layout(*, **, &block)
+      render(AuthLayoutComponent.new(*, **), &block)
+    end
+
     def avatar(*, **, &block)
       render(AvatarComponent.new(*, **), &block)
     end

@@ -165,8 +165,8 @@ class ComboboxComponentPreview < Lookbook::Preview
       label: "Tags",
       description: "Select existing tags or create new ones (uses nested attributes)",
       placeholder: "Search or create tags...",
-      foreign_key: :tag_id,
-      nested_model: :tag,
+      nested_model: :tag, # foreign_key (tag_id) derived from nested_model
+
       allow_custom: true,
       options: [
         {value: 1, label: "Ruby"},

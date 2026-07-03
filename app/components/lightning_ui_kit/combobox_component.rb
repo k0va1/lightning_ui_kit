@@ -38,17 +38,17 @@ class LightningUiKit::ComboboxComponent < LightningUiKit::BaseComponent
     @options_hash = options_hash
 
     @association = association
-    @foreign_key = foreign_key
     @nested_model = nested_model
+    @foreign_key = foreign_key || derive_foreign_key
     @collection = collection
     @label_method = label_method
     @value_method = value_method
 
     if association_mode?
-      @name = nested_attributes_name
+      @name = @association ? nested_attributes_name : name
       @multiple = true
-      @options = derive_options_from_collection
-      @selected = derive_selected_from_association
+      @options = @collection ? derive_options_from_collection : options
+      @selected = @association ? derive_selected_from_association : (selected || [])
     else
       @name = name
       @multiple = multiple
@@ -96,8 +96,11 @@ class LightningUiKit::ComboboxComponent < LightningUiKit::BaseComponent
     base.compact
   end
 
+  # Nested-attributes mode: triggered by `foreign_key:` alone so it can be used
+  # without an AR association (options/selected supplied explicitly). Matches the
+  # Stimulus controller, which keys off the foreign-key value.
   def association_mode?
-    @association.present? && @foreign_key.present?
+    @foreign_key.present?
   end
 
   def input_data
@@ -162,6 +165,27 @@ class LightningUiKit::ComboboxComponent < LightningUiKit::BaseComponent
   end
 
   private
+
+  # When `foreign_key:` is omitted, resolve it from the join model's belongs_to
+  # reflection (handles custom foreign keys), falling back to the
+  # "<nested_model>_id" naming convention.
+  def derive_foreign_key
+    return nil unless @nested_model
+
+    reflected_foreign_key || "#{@nested_model}_id"
+  end
+
+  def reflected_foreign_key
+    owner = @form&.object&.class
+    return nil unless @association && owner.respond_to?(:reflect_on_association)
+
+    join_reflection = owner.reflect_on_association(@association)
+    return nil unless join_reflection
+
+    join_reflection.klass.reflect_on_association(@nested_model)&.foreign_key&.to_s
+  rescue NameError
+    nil
+  end
 
   def nested_attributes_name
     "#{@association}_attributes"

@@ -76,7 +76,7 @@ application.register(`${namespace}-example`, ExampleController)
 - **CheckboxComponent** - `name:`, `label:`, `checked:`, `form:`
 - **SwitchComponent** - `name:`, `label:`, `checked:`, `enabled:`
 - **SelectComponent** - `name:`, `options:`, `label:`, `form:`, `multiple:`
-- **ComboboxComponent** - `name:`, `options:`, `label:`, `form:`, `multiple:`, `allow_custom:`, `url:` (async), `placeholder:`, `selected:`, `min_chars:`, `debounce:`, `association:`, `foreign_key:`, `nested_model:`, `collection:`, `label_method:`, `value_method:`
+- **ComboboxComponent** - `name:`, `options:`, `label:`, `form:`, `multiple:`, `allow_custom:`, `url:` (async), `placeholder:`, `selected:`, `min_chars:`, `debounce:`, `association:`, `nested_model:`, `collection:`, `label_method:`, `value_method:`, `foreign_key:` (optional — derived from the join model's belongs_to reflection, falling back to `"<nested_model>_id"`)
 - **CopyInputComponent** - `value:`, `label:`, `description:`, `secret:` (masks text with reveal toggle) — Readonly input with copy-to-clipboard button, uses `lui-clipboard` controller
 - **FileInputComponent** - `name:`, `label:`, `accept:`, `error:`
 - **RadioGroupComponent** - `name:`, `label:`, `form:`, `selected:`, `description:`, `error:`, `disabled:` with option slots (`value:`, `label:`, `description:`)
@@ -107,7 +107,6 @@ application.register(`${namespace}-example`, ExampleController)
 - **CollapsibleComponent** - `open:` with trigger/body slots — animated expand/collapse of a single region
 - **PopoverComponent** - `position:`, `offset:` with trigger/body slots — floating panel anchored to a trigger (Floating UI)
 - **SheetComponent** - `id:`, `title:`, `description:`, `side: :top/:right/:bottom/:left` with trigger/body/actions slots — slide-in drawer over a native `<dialog>`
-- **AlertDialogComponent** - `title:`, `description:`, `confirm_text:`, `cancel_text:`, `confirm_style: :default/:destructive` with trigger/body/confirm slots — modal confirmation; confirm dispatches `lui-alert-dialog:confirm`
 - **HoverCardComponent** - `position:`, `offset:`, `open_delay:`, `close_delay:` with trigger/body slots — hover-triggered floating card (Floating UI)
 - **ScrollAreaComponent** - `orientation: :vertical/:horizontal/:both` — scroll container with styled thin scrollbars
 - **ContextMenuComponent** - trigger slot + item slots — right-click menu positioned at the cursor (Floating UI virtual element)
@@ -122,7 +121,7 @@ application.register(`${namespace}-example`, ExampleController)
 - **PaginationComponent** - Page navigation with smart gap rendering
 - **DescriptionListComponent** - Key-value list with item slots
 - **DropdownComponent** - `trigger_text:`, `anchor:`, `position:` with item slots
-- **ModalComponent** - `id:`, `title:`, `description:`, `open:` with body/actions slots
+- **ModalComponent** - `id:`, `title:`, `description:`, `open:`, `variant: :default/:alert`, `confirm_text:`, `cancel_text:`, `confirm_style: :default/:destructive` with trigger/body/actions/confirm slots — dialog; `:alert` variant renders `role="alertdialog"` with built-in cancel/confirm buttons, blocks backdrop dismissal, and confirm dispatches `lui-modal:confirm`
 - **TooltipComponent** - `text:`, `position: :top/:bottom/:left/:right`, `active:`
 - **LayoutComponent** - `sidebar_width:` with header/sections/sidebar/footer/mobile_header slots for app shell layout. Uses `surface-page` background with frosted glass sidebar (backdrop blur). Add `lui-page-gradient` class for theme-aware radial gradient overlays (light/dark)
 - **AuthLayoutComponent** - Centered full-page layout for authentication pages (Devise sign in/sign up/password reset/confirmation/unlock). Wraps content in a `surface-secondary` card on `surface-page` background with `lui-page-gradient`. Pair with a `lui:grid lui:w-full lui:max-w-sm lui:grid-cols-1 lui:gap-8` form
@@ -138,10 +137,11 @@ Use `renders_one` and `renders_many` for component composition:
 
 ```ruby
 class LightningUiKit::ModalComponent < LightningUiKit::BaseComponent
+  renders_one :trigger
   renders_one :body
   renders_many :actions
 
-  def initialize(id:, title:, description: nil, open: false, **options)
+  def initialize(id: nil, title: nil, description: nil, open: false, **options)
     # ...
   end
 end
@@ -186,7 +186,7 @@ The `lui` helper provides a convenient shorthand for rendering components:
 ```
 
 Available helper methods:
-- `lui.accordion`, `lui.alert`, `lui.alert_dialog`, `lui.aspect_ratio`, `lui.avatar`, `lui.badge`, `lui.breadcrumb`, `lui.button`, `lui.calendar`, `lui.card`, `lui.carousel`, `lui.chart`
+- `lui.accordion`, `lui.alert`, `lui.aspect_ratio`, `lui.avatar`, `lui.badge`, `lui.breadcrumb`, `lui.button`, `lui.calendar`, `lui.card`, `lui.carousel`, `lui.chart`
 - `lui.checkbox`, `lui.collapsible`, `lui.combobox`, `lui.command`, `lui.context_menu`, `lui.copy_input`, `lui.date_picker`, `lui.description_list`, `lui.dropdown`, `lui.dropzone`
 - `lui.file_input`, `lui.hover_card`, `lui.input`, `lui.input_otp`, `lui.layout`, `lui.link`, `lui.menubar`, `lui.modal`, `lui.navigation_menu`
 - `lui.pagination`, `lui.popover`, `lui.progress`, `lui.radio_group`, `lui.resizable`, `lui.scroll_area`, `lui.select`, `lui.separator`, `lui.sheet`, `lui.sidebar_link`, `lui.sidebar_section`
@@ -387,7 +387,7 @@ All controllers use `lui-` prefix:
 |------------|---------|--------------|
 | `lui-dropdown` | Toggle dropdown visibility | Animations via stimulus-use |
 | `lui-layout` | Mobile sidebar toggle | Animated drawer, backdrop overlay |
-| `lui-modal` | Dialog control | Native `<dialog>`, form handling |
+| `lui-modal` | Dialog control | Native `<dialog>`, form handling, `dismissable` value, dispatches `confirm` event |
 | `lui-tooltip` | Floating tooltips | @floating-ui/dom positioning |
 | `lui-switch` | Toggle state | True/false field binding |
 | `lui-checkbox` | Checkbox state | Visual state updates |
@@ -403,7 +403,6 @@ All controllers use `lui-` prefix:
 | `lui-collapsible` | Expand/collapse region | Grid-rows height animation |
 | `lui-popover` | Floating panel | @floating-ui/dom positioning, click-outside/ESC close |
 | `lui-sheet` | Slide-in drawer | Native `<dialog>`, side transitions, backdrop close |
-| `lui-alert-dialog` | Modal confirmation | Native `<dialog>`, dispatches `confirm` event |
 | `lui-toggle` | Two-state button | Toggles `data-state`/`aria-pressed` |
 | `lui-toggle-group` | Grouped toggles | Single/multiple selection, dispatches `change` |
 | `lui-slider` | Range slider | Updates fill/thumb from native range input |
@@ -512,8 +511,7 @@ All controllers use `lui-` prefix:
   <%= lui.combobox(
     form: f,
     association: :post_tags,
-    foreign_key: :tag_id,
-    nested_model: :tag,
+    nested_model: :tag, # foreign key (tag_id) is derived from the PostTag belongs_to reflection
     collection: Tag.all,
     label_method: :name,
     value_method: :id,

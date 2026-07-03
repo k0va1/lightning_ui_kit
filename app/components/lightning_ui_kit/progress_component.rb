@@ -13,7 +13,7 @@ class LightningUiKit::ProgressComponent < LightningUiKit::BaseComponent
 
   def classes
     merge_classes([
-      "lui:relative lui:h-2 lui:w-full lui:overflow-hidden lui:rounded-full lui:bg-interactive-subtle",
+      "lui:relative lui:h-2 lui:w-full lui:overflow-hidden lui:rounded-full lui:bg-surface-tertiary",
       @options[:class]
     ].compact.join(" "))
   end

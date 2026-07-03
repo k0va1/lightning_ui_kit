@@ -86,11 +86,13 @@ export default class extends Controller {
   }
 
   dayClasses(iso, todayIso) {
-    let classes = "lui:flex lui:h-8 lui:w-8 lui:items-center lui:justify-center lui:rounded-md lui:text-sm lui:text-foreground lui:transition-colors lui:cursor-pointer lui:hover:bg-surface-hover"
+    let classes = "lui:flex lui:h-8 lui:w-8 lui:items-center lui:justify-center lui:rounded-md lui:text-sm lui:transition-colors lui:cursor-pointer"
     if (iso === this.selected) {
-      classes += " lui:bg-interactive lui:text-foreground-invert lui:hover:bg-interactive"
+      classes += " lui:bg-surface-invert lui:text-foreground-invert"
     } else if (iso === todayIso) {
-      classes += " lui:border lui:border-border lui:font-medium"
+      classes += " lui:text-foreground lui:hover:bg-surface-hover lui:border lui:border-border lui:font-medium"
+    } else {
+      classes += " lui:text-foreground lui:hover:bg-surface-hover"
     }
     return classes
   }

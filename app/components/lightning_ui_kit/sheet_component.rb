@@ -36,7 +36,11 @@ class LightningUiKit::SheetComponent < LightningUiKit::BaseComponent
   end
 
   def data
-    {controller: "lui-sheet"}.merge(@options[:data] || {})
+    {
+      controller: "lui-sheet",
+      lui_sheet_panel_closed_class: panel_closed_class,
+      lui_sheet_overlay_closed_class: overlay_closed_class
+    }.merge(@options[:data] || {})
   end
 
   private

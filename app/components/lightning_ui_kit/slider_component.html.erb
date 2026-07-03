@@ -1,7 +1,7 @@
 <%= tag.div(class: classes, data: data) do %>
-  <div class="lui:absolute lui:inset-x-0 lui:h-1.5 lui:rounded-full lui:bg-interactive-subtle"></div>
-  <div data-lui-slider-target="fill" class="lui:absolute lui:left-0 lui:h-1.5 lui:rounded-full lui:bg-interactive" style="<%= fill_style %>"></div>
-  <div data-lui-slider-target="thumb" class="lui:absolute lui:size-4 lui:-translate-x-1/2 lui:rounded-full lui:border lui:border-interactive lui:bg-surface lui:shadow-sm lui:pointer-events-none" style="<%= thumb_style %>"></div>
+  <div class="lui:absolute lui:inset-x-0 lui:h-1.5 lui:rounded-full lui:bg-surface-tertiary"></div>
+  <div data-lui-slider-target="fill" class="lui:absolute lui:left-0 lui:h-1.5 lui:rounded-full lui:bg-surface-invert" style="<%= fill_style %>"></div>
+  <div data-lui-slider-target="thumb" class="lui:absolute lui:size-4 lui:-translate-x-1/2 lui:rounded-full lui:border lui:border-border-invert lui:bg-surface lui:shadow-sm lui:pointer-events-none" style="<%= thumb_style %>"></div>
   <%= tag.input(
         type: "range",
         name: input_name,

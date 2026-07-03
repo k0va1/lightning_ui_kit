@@ -1,0 +1,17 @@
+<%= render LightningUiKit::SheetComponent.new(
+  title: "Edit profile",
+  description: "Make changes to your profile here. Click save when you're done.",
+  side: side.to_sym
+) do |sheet| %>
+  <% sheet.with_trigger do %>
+    <%= render LightningUiKit::ButtonComponent.new(style: :outline).with_content("Open sheet") %>
+  <% end %>
+  <% sheet.with_body do %>
+    <div class="lui:flex lui:flex-col lui:gap-4 lui:py-4">
+      <%= render LightningUiKit::InputComponent.new(name: :name, label: "Name", value: "Lightning") %>
+    </div>
+  <% end %>
+  <% sheet.with_action do %>
+    <%= render LightningUiKit::ButtonComponent.new(data: {action: "click->lui-sheet#close"}).with_content("Save changes") %>
+  <% end %>
+<% end %>

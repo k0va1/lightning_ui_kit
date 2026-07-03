@@ -1,0 +1,8 @@
+<%= render LightningUiKit::PopoverComponent.new(position: position) do |popover| %>
+  <% popover.with_trigger do %>
+    <%= render LightningUiKit::ButtonComponent.new(style: :outline).with_content("Open #{position}") %>
+  <% end %>
+  <% popover.with_body do %>
+    <p class="lui:text-sm lui:text-foreground">Placed on the <%= position %>.</p>
+  <% end %>
+<% end %>

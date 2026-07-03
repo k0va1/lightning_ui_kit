@@ -1,0 +1,12 @@
+<%= render LightningUiKit::HoverCardComponent.new do |card| %>
+  <% card.with_trigger do %>
+    <%= render LightningUiKit::ButtonComponent.new(style: :outline).with_content("@lightning") %>
+  <% end %>
+  <% card.with_body do %>
+    <div class="lui:flex lui:flex-col lui:gap-1">
+      <h4 class="lui:text-sm lui:font-semibold lui:text-foreground">@lightning</h4>
+      <p class="lui:text-sm lui:text-foreground-muted">A Ruby UI kit built on ViewComponent, Tailwind, and Stimulus.</p>
+      <span class="lui:mt-2 lui:text-xs lui:text-foreground-faint">Joined December 2024</span>
+    </div>
+  <% end %>
+<% end %>

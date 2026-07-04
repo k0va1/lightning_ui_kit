@@ -16,7 +16,7 @@ class ScrollAreaComponentPreview < Lookbook::Preview
       tag.div(class: "lui:flex lui:gap-4") do
         safe_join(
           (1..15).map do |i|
-            tag.div("#{i}", class: "lui:flex lui:size-24 lui:shrink-0 lui:items-center lui:justify-center lui:rounded-md lui:bg-surface-tertiary lui:text-foreground")
+            tag.div(i.to_s, class: "lui:flex lui:size-24 lui:shrink-0 lui:items-center lui:justify-center lui:rounded-md lui:bg-surface-tertiary lui:text-foreground")
           end
         )
       end

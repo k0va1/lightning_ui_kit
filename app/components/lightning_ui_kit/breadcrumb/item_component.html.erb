@@ -1,0 +1,7 @@
+<li class="lui:inline-flex lui:items-center lui:gap-1.5">
+  <% if link? %>
+    <a href="<%= href %>" class="<%= link_classes %>"><%= content %></a>
+  <% else %>
+    <span role="link" aria-disabled="true" aria-current="<%= @current ? "page" : nil %>" class="<%= current_classes %>"><%= content %></span>
+  <% end %>
+</li>

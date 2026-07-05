@@ -1,0 +1,17 @@
+<%= tag.div(class: classes, data: data) do %>
+  <div data-lui-resizable-target="panelOne" class="lui:grow-0 lui:shrink-0 lui:overflow-auto" style="<%= panel_one_style %>">
+    <%= panel_one %>
+  </div>
+  <div
+    data-lui-resizable-target="handle"
+    data-action="pointerdown->lui-resizable#start"
+    role="separator"
+    aria-orientation="<%= horizontal? ? "vertical" : "horizontal" %>"
+    class="<%= handle_classes %>"
+  >
+    <span class="<%= grip_classes %>"></span>
+  </div>
+  <div class="lui:flex-1 lui:overflow-auto">
+    <%= panel_two %>
+  </div>
+<% end %>

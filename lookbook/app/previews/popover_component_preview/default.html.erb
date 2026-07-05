@@ -1,0 +1,11 @@
+<%= render LightningUiKit::PopoverComponent.new do |popover| %>
+  <% popover.with_trigger do %>
+    <%= render LightningUiKit::ButtonComponent.new(style: :outline).with_content("Open popover") %>
+  <% end %>
+  <% popover.with_body do %>
+    <div class="lui:flex lui:flex-col lui:gap-2">
+      <h4 class="lui:text-sm lui:font-semibold lui:text-foreground">Dimensions</h4>
+      <p class="lui:text-sm lui:text-foreground-muted">Set the dimensions for the layer.</p>
+    </div>
+  <% end %>
+<% end %>

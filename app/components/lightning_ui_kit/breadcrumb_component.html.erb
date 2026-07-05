@@ -1,0 +1,12 @@
+<%= tag.nav(aria: {label: "breadcrumb"}, data: data) do %>
+  <ol class="<%= classes %>">
+    <% items.each_with_index do |item, index| %>
+      <%= item %>
+      <% unless index == items.size - 1 %>
+        <li role="presentation" aria-hidden="true" class="lui:text-foreground-faint">
+          <%= heroicon(separator_icon, variant: :outline, options: {class: "lui:size-3.5"}) %>
+        </li>
+      <% end %>
+    <% end %>
+  </ol>
+<% end %>

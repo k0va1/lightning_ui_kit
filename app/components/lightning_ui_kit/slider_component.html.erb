@@ -1,0 +1,20 @@
+<%= tag.div(class: classes, data: data) do %>
+  <div class="lui:absolute lui:inset-x-0 lui:h-1.5 lui:rounded-full lui:bg-surface-tertiary"></div>
+  <div data-lui-slider-target="fill" class="lui:absolute lui:left-0 lui:h-1.5 lui:rounded-full lui:bg-surface-invert" style="<%= fill_style %>"></div>
+  <div data-lui-slider-target="thumb" class="lui:absolute lui:size-4 lui:-translate-x-1/2 lui:rounded-full lui:border lui:border-border-invert lui:bg-surface lui:shadow-sm lui:pointer-events-none" style="<%= thumb_style %>"></div>
+  <%= tag.input(
+        type: "range",
+        name: input_name,
+        min: min,
+        max: max,
+        step: step,
+        value: value,
+        disabled: disabled,
+        role: "slider",
+        "aria-valuemin": min,
+        "aria-valuemax": max,
+        "aria-valuenow": value,
+        data: {lui_slider_target: "input"},
+        class: "lui:absolute lui:inset-0 lui:h-full lui:w-full lui:cursor-pointer lui:opacity-0 lui:disabled:cursor-not-allowed"
+      ) %>
+<% end %>

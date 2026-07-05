@@ -1,0 +1,9 @@
+<%= render LightningUiKit::ModalComponent.new(
+  variant: :alert,
+  title: "Are you absolutely sure?",
+  description: "This action cannot be undone. This will permanently delete your account and remove your data from our servers."
+) do |modal| %>
+  <% modal.with_trigger do %>
+    <%= render LightningUiKit::ButtonComponent.new(style: :outline).with_content("Show dialog") %>
+  <% end %>
+<% end %>

@@ -1,0 +1,27 @@
+<%= tag.nav(class: classes, data: data) do %>
+  <ul class="lui:flex lui:items-center lui:gap-1">
+    <% items.each do |item| %>
+      <li
+        class="lui:relative"
+        data-lui-navigation-menu-target="item"
+        data-action="mouseenter->lui-navigation-menu#open mouseleave->lui-navigation-menu#scheduleClose"
+      >
+        <% if item.link? %>
+          <a href="<%= item.href %>" class="<%= trigger_classes %>"><%= item.title %></a>
+        <% else %>
+          <button type="button" class="<%= trigger_classes %> lui:group" aria-expanded="false" data-action="click->lui-navigation-menu#toggle">
+            <%= item.title %>
+            <%= heroicon("chevron-down", variant: :outline, options: {class: "lui:size-3.5 lui:transition-transform lui:group-data-[state=open]:rotate-180"}) %>
+          </button>
+          <div
+            class="<%= content_classes %>"
+            data-lui-navigation-menu-target="content"
+            data-action="mouseenter->lui-navigation-menu#cancelClose mouseleave->lui-navigation-menu#scheduleClose"
+          >
+            <%= item %>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

@@ -1,0 +1,53 @@
+<%= tag.div(data: data) do %>
+  <% if trigger? %>
+    <div data-action="click->lui-sheet#open" class="lui:inline-block lui:cursor-pointer">
+      <%= trigger %>
+    </div>
+  <% end %>
+
+  <dialog
+    id="<%= @id %>"
+    data-lui-sheet-target="dialog"
+    class="lui:fixed lui:inset-0 lui:m-0 lui:h-full lui:max-h-none lui:w-full lui:max-w-none lui:overflow-hidden lui:bg-transparent lui:backdrop:bg-transparent"
+  >
+    <div
+      data-lui-sheet-target="overlay"
+      data-action="click->lui-sheet#close"
+      class="lui:fixed lui:inset-0 lui:bg-surface-overlay lui:transition-opacity lui:duration-300 <%= overlay_closed_class %>"
+    ></div>
+
+    <div data-lui-sheet-target="panel" class="<%= panel_classes %> <%= panel_closed_class %>">
+      <button
+        type="button"
+        data-action="click->lui-sheet#close"
+        aria-label="Close"
+        class="lui:absolute lui:right-4 lui:top-4 lui:rounded-sm lui:text-foreground-muted lui:transition-colors lui:hover:text-foreground lui:focus:outline-focus"
+      >
+        <%= heroicon("x-mark", variant: :outline, options: {class: "lui:size-5"}) %>
+      </button>
+
+      <% if @title || @description %>
+        <div class="lui:flex lui:flex-col lui:gap-1.5">
+          <% if @title %>
+            <h2 class="lui:text-lg lui:font-semibold lui:text-foreground"><%= @title %></h2>
+          <% end %>
+          <% if @description %>
+            <p class="lui:text-sm lui:text-foreground-muted"><%= @description %></p>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="lui:flex-1 lui:overflow-y-auto">
+        <%= body %>
+      </div>
+
+      <% if actions.any? %>
+        <div class="lui:flex lui:flex-col-reverse lui:gap-2 lui:sm:flex-row lui:sm:justify-end">
+          <% actions.each do |action| %>
+            <%= action %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </dialog>
+<% end %>

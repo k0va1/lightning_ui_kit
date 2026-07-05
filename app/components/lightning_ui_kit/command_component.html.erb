@@ -1,0 +1,25 @@
+<%= tag.div(class: classes, data: data) do %>
+  <div class="lui:flex lui:items-center lui:gap-2 lui:border-b lui:border-border lui:px-3">
+    <%= heroicon("magnifying-glass", variant: :outline, options: {class: "lui:size-4 lui:shrink-0 lui:text-foreground-muted"}) %>
+    <input
+      type="text"
+      placeholder="<%= placeholder %>"
+      data-lui-command-target="input"
+      data-action="input->lui-command#filter keydown->lui-command#onKeydown"
+      class="lui:h-11 lui:w-full lui:bg-transparent lui:text-sm lui:text-foreground lui:outline-none lui:placeholder:text-foreground-muted"
+      autocomplete="off"
+      role="combobox"
+      aria-expanded="true"
+    >
+  </div>
+  <div data-lui-command-target="list" role="listbox" class="lui:max-h-72 lui:overflow-y-auto lui:p-1">
+    <% items.each do |item| %>
+      <div role="option" class="<%= item_classes %>" data-lui-command-target="item" data-value="<%= item.value %>" data-action="click->lui-command#select mouseenter->lui-command#activate">
+        <%= item %>
+      </div>
+    <% end %>
+    <div data-lui-command-target="empty" class="lui:hidden lui:py-6 lui:text-center lui:text-sm lui:text-foreground-muted">
+      <%= empty_text %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,12 @@
+<%= tag.div(data: data, class: "lui:relative") do %>
+  <div data-action="contextmenu->lui-context-menu#open" class="<%= trigger_classes %>">
+    <%= trigger %>
+  </div>
+  <div data-lui-context-menu-target="content" role="menu" class="<%= content_classes %>">
+    <% items.each do |item| %>
+      <div role="menuitem" class="<%= item_classes %>" data-action="click->lui-context-menu#close">
+        <%= item %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

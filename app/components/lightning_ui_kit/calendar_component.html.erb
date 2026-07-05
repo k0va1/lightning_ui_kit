@@ -1,0 +1,15 @@
+<%= tag.div(class: classes, data: data) do %>
+  <div class="lui:flex lui:items-center lui:justify-between lui:pb-3">
+    <button type="button" class="<%= nav_button_classes %>" aria-label="Previous month" data-action="click->lui-calendar#prevMonth">
+      <%= heroicon("chevron-left", variant: :outline, options: {class: "lui:size-4"}) %>
+    </button>
+    <div data-lui-calendar-target="label" class="lui:text-sm lui:font-medium lui:text-foreground"></div>
+    <button type="button" class="<%= nav_button_classes %>" aria-label="Next month" data-action="click->lui-calendar#nextMonth">
+      <%= heroicon("chevron-right", variant: :outline, options: {class: "lui:size-4"}) %>
+    </button>
+  </div>
+  <div data-lui-calendar-target="grid" role="grid" class="lui:grid lui:grid-cols-7 lui:gap-1"></div>
+  <% if input_name %>
+    <%= tag.input(type: "hidden", name: input_name, value: selected_iso, data: {lui_calendar_target: "input"}) %>
+  <% end %>
+<% end %>

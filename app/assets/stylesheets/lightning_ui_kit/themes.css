@@ -71,6 +71,13 @@
   /* Spinner */
   --lui-theme-spinner-primary: oklch(0.552 0.016 285.938);
   --lui-theme-spinner-secondary: oklch(0.872 0.01 258.338);
+
+  /* Chart */
+  --lui-theme-chart-1: oklch(0.646 0.222 41.116);
+  --lui-theme-chart-2: oklch(0.6 0.118 184.704);
+  --lui-theme-chart-3: oklch(0.398 0.07 227.392);
+  --lui-theme-chart-4: oklch(0.828 0.189 84.429);
+  --lui-theme-chart-5: oklch(0.769 0.188 70.08);
 }
 
 /* ===== Dark Theme ===== */
@@ -130,6 +137,13 @@
   /* Spinner */
   --lui-theme-spinner-primary: oklch(0.705 0.015 286.067);
   --lui-theme-spinner-secondary: oklch(0.442 0.017 285.786);
+
+  /* Chart */
+  --lui-theme-chart-1: oklch(0.488 0.243 264.376);
+  --lui-theme-chart-2: oklch(0.696 0.17 162.48);
+  --lui-theme-chart-3: oklch(0.769 0.188 70.08);
+  --lui-theme-chart-4: oklch(0.627 0.265 303.9);
+  --lui-theme-chart-5: oklch(0.645 0.246 16.439);
 }
 
 /* ===== Page Background Gradient ===== */

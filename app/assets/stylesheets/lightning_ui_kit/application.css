@@ -50,6 +50,12 @@
   --color-spinner-primary: var(--lui-theme-spinner-primary);
   --color-spinner-secondary: var(--lui-theme-spinner-secondary);
 
+  --color-chart-1: var(--lui-theme-chart-1);
+  --color-chart-2: var(--lui-theme-chart-2);
+  --color-chart-3: var(--lui-theme-chart-3);
+  --color-chart-4: var(--lui-theme-chart-4);
+  --color-chart-5: var(--lui-theme-chart-5);
+
   --animate-icon-bounce: icon-bounce 350ms ease-out;
 }
 

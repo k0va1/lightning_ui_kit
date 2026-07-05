@@ -73,13 +73,13 @@
       data-lui-combobox-target="listbox"
       role="listbox"
       aria-label="<%= effective_label || 'Options' %>"
-      class="lui:hidden lui:absolute lui:z-50 lui:mt-1 lui:w-full lui:max-h-60 lui:overflow-auto lui:rounded-lg lui:bg-surface-secondary lui:shadow-lg lui:ring-1 lui:ring-border"
+      class="lui:hidden lui:absolute lui:z-50 lui:mt-1 lui:w-full lui:max-h-60 lui:overflow-auto lui:rounded-lg lui:bg-surface lui:p-1 lui:shadow-lg lui:ring-1 lui:ring-border"
     >
           <template data-lui-combobox-target="optionTemplate">
             <div
           role="option"
           data-lui-combobox-target="option"
-          class="lui:relative lui:cursor-pointer lui:select-none lui:py-2 lui:px-3 lui:text-foreground lui:hover:bg-surface-tertiary lui:data-[selected]:bg-interactive-subtle lui:data-[highlighted]:bg-surface-tertiary lui:data-[disabled]:opacity-50 lui:data-[disabled]:cursor-not-allowed"
+          class="lui:relative lui:cursor-pointer lui:select-none lui:rounded-md lui:py-1.5 lui:px-3 lui:text-base/6 lui:text-foreground lui:sm:text-sm/6 lui:hover:bg-surface-tertiary lui:data-[selected]:bg-interactive-subtle lui:data-[highlighted]:bg-surface-tertiary lui:data-[disabled]:opacity-50 lui:data-[disabled]:cursor-not-allowed"
           data-action="click->lui-combobox#selectOption mouseenter->lui-combobox#highlightOption"
               >
               <span data-label class="lui:block lui:truncate"></span>
@@ -91,16 +91,16 @@
             </div>
           </template>
           <div data-lui-combobox-target="optionsContainer"></div>
-          <div data-lui-combobox-target="loading" class="lui:hidden lui:py-2 lui:px-3 lui:text-foreground-muted lui:text-sm">
+          <div data-lui-combobox-target="loading" class="lui:hidden lui:py-1.5 lui:px-3 lui:text-base/6 lui:text-foreground-muted lui:sm:text-sm/6">
             Loading...
           </div>
-          <div data-lui-combobox-target="noResults" class="lui:hidden lui:py-2 lui:px-3 lui:text-foreground-muted lui:text-sm">
+          <div data-lui-combobox-target="noResults" class="lui:hidden lui:py-1.5 lui:px-3 lui:text-base/6 lui:text-foreground-muted lui:sm:text-sm/6">
             No results found
           </div>
           <% if @allow_custom %>
             <div
           data-lui-combobox-target="createOption"
-          class="lui:hidden lui:cursor-pointer lui:py-2 lui:px-3 lui:text-interactive lui:hover:bg-interactive-subtle lui:border-t lui:border-border-subtle lui:flex lui:items-center lui:gap-1.5"
+          class="lui:hidden lui:cursor-pointer lui:rounded-md lui:py-1.5 lui:px-3 lui:text-base/6 lui:text-interactive lui:sm:text-sm/6 lui:hover:bg-interactive-subtle lui:border-t lui:border-border-subtle lui:flex lui:items-center lui:gap-1.5"
           data-action="click->lui-combobox#createCustomOption"
               >
               <%= heroicon "plus", variant: :solid, options: { class: "lui:size-4" } %>

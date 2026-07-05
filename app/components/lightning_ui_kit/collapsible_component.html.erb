@@ -1,0 +1,10 @@
+<%= tag.div(class: classes, data: data) do %>
+  <div data-action="click->lui-collapsible#toggle" class="lui:cursor-pointer">
+    <%= trigger %>
+  </div>
+  <div data-lui-collapsible-target="content" class="<%= content_classes %>">
+    <div class="lui:overflow-hidden">
+      <%= body %>
+    </div>
+  </div>
+<% end %>

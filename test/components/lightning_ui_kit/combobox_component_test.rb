@@ -92,6 +92,80 @@ class LightningUiKit::ComboboxComponentTest < ViewComponent::TestCase
     assert_includes result.to_html, "true"
   end
 
+  class ReflectiveTagReflection
+    def foreign_key
+      "label_id"
+    end
+  end
+
+  class ReflectivePostTag
+    def self.reflect_on_association(name)
+      ReflectiveTagReflection.new if name == :tag
+    end
+  end
+
+  class ReflectiveJoinReflection
+    def klass
+      ReflectivePostTag
+    end
+  end
+
+  class ReflectivePost
+    def self.reflect_on_association(name)
+      ReflectiveJoinReflection.new if name == :post_tags
+    end
+
+    def errors
+      ActiveModel::Errors.new(self)
+    end
+  end
+
+  FakeForm = Struct.new(:object, :object_name)
+
+  def test_derives_foreign_key_from_nested_model_convention
+    result = render_inline(LightningUiKit::ComboboxComponent.new(
+      name: :post_tags_attributes,
+      nested_model: :tag,
+      options: [{value: 1, label: "Ruby"}]
+    ))
+
+    root = result.css("[data-lui-combobox-foreign-key-value]").first
+    assert_equal "tag_id", root["data-lui-combobox-foreign-key-value"]
+    assert_equal "true", root["data-lui-combobox-multiple-value"]
+  end
+
+  def test_derives_foreign_key_from_association_reflection
+    form = FakeForm.new(ReflectivePost.new, "post")
+    result = render_inline(LightningUiKit::ComboboxComponent.new(
+      form: form,
+      association: :post_tags,
+      nested_model: :tag,
+      label: "Tags",
+      options: [{value: 1, label: "Ruby"}]
+    ))
+
+    root = result.css("[data-lui-combobox-foreign-key-value]").first
+    assert_equal "label_id", root["data-lui-combobox-foreign-key-value"]
+    assert_includes result.to_html, 'data-name="post[post_tags_attributes]"'
+  end
+
+  def test_foreign_key_without_association_enters_nested_mode
+    result = render_inline(LightningUiKit::ComboboxComponent.new(
+      name: :post_tags_attributes,
+      foreign_key: :tag_id,
+      nested_model: :tag,
+      options: [{value: 1, label: "Ruby"}, {value: 3, label: "JavaScript"}],
+      selected: [{join_id: 1, value: 1}, {join_id: 2, value: 3}]
+    ))
+
+    root = result.css("[data-lui-combobox-multiple-value]").first
+    assert_equal "true", root["data-lui-combobox-multiple-value"]
+    assert_equal "tag_id", root["data-lui-combobox-foreign-key-value"]
+    assert_equal "tag", root["data-lui-combobox-nested-model-value"]
+    assert_equal '[{"join_id":1,"value":1},{"join_id":2,"value":3}]', root["data-lui-combobox-selected-value"]
+    assert_includes result.to_html, 'data-name="post_tags_attributes"'
+  end
+
   def test_renders_single_mode_hidden_field
     result = render_inline(LightningUiKit::ComboboxComponent.new(name: "country"))
 

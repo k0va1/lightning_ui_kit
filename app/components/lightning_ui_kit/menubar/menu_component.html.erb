@@ -1,0 +1,12 @@
+<div class="lui:relative" data-lui-menubar-target="menu" data-action="mouseenter->lui-menubar#onHover">
+  <button type="button" class="<%= trigger_classes %>" data-lui-menubar-target="trigger" data-action="click->lui-menubar#toggle">
+    <%= title %>
+  </button>
+  <div class="<%= content_classes %>" data-lui-menubar-target="content" role="menu">
+    <% items.each do |item| %>
+      <div role="menuitem" class="<%= item_classes %>" data-action="click->lui-menubar#closeAll">
+        <%= item %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<style>body { padding: 0 !important; }</style>
+<%= render LightningUiKit::AuthLayoutComponent.new do %>
+  <div class="lui:grid lui:w-full lui:max-w-sm lui:grid-cols-1 lui:gap-8">
+    <form action="#" method="post" class="lui:grid lui:grid-cols-1 lui:gap-8">
+      <div class="lui:flex lui:items-center lui:gap-3">
+        <div class="lui:flex lui:items-center lui:justify-center lui:w-10 lui:h-10 lui:bg-surface-invert lui:rounded-xl">
+          <span class="lui:text-xl">⚡</span>
+        </div>
+        <span class="lui:text-lg lui:font-semibold lui:text-foreground">Lightning UI</span>
+      </div>
+
+      <h1 class="lui:text-2xl/8 lui:font-semibold lui:text-foreground lui:sm:text-xl/8">Edit your account</h1>
+
+      <%= render LightningUiKit::InputComponent.new(name: "user[email]", type: :email, label: "Email", value: "erica@example.com") %>
+      <%= render LightningUiKit::InputComponent.new(name: "user[password]", type: :password, label: "New password", description: "Leave blank if you don't want to change it") %>
+      <%= render LightningUiKit::InputComponent.new(name: "user[password_confirmation]", type: :password, label: "Confirm new password") %>
+      <%= render LightningUiKit::InputComponent.new(name: "user[current_password]", type: :password, label: "Current password", description: "We need your current password to confirm your changes") %>
+
+      <%= render LightningUiKit::ButtonComponent.new(type: :submit, class: "lui:w-full") do %>
+        Update account
+      <% end %>
+    </form>
+
+    <%= render LightningUiKit::SeparatorComponent.new %>
+
+    <div class="lui:grid lui:grid-cols-1 lui:gap-4">
+      <%= render LightningUiKit::TextComponent.new(size: :sm) do %>
+        Unhappy? You can cancel your account at any time.
+      <% end %>
+      <%= render LightningUiKit::ButtonComponent.new(style: :destructive, class: "lui:w-full") do %>
+        Cancel my account
+      <% end %>
+    </div>
+  </div>
+<% end %>

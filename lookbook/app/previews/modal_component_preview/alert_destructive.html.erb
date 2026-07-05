@@ -1,0 +1,11 @@
+<%= render LightningUiKit::ModalComponent.new(
+  variant: :alert,
+  title: "Delete project?",
+  description: "This permanently removes the project and all of its contents.",
+  confirm_text: "Delete",
+  confirm_style: :destructive
+) do |modal| %>
+  <% modal.with_trigger do %>
+    <%= render LightningUiKit::ButtonComponent.new(style: :destructive).with_content("Delete project") %>
+  <% end %>
+<% end %>

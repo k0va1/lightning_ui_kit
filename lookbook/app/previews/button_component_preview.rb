@@ -17,6 +17,9 @@ class ButtonComponentPreview < Lookbook::Preview
     end
   end
 
+  def comparison
+  end
+
   # @group Styles
 
   def outline

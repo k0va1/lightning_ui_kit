@@ -48,8 +48,21 @@ class LightningUiKit::ButtonComponent < LightningUiKit::BaseComponent
     end
 
     class_list << size_classes
+    class_list << outline_padding_classes if @style == :outline
 
     merge_classes(class_list.compact.join(" "))
+  end
+
+  # Solid buttons paint their fill over the border box, so the outline style
+  # reads slightly shorter; grow it 1px on top and bottom via extra padding,
+  # with a negative margin so the layout box stays the same size.
+  def outline_padding_classes
+    case @size
+    when :small
+      "lui:-my-px lui:py-[calc(--spacing(1)+1px)] lui:sm:py-[calc(--spacing(0.5)+1px)]"
+    else
+      "lui:-my-px lui:py-[calc(--spacing(2)+1px)] lui:sm:py-1.5"
+    end
   end
 
   def size_classes

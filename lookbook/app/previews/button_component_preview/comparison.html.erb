@@ -1,0 +1,8 @@
+<div class="lui:flex lui:items-start lui:gap-3">
+  <%= render LightningUiKit::ButtonComponent.new(icon: "check").with_content("Resolve") %>
+  <%= render LightningUiKit::ButtonComponent.new(style: :outline, icon: "bell-slash").with_content("Ignore") %>
+  <%= render LightningUiKit::ButtonComponent.new.with_content("Press me") %>
+  <%= render LightningUiKit::ButtonComponent.new(style: :outline).with_content("Press me") %>
+  <%= render LightningUiKit::ButtonComponent.new(size: :small, icon: "check").with_content("Resolve") %>
+  <%= render LightningUiKit::ButtonComponent.new(size: :small, style: :outline, icon: "bell-slash").with_content("Ignore") %>
+</div>

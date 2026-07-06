@@ -334,6 +334,9 @@
   .lui\:-my-1\.5 {
     margin-block: calc(var(--lui-spacing) * -1.5);
   }
+  .lui\:-my-px {
+    margin-block: -1px;
+  }
   .lui\:my-4 {
     margin-block: calc(var(--lui-spacing) * 4);
   }
@@ -1289,6 +1292,12 @@
   }
   .lui\:py-9 {
     padding-block: calc(var(--lui-spacing) * 9);
+  }
+  .lui\:py-\[calc\(--spacing\(1\)\+1px\)\] {
+    padding-block: calc(var(--lui-spacing) + 1px);
+  }
+  .lui\:py-\[calc\(--spacing\(2\)\+1px\)\] {
+    padding-block: calc(calc(var(--lui-spacing) * 2) + 1px);
   }
   .lui\:py-\[calc\(--spacing\(2\.5\)-1px\)\] {
     padding-block: calc(calc(var(--lui-spacing) * 2.5) - 1px);
@@ -3196,9 +3205,19 @@
       padding-block: calc(var(--lui-spacing) * 0.5);
     }
   }
+  .lui\:sm\:py-1\.5 {
+    @media (width >= 40rem) {
+      padding-block: calc(var(--lui-spacing) * 1.5);
+    }
+  }
   .lui\:sm\:py-3 {
     @media (width >= 40rem) {
       padding-block: calc(var(--lui-spacing) * 3);
+    }
+  }
+  .lui\:sm\:py-\[calc\(--spacing\(0\.5\)\+1px\)\] {
+    @media (width >= 40rem) {
+      padding-block: calc(calc(var(--lui-spacing) * 0.5) + 1px);
     }
   }
   .lui\:sm\:py-\[calc\(--spacing\(1\.5\)-1px\)\] {

@@ -1,0 +1,17 @@
+<% data = [
+  {"id" => 1020, "order" => "#1020", "date" => "Jul 20 at 4:34pm", "customer" => "Jaydon Stanton", "total" => "$969.44", "status" => :success},
+  {"id" => 1019, "order" => "#1019", "date" => "Jul 20 at 3:46pm", "customer" => "Ruben Westerfelt", "total" => "$701.19", "status" => :warning},
+  {"id" => 1018, "order" => "#1018", "date" => "Jul 20 at 3:44pm", "customer" => "Leo Carder", "total" => "$798.24", "status" => :error}
+] %>
+
+<%= render LightningUiKit::TableComponent.new(data: data, selectable: true, select_name: "order_ids[]") do |table| %>
+  <% table.with_bulk_actions do %>
+    <%= render LightningUiKit::ButtonComponent.new(style: :outline, size: :small).with_content("Mark as paid") %>
+    <%= render LightningUiKit::ButtonComponent.new(style: :destructive, size: :small).with_content("Delete") %>
+  <% end %>
+  <% table.with_column("Order") { |row| row["order"] } %>
+  <% table.with_column("Date") { |row| row["date"] } %>
+  <% table.with_column("Customer") { |row| row["customer"] } %>
+  <% table.with_column("Payment status") { |row| render LightningUiKit::BadgeComponent.new(status: row["status"]).with_content(row["status"].to_s.capitalize) } %>
+  <% table.with_column("Total", align: :right) { |row| row["total"] } %>
+<% end %>

@@ -80,13 +80,44 @@ Use the `lui` helper to render components:
 <% end %>
 ```
 
+### Table with Selection, Bulk Actions, and Sorting
+
+The table supports opt-in row selection, bulk actions, sortable columns, and clickable rows. Order the data in your controller with the whitelist-safe `lui_sort` helper — the table reads the current sort state from the request params automatically:
+
+```ruby
+class OrdersController < ApplicationController
+  include LightningUiKit::Sortable
+
+  def index
+    @orders = lui_sort(Order.all, allowed: %w[number total], default: :number)
+  end
+end
+```
+
+```erb
+<%= form_with url: bulk_orders_path, method: :post do %>
+  <%= lui.table(
+    data: @orders,
+    selectable: true,
+    row_url: ->(order) { order_path(order) },
+    sort_key: :number
+  ) do |table| %>
+    <% table.with_bulk_actions do %>
+      <%= lui.button(style: :outline, size: :small, type: :submit) { "Archive" } %>
+    <% end %>
+    <% table.with_column("Order", sort_key: :number) { |order| order.number } %>
+    <% table.with_column("Total", sort_key: :total, align: :right) { |order| order.total } %>
+  <% end %>
+<% end %>
+```
+
 ### Available Components
 
 **Form**: `button`, `input`, `input_otp`, `textarea`, `select`, `checkbox`, `switch`, `radio_group`, `combobox`, `file_input`, `dropzone`, `slider`, `toggle`, `toggle_group`, `calendar`, `date_picker`
 
 **Display**: `text`, `badge`, `avatar`, `alert`, `banner`, `toast`, `skeleton`, `spinner`, `progress`, `chart`
 
-**Structure**: `card`, `separator`, `aspect_ratio`, `breadcrumb`, `collapsible`, `popover`, `hover_card`, `sheet`, `scroll_area`, `resizable`, `carousel`, `tabs`, `accordion`, `table`, `pagination`, `description_list`, `dropdown`, `context_menu`, `command`, `navigation_menu`, `menubar`, `modal`, `tooltip`, `layout` (frosted glass sidebar with backdrop blur), `auth_layout` (centered layout for sign in/sign up pages), `sidebar_section`, `sidebar_link`, `link`
+**Structure**: `card`, `separator`, `aspect_ratio`, `breadcrumb`, `collapsible`, `popover`, `hover_card`, `sheet`, `scroll_area`, `resizable`, `carousel`, `tabs`, `accordion`, `table` (with optional selection, bulk actions, sortable columns), `pagination`, `description_list`, `dropdown`, `context_menu`, `command`, `navigation_menu`, `menubar`, `modal`, `tooltip`, `layout` (frosted glass sidebar with backdrop blur), `auth_layout` (centered layout for sign in/sign up pages), `sidebar_section`, `sidebar_link`, `link`
 
 ### Alternative Syntax
 

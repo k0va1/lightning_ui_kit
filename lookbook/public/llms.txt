@@ -117,7 +117,7 @@ application.register(`${namespace}-example`, ExampleController)
 - **ResizableComponent** - `direction: :horizontal/:vertical`, `initial:` with `panel_one`/`panel_two` slots — draggable split panels
 - **TabsComponent** - `default_tab:`, `variant: :default/:line` with tab slots (`title:`) — tabbed content panels with keyboard navigation
 - **AccordionComponent** - `open_first:` with item slots (`title:`) — expandable/collapsible sections
-- **TableComponent** - `data:`, `actions_title:`, `empty_message:` with column/action slots
+- **TableComponent** - `data:`, `actions_title:`, `empty_message:` with column (`sort_key:`, `align:`)/action/bulk_actions slots. Opt-in extras (Polaris IndexTable style): `selectable:` row selection with select-all + indeterminate state and a bulk actions bar overlaying the header when rows are selected (`select_name:` default `ids[]`, `row_id:` symbol/proc for checkbox values, `selected_label:`); server-side sortable column headers — the header sort state is read automatically from the `sort`/`direction` request params (names via `sort_param:`/`direction_param:`), with `sort_key:`/`sort_direction:` acting as the default state before any header is clicked; clickable rows via `row_url:` proc (Turbo-aware). Clicking anywhere on a selectable row toggles its selection; if `row_url:` is set, row clicks navigate instead and only the checkbox cell toggles selection. Selected checkboxes submit with the surrounding form
 - **PaginationComponent** - Page navigation with smart gap rendering
 - **DescriptionListComponent** - Key-value list with item slots
 - **DropdownComponent** - `trigger_text:`, `anchor:`, `position:` with item slots
@@ -222,6 +222,46 @@ All arguments and blocks are passed directly to the component:
   <% table.with_action { |user| link_to "Edit", edit_user_path(user) } %>
 <% end %>
 ```
+
+### Table with Selection, Bulk Actions, and Sorting
+
+Controller — order the data with the built-in whitelist-safe helper:
+
+```ruby
+class OrdersController < ApplicationController
+  include LightningUiKit::Sortable
+
+  def index
+    @orders = lui_sort(Order.all, allowed: %w[number total created_at], default: :created_at)
+  end
+end
+```
+
+View — the table picks up the current sort state from the request params automatically:
+
+```erb
+<%= form_with url: bulk_orders_path, method: :post do %>
+  <%= lui.table(
+    data: @orders,
+    selectable: true,
+    select_name: "order_ids[]",
+    row_url: ->(order) { order_path(order) },
+    sort_key: :created_at
+  ) do |table| %>
+    <% table.with_bulk_actions do %>
+      <%= lui.button(style: :outline, size: :small, type: :submit) { "Archive" } %>
+    <% end %>
+    <% table.with_column("Order", sort_key: :number) { |order| order.number } %>
+    <% table.with_column("Customer") { |order| order.customer_name } %>
+    <% table.with_column("Total", sort_key: :total, align: :right) { |order| order.total } %>
+    <% table.with_action { |order| link_to "Edit", edit_order_path(order) } %>
+  <% end %>
+<% end %>
+```
+
+Sorting is server-side: header links point to the current path with `sort`/`direction` query params merged in (param names configurable via `sort_param:`/`direction_param:` on both `lui_sort` and the table). `lui_sort` validates the sort param against `allowed:` and applies `.order` to relations (or `sort_by` to arrays); `default:`/`default_direction:` order the initial, param-less request — mirror `default:` with the table's `sort_key:` so the default sorted column shows its indicator. Outside controllers use `LightningUiKit::Sorting.apply(scope, params, allowed: ...)` directly. `row_id:` (symbol or proc, default `:id`) provides checkbox values.
+
+Note: column/action blocks run through Rails `capture`, so they must return a String or render HTML — call `.to_s` on numbers and other non-string values or they render as blank.
 
 ### Dropdown Menu
 

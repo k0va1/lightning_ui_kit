@@ -42,6 +42,7 @@ import DatePickerController from './controllers/date_picker_controller'
 import CarouselController from './controllers/carousel_controller'
 import ResizableController from './controllers/resizable_controller'
 import ChartController from './controllers/chart_controller'
+import TableController from './controllers/table_controller'
 
 export function registerLuiControllers(application) {
   application.register(`${namespace}-clipboard`, ClipboardController)
@@ -78,6 +79,7 @@ export function registerLuiControllers(application) {
   application.register(`${namespace}-carousel`, CarouselController)
   application.register(`${namespace}-resizable`, ResizableController)
   application.register(`${namespace}-chart`, ChartController)
+  application.register(`${namespace}-table`, TableController)
 }
 registerLuiControllers(application)
 

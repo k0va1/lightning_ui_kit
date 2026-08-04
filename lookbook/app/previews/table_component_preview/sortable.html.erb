@@ -1,0 +1,15 @@
+<%# End-to-end demo: LightningUiKit::Sorting orders the data from the request
+    params (in a controller, use `include LightningUiKit::Sortable` + `lui_sort`),
+    and the table reads its header sort state from the same params. %>
+<% products = [
+  {"id" => 1, "name" => "Emerald Silk Gown", "price" => 875, "inventory" => 140},
+  {"id" => 2, "name" => "Mauve Cashmere Scarf", "price" => 230, "inventory" => 83},
+  {"id" => 3, "name" => "Navy Merino Wool Blazer", "price" => 445, "inventory" => 32}
+] %>
+<% products = LightningUiKit::Sorting.apply(products, params, allowed: %w[name price inventory], default: :name) %>
+
+<%= render LightningUiKit::TableComponent.new(data: products, sort_key: :name) do |table| %>
+  <% table.with_column("Product", sort_key: :name) { |row| row["name"] } %>
+  <% table.with_column("Price", sort_key: :price, align: :right) { |row| "$#{row["price"]}.00" } %>
+  <% table.with_column("Inventory", sort_key: :inventory, align: :right) { |row| row["inventory"].to_s } %>
+<% end %>

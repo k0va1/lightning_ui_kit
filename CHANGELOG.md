@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.4.0](https://github.com/k0va1/lightning_ui_kit/compare/v0.3.5...v0.4.0) (2026-08-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* AlertDialogComponent, the lui.alert_dialog helper and the lui-alert-dialog controller are removed; use ModalComponent.new(variant: :alert) and the lui-modal:confirm event.
+
+### Features
+
+* add CopyInputComponent with secret mode ([fb54a02](https://github.com/k0va1/lightning_ui_kit/commit/fb54a02e96e3b2d700a05b78d5b6a1210fd738ff))
+* add selection, bulk actions, and server-side sorting to table ([69c1557](https://github.com/k0va1/lightning_ui_kit/commit/69c1557ebd553f6ad5c72a0e6529e2371696b009))
+* more components ([#83](https://github.com/k0va1/lightning_ui_kit/issues/83)) ([5c3af78](https://github.com/k0va1/lightning_ui_kit/commit/5c3af78db9c5886c1c826fcb45af067e6bf4a021))
+
+
+### Bug Fixes
+
+* add word-break to table cells to prevent overflow ([2a59284](https://github.com/k0va1/lightning_ui_kit/commit/2a5928493704430616914d8238199d3f4cfc3105))
+* apply disabled opacity to input component ([44942dc](https://github.com/k0va1/lightning_ui_kit/commit/44942dceebc41951cf7260c4d657af53fb7b88e2))
+* optically align outline button height with solid buttons ([689ec4a](https://github.com/k0va1/lightning_ui_kit/commit/689ec4a0a6d9efcef8e2cb87d7180813cf7b07d0))
+* pagination uniform sizing and mobile layout ([3826a77](https://github.com/k0va1/lightning_ui_kit/commit/3826a7750eddbeffbd525407dbacf150d25ffde9))
+* prevent table cell layout break from flex on actions td ([c4086c8](https://github.com/k0va1/lightning_ui_kit/commit/c4086c821ec71334c49f8a3663077bc84e4a0b6a))
+
 ## [0.3.5](https://github.com/k0va1/lightning_ui_kit/compare/v0.3.4...v0.3.5) (2026-05-01)
 
 

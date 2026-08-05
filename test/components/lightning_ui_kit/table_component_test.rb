@@ -15,6 +15,25 @@ class LightningUiKit::TableComponentTest < ViewComponent::TestCase
     assert_includes result.to_html, "<table"
   end
 
+  def test_wraps_table_in_horizontal_scroll_container
+    result = render_inline(LightningUiKit::TableComponent.new(data: sample_data)) do |table|
+      table.with_column("Name") { |row| row.name }
+    end
+
+    scroller = result.css("div[class*='lui:overflow-x-auto']").first
+    assert scroller
+    assert scroller.css("table").any?
+  end
+
+  def test_cells_do_not_wrap
+    result = render_inline(LightningUiKit::TableComponent.new(data: sample_data)) do |table|
+      table.with_column("Name") { |row| row.name }
+    end
+
+    assert_includes result.css("thead th").first["class"], "lui:whitespace-nowrap"
+    assert_includes result.css("tbody td").first["class"], "lui:whitespace-nowrap"
+  end
+
   def test_renders_empty_message_when_no_data
     result = render_inline(LightningUiKit::TableComponent.new(data: [], empty_message: "No records found"))
 

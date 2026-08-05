@@ -25,107 +25,109 @@
       </div>
     </div>
   <% end %>
-  <table class="lui:w-full lui:text-left lui:text-sm/6 lui:text-foreground lui:border-collapse lui:border-inherit">
-    <thead class="lui:text-foreground-muted">
-      <tr>
-        <% if selectable? %>
-          <th scope="col" class="lui:w-px lui:border-b lui:border-b-border lui:py-2 lui:pl-4 lui:pr-2">
-            <span class="lui:group/cb lui:relative lui:inline-flex lui:items-center lui:justify-center lui:align-middle">
-              <input
-                type="checkbox"
-                class="<%= checkbox_input_classes %>"
-                aria-label="Select all"
-                data-lui-table-target="selectAll"
-                data-action="change->lui-table#toggleAll"
-                >
-              <svg class="<%= checkbox_icon_classes %>" viewBox="0 0 14 14" fill="none">
-                <path class="lui:group-has-[:indeterminate]/cb:opacity-0" d="M3 8L6 11L11 3.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path class="lui:opacity-0 lui:group-has-[:indeterminate]/cb:opacity-100" d="M3 7H11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-              </svg>
-            </span>
-          </th>
-        <% end %>
-        <% columns.each do |column| %>
-          <th
-            scope="col"
-            class="lui:border-b lui:border-b-border lui:px-4 lui:py-2 lui:font-medium <%= column.alignment_classes %>"
-            <% if aria_sort(column) %>aria-sort="<%= aria_sort(column) %>"<% end %>
-            >
-            <% if column.sortable? %>
-              <a
-                href="<%= sort_url(column) %>"
-                class="lui:group/sort lui:inline-flex lui:items-center lui:gap-1 lui:hover:text-foreground <%= "lui:text-foreground" if sorted_by?(column) %>"
-                >
-                <%= column.title %>
-                <%= heroicon(sort_icon(column), variant: :outline, options: {class: "lui:size-3.5 lui:shrink-0 #{"lui:text-foreground-faint lui:group-hover/sort:text-foreground-muted" unless sorted_by?(column)}"}) %>
-              </a>
-            <% else %>
-              <%= column.title %>
-            <% end %>
-          </th>
-        <% end %>
-        <% if actions.present? %>
-          <th scope="col" class="lui:border-b lui:border-b-border lui:px-4 lui:py-2 lui:font-medium"><%= @actions_title %></th>
-        <% end %>
-      </tr>
-    </thead>
-    <tbody>
-      <% if @data.empty? %>
+  <div class="lui:overflow-x-auto lui:rounded-[calc(var(--lui-radius-lg)-1px)] lui:border-inherit">
+    <table class="lui:w-full lui:text-left lui:text-sm/6 lui:text-foreground lui:border-collapse lui:border-inherit">
+      <thead class="lui:text-foreground-muted">
         <tr>
-          <td class="lui:p-4 lui:text-center lui:break-words" colspan="<%= colspan %>">
-            <p class="lui:font-medium"><%= @empty_message %></p>
-          </td>
+          <% if selectable? %>
+            <th scope="col" class="lui:w-px lui:border-b lui:border-b-border lui:py-2 lui:pl-4 lui:pr-2">
+              <span class="lui:group/cb lui:relative lui:inline-flex lui:items-center lui:justify-center lui:align-middle">
+                <input
+                  type="checkbox"
+                  class="<%= checkbox_input_classes %>"
+                  aria-label="Select all"
+                  data-lui-table-target="selectAll"
+                  data-action="change->lui-table#toggleAll"
+                  >
+                <svg class="<%= checkbox_icon_classes %>" viewBox="0 0 14 14" fill="none">
+                  <path class="lui:group-has-[:indeterminate]/cb:opacity-0" d="M3 8L6 11L11 3.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <path class="lui:opacity-0 lui:group-has-[:indeterminate]/cb:opacity-100" d="M3 7H11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </span>
+            </th>
+          <% end %>
+          <% columns.each do |column| %>
+            <th
+              scope="col"
+              class="lui:border-b lui:border-b-border lui:px-4 lui:py-2 lui:font-medium lui:whitespace-nowrap <%= column.alignment_classes %>"
+              <% if aria_sort(column) %>aria-sort="<%= aria_sort(column) %>"<% end %>
+              >
+              <% if column.sortable? %>
+                <a
+                  href="<%= sort_url(column) %>"
+                  class="lui:group/sort lui:inline-flex lui:items-center lui:gap-1 lui:hover:text-foreground <%= "lui:text-foreground" if sorted_by?(column) %>"
+                  >
+                  <%= column.title %>
+                  <%= heroicon(sort_icon(column), variant: :outline, options: {class: "lui:size-3.5 lui:shrink-0 #{"lui:text-foreground-faint lui:group-hover/sort:text-foreground-muted" unless sorted_by?(column)}"}) %>
+                </a>
+              <% else %>
+                <%= column.title %>
+              <% end %>
+            </th>
+          <% end %>
+          <% if actions.present? %>
+            <th scope="col" class="lui:border-b lui:border-b-border lui:px-4 lui:py-2 lui:font-medium lui:whitespace-nowrap"><%= @actions_title %></th>
+          <% end %>
         </tr>
-      <% else %>
-        <% @data.each do |row| %>
-          <% url = row_url_for(row) %>
-          <tr
-            class="lui:group lui:data-selected:bg-surface-hover <%= "lui:cursor-pointer lui:hover:bg-surface-hover" if url || selectable? %>"
-            <% if url %>
-              data-url="<%= url %>"
-              data-action="click->lui-table#visitRow"
-            <% elsif selectable? %>
-              data-action="click->lui-table#toggleRow"
-            <% end %>
-            >
-            <% if selectable? %>
-              <td
-                class="lui:w-px lui:border-b lui:border-border-subtle lui:group-last:border-b-0 lui:py-4 lui:pl-4 lui:pr-2"
-                data-action="click->lui-table#toggleCell"
-                >
-                <span class="lui:relative lui:inline-flex lui:items-center lui:justify-center lui:align-middle">
-                  <input
-                    type="checkbox"
-                    name="<%= @select_name %>"
-                    value="<%= row_value(row) %>"
-                    class="<%= checkbox_input_classes %>"
-                    aria-label="Select row"
-                    data-lui-table-target="rowCheckbox"
-                    data-action="change->lui-table#update"
-                    >
-                  <svg class="<%= checkbox_icon_classes %>" viewBox="0 0 14 14" fill="none">
-                    <path d="M3 8L6 11L11 3.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                  </svg>
-                </span>
-              </td>
-            <% end %>
-            <% columns.each do |column| %>
-              <td class="lui:p-4 lui:border-b lui:border-border-subtle lui:group-last:border-b-0 lui:break-words <%= column.alignment_classes %>">
-                <%= column.call(row) %>
-              </td>
-            <% end %>
-            <% if actions.present? %>
-              <td class="lui:p-4 lui:border-b lui:border-border-subtle lui:group-last:border-b-0 lui:break-words">
-                <div class="lui:flex lui:gap-3">
-                  <% actions.each do |action| %>
-                    <%= action.call(row) %>
-                  <% end %>
-                </div>
-              </td>
-            <% end %>
+      </thead>
+      <tbody>
+        <% if @data.empty? %>
+          <tr>
+            <td class="lui:p-4 lui:text-center lui:break-words" colspan="<%= colspan %>">
+              <p class="lui:font-medium"><%= @empty_message %></p>
+            </td>
           </tr>
+        <% else %>
+          <% @data.each do |row| %>
+            <% url = row_url_for(row) %>
+            <tr
+              class="lui:group lui:data-selected:bg-surface-hover <%= "lui:cursor-pointer lui:hover:bg-surface-hover" if url || selectable? %>"
+              <% if url %>
+                data-url="<%= url %>"
+                data-action="click->lui-table#visitRow"
+              <% elsif selectable? %>
+                data-action="click->lui-table#toggleRow"
+              <% end %>
+              >
+              <% if selectable? %>
+                <td
+                  class="lui:w-px lui:border-b lui:border-border-subtle lui:group-last:border-b-0 lui:py-4 lui:pl-4 lui:pr-2"
+                  data-action="click->lui-table#toggleCell"
+                  >
+                  <span class="lui:relative lui:inline-flex lui:items-center lui:justify-center lui:align-middle">
+                    <input
+                      type="checkbox"
+                      name="<%= @select_name %>"
+                      value="<%= row_value(row) %>"
+                      class="<%= checkbox_input_classes %>"
+                      aria-label="Select row"
+                      data-lui-table-target="rowCheckbox"
+                      data-action="change->lui-table#update"
+                      >
+                    <svg class="<%= checkbox_icon_classes %>" viewBox="0 0 14 14" fill="none">
+                      <path d="M3 8L6 11L11 3.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                </td>
+              <% end %>
+              <% columns.each do |column| %>
+                <td class="lui:p-4 lui:border-b lui:border-border-subtle lui:group-last:border-b-0 lui:whitespace-nowrap <%= column.alignment_classes %>">
+                  <%= column.call(row) %>
+                </td>
+              <% end %>
+              <% if actions.present? %>
+                <td class="lui:p-4 lui:border-b lui:border-border-subtle lui:group-last:border-b-0 lui:whitespace-nowrap">
+                  <div class="lui:flex lui:gap-3">
+                    <% actions.each do |action| %>
+                      <%= action.call(row) %>
+                    <% end %>
+                  </div>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
         <% end %>
-      <% end %>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
 </div>

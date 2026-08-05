@@ -981,6 +981,9 @@
   .lui\:rounded-\[10px\] {
     border-radius: 10px;
   }
+  .lui\:rounded-\[calc\(var\(--lui-radius-lg\)-1px\)\] {
+    border-radius: calc(var(--lui-radius-lg) - 1px);
+  }
   .lui\:rounded-full {
     border-radius: calc(infinity * 1px);
   }
@@ -1262,6 +1265,9 @@
   }
   .lui\:px-6 {
     padding-inline: calc(var(--lui-spacing) * 6);
+  }
+  .lui\:px-8 {
+    padding-inline: calc(var(--lui-spacing) * 8);
   }
   .lui\:px-\[calc\(--spacing\(3\.5\)-1px\)\] {
     padding-inline: calc(calc(var(--lui-spacing) * 3.5) - 1px);
@@ -1883,9 +1889,9 @@
   .lui\:file\:cursor-pointer::file-selector-button {
     cursor: pointer;
   }
-  .lui\:file\:rounded-l-\[calc\(var\(--radius-lg\)-1px\)\]::file-selector-button {
-    border-top-left-radius: calc(var(--radius-lg) - 1px);
-    border-bottom-left-radius: calc(var(--radius-lg) - 1px);
+  .lui\:file\:rounded-l-\[calc\(var\(--lui-radius-lg\)-1px\)\]::file-selector-button {
+    border-top-left-radius: calc(var(--lui-radius-lg) - 1px);
+    border-bottom-left-radius: calc(var(--lui-radius-lg) - 1px);
   }
   .lui\:file\:border-0::file-selector-button {
     border-style: var(--tw-border-style);

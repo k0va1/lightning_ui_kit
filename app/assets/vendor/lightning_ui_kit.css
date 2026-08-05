@@ -1006,9 +1006,9 @@
     border-top-left-radius: var(--lui-radius-3xl);
     border-top-right-radius: var(--lui-radius-3xl);
   }
-  .lui\:rounded-t-\[calc\(var\(--radius-lg\)-1px\)\] {
-    border-top-left-radius: calc(var(--radius-lg) - 1px);
-    border-top-right-radius: calc(var(--radius-lg) - 1px);
+  .lui\:rounded-t-\[calc\(var\(--lui-radius-lg\)-1px\)\] {
+    border-top-left-radius: calc(var(--lui-radius-lg) - 1px);
+    border-top-right-radius: calc(var(--lui-radius-lg) - 1px);
   }
   .lui\:rounded-r-lg {
     border-top-right-radius: var(--lui-radius-lg);

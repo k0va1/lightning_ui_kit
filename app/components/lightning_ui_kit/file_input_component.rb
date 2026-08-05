@@ -68,7 +68,7 @@ class LightningUiKit::FileInputComponent < LightningUiKit::BaseComponent
   end
 
   def file_input_classes
-    "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:text-base/6 lui:text-foreground lui:placeholder:text-foreground-muted lui:sm:text-sm/6 lui:border lui:border-border lui:data-[hover]:border-border-hover lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-destructive-border lui:data-invalid:data-[hover]:border-destructive-border lui:data-disabled:cursor-not-allowed lui:data-disabled:border-border-hover lui:data-disabled:file:cursor-not-allowed lui:file:cursor-pointer lui:cursor-pointer lui:file:border-0 lui:file:px-[calc(--spacing(3.5)-1px)] lui:file:py-[calc(--spacing(2.5)-1px)] lui:file:sm:px-[calc(--spacing(3)-1px)] lui:file:sm:py-[calc(--spacing(1.5)-1px)] lui:file:mr-4 lui:file:bg-surface-tertiary lui:file:rounded-l-[calc(var(--radius-lg)-1px)]"
+    "lui:relative lui:block lui:w-full lui:appearance-none lui:rounded-lg lui:text-base/6 lui:text-foreground lui:placeholder:text-foreground-muted lui:sm:text-sm/6 lui:border lui:border-border lui:data-[hover]:border-border-hover lui:bg-transparent lui:focus:outline-hidden lui:data-invalid:border-destructive-border lui:data-invalid:data-[hover]:border-destructive-border lui:data-disabled:cursor-not-allowed lui:data-disabled:border-border-hover lui:data-disabled:file:cursor-not-allowed lui:file:cursor-pointer lui:cursor-pointer lui:file:border-0 lui:file:px-[calc(--spacing(3.5)-1px)] lui:file:py-[calc(--spacing(2.5)-1px)] lui:file:sm:px-[calc(--spacing(3)-1px)] lui:file:sm:py-[calc(--spacing(1.5)-1px)] lui:file:mr-4 lui:file:bg-surface-tertiary lui:file:rounded-l-[calc(var(--lui-radius-lg)-1px)]"
   end
 
   def file_input_html_options

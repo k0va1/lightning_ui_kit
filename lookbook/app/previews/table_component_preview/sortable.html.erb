@@ -11,5 +11,5 @@
 <%= render LightningUiKit::TableComponent.new(data: products, sort_key: :name) do |table| %>
   <% table.with_column("Product", sort_key: :name) { |row| row["name"] } %>
   <% table.with_column("Price", sort_key: :price, align: :right) { |row| "$#{row["price"]}.00" } %>
-  <% table.with_column("Inventory", sort_key: :inventory, align: :right) { |row| row["inventory"].to_s } %>
+  <% table.with_column("Inventory", sort_key: :inventory, align: :right) { |row| row["inventory"] } %>
 <% end %>

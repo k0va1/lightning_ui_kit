@@ -51,6 +51,54 @@ class LightningUiKit::TableComponentTest < ViewComponent::TestCase
     assert_includes result.to_html, "Name"
   end
 
+  def test_renders_non_string_cell_values
+    data = [OpenStruct.new(id: 42, price: 9.99, active: false, created_on: Date.new(2026, 1, 15))]
+
+    result = render_inline(LightningUiKit::TableComponent.new(data: data)) do |table|
+      table.with_column("ID") { |row| row.id }
+      table.with_column("Price") { |row| row.price }
+      table.with_column("Active") { |row| row.active }
+      table.with_column("Created") { |row| row.created_on }
+    end
+
+    cells = result.css("tbody td").map { |td| td.text.strip }
+    assert_equal ["42", "9.99", "false", "2026-01-15"], cells
+  end
+
+  def test_renders_non_string_action_values
+    result = render_inline(LightningUiKit::TableComponent.new(data: sample_data)) do |table|
+      table.with_column("Name") { |row| row.name }
+      table.with_action { |row| row.id }
+    end
+
+    assert_equal "1", result.css("tbody td")[1].text.strip
+  end
+
+  def test_escapes_string_cell_values
+    data = [OpenStruct.new(name: "<script>alert(1)</script>")]
+
+    result = render_inline(LightningUiKit::TableComponent.new(data: data)) do |table|
+      table.with_column("Name") { |row| row.name }
+    end
+
+    refute_includes result.to_html, "<script>"
+    assert_includes result.css("tbody td").first.text, "<script>alert(1)</script>"
+  end
+
+  def test_captures_cell_markup_written_to_output_buffer
+    data = [OpenStruct.new(name: "John")]
+
+    html = render_in_view_context do
+      render(LightningUiKit::TableComponent.new(data: data)) do |table|
+        table.with_column("Name") { |row| concat content_tag(:strong, row.name) }
+      end
+    end
+
+    cell = Nokogiri::HTML5.fragment(html).css("tbody td strong").first
+    assert cell
+    assert_equal "John", cell.text
+  end
+
   def test_renders_custom_actions_title
     result = render_inline(LightningUiKit::TableComponent.new(data: [], actions_title: "Operations"))
 

@@ -6,6 +6,6 @@
 <%= render LightningUiKit::TableComponent.new(data: data) do |table| %>
   <% table.with_column("Name") { |user| user["username"] } %>
   <% table.with_column("Group Type") { |user| user["group_type"] } %>
-  <% table.with_column("Total members", align: :right) { |user| user["total_members"].to_s } %>
+  <% table.with_column("Total members", align: :right) { |user| user["total_members"] } %>
   <% table.with_action { |user| link_to "Edit", "#", class: "lui:underline" } %>
 <% end %>

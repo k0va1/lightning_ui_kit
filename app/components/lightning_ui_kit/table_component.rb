@@ -1,11 +1,25 @@
 class LightningUiKit::TableComponent < LightningUiKit::BaseComponent
-  renders_many :columns, ->(title, sort_key: nil, align: :left, &block) do
-    LightningUiKit::Table::ColumnComponent.new(title, sort_key: sort_key, align: align, &block)
+  renders_many :columns, ->(title, sort_key: nil, align: :left, cell: nil) do
+    LightningUiKit::Table::ColumnComponent.new(title, sort_key: sort_key, align: align) { |row| capture_cell(row, &cell) }
   end
-  renders_many :actions, ->(&block) do
-    LightningUiKit::Table::ActionComponent.new(&block)
+  renders_many :actions, ->(cell: nil) do
+    LightningUiKit::Table::ActionComponent.new { |row| capture_cell(row, &cell) }
   end
   renders_one :bulk_actions
+
+  # ViewComponent funnels slot blocks through Rails' `capture`, which discards
+  # non-String return values (Integers, Dates, ...), rendering blank cells.
+  # Route blocks around that wrapper via the cell: argument so capture_cell
+  # can evaluate them instead.
+  alias_method :__with_column_slot, :with_column
+  def with_column(title, sort_key: nil, align: :left, &block)
+    __with_column_slot(title, sort_key: sort_key, align: align, cell: block)
+  end
+
+  alias_method :__with_action_slot, :with_action
+  def with_action(&block)
+    __with_action_slot(cell: block)
+  end
 
   def initialize(
     data:,
@@ -122,6 +136,14 @@ class LightningUiKit::TableComponent < LightningUiKit::BaseComponent
   end
 
   private
+
+  # Like Rails' `capture`, but preserves non-String block values so ERB can
+  # `to_s` them: buffered markup wins, otherwise the raw value passes through.
+  def capture_cell(row, &block)
+    value = nil
+    buffer = view_context.with_output_buffer { value = block.call(row) }
+    buffer.presence || value
+  end
 
   def sort_state
     @sort_state ||= begin

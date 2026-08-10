@@ -1266,9 +1266,6 @@
   .lui\:px-6 {
     padding-inline: calc(var(--lui-spacing) * 6);
   }
-  .lui\:px-8 {
-    padding-inline: calc(var(--lui-spacing) * 8);
-  }
   .lui\:px-\[calc\(--spacing\(3\.5\)-1px\)\] {
     padding-inline: calc(calc(var(--lui-spacing) * 3.5) - 1px);
   }

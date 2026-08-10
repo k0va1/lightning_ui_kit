@@ -261,7 +261,7 @@ View — the table picks up the current sort state from the request params autom
 
 Sorting is server-side: header links point to the current path with `sort`/`direction` query params merged in (param names configurable via `sort_param:`/`direction_param:` on both `lui_sort` and the table). `lui_sort` validates the sort param against `allowed:` and applies `.order` to relations (or `sort_by` to arrays); `default:`/`default_direction:` order the initial, param-less request — mirror `default:` with the table's `sort_key:` so the default sorted column shows its indicator. Outside controllers use `LightningUiKit::Sorting.apply(scope, params, allowed: ...)` directly. `row_id:` (symbol or proc, default `:id`) provides checkbox values.
 
-Note: column/action blocks run through Rails `capture`, so they must return a String or render HTML — call `.to_s` on numbers and other non-string values or they render as blank.
+Note: column/action blocks may return any value — non-String results (numbers, dates, booleans) are rendered with `to_s`, Strings are HTML-escaped, and blocks may also render HTML markup directly.
 
 ### Dropdown Menu
 

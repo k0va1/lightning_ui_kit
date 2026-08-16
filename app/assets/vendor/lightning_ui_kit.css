@@ -1359,6 +1359,9 @@
   .lui\:align-middle {
     vertical-align: middle;
   }
+  .lui\:font-mono {
+    font-family: var(--lui-font-mono);
+  }
   .lui\:text-2xl {
     font-size: var(--lui-text-2xl);
     line-height: var(--tw-leading, var(--lui-text-2xl--line-height));
@@ -1475,6 +1478,9 @@
   }
   .lui\:text-blue-600 {
     color: var(--lui-color-blue-600);
+  }
+  .lui\:text-destructive {
+    color: var(--lui-theme-destructive);
   }
   .lui\:text-destructive-text {
     color: var(--lui-theme-destructive-text);
@@ -2604,8 +2610,8 @@
     .lui\:sm\:grid-cols-\[1rem_1fr\] {
       grid-template-columns: 1rem 1fr;
     }
-    .lui\:sm\:grid-cols-\[min\(50\%\,--spacing\(80\)\)_auto\] {
-      grid-template-columns: min(50%, calc(var(--lui-spacing) * 80)) auto;
+    .lui\:sm\:grid-cols-\[min\(50\%\,--spacing\(80\)\)_minmax\(0\,auto\)\] {
+      grid-template-columns: min(50%, calc(var(--lui-spacing) * 80)) minmax(0,auto);
     }
     .lui\:sm\:grid-rows-\[1fr_auto_3fr\] {
       grid-template-rows: 1fr auto 3fr;
@@ -2701,6 +2707,10 @@
     .lui\:file\:sm\:py-\[calc\(--spacing\(1\.5\)-1px\)\]::file-selector-button {
       padding-block: calc(calc(var(--lui-spacing) * 1.5) - 1px);
     }
+    .lui\:sm\:first-of-type\:border-none:first-of-type {
+      --tw-border-style: none;
+      border-style: none;
+    }
     .lui\:sm\:focus-within\:after\:ring-2:focus-within::after {
       content: var(--tw-content);
       --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
@@ -2723,10 +2733,6 @@
     :is(.lui\:sm\:\*\:data-\[slot\=icon\]\:size-4 > *)[data-slot="icon"] {
       width: calc(var(--lui-spacing) * 4);
       height: calc(var(--lui-spacing) * 4);
-    }
-    .lui\:sm\:nth-2\:border-none:nth-child(2) {
-      --tw-border-style: none;
-      border-style: none;
     }
   }
   @media (width >= 64rem) {

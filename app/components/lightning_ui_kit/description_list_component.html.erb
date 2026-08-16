@@ -1,5 +1,5 @@
-<dl class="lui:grid lui:grid-cols-1 lui:text-base/6 lui:sm:grid-cols-[min(50%,--spacing(80))_auto] lui:sm:text-sm/6">
+<%= tag.dl(class: classes, data: data) do %>
   <% items.each do |item| %>
     <%= item %>
   <% end %>
-</dl>
+<% end %>

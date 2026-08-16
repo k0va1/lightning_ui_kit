@@ -1,0 +1,11 @@
+<%= render LightningUiKit::DescriptionListComponent.new do |dl| %>
+  <% dl.with_item(label: "Status") do %>
+    <%= render LightningUiKit::BadgeComponent.new(status: :success).with_content("Active") %>
+  <% end %>
+  <% dl.with_item(label: "Seats") { 42 } %>
+  <% dl.with_item(label: "Owner") do %>
+    <%= render LightningUiKit::LinkComponent.new(title: "jane@example.com", url: "#") %>
+  <% end %>
+  <% dl.with_item(label: "Customer ID", value: "ctm_01m02bkaayj8qwjjtm4jzabcdef0123456789", class: "lui:font-mono lui:text-xs") %>
+  <% dl.with_item(label: "Deleted at", label_class: "lui:text-destructive", value: "—") %>
+<% end %>

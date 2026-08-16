@@ -1,0 +1,10 @@
+<div class="lui:max-w-xl">
+  <%= render LightningUiKit::CardComponent.new do |card| %>
+    <% card.with_title { "Billing" } %>
+    <%= render LightningUiKit::DescriptionListComponent.new do |dl| %>
+      <% dl.with_item(label: "Plan", value: "Indie") %>
+      <% dl.with_item(label: "Trial ends", value: "August 27, 2026 14:59") %>
+      <% dl.with_item(label: "Paddle customer", value: "ctm_01m02bkaayj8qwjjtm4jzabcdef0123456789") %>
+    <% end %>
+  <% end %>
+</div>

@@ -17,7 +17,7 @@ builder:
 servers:
   web:
     hosts:
-      - "49.13.117.76"
+      - "100.92.37.126"
     options:
       memory: 512M
 

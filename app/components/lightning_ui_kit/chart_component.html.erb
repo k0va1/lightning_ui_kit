@@ -8,7 +8,7 @@
       <div class="lui:mb-3 lui:flex lui:flex-wrap lui:items-center lui:gap-4">
         <% series.each do |s| %>
           <div class="lui:flex lui:items-center lui:gap-1.5 lui:text-xs lui:text-foreground-muted">
-            <span class="lui:size-2.5 lui:rounded-sm" style="background-color: <%= s[:color] %>;"></span>
+            <span class="lui:size-2 lui:shrink-0 lui:rounded-[2px]" style="background-color: <%= s[:color] %>;"></span>
             <%= s[:label] %>
           </div>
         <% end %>
@@ -20,8 +20,8 @@
         <defs>
           <% series.each_with_index do |s, i| %>
             <linearGradient id="<%= gradient_id(i) %>" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="<%= s[:color] %>" stop-opacity="0.35" />
-              <stop offset="100%" stop-color="<%= s[:color] %>" stop-opacity="0.02" />
+              <stop offset="5%" stop-color="<%= s[:color] %>" stop-opacity="0.8" />
+              <stop offset="95%" stop-color="<%= s[:color] %>" stop-opacity="0.1" />
             </linearGradient>
           <% end %>
         </defs>
@@ -37,10 +37,18 @@
         <% y_ticks.each do |tick| %>
           <text x="<%= plot_left - 8 %>" y="<%= (tick[:y] + 4).round(2) %>" text-anchor="end" font-size="11" fill="var(--lui-theme-foreground-muted)"><%= tick[:label] %></text>
         <% end %>
-        <% x_positions.each do |pos| %>
+        <% x_axis_labels.each do |pos| %>
           <text x="<%= pos[:x].round(2) %>" y="<%= view_height - 8 %>" text-anchor="middle" font-size="11" fill="var(--lui-theme-foreground-muted)"><%= pos[:label] %></text>
         <% end %>
       <% end %>
+
+      <g data-lui-chart-target="cursor" style="display: none">
+        <% if bar? %>
+          <rect data-role="cursor-band" x="0" y="<%= plot_top %>" width="0" height="<%= (plot_bottom - plot_top).round(2) %>" fill="var(--lui-theme-surface-hover)" />
+        <% else %>
+          <line data-role="cursor-line" x1="0" x2="0" y1="<%= plot_top %>" y2="<%= plot_bottom %>" stroke="var(--lui-theme-border-hover)" stroke-width="1" stroke-dasharray="3 3" />
+        <% end %>
+      </g>
 
       <% if bar? %>
         <% bars.each do |bar| %>
@@ -48,15 +56,27 @@
         <% end %>
       <% else %>
         <% series.each_with_index do |s, i| %>
-          <% points = line_points(s) %>
+          <% segments = line_segments(s) %>
+          <% strokes = segments.select { |points| points.size > 1 } %>
           <% if area? %>
-            <path d="<%= area_path(points) %>" fill="url(#<%= gradient_id(i) %>)" data-role="area" />
+            <% strokes.each do |points| %>
+              <path d="<%= area_path(points) %>" fill="url(#<%= gradient_id(i) %>)" fill-opacity="0.4" data-role="area" />
+            <% end %>
           <% end %>
-          <polyline points="<%= polyline(points) %>" fill="none" stroke="<%= s[:color] %>" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-role="line" />
-          <% points.each do |x, y| %>
+          <% strokes.each do |points| %>
+            <path d="<%= line_path(points) %>" fill="none" stroke="<%= s[:color] %>" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-role="line" />
+          <% end %>
+          <% dots = show_dots? ? segments : segments.select { |points| points.size == 1 } %>
+          <% dots.flatten(1).each do |x, y| %>
             <circle cx="<%= x.round(2) %>" cy="<%= y.round(2) %>" r="3" fill="var(--lui-theme-surface)" stroke="<%= s[:color] %>" stroke-width="2" data-role="point" />
           <% end %>
         <% end %>
+
+        <g data-lui-chart-target="markers" style="display: none">
+          <% series.each do |s| %>
+            <circle data-role="active-dot" cx="0" cy="0" r="4" fill="<%= s[:color] %>" stroke="var(--lui-theme-surface)" stroke-width="2" />
+          <% end %>
+        </g>
       <% end %>
 
       <% hover_columns.each do |col| %>
@@ -70,11 +90,13 @@
           data-role="column"
           data-label="<%= col[:label] %>"
           data-payload="<%= col[:payload] %>"
+          data-cursor-x="<%= col[:cursor_x].round(2) %>"
+          data-markers="<%= col[:markers] %>"
           data-action="mouseenter->lui-chart#show mousemove->lui-chart#move mouseleave->lui-chart#hide"
         />
       <% end %>
     </svg>
 
-    <div data-lui-chart-target="tooltip" class="lui:hidden lui:pointer-events-none lui:absolute lui:z-50 lui:flex lui:min-w-[8rem] lui:flex-col lui:gap-1 lui:rounded-lg lui:border lui:border-border lui:bg-surface lui:px-2.5 lui:py-1.5 lui:text-xs lui:shadow-md"></div>
+    <div data-lui-chart-target="tooltip" class="lui:hidden lui:pointer-events-none lui:absolute lui:z-50 lui:grid lui:min-w-[8rem] lui:items-start lui:gap-1.5 lui:rounded-lg lui:border lui:border-border lui:bg-surface lui:px-2.5 lui:py-1.5 lui:text-xs lui:shadow-xl"></div>
   <% end %>
 <% end %>

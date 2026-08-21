@@ -1,12 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["tooltip"]
+  static targets = ["tooltip", "cursor", "markers"]
 
   show(event) {
+    const el = event.currentTarget
+    this.trackCursor(el)
     if (!this.hasTooltipTarget) return
 
-    const el = event.currentTarget
     const label = el.dataset.label || ""
     let items = []
     try {
@@ -18,12 +19,12 @@ export default class extends Controller {
     const rows = items.map((item) => `
       <div class="lui:flex lui:items-center lui:justify-between lui:gap-4">
         <span class="lui:flex lui:items-center lui:gap-1.5 lui:text-foreground-muted">
-          <span class="lui:size-2 lui:shrink-0 lui:rounded-[2px]" style="background-color:${item.color}"></span>${item.label}
+          <span class="lui:size-2.5 lui:shrink-0 lui:rounded-[2px]" style="background-color:${this.escapeHtml(item.color)}"></span>${this.escapeHtml(item.label)}
         </span>
-        <span class="lui:font-medium lui:text-foreground lui:tabular-nums">${item.value}</span>
+        <span class="lui:font-medium lui:text-foreground lui:tabular-nums">${this.escapeHtml(item.value)}</span>
       </div>`).join("")
 
-    this.tooltipTarget.innerHTML = `<div class="lui:mb-1 lui:font-medium lui:text-foreground">${label}</div>${rows}`
+    this.tooltipTarget.innerHTML = `<div class="lui:font-medium lui:text-foreground">${this.escapeHtml(label)}</div>${rows}`
     this.tooltipTarget.classList.remove("lui:hidden")
     this.position(event)
   }
@@ -34,9 +35,64 @@ export default class extends Controller {
 
   hide() {
     if (this.hasTooltipTarget) this.tooltipTarget.classList.add("lui:hidden")
+    if (this.hasCursorTarget) this.cursorTarget.style.display = "none"
+    if (this.hasMarkersTarget) this.markersTarget.style.display = "none"
+  }
+
+  // Moves the vertical cursor (or bar band) and one active dot per series onto
+  // the hovered column.
+  trackCursor(el) {
+    const x = el.dataset.cursorX
+
+    if (this.hasCursorTarget) {
+      const line = this.cursorTarget.querySelector('[data-role="cursor-line"]')
+      if (line) {
+        line.setAttribute("x1", x)
+        line.setAttribute("x2", x)
+      }
+
+      const band = this.cursorTarget.querySelector('[data-role="cursor-band"]')
+      if (band) {
+        band.setAttribute("x", el.getAttribute("x"))
+        band.setAttribute("width", el.getAttribute("width"))
+      }
+
+      this.cursorTarget.style.display = ""
+    }
+
+    if (!this.hasMarkersTarget) return
+
+    let markers = []
+    try {
+      markers = JSON.parse(el.dataset.markers || "[]")
+    } catch (_) {
+      markers = []
+    }
+
+    this.markersTarget.querySelectorAll('[data-role="active-dot"]').forEach((dot, i) => {
+      const y = markers[i]
+      if (y === null || y === undefined) {
+        dot.style.display = "none"
+        return
+      }
+      dot.setAttribute("cx", x)
+      dot.setAttribute("cy", y)
+      dot.style.display = ""
+    })
+    this.markersTarget.style.display = ""
+  }
+
+  // Labels, series names and y_format: output are caller-supplied, so they are
+  // escaped before going into innerHTML.
+  escapeHtml(text) {
+    const div = document.createElement("div")
+    div.textContent = text ?? ""
+    return div.innerHTML
   }
 
   position(event) {
+    if (!this.hasTooltipTarget) return
+
     const rect = this.element.getBoundingClientRect()
     const tip = this.tooltipTarget
     const x = event.clientX - rect.left

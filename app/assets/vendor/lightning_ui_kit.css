@@ -497,6 +497,9 @@
   .lui\:h-3\.5 {
     height: calc(var(--lui-spacing) * 3.5);
   }
+  .lui\:h-4 {
+    height: calc(var(--lui-spacing) * 4);
+  }
   .lui\:h-5 {
     height: calc(var(--lui-spacing) * 5);
   }
@@ -595,6 +598,9 @@
   }
   .lui\:w-10 {
     width: calc(var(--lui-spacing) * 10);
+  }
+  .lui\:w-11 {
+    width: calc(var(--lui-spacing) * 11);
   }
   .lui\:w-14 {
     width: calc(var(--lui-spacing) * 14);
@@ -1416,6 +1422,9 @@
   }
   .lui\:text-\[0\.6875rem\] {
     font-size: 0.6875rem;
+  }
+  .lui\:text-\[11px\] {
+    font-size: 11px;
   }
   .lui\:text-\[48px\] {
     font-size: 48px;

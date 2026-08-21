@@ -3,10 +3,9 @@ class LightningUiKit::ChartComponent < LightningUiKit::BaseComponent
   UNITS = %i[decimal percent bytes count duration_ms].freeze
   CURVES = %i[monotone linear].freeze
 
-  VIEW_WIDTH = 640
-  PAD_RIGHT = 16
+  PLOT_WIDTH = 100.0
   PAD_TOP = 12
-  AXIS_PAD_LEFT = 44
+  PAD_BOTTOM = 8
 
   DEFAULT_MAX_X_LABELS = 8
   Y_TICK_STEPS = 4
@@ -14,6 +13,9 @@ class LightningUiKit::ChartComponent < LightningUiKit::BaseComponent
   # :auto drops them and relies on the hover marker instead.
   AUTO_DOT_LIMIT = 12
   BAR_RADIUS = 4.0
+  # BAR_RADIUS in plot units at a 640px-wide reference plot, so corners keep
+  # roughly the same proportions across container sizes.
+  BAR_RADIUS_X = 0.625
   # Share of the category band the bars occupy, and of each slot a bar fills.
   BAR_BAND = 0.8
   BAR_FILL = 0.9
@@ -109,20 +111,25 @@ class LightningUiKit::ChartComponent < LightningUiKit::BaseComponent
   end
 
   # --- geometry ---
-
-  def view_width = VIEW_WIDTH
+  #
+  # The x axis lives in a fixed 0..100 space that the svg stretches to the
+  # container width (preserveAspectRatio="none"), so charts fill any width.
+  # The y axis stays in pixels - the svg height is fixed - so vertical
+  # measurements are exact. Stretch-sensitive parts opt out of scaling:
+  # strokes and dots via vector-effect="non-scaling-stroke", axis labels by
+  # being HTML positioned at left:% / top:px outside the svg.
 
   def view_height = @height
 
-  def plot_left = @show_axis ? AXIS_PAD_LEFT : 8
+  def plot_left = 0.0
 
-  def plot_right = VIEW_WIDTH - PAD_RIGHT
+  def plot_right = PLOT_WIDTH
 
   def plot_top = PAD_TOP
 
-  def plot_bottom = @height - (@show_axis ? 28 : 8)
+  def plot_bottom = @height - PAD_BOTTOM
 
-  def plot_width = plot_right - plot_left
+  def plot_width = PLOT_WIDTH
 
   def plot_height = plot_bottom - plot_top
 
@@ -269,28 +276,37 @@ class LightningUiKit::ChartComponent < LightningUiKit::BaseComponent
   end
 
   # Path for a bar with a square base at the baseline and rounded corners on the
-  # free end - the top for positive values, the bottom for negative ones.
+  # free end - the top for positive values, the bottom for negative ones. The
+  # corner radius is split per axis: vertical in pixels, horizontal in plot
+  # units, since the two spaces stretch independently.
   def bar_path(bar)
     x = bar[:x]
     w = bar[:width]
     h = bar[:height]
     return "" if h <= 0 || w <= 0
 
-    r = [BAR_RADIUS, w / 2.0, h].min
+    ry = [BAR_RADIUS, h].min
+    rx = [BAR_RADIUS_X, w / 2.0].min
     x2 = x + w
     base = bar[:negative] ? bar[:y] : bar[:y] + h
     tip = bar[:negative] ? bar[:y] + h : bar[:y]
     # Signed step from the tip back toward the baseline.
-    inset = bar[:negative] ? -r : r
+    inset = bar[:negative] ? -ry : ry
     [
       "M #{r2(x)} #{r2(base)}",
       "L #{r2(x)} #{r2(tip + inset)}",
-      "Q #{r2(x)} #{r2(tip)} #{r2(x + r)} #{r2(tip)}",
-      "L #{r2(x2 - r)} #{r2(tip)}",
+      "Q #{r2(x)} #{r2(tip)} #{r2(x + rx)} #{r2(tip)}",
+      "L #{r2(x2 - rx)} #{r2(tip)}",
       "Q #{r2(x2)} #{r2(tip)} #{r2(x2)} #{r2(tip + inset)}",
       "L #{r2(x2)} #{r2(base)}",
       "Z"
     ].join(" ")
+  end
+
+  # A zero-length round-capped path renders as a fixed-size dot even under the
+  # svg's non-uniform stretch, where a circle would smear into an ellipse.
+  def dot_path(x, y)
+    "M #{r2(x)} #{r2(y)} l 0.001 0"
   end
 
   # Invisible full-height bands (one per category) that drive the hover tooltip,

@@ -75,8 +75,7 @@ export default class extends Controller {
         dot.style.display = "none"
         return
       }
-      dot.setAttribute("cx", x)
-      dot.setAttribute("cy", y)
+      dot.setAttribute("transform", `translate(${x} ${y})`)
       dot.style.display = ""
     })
     this.markersTarget.style.display = ""

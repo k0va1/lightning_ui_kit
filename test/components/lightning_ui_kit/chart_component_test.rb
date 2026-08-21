@@ -16,7 +16,7 @@ class LightningUiKit::ChartComponentTest < ViewComponent::TestCase
     result = render_inline(LightningUiKit::ChartComponent.new(type: :line, data: SINGLE))
 
     assert_equal 1, result.css('path[data-role="line"]').size
-    assert_equal 2, result.css('circle[data-role="point"]').size
+    assert_equal 2, result.css('path[data-role="point"]').size
   end
 
   def test_renders_area_chart_with_gradient
@@ -143,9 +143,9 @@ class LightningUiKit::ChartComponentTest < ViewComponent::TestCase
     assert_equal "t99", labels.last
     # All rows still render as data points and hover columns.
     result = render_inline(LightningUiKit::ChartComponent.new(type: :line, data: data, max_x_labels: 8, dots: true))
-    assert_equal 100, result.css('circle[data-role="point"]').size
+    assert_equal 100, result.css('path[data-role="point"]').size
     assert_equal 100, result.css('rect[data-role="column"]').size
-    assert_equal 8, result.css("svg text").size - chart.y_ticks.size
+    assert_equal 8, result.css('[data-role="x-tick"]').size
   end
 
   def test_x_labels_untouched_when_under_the_limit
@@ -273,7 +273,7 @@ class LightningUiKit::ChartComponentTest < ViewComponent::TestCase
 
     # Two strokes: a..b and d..e, with a gap where the value is missing.
     assert_equal 2, result.css('path[data-role="line"]').size
-    assert_equal 4, result.css('circle[data-role="point"]').size
+    assert_equal 4, result.css('path[data-role="point"]').size
   end
 
   def test_span_gaps_connects_across_nil_values
@@ -281,7 +281,7 @@ class LightningUiKit::ChartComponentTest < ViewComponent::TestCase
     result = render_inline(LightningUiKit::ChartComponent.new(type: :line, data: data, span_gaps: true))
 
     assert_equal 1, result.css('path[data-role="line"]').size
-    assert_equal 2, result.css('circle[data-role="point"]').size
+    assert_equal 2, result.css('path[data-role="point"]').size
   end
 
   def test_area_breaks_at_nil_values
@@ -296,7 +296,7 @@ class LightningUiKit::ChartComponentTest < ViewComponent::TestCase
     result = render_inline(LightningUiKit::ChartComponent.new(type: :line, data: data))
 
     assert_equal 0, result.css('path[data-role="line"]').size
-    assert_equal 1, result.css('circle[data-role="point"]').size
+    assert_equal 1, result.css('path[data-role="point"]').size
   end
 
   def test_nil_bars_are_skipped
@@ -392,20 +392,20 @@ class LightningUiKit::ChartComponentTest < ViewComponent::TestCase
     data = (0...40).map { |i| {label: "t#{i}", value: i} }
     result = render_inline(LightningUiKit::ChartComponent.new(type: :line, data: data))
 
-    assert_equal 0, result.css('circle[data-role="point"]').size
+    assert_equal 0, result.css('path[data-role="point"]').size
     assert_equal 1, result.css('path[data-role="line"]').size
   end
 
   def test_sparse_series_keeps_dots
     result = render_inline(LightningUiKit::ChartComponent.new(type: :line, data: SINGLE))
 
-    assert_equal 2, result.css('circle[data-role="point"]').size
+    assert_equal 2, result.css('path[data-role="point"]').size
   end
 
   def test_dots_can_be_forced_off_on_a_sparse_series
     result = render_inline(LightningUiKit::ChartComponent.new(type: :line, data: SINGLE, dots: false))
 
-    assert_equal 0, result.css('circle[data-role="point"]').size
+    assert_equal 0, result.css('path[data-role="point"]').size
   end
 
   def test_dotless_series_still_marks_isolated_points
@@ -414,7 +414,7 @@ class LightningUiKit::ChartComponentTest < ViewComponent::TestCase
 
     # Nothing to stroke, so the lone sample would be invisible without a dot.
     assert_equal 0, result.css('path[data-role="line"]').size
-    assert_equal 1, result.css('circle[data-role="point"]').size
+    assert_equal 1, result.css('path[data-role="point"]').size
   end
 
   # --- hover cursor and active dots ---
@@ -426,7 +426,7 @@ class LightningUiKit::ChartComponentTest < ViewComponent::TestCase
 
     assert_equal 1, JSON.parse(columns[0]["data-markers"]).size
     assert_nil JSON.parse(columns[1]["data-markers"]).first
-    assert_in_delta columns[0]["data-cursor-x"].to_f, 44.0, 0.01
+    assert_in_delta columns[0]["data-cursor-x"].to_f, 0.0, 0.01
   end
 
   def test_line_charts_render_a_cursor_line_and_active_dots
@@ -434,7 +434,7 @@ class LightningUiKit::ChartComponentTest < ViewComponent::TestCase
 
     assert_equal 1, result.css('line[data-role="cursor-line"]').size
     assert_equal 0, result.css('rect[data-role="cursor-band"]').size
-    assert_equal 1, result.css('circle[data-role="active-dot"]').size
+    assert_equal 1, result.css('g[data-role="active-dot"]').size
     assert_includes result.to_html, 'data-lui-chart-target="markers"'
   end
 
@@ -470,14 +470,14 @@ class LightningUiKit::ChartComponentTest < ViewComponent::TestCase
 
     assert_equal 1, result.css('rect[data-role="cursor-band"]').size
     assert_equal 0, result.css('line[data-role="cursor-line"]').size
-    assert_equal 0, result.css('circle[data-role="active-dot"]').size
+    assert_equal 0, result.css('g[data-role="active-dot"]').size
   end
 
   def test_one_active_dot_per_series
     data = [{label: "Jan", desktop: 10, mobile: 5}, {label: "Feb", desktop: 20, mobile: 8}]
     result = render_inline(LightningUiKit::ChartComponent.new(type: :area, data: data))
 
-    assert_equal 2, result.css('circle[data-role="active-dot"]').size
+    assert_equal 2, result.css('g[data-role="active-dot"]').size
   end
 
   def test_hover_columns_still_cover_nil_rows
@@ -485,5 +485,58 @@ class LightningUiKit::ChartComponentTest < ViewComponent::TestCase
     result = render_inline(LightningUiKit::ChartComponent.new(type: :line, data: data))
 
     assert_equal 3, result.css('rect[data-role="column"]').size
+  end
+
+  # --- responsive full-width rendering ---
+
+  def test_svg_stretches_to_the_container
+    result = render_inline(LightningUiKit::ChartComponent.new(type: :line, data: SINGLE))
+    svg = result.css("svg").first
+
+    assert_equal "none", svg["preserveAspectRatio"]
+    assert_equal "0 0 100 260", svg["viewBox"]
+  end
+
+  def test_strokes_and_dots_opt_out_of_scaling
+    result = render_inline(LightningUiKit::ChartComponent.new(type: :line, data: SINGLE))
+
+    assert_equal "non-scaling-stroke", result.css('path[data-role="line"]').first["vector-effect"]
+    assert_equal "non-scaling-stroke", result.css('path[data-role="point"]').first["vector-effect"]
+    assert_equal "non-scaling-stroke", result.css('line[data-role="cursor-line"]').first["vector-effect"]
+  end
+
+  def test_axis_labels_are_html_not_svg_text
+    result = render_inline(LightningUiKit::ChartComponent.new(type: :line, data: SINGLE))
+
+    assert_equal 0, result.css("svg text").size
+    # y labels are pinned in pixels, x labels in percentages of the plot width.
+    assert_match(/top: [\d.]+px/, result.css('[data-role="y-tick"]').first["style"])
+    assert_match(/left: [\d.]+%/, result.css('[data-role="x-tick"]').first["style"])
+    assert_equal ["0.0%", "100.0%"], result.css('[data-role="x-tick"]').map { |t| t["style"][/left: ([\d.]+%)/, 1] }
+  end
+
+  def test_show_axis_false_drops_the_label_markup
+    result = render_inline(LightningUiKit::ChartComponent.new(type: :line, data: SINGLE, show_axis: false))
+
+    assert_equal 0, result.css('[data-role="y-tick"]').size
+    assert_equal 0, result.css('[data-role="x-tick"]').size
+  end
+
+  def test_grid_lines_are_html_so_dashes_do_not_stretch
+    chart = LightningUiKit::ChartComponent.new(type: :line, data: SINGLE)
+    result = render_inline(chart)
+
+    assert_equal chart.y_ticks.size, result.css('[data-role="grid-line"]').size
+    assert_equal 0, result.css("svg line:not([data-role])").size
+  end
+
+  def test_dots_render_as_round_capped_zero_length_paths
+    result = render_inline(LightningUiKit::ChartComponent.new(type: :line, data: SINGLE))
+    dot = result.css('path[data-role="point"]').first
+
+    assert_equal "round", dot["stroke-linecap"]
+    assert_match(/\AM [\d.]+ [\d.]+ l 0\.001 0\z/, dot["d"])
+    # Each dot gets a surface-colored core so it reads as a ring over the line.
+    assert_equal result.css('path[data-role="point"]').size, result.css('path[data-role="point-core"]').size
   end
 end

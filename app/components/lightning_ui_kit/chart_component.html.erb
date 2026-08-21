@@ -15,87 +15,101 @@
       </div>
     <% end %>
 
-    <svg viewBox="0 0 <%= view_width %> <%= view_height %>" class="lui:w-full lui:overflow-visible" style="height: <%= height %>px;" role="img" aria-label="Chart">
-      <% if area? %>
-        <defs>
-          <% series.each_with_index do |s, i| %>
-            <linearGradient id="<%= gradient_id(i) %>" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stop-color="<%= s[:color] %>" stop-opacity="0.8" />
-              <stop offset="95%" stop-color="<%= s[:color] %>" stop-opacity="0.1" />
-            </linearGradient>
-          <% end %>
-        </defs>
-      <% end %>
-
-      <% if show_grid? %>
-        <% y_ticks.each do |tick| %>
-          <line x1="<%= plot_left %>" y1="<%= tick[:y].round(2) %>" x2="<%= plot_right %>" y2="<%= tick[:y].round(2) %>" stroke="var(--lui-theme-border)" stroke-width="1" stroke-dasharray="3 3" />
-        <% end %>
-      <% end %>
-
+    <div class="lui:flex lui:w-full">
       <% if show_axis? %>
-        <% y_ticks.each do |tick| %>
-          <text x="<%= plot_left - 8 %>" y="<%= (tick[:y] + 4).round(2) %>" text-anchor="end" font-size="11" fill="var(--lui-theme-foreground-muted)"><%= tick[:label] %></text>
-        <% end %>
-        <% x_axis_labels.each do |pos| %>
-          <text x="<%= pos[:x].round(2) %>" y="<%= view_height - 8 %>" text-anchor="middle" font-size="11" fill="var(--lui-theme-foreground-muted)"><%= pos[:label] %></text>
-        <% end %>
+        <div class="lui:relative lui:w-11 lui:shrink-0" style="height: <%= height %>px;">
+          <% y_ticks.each do |tick| %>
+            <span data-role="y-tick" class="lui:absolute lui:right-2 lui:-translate-y-1/2 lui:text-[11px] lui:leading-none lui:whitespace-nowrap lui:text-foreground-muted" style="top: <%= tick[:y].round(2) %>px;"><%= tick[:label] %></span>
+          <% end %>
+        </div>
       <% end %>
 
-      <g data-lui-chart-target="cursor" style="display: none">
-        <% if bar? %>
-          <rect data-role="cursor-band" x="0" y="<%= plot_top %>" width="0" height="<%= (plot_bottom - plot_top).round(2) %>" fill="var(--lui-theme-surface-hover)" />
-        <% else %>
-          <line data-role="cursor-line" x1="0" x2="0" y1="<%= plot_top %>" y2="<%= plot_bottom %>" stroke="var(--lui-theme-border-hover)" stroke-width="1" stroke-dasharray="3 3" />
+      <div class="lui:relative lui:min-w-0 lui:flex-1">
+        <% if show_grid? %>
+          <% y_ticks.each do |tick| %>
+            <div data-role="grid-line" class="lui:pointer-events-none lui:absolute lui:inset-x-0 lui:border-t lui:border-dashed lui:border-border" style="top: <%= tick[:y].round(2) %>px;"></div>
+          <% end %>
         <% end %>
-      </g>
-
-      <% if bar? %>
-        <% bars.each do |bar| %>
-          <path d="<%= bar_path(bar) %>" fill="<%= bar[:color] %>" data-role="bar" />
-        <% end %>
-      <% else %>
-        <% series.each_with_index do |s, i| %>
-          <% segments = line_segments(s) %>
-          <% strokes = segments.select { |points| points.size > 1 } %>
+        <svg viewBox="0 0 100 <%= view_height %>" preserveAspectRatio="none" class="lui:block lui:w-full lui:overflow-visible" style="height: <%= height %>px;" role="img" aria-label="Chart">
           <% if area? %>
-            <% strokes.each do |points| %>
-              <path d="<%= area_path(points) %>" fill="url(#<%= gradient_id(i) %>)" fill-opacity="0.4" data-role="area" />
+            <defs>
+              <% series.each_with_index do |s, i| %>
+                <linearGradient id="<%= gradient_id(i) %>" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stop-color="<%= s[:color] %>" stop-opacity="0.8" />
+                  <stop offset="95%" stop-color="<%= s[:color] %>" stop-opacity="0.1" />
+                </linearGradient>
+              <% end %>
+            </defs>
+          <% end %>
+
+          <g data-lui-chart-target="cursor" style="display: none">
+            <% if bar? %>
+              <rect data-role="cursor-band" x="0" y="<%= plot_top %>" width="0" height="<%= (plot_bottom - plot_top).round(2) %>" fill="var(--lui-theme-surface-hover)" />
+            <% else %>
+              <line data-role="cursor-line" x1="0" x2="0" y1="<%= plot_top %>" y2="<%= plot_bottom %>" stroke="var(--lui-theme-border-hover)" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke" />
             <% end %>
+          </g>
+
+          <% if bar? %>
+            <% bars.each do |bar| %>
+              <path d="<%= bar_path(bar) %>" fill="<%= bar[:color] %>" data-role="bar" />
+            <% end %>
+          <% else %>
+            <% series.each_with_index do |s, i| %>
+              <% segments = line_segments(s) %>
+              <% strokes = segments.select { |points| points.size > 1 } %>
+              <% if area? %>
+                <% strokes.each do |points| %>
+                  <path d="<%= area_path(points) %>" fill="url(#<%= gradient_id(i) %>)" fill-opacity="0.4" data-role="area" />
+                <% end %>
+              <% end %>
+              <% strokes.each do |points| %>
+                <path d="<%= line_path(points) %>" fill="none" stroke="<%= s[:color] %>" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" data-role="line" />
+              <% end %>
+              <% dots = show_dots? ? segments : segments.select { |points| points.size == 1 } %>
+              <% dots.flatten(1).each do |x, y| %>
+                <path d="<%= dot_path(x, y) %>" fill="none" stroke="<%= s[:color] %>" stroke-width="8" stroke-linecap="round" vector-effect="non-scaling-stroke" data-role="point" />
+                <path d="<%= dot_path(x, y) %>" fill="none" stroke="var(--lui-theme-surface)" stroke-width="4" stroke-linecap="round" vector-effect="non-scaling-stroke" data-role="point-core" />
+              <% end %>
+            <% end %>
+
+            <g data-lui-chart-target="markers" style="display: none">
+              <% series.each do |s| %>
+                <g data-role="active-dot">
+                  <path d="M 0 0 l 0.001 0" fill="none" stroke="var(--lui-theme-surface)" stroke-width="10" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+                  <path d="M 0 0 l 0.001 0" fill="none" stroke="<%= s[:color] %>" stroke-width="6" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+                </g>
+              <% end %>
+            </g>
           <% end %>
-          <% strokes.each do |points| %>
-            <path d="<%= line_path(points) %>" fill="none" stroke="<%= s[:color] %>" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-role="line" />
+
+          <% hover_columns.each do |col| %>
+            <rect
+              x="<%= col[:x].round(2) %>"
+              y="<%= plot_top %>"
+              width="<%= col[:width].round(2) %>"
+              height="<%= (plot_bottom - plot_top).round(2) %>"
+              fill="transparent"
+              pointer-events="all"
+              data-role="column"
+              data-label="<%= col[:label] %>"
+              data-payload="<%= col[:payload] %>"
+              data-cursor-x="<%= col[:cursor_x].round(2) %>"
+              data-markers="<%= col[:markers] %>"
+              data-action="mouseenter->lui-chart#show mousemove->lui-chart#move mouseleave->lui-chart#hide"
+            />
           <% end %>
-          <% dots = show_dots? ? segments : segments.select { |points| points.size == 1 } %>
-          <% dots.flatten(1).each do |x, y| %>
-            <circle cx="<%= x.round(2) %>" cy="<%= y.round(2) %>" r="3" fill="var(--lui-theme-surface)" stroke="<%= s[:color] %>" stroke-width="2" data-role="point" />
-          <% end %>
+        </svg>
+
+        <% if show_axis? %>
+          <div class="lui:relative lui:mt-1.5 lui:h-4">
+            <% x_axis_labels.each do |pos| %>
+              <span data-role="x-tick" class="lui:absolute lui:-translate-x-1/2 lui:text-[11px] lui:leading-none lui:whitespace-nowrap lui:text-foreground-muted" style="left: <%= pos[:x].round(2) %>%;"><%= pos[:label] %></span>
+            <% end %>
+          </div>
         <% end %>
-
-        <g data-lui-chart-target="markers" style="display: none">
-          <% series.each do |s| %>
-            <circle data-role="active-dot" cx="0" cy="0" r="4" fill="<%= s[:color] %>" stroke="var(--lui-theme-surface)" stroke-width="2" />
-          <% end %>
-        </g>
-      <% end %>
-
-      <% hover_columns.each do |col| %>
-        <rect
-          x="<%= col[:x].round(2) %>"
-          y="<%= plot_top %>"
-          width="<%= col[:width].round(2) %>"
-          height="<%= (plot_bottom - plot_top).round(2) %>"
-          fill="transparent"
-          pointer-events="all"
-          data-role="column"
-          data-label="<%= col[:label] %>"
-          data-payload="<%= col[:payload] %>"
-          data-cursor-x="<%= col[:cursor_x].round(2) %>"
-          data-markers="<%= col[:markers] %>"
-          data-action="mouseenter->lui-chart#show mousemove->lui-chart#move mouseleave->lui-chart#hide"
-        />
-      <% end %>
-    </svg>
+      </div>
+    </div>
 
     <div data-lui-chart-target="tooltip" class="lui:hidden lui:pointer-events-none lui:absolute lui:z-50 lui:grid lui:min-w-[8rem] lui:items-start lui:gap-1.5 lui:rounded-lg lui:border lui:border-border lui:bg-surface lui:px-2.5 lui:py-1.5 lui:text-xs lui:shadow-xl"></div>
   <% end %>

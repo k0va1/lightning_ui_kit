@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.4.1](https://github.com/k0va1/lightning_ui_kit/compare/v0.4.0...v0.4.1) (2026-08-21)
+
+
+### Features
+
+* **chart:** value formatting, label thinning, y-domain control and nil gaps ([ec308cf](https://github.com/k0va1/lightning_ui_kit/commit/ec308cf51c7002274b44adc5e0444c90e3bfe32d))
+
+
+### Bug Fixes
+
+* **description_list:** wrap long values instead of overflowing the container ([8455740](https://github.com/k0va1/lightning_ui_kit/commit/8455740a92cffeb6bbfdaecb9719c5a588a34272))
+* **lookbook:** sync Gemfile.lock with the 0.4.0 path gem ([ce77e9a](https://github.com/k0va1/lightning_ui_kit/commit/ce77e9a44a7a64dfeba1a1fbe89fbd8796587f52))
+* **table:** render non-String cell values instead of blank cells ([b2d30b6](https://github.com/k0va1/lightning_ui_kit/commit/b2d30b671ed1c2f8cd02472125971a13db157720))
+* **table:** scroll horizontally instead of overflowing the container ([36048a7](https://github.com/k0va1/lightning_ui_kit/commit/36048a71a73f8962473658ffb9ec1171cea9ecb0))
+* use gem-prefixed --lui-radius-lg theme variable ([adc2c3e](https://github.com/k0va1/lightning_ui_kit/commit/adc2c3eb268d9c9338f41859064c4812af04b760))
+
 ## [0.4.0](https://github.com/k0va1/lightning_ui_kit/compare/v0.3.5...v0.4.0) (2026-08-04)
 
 

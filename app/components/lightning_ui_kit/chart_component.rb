@@ -309,6 +309,16 @@ class LightningUiKit::ChartComponent < LightningUiKit::BaseComponent
     "M #{r2(x)} #{r2(y)} l 0.001 0"
   end
 
+  # Labels at the plot edges anchor inward so they don't hang outside the
+  # chart into the surrounding layout; interior labels stay centred on their
+  # tick.
+  def x_tick_anchor(x)
+    return "" if x <= 0.01
+    return "lui:-translate-x-full" if x >= PLOT_WIDTH - 0.01
+
+    "lui:-translate-x-1/2"
+  end
+
   # Invisible full-height bands (one per category) that drive the hover tooltip,
   # cursor and active dots.
   def hover_columns

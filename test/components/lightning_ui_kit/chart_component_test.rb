@@ -530,6 +530,32 @@ class LightningUiKit::ChartComponentTest < ViewComponent::TestCase
     assert_equal 0, result.css("svg line:not([data-role])").size
   end
 
+  def test_y_gutter_shrinks_to_its_labels
+    result = render_inline(LightningUiKit::ChartComponent.new(type: :line, data: SINGLE))
+    sizer = result.css('div[aria-hidden="true"]').first
+
+    # An invisible copy of the tick labels gives the gutter its width, so short
+    # labels don't leave a fixed-width dead zone left of the plot.
+    assert_includes sizer["class"], "lui:invisible"
+    assert_includes sizer.text, "100"
+    assert_equal 0, result.css('[class*="lui:w-11"]').size
+  end
+
+  def test_edge_x_labels_anchor_inward
+    data = [{label: "a", value: 1}, {label: "b", value: 2}, {label: "c", value: 3}]
+    ticks = render_inline(LightningUiKit::ChartComponent.new(type: :line, data: data)).css('[data-role="x-tick"]')
+
+    refute_includes ticks.first["class"], "translate-x"
+    assert_includes ticks[1]["class"], "lui:-translate-x-1/2"
+    assert_includes ticks.last["class"], "lui:-translate-x-full"
+  end
+
+  def test_bar_x_labels_stay_centred_on_their_band
+    ticks = render_inline(LightningUiKit::ChartComponent.new(type: :bar, data: SINGLE)).css('[data-role="x-tick"]')
+
+    assert(ticks.all? { |t| t["class"].include?("lui:-translate-x-1/2") })
+  end
+
   def test_dots_render_as_round_capped_zero_length_paths
     result = render_inline(LightningUiKit::ChartComponent.new(type: :line, data: SINGLE))
     dot = result.css('path[data-role="point"]').first

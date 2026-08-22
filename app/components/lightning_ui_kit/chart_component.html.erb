@@ -17,7 +17,12 @@
 
     <div class="lui:flex lui:w-full">
       <% if show_axis? %>
-        <div class="lui:relative lui:w-11 lui:shrink-0" style="height: <%= height %>px;">
+        <div class="lui:relative lui:shrink-0" style="height: <%= height %>px;">
+          <div aria-hidden="true" class="lui:invisible lui:pr-2 lui:text-[11px] lui:leading-none lui:whitespace-nowrap">
+            <% y_ticks.each do |tick| %>
+              <div><%= tick[:label] %></div>
+            <% end %>
+          </div>
           <% y_ticks.each do |tick| %>
             <span data-role="y-tick" class="lui:absolute lui:right-2 lui:-translate-y-1/2 lui:text-[11px] lui:leading-none lui:whitespace-nowrap lui:text-foreground-muted" style="top: <%= tick[:y].round(2) %>px;"><%= tick[:label] %></span>
           <% end %>
@@ -104,7 +109,7 @@
         <% if show_axis? %>
           <div class="lui:relative lui:mt-1.5 lui:h-4">
             <% x_axis_labels.each do |pos| %>
-              <span data-role="x-tick" class="lui:absolute lui:-translate-x-1/2 lui:text-[11px] lui:leading-none lui:whitespace-nowrap lui:text-foreground-muted" style="left: <%= pos[:x].round(2) %>%;"><%= pos[:label] %></span>
+              <span data-role="x-tick" class="lui:absolute <%= x_tick_anchor(pos[:x]) %> lui:text-[11px] lui:leading-none lui:whitespace-nowrap lui:text-foreground-muted" style="left: <%= pos[:x].round(2) %>%;"><%= pos[:label] %></span>
             <% end %>
           </div>
         <% end %>

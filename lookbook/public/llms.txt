@@ -92,7 +92,7 @@ application.register(`${namespace}-example`, ExampleController)
 - **TextComponent** - `size: :sm/:md/:lg`
 - **BadgeComponent** - `style: :default/:success/:warning/:error`, progress indicator support
 - **AvatarComponent** - `src:`, `initials:`, `size: :sm/:md/:lg`, `square:`
-- **AlertComponent** - `type: :info/:error/:success/:warning`, optional `title:` for banner-style layout, with footer slot
+- **AlertComponent** - `type: :info/:error/:success/:warning`, optional `title:` for banner-style layout, with footer slot. `dismissible:` adds a close button on the right; `autodismiss:` fades the alert out after `dismiss_after:` ms (default 5000), holding while hovered or focused
 - **ToastComponent** - `timeout:` for auto-dismiss, notification styling
 - **SkeletonComponent** - `title:`, `lines:` for loading states
 - **SpinnerComponent** - Loading spinner

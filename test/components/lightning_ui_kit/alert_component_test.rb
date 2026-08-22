@@ -85,4 +85,45 @@ class LightningUiKit::AlertComponentTest < ViewComponent::TestCase
 
     assert_includes result.to_html, "lui:sr-only"
   end
+
+  def test_not_dismissible_by_default
+    result = render_inline(LightningUiKit::AlertComponent.new) { "Alert" }
+
+    assert_equal 0, result.css("button").size
+    assert_equal 0, result.css('[data-controller="lui-alert"]').size
+  end
+
+  def test_dismissible_renders_a_close_button
+    result = render_inline(LightningUiKit::AlertComponent.new(dismissible: true)) { "Alert" }
+    button = result.css('button[data-action="lui-alert#close"]').first
+
+    assert button
+    assert_equal "Dismiss", button["aria-label"]
+    assert_includes button["class"], "lui:ms-auto"
+    assert_equal 1, result.css('[data-controller="lui-alert"]').size
+  end
+
+  def test_dismissible_banner_pins_the_close_button_to_the_corner
+    result = render_inline(LightningUiKit::AlertComponent.new(title: "Notice", dismissible: true)) { "Content" }
+    button = result.css('button[data-action="lui-alert#close"]').first
+
+    assert_includes button["class"], "lui:absolute"
+    assert_includes result.to_html, "lui:pr-10"
+  end
+
+  def test_autodismiss_wires_the_timer_and_hover_pause
+    result = render_inline(LightningUiKit::AlertComponent.new(autodismiss: true, dismiss_after: 3000)) { "Alert" }
+    root = result.css('[data-controller="lui-alert"]').first
+
+    assert_equal "true", root["data-lui-alert-autodismiss-value"]
+    assert_equal "3000", root["data-lui-alert-dismiss-after-value"]
+    assert_includes root["data-action"], "mouseenter->lui-alert#pause"
+    assert_includes root["data-action"], "focusout->lui-alert#resume"
+  end
+
+  def test_autodismiss_defaults_to_five_seconds
+    result = render_inline(LightningUiKit::AlertComponent.new(autodismiss: true)) { "Alert" }
+
+    assert_equal "5000", result.css('[data-controller="lui-alert"]').first["data-lui-alert-dismiss-after-value"]
+  end
 end

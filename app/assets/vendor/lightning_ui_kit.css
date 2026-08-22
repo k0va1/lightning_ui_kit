@@ -256,6 +256,9 @@
   .lui\:top-1\/2 {
     top: calc(1 / 2 * 100%);
   }
+  .lui\:top-3 {
+    top: calc(var(--lui-spacing) * 3);
+  }
   .lui\:top-4 {
     top: calc(var(--lui-spacing) * 4);
   }
@@ -273,6 +276,9 @@
   }
   .lui\:right-2 {
     right: calc(var(--lui-spacing) * 2);
+  }
+  .lui\:right-3 {
+    right: calc(var(--lui-spacing) * 3);
   }
   .lui\:right-4 {
     right: calc(var(--lui-spacing) * 4);
@@ -334,6 +340,9 @@
   .lui\:mx-auto {
     margin-inline: auto;
   }
+  .lui\:-my-1 {
+    margin-block: calc(var(--lui-spacing) * -1);
+  }
   .lui\:-my-1\.5 {
     margin-block: calc(var(--lui-spacing) * -1.5);
   }
@@ -345,6 +354,12 @@
   }
   .lui\:ms-2\.5 {
     margin-inline-start: calc(var(--lui-spacing) * 2.5);
+  }
+  .lui\:ms-auto {
+    margin-inline-start: auto;
+  }
+  .lui\:-me-1\.5 {
+    margin-inline-end: calc(var(--lui-spacing) * -1.5);
   }
   .lui\:me-3 {
     margin-inline-end: calc(var(--lui-spacing) * 3);

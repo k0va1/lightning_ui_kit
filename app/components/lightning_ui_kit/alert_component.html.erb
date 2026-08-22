@@ -1,4 +1,4 @@
-<%= tag.div(class: classes, role: "alert", data: @title ? { type: @type, controller: "lui-alert" } : { type: @type }) do %>
+<%= tag.div(class: classes, role: "alert", data: stimulus_data) do %>
   <%= heroicon(icon, variant: @title ? :outline : :solid, options: { class: icon_classes }) %>
   <span class="lui:sr-only"><%= @type.to_s.humanize %></span>
   <% if @title %>
@@ -11,5 +11,10 @@
     <% end %>
   <% else %>
     <%= content %>
+  <% end %>
+  <% if dismissible? %>
+    <button type="button" data-action="lui-alert#close" aria-label="Dismiss" class="<%= dismiss_button_classes %>">
+      <%= heroicon("x-mark", variant: :outline, options: { class: "lui:size-4" }) %>
+    </button>
   <% end %>
 <% end %>

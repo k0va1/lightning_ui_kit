@@ -33,12 +33,44 @@ export default class extends Controller {
     this.timeout = null
   }
 
+  // Fades the alert out while collapsing the space it occupied (height,
+  // margins, padding, borders), so surrounding content reflows smoothly
+  // instead of jumping when it disappears.
   close() {
     this.cancelDismiss()
-    this.element.classList.remove("lui:opacity-100");
-    this.element.classList.add("lui:opacity-0");
-    setTimeout(() => {
-      this.element.classList.add("lui:hidden");
-    }, 300);
+    const el = this.element
+    if (!el.animate || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      el.remove()
+      return
+    }
+
+    const style = getComputedStyle(el)
+    el.style.overflow = "hidden"
+    el.style.pointerEvents = "none"
+    el.animate(
+      [
+        {
+          opacity: 1,
+          height: `${el.offsetHeight}px`,
+          marginTop: style.marginTop,
+          marginBottom: style.marginBottom,
+          paddingTop: style.paddingTop,
+          paddingBottom: style.paddingBottom,
+          borderTopWidth: style.borderTopWidth,
+          borderBottomWidth: style.borderBottomWidth
+        },
+        {
+          opacity: 0,
+          height: "0px",
+          marginTop: "0px",
+          marginBottom: "0px",
+          paddingTop: "0px",
+          paddingBottom: "0px",
+          borderTopWidth: "0px",
+          borderBottomWidth: "0px"
+        }
+      ],
+      { duration: 250, easing: "ease-in-out", fill: "forwards" }
+    ).onfinish = () => el.remove()
   }
 }

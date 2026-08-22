@@ -100,6 +100,7 @@ class LightningUiKit::AlertComponentTest < ViewComponent::TestCase
     assert button
     assert_equal "Dismiss", button["aria-label"]
     assert_includes button["class"], "lui:ms-auto"
+    assert_includes button["class"], "lui:cursor-pointer"
     assert_equal 1, result.css('[data-controller="lui-alert"]').size
   end
 

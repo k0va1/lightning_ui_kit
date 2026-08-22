@@ -29,7 +29,7 @@ class LightningUiKit::AlertComponent < LightningUiKit::BaseComponent
   end
 
   def dismiss_button_classes
-    base = "lui:rounded-md lui:p-1 lui:text-foreground-muted lui:transition-colors lui:hover:text-foreground"
+    base = "lui:cursor-pointer lui:rounded-md lui:p-1 lui:text-foreground-muted lui:transition-colors lui:hover:text-foreground"
     @title ? "lui:absolute lui:right-3 lui:top-3 #{base}" : "lui:ms-auto lui:-my-1 lui:-me-1.5 lui:shrink-0 #{base}"
   end
 
@@ -74,7 +74,7 @@ class LightningUiKit::AlertComponent < LightningUiKit::BaseComponent
   private
 
   def base_classes
-    shared = "lui:text-sm lui:text-foreground lui:rounded-lg lui:border lui:transition-opacity lui:duration-300 lui:ease-out lui:opacity-100"
+    shared = "lui:text-sm lui:text-foreground lui:rounded-lg lui:border"
     if @title
       "lui:relative lui:w-full #{shared} lui:py-4 lui:pl-11 #{dismissible? ? "lui:pr-10" : "lui:pr-4"}"
     else

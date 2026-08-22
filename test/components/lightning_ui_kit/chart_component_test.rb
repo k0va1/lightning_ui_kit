@@ -556,6 +556,12 @@ class LightningUiKit::ChartComponentTest < ViewComponent::TestCase
     assert(ticks.all? { |t| t["class"].include?("lui:-translate-x-1/2") })
   end
 
+  def test_x_labels_are_wired_for_client_side_overlap_culling
+    ticks = render_inline(LightningUiKit::ChartComponent.new(type: :line, data: SINGLE)).css('[data-role="x-tick"]')
+
+    assert(ticks.all? { |t| t["data-lui-chart-target"] == "xTick" })
+  end
+
   def test_dots_render_as_round_capped_zero_length_paths
     result = render_inline(LightningUiKit::ChartComponent.new(type: :line, data: SINGLE))
     dot = result.css('path[data-role="point"]').first

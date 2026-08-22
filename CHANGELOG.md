@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.4.2](https://github.com/k0va1/lightning_ui_kit/compare/v0.4.1...v0.4.2) (2026-08-22)
+
+
+### Features
+
+* **alert:** animate dismissal and use a pointer cursor on the close button ([99884e8](https://github.com/k0va1/lightning_ui_kit/commit/99884e8987fc5122a0cd3aa9f729c0ff86586012))
+* **alert:** dismissible close button and autodismiss ([f680820](https://github.com/k0va1/lightning_ui_kit/commit/f680820dab7d444cd87bd52e0dfe8febc3a65a54))
+
+
+### Bug Fixes
+
+* **chart:** hide x labels that collide at the rendered width ([cde621f](https://github.com/k0va1/lightning_ui_kit/commit/cde621f0044927a96d11394a3fce84cdab8e39c2))
+* **chart:** size the y gutter to its labels and anchor edge x labels inward ([0958c73](https://github.com/k0va1/lightning_ui_kit/commit/0958c73e9c3cc886acada896772a05d2efea1501))
+* **chart:** stretch to the container width without distortion ([118f441](https://github.com/k0va1/lightning_ui_kit/commit/118f4418156d7520b142237eefed8921dcb50ddf))
+
 ## [0.4.1](https://github.com/k0va1/lightning_ui_kit/compare/v0.4.0...v0.4.1) (2026-08-21)
 
 

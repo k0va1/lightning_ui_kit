@@ -10,7 +10,7 @@
       </div>
     <% end %>
   <% else %>
-    <%= content %>
+    <div class="lui:min-w-0"><%= content %></div>
   <% end %>
   <% if dismissible? %>
     <button type="button" data-action="lui-alert#close" aria-label="Dismiss" class="<%= dismiss_button_classes %>">

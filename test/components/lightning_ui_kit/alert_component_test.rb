@@ -22,6 +22,19 @@ class LightningUiKit::AlertComponentTest < ViewComponent::TestCase
     assert_includes result.to_html, "lui:items-center"
   end
 
+  def test_inline_content_renders_as_a_single_flex_item
+    result = render_inline(LightningUiKit::AlertComponent.new) do
+      "<span>status.example.com</span> is being provisioned at <span>target.example.com</span>".html_safe
+    end
+
+    wrapper = result.css('[role="alert"] > div').first
+
+    assert wrapper
+    assert_includes wrapper["class"], "lui:min-w-0"
+    assert_equal 2, wrapper.css("span").size
+    assert_includes wrapper.text, "is being provisioned at"
+  end
+
   def test_renders_with_custom_classes
     result = render_inline(LightningUiKit::AlertComponent.new(class: "lui:mt-4")) { "Alert" }
 

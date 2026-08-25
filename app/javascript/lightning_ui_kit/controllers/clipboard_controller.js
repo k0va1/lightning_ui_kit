@@ -7,6 +7,7 @@ export default class extends Controller {
   connect() {
     if (this.hasInputTarget) {
       this.inputTarget.readOnly = true
+      this.#restoreValue()
     }
   }
 
@@ -34,6 +35,14 @@ export default class extends Controller {
     if (this.hasShowIconTarget && this.hasHideIconTarget) {
       this.showIconTarget.classList.toggle("lui:hidden", isPassword)
       this.hideIconTarget.classList.toggle("lui:hidden", !isPassword)
+    }
+  }
+
+  #restoreValue() {
+    const value = this.inputTarget.getAttribute("value")
+
+    if (value && this.inputTarget.value === "") {
+      this.inputTarget.value = value
     }
   }
 

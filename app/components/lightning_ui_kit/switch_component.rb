@@ -53,15 +53,15 @@ class LightningUiKit::SwitchComponent < LightningUiKit::BaseComponent
   def button_classes
     "lui:group lui:relative lui:isolate lui:inline-flex lui:h-6 lui:w-10 lui:cursor-default lui:rounded-full " \
     "lui:p-[3px] lui:sm:h-5 lui:sm:w-8 lui:transition lui:duration-200 lui:ease-in-out " \
-    "lui:forced-colors:outline lui:forced-colors:[--switch-bg:Highlight] lui:bg-surface-tertiary lui:ring-1 lui:ring-black/5 lui:ring-inset " \
+    "lui:forced-colors:outline lui:forced-colors:[--switch-bg:Highlight] lui:bg-surface-tertiary lui:ring-1 lui:ring-border-subtle lui:ring-inset " \
     "lui:data-checked:bg-(--switch-bg) lui:data-checked:ring-(--switch-bg-ring) lui:focus:outline-hidden lui:data-focus:outline-2 " \
-    "lui:data-focus:outline-offset-2 lui:data-focus:outline-focus lui:hover:ring-black/15 lui:hover:data-checked:ring-(--switch-bg-ring) " \
-    "lui:data-disabled:bg-surface-tertiary lui:data-disabled:opacity-50 lui:data-disabled:data-checked:bg-surface-tertiary lui:data-disabled:data-checked:ring-black/5 " \
+    "lui:data-focus:outline-offset-2 lui:data-focus:outline-focus lui:hover:ring-border-strong lui:hover:data-checked:ring-(--switch-bg-ring) " \
+    "lui:data-disabled:bg-surface-tertiary lui:data-disabled:opacity-50 lui:data-disabled:data-checked:bg-surface-tertiary lui:data-disabled:data-checked:ring-border-subtle " \
     "lui:[--switch-bg-ring:var(--lui-theme-border-invert)] " \
     "lui:[--switch-bg:var(--lui-theme-surface-invert)] " \
     "lui:[--switch-ring:var(--lui-theme-border-invert)] " \
     "lui:[--switch-shadow:var(--lui-color-black)]/10 " \
-    "lui:[--switch:white]"
+    "lui:[--switch:var(--lui-theme-foreground-invert)]"
   end
 
   def button_data
@@ -84,10 +84,10 @@ class LightningUiKit::SwitchComponent < LightningUiKit::BaseComponent
   def knob_classes
     "lui:pointer-events-none lui:relative lui:inline-block lui:size-[1.125rem] lui:rounded-full lui:sm:size-3.5 " \
     "lui:translate-x-0 lui:transition lui:duration-200 lui:ease-in-out lui:border lui:border-transparent lui:bg-white " \
-    "lui:ring-1 lui:shadow-sm lui:ring-black/5 lui:group-data-checked:bg-(--switch) lui:group-data-checked:shadow-(--switch-shadow) " \
+    "lui:ring-1 lui:shadow-sm lui:ring-border-subtle lui:group-data-checked:bg-(--switch) lui:group-data-checked:shadow-(--switch-shadow) " \
     "lui:group-data-checked:ring-(--switch-ring) lui:group-data-checked:translate-x-4 lui:sm:group-data-checked:translate-x-3 " \
     "lui:group-data-checked:group-data-disabled:bg-white lui:group-data-checked:group-data-disabled:shadow-sm " \
-    "lui:group-data-checked:group-data-disabled:ring-black/5"
+    "lui:group-data-checked:group-data-disabled:ring-border-subtle"
   end
 
   def hidden_field_data

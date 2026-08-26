@@ -15,7 +15,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: ruby-3.3.5
+          ruby-version: ruby-4.0.6
           bundler-cache: true
 
       - name: Lint code for consistent style
@@ -30,7 +30,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: ruby-3.3.5
+          ruby-version: ruby-4.0.6
           bundler-cache: true
 
       - name: Run tests
@@ -45,13 +45,13 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: ruby-3.3.5
+          ruby-version: ruby-4.0.6
           bundler-cache: true
 
       - name: Set up Node
         uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 26
           cache: npm
 
       - name: Install npm dependencies

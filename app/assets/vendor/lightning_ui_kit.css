@@ -3,8 +3,9 @@
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
-    --lui-font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --lui-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol", "Noto Color Emoji";
     --lui-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --lui-color-red-600: oklch(57.7% 0.245 27.325);
@@ -12,7 +13,7 @@
     --lui-color-blue-500: oklch(62.3% 0.214 259.815);
     --lui-color-blue-600: oklch(54.6% 0.245 262.881);
     --lui-color-gray-700: oklch(37.3% 0.034 259.733);
-    --lui-color-zinc-50: oklch(98.5% 0 0);
+    --lui-color-zinc-50: oklch(98.5% 0 none);
     --lui-color-zinc-100: oklch(96.7% 0.001 286.375);
     --lui-color-zinc-500: oklch(55.2% 0.016 285.938);
     --lui-color-zinc-900: oklch(21% 0.006 285.885);
@@ -77,7 +78,7 @@
     line-height: 1.5;
     -webkit-text-size-adjust: 100%;
     tab-size: 4;
-    font-family: var(--lui-default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
+    font-family: var(--lui-default-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
     font-feature-settings: var(--lui-default-font-feature-settings, normal);
     font-variation-settings: var(--lui-default-font-variation-settings, normal);
     -webkit-tap-highlight-color: transparent;
@@ -129,7 +130,7 @@
     border-color: inherit;
     border-collapse: collapse;
   }
-  :-moz-focusring {
+  :-moz-focusring:where(:not(iframe)) {
     outline: auto;
   }
   progress {
@@ -1600,14 +1601,11 @@
     --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
-  .lui\:ring-black\/5 {
-    --tw-ring-color: var(--lui-color-black);
-    @supports (color: color-mix(in lab, red, red)) {
-      --tw-ring-color: color-mix(in oklab, var(--lui-color-black) 5%, transparent);
-    }
-  }
   .lui\:ring-border {
     --tw-ring-color: var(--lui-theme-border);
+  }
+  .lui\:ring-border-subtle {
+    --tw-ring-color: var(--lui-theme-border-subtle);
   }
   .lui\:outline-hidden {
     --tw-outline-style: none;
@@ -1773,8 +1771,8 @@
       --switch-shadow: color-mix(in oklab, var(--lui-color-black) 10%, transparent);
     }
   }
-  .lui\:\[--switch\:white\] {
-    --switch: white;
+  .lui\:\[--switch\:var\(--lui-theme-foreground-invert\)\] {
+    --switch: var(--lui-theme-foreground-invert);
   }
   .lui\:ring-inset {
     --tw-ring-inset: inset;
@@ -1868,11 +1866,8 @@
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
-  .lui\:group-data-checked\:group-data-disabled\:ring-black\/5:is(:where(.lui\:group)[data-checked] *):is(:where(.lui\:group)[data-disabled] *) {
-    --tw-ring-color: var(--lui-color-black);
-    @supports (color: color-mix(in lab, red, red)) {
-      --tw-ring-color: color-mix(in oklab, var(--lui-color-black) 5%, transparent);
-    }
+  .lui\:group-data-checked\:group-data-disabled\:ring-border-subtle:is(:where(.lui\:group)[data-checked] *):is(:where(.lui\:group)[data-disabled] *) {
+    --tw-ring-color: var(--lui-theme-border-subtle);
   }
   .lui\:group-data-focus\:outline:is(:where(.lui\:group)[data-focus] *) {
     outline-style: var(--tw-outline-style);
@@ -2216,13 +2211,8 @@
     .lui\:hover\:underline:hover {
       text-decoration-line: underline;
     }
-    .lui\:hover\:ring-black\/15:hover {
-      --tw-ring-color: var(--lui-color-black);
-    }
-    @supports (color: color-mix(in lab, red, red)) {
-      .lui\:hover\:ring-black\/15:hover {
-        --tw-ring-color: color-mix(in oklab, var(--lui-color-black) 15%, transparent);
-      }
+    .lui\:hover\:ring-border-strong:hover {
+      --tw-ring-color: var(--lui-theme-border-strong);
     }
     .lui\:hover\:\[--btn-icon\:var\(--lui-theme-foreground-invert\)\]:hover {
       --btn-icon: var(--lui-theme-foreground-invert);
@@ -2411,11 +2401,8 @@
   .lui\:data-disabled\:data-checked\:bg-surface-tertiary[data-disabled][data-checked] {
     background-color: var(--lui-theme-surface-tertiary);
   }
-  .lui\:data-disabled\:data-checked\:ring-black\/5[data-disabled][data-checked] {
-    --tw-ring-color: var(--lui-color-black);
-    @supports (color: color-mix(in lab, red, red)) {
-      --tw-ring-color: color-mix(in oklab, var(--lui-color-black) 5%, transparent);
-    }
+  .lui\:data-disabled\:data-checked\:ring-border-subtle[data-disabled][data-checked] {
+    --tw-ring-color: var(--lui-theme-border-subtle);
   }
   .lui\:data-focus\:outline-2[data-focus] {
     outline-style: var(--tw-outline-style);

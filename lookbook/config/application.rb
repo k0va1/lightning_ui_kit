@@ -18,8 +18,8 @@ module Lookbook
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
-    config.view_component.preview_paths << File.expand_path("app/previews", Rails.root)
-    config.view_component.default_preview_layout = "application"
+    config.view_component.previews.paths << File.expand_path("app/previews", Rails.root)
+    config.view_component.previews.default_layout = "application"
     config.lookbook.preview_layout = "application"
     config.lookbook.preview_paths << File.expand_path("app/previews", Rails.root)
     config.lookbook.view_component_path = File.expand_path("../app/components", Rails.root)

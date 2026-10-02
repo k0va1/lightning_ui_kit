@@ -1,7 +1,7 @@
 class LightningUiKit::ChartComponent < LightningUiKit::BaseComponent
   TYPES = %i[bar line area].freeze
   UNITS = %i[decimal percent bytes count duration_ms].freeze
-  CURVES = %i[monotone linear].freeze
+  CURVES = %i[monotone linear step].freeze
 
   PLOT_WIDTH = 100.0
   PAD_TOP = 12
@@ -41,7 +41,7 @@ class LightningUiKit::ChartComponent < LightningUiKit::BaseComponent
     @y_min = y_min
     @y_max = y_max
     @span_gaps = span_gaps
-    @curve = (curve&.to_sym == :linear) ? :linear : :monotone
+    @curve = CURVES.include?(curve&.to_sym) ? curve.to_sym : :monotone
     @dots = dots
     @series = build_series(series)
     @options = options
@@ -79,6 +79,10 @@ class LightningUiKit::ChartComponent < LightningUiKit::BaseComponent
 
   def smooth?
     @curve == :monotone
+  end
+
+  def step?
+    @curve == :step
   end
 
   # shadcn draws line/area series without per-point dots; :auto keeps them only
@@ -383,9 +387,13 @@ class LightningUiKit::ChartComponent < LightningUiKit::BaseComponent
     number.round(2)
   end
 
-  # Segment commands after the opening `M`, honouring the curve: option.
+  # Segment commands after the opening `M`, honouring the curve: option. :step
+  # holds each value flat until the next point, then jumps (step-after).
   def curve_commands(points)
     return "" if points.size < 2
+    if step?
+      return points.each_cons(2).map { |(_, y1), (x2, y2)| "L #{r2(x2)} #{r2(y1)} L #{r2(x2)} #{r2(y2)}" }.join(" ")
+    end
     return points.drop(1).map { |x, y| "L #{r2(x)} #{r2(y)}" }.join(" ") unless smooth?
 
     tangents = monotone_tangents(points)

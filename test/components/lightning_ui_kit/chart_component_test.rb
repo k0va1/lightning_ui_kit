@@ -366,6 +366,34 @@ class LightningUiKit::ChartComponentTest < ViewComponent::TestCase
     refute_includes path, "C "
   end
 
+  def test_step_curve_holds_each_value_until_the_next_point
+    data = [{label: "a", value: 1}, {label: "b", value: 5}, {label: "c", value: 3}]
+    chart = LightningUiKit::ChartComponent.new(type: :line, data: data, curve: :step)
+    points = chart.line_segments(chart.series.first).first
+    path = chart.line_path(points)
+    coords = path.scan(/-?\d+\.?\d*/).map(&:to_f).each_slice(2).to_a
+
+    refute_includes path, "C "
+    assert_equal 5, coords.size
+    coords.each_cons(2) do |(x1, y1), (x2, y2)|
+      assert(x1 == x2 || y1 == y2, "segment #{[x1, y1]} -> #{[x2, y2]} is diagonal")
+    end
+    assert_equal points.last.map { |n| n.round(2) }, coords.last
+  end
+
+  def test_step_curve_draws_square_corners
+    result = render_inline(LightningUiKit::ChartComponent.new(type: :area, data: SINGLE, curve: :step))
+    line = result.css('path[data-role="line"]').first
+
+    assert_equal "miter", line["stroke-linejoin"]
+  end
+
+  def test_unknown_curve_falls_back_to_the_default
+    chart = LightningUiKit::ChartComponent.new(type: :line, data: SINGLE, curve: :bogus)
+
+    assert chart.smooth?
+  end
+
   def test_nil_curve_falls_back_to_the_default
     chart = LightningUiKit::ChartComponent.new(type: :line, data: SINGLE, curve: nil)
 

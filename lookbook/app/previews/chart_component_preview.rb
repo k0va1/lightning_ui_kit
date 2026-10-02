@@ -125,6 +125,18 @@ class ChartComponentPreview < Lookbook::Preview
     )
   end
 
+  # curve: :step holds each value until the next sample, the usual look for
+  # live gauges.
+  def step_curve
+    render LightningUiKit::ChartComponent.new(
+      type: :area,
+      data: MULTI,
+      series: [{key: :desktop, label: "Desktop"}, {key: :mobile, label: "Mobile"}],
+      curve: :step,
+      class: "lui:max-w-xl"
+    )
+  end
+
   # Bars are measured from zero, so negatives hang below the baseline.
   def diverging_bar
     render LightningUiKit::ChartComponent.new(

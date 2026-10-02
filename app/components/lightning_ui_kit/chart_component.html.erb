@@ -69,7 +69,7 @@
                 <% end %>
               <% end %>
               <% strokes.each do |points| %>
-                <path d="<%= line_path(points) %>" fill="none" stroke="<%= s[:color] %>" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" data-role="line" />
+                <path d="<%= line_path(points) %>" fill="none" stroke="<%= s[:color] %>" stroke-width="2" stroke-linecap="<%= step? ? "square" : "round" %>" stroke-linejoin="<%= step? ? "miter" : "round" %>" vector-effect="non-scaling-stroke" data-role="line" />
               <% end %>
               <% dots = show_dots? ? segments : segments.select { |points| points.size == 1 } %>
               <% dots.flatten(1).each do |x, y| %>
